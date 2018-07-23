@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registrar_Carrera</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+        crossorigin="anonymous">
+</head>
+
+<body class="body-container">
+
+    <!--Acá empieza la navegación que es parte de todas las paginas-->
+    <aside id="panel-menu" class="panel-menu">
+            <nav>
+                    <ul>
+                        <li>
+                            <a href="pagina_principal.html">
+                                <i class="fas fa-home fa-fw"></i>&nbsp;Inicio</a>
+                        </li>
+                        <li>
+                            <a href="perfil.html">Perfil</a>
+                        </li>
+                        <li>
+                            <a href="usuario_listar.html">Usuarios</a>
+                        </li>
+                        <li>
+                            <a>Asistentes</a>
+                            <ul>
+                                <li>
+                                    <a href="solicitud-asistente_listar.html">Solicitudes</a>
+                                </li>
+                                <li>
+                                    <a href="informacion_academica_registrar.html">Información Académica</a>
+                                </li>
+                                <li>
+                                    <a href="bitacora_listar.html">Bitácoras</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="sede_listar.html">Sedes</a>
+                        </li>
+                        <li>
+                            <a href="carrera_listar.html">Carreras</a>
+                        </li>
+                        <li>
+                            <a href="curso_listar.html">Cursos</a>
+                        </li>
+                        <li>
+                            <a href="periodo_listar.html">Periodos</a>
+                        </li>
+                        <li>
+                            <a href="grupo_listar.html">Grupos</a>
+                        </li>
+                        <li>
+                            <a href="laboratorio_listar.html">Laboratorios</a>
+                        </li>
+                    </ul>
+                </nav>
+    </aside>
+
+    <div class="container">
+
+
+            <header class="panel-header">
+                    <div>
+                        <button id="button-nav-collapse" type="button">
+                            <i id="hamburguer" class="fas fa-bars"></i>
+                        </button>
+                        <img src="img/cenfo.png" class="img-cenfotec">
+                    </div>
+        
+                    <nav>
+                        <a href="#">
+                            <i class="fas fa-lg fa-search tooltip"><span class="tooltiptext">Buscar</span></i>
+                        </a>
+                        <a href="pagina_principal.html">
+                            <i class="fas fa-lg fa-home tooltip"><span class="tooltiptext">Inicio</span></i>
+                        </a>
+        
+                        <div "dropdown-profile">
+                            <button type="button" id="toggle-profile-dropdown" class="avatar">YM</button>
+                            <div id="profile-info-dropdown" class="profile-info profile-info--hide">
+        
+                                <div class="avatar dropdown-profile__avatar">YM</div>
+                                <div class="dropdown-profile__info">
+                                    <h3>User Name</h3>
+                                    <label class="tag">admin</label>
+                                    <p>correo@example.com</p>
+                                    <div class="dropdown-profile__actions">
+                                        <a href="perfil.html" class="link-brand">Perfil</a>
+                                        <button class="button--secundario">salir</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </header>
+
+        <div class="header-page">
+            <h1>Registrar Carrera</h1>
+        </div>
+        <!--Acá termina la navegación que es parte de todas las paginas-->
+
+        <!--este main parte de todas las paginas y engloba el contenido-->
+        <main class="page">
+            <form class="box-container">
+
+                
+                <div class="form-row">
+
+                    <div class="form-group form-group-3">
+                        <label for="txtCódigoCarrera">Código
+                            <span>*</span>
+                        </label>
+                        <input type="text" id="txtCódigoCarrera" required placeholder="Código Carrera">
+                    </div>
+
+                
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group form-group-2">
+                        <label for="txtNombreCarrera">Nombre de la carrera
+                            <span>*</span>
+                        </label>
+                        <input type="text" id="txtNombreCarrera" required placeholder="Nombre Carrera">
+                    </div>
+
+                    
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group form-group-3">
+                        <label for="numCreditosTotales">Cantidad de créditos
+                            <span>*</span>
+                        </label>
+                        <input type="text" id="numCreditosTotales" required placeholder="Créditos Totales">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                        <div class="form-group form-group-3">
+                                <label for="txtfechaCreacion">Fecha de Creación
+                                    <span>*</span>
+                                </label>
+                                <input type="text" id="txtfechaCreacion" required>
+                            </div>
+                </div>
+
+                <div class="form-group form-group-2">
+                        <label for="sltSede">Sede
+                            <span>*</span>
+                        </label>
+                        <select id="sltSede">
+                            <option value="">--Seleccione una sede--</option>
+                            <option value="Sede San Pedro">Sede San Pedro</option>
+                            <option value="Sede AFZ">Sede AFZ</option>
+                            <option value="Virtual">Virtual</option>
+                        </select>
+                </div>
+                <div class="form-row buttons">
+                        <a href="carrera_listar.html" class="button button--secundario" type="button" id="btnCancelar">Cancelar</a>
+                        <button class="button button--principal" type="button" id="btnRegistrar">Registrar</button>
+                </div>
+            </form>
+        </main>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.25.0/dist/sweetalert2.all.min.js"></script>
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/components.registrarCarrera.js"></script>
+    <script src="js/service.registrarCarrera.js"></script>
+</body>
+
+</html>
