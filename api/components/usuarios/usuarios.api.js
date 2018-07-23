@@ -31,10 +31,7 @@ module.exports.registrar_usuario = function(req, res){
             res.json({ success: false, msj: ' El usuario no pudo ser registrado : ' + error});
         }else{
             res.json({ success: true, msj: ' El usuario ha sido registrado de forma exitosa'});
-            console.log('registrado');
         }
-
-
     });
 };
 
