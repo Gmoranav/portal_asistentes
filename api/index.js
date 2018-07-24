@@ -62,9 +62,17 @@ app.use( function(req, res, next) {
 /**
  * Exportams todas las rutas dentro del index.js
  */
+//Yanory
 const usuarios = require('./components/usuarios/usuarios.route');
+//Joseph
 const cursos = require('./components/cursos/cursos.route');
 const carreras = require('./components/carreras/carreras.route');
+//Freddy
+const grupos = require('./components/grupos/grupos.route');
+const laboratorios = require('./components/laboratorios/laboratorios.route');
+//Gonzalo
+
+//David
 
 /**
  * Le indicamos que le de acceso externo a las rutas inicializadas
