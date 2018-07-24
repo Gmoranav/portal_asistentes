@@ -34,3 +34,14 @@ module.exports.registrar = function(req, res){
 
 
 };
+
+module.exports.listar_cursos = function (req, res){
+    cursoModel.find().sort({ nombre_curso: 'asc' }).then(
+        function (cursos){
+            res.send(cursos);
+        }
+
+    );
+
+
+};
