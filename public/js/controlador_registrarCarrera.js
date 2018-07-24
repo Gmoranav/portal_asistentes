@@ -6,6 +6,7 @@ let inputNombreCarrera = document.querySelector('#txtNombreCarrera');
 let inputCreditosTotales = document.querySelector('#numCreditosTotales');
 let inputFechaCreacion = document.querySelector('#txtfechaCreacion');
 let selectSede = document.querySelector('#sltSede');
+let inputAcreditacion = document.querySelector('#txtAcredicatacion');
 
 botonRegistrar.addEventListener('click' , obtenerDatosCarrera);
 
@@ -17,12 +18,13 @@ function obtenerDatosCarrera(){
     let nCreditosTotales = inputCreditosTotales.value;
     let sFechaCreacion = inputFechaCreacion.value;
     let sltSede = selectSede.value;
+    let sAcreditacion = inputAcreditacion.value;
 
     let bError= validar();
 
     if (bError == false){
 
-        registrar_carrera(sCodigoCarrera, sNombreCarrera, nCreditosTotales, sFechaCreacion, sltSede);
+        registrar_carrera(sCodigoCarrera, sNombreCarrera, nCreditosTotales, sFechaCreacion, sltSede, sAcreditacion);
         
         swal({
             type: 'success',
@@ -32,6 +34,7 @@ function obtenerDatosCarrera(){
 
         limpiarFormulario();
 
+        
     
     }else{
 
@@ -52,6 +55,7 @@ function obtenerDatosCarrera(){
 function validar(){
     let bError = false;
     let regExpNumeros = /^[0-9]+$/;
+    let regExpOpciones = /^[si,Si|no,No]+$/;
 
     if (inputCodigoCarrera.value == ''){
         
@@ -93,6 +97,14 @@ function validar(){
         selectSede.classList.remove('input_error');
     };
 
+    if (inputAcreditacion.value = '' || regExpOpciones.test(inputAcreditacion.value) == false) {
+        
+        bError= true;
+        inputAcreditacion.classList.add('input_error');
+    }else{
+        inputAcreditacion.classList.remove('input_error');
+    };
+
     return bError;
 };
 
@@ -101,5 +113,6 @@ function limpiarFormulario(){
     inputNombreCarrera.value = '';    
     inputCreditosTotales.value = '';
     inputFechaCreacion.value = '';
-    selectSede.value ='';
+    selectSede.value = '';
+    inputAcreditacion.value = ''; 
 };
