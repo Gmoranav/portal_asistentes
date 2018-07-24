@@ -8,5 +8,11 @@ router.route('/registrar_curso')
         cursos.registrar(req, res); 
 });
 
+router.route('/listar_cursos')
+    .get(function(req, res){
+        cursos.listar_cursos(req, res);
+
+    });
+
 
 module.exports = router;
