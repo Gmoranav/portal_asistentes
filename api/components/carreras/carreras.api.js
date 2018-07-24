@@ -10,9 +10,9 @@ module.exports.registrar = function(req, res){
         nombre_carrera : req.body.nombre_carrera,
         creditos_totales : req.body.creditos_totales,
         fecha_creacion : req.body.fecha_creacion,
-        slt_sede : req.body.slt_sede
-
-
+        slt_sede : req.body.slt_sede,
+        acreditacion : req.body.acreditacion
+        
     });
 
     nuevaCarrera.save(function(error){
