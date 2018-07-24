@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Listar Usuarios</title>
+    <title>Listar Carreras</title>
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
@@ -101,8 +101,8 @@
         </header>
 
         <div class="header-page">
-            <h1>Listar Usuarios
-                <a href="usuario_registrar.html" class="button--add-item">
+            <h1>Listar Carreras
+                <a href="carrera_registrar.html" class="button--add-item">
                     <i class="fas fa-lg fa-plus-circle tooltip">
                         <span class="tooltiptext">Agregar Registro</span>
                     </i>
@@ -117,32 +117,32 @@
 
 
         <main class="page">
-            <table id = "tblUsuarios" class="box-container table-list">
+            <table id = "tblCarreras" class="box-container table-list">
                 <thead>
                     <tr>
                         <th>Nombre</th>
-                        <th>Rol</th>
-                        <th>Correo</th>
-                        <th>Ingreso</th>
+                        <th>Sede</th>
+                        <th>Créditos totales</th>
+                        <th>Acreditada</th>
                         <th class="table-actions"></th>
                     </tr>
                     <tr>
                         <th>
-                            <input type="text" id="txtNombre">
+                            <input type="text" id="txtNombreCarrera">
                         </th>
                         <th>
-                            <input type="text" id="txtRol">
+                            <input type="text" id="sltSede">
                         </th>
                         <th>
-                            <input type="text" id="txtCorreo">
+                            <input type="text" id="numCreditosTotales">
                         </th>
                         <th>
-                            <input type="text" id="txtIngreso">
+                            <input type="text" id="txtCódigoCarrera">
                         </th>
                         <th class="table-actions"></th>
                     </tr>
                 </thead>
-                <tbody id="tblListarUsuarios">
+                <tbody id="tblListarCarreras">
                     <tr>
                        
                         <th class="table-actions">
@@ -162,8 +162,8 @@
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/components.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.25.0/dist/sweetalert2.all.min.js"></script>
-    <script src="js/servicio_ListarUsuario.js"></script>
-    <script src="js/controlador_ListarUsuario.js"></script>
+    <script src="js/servicio_ListarCarrera.js"></script>
+    <script src="js/controlador_ListarCarrera.js"></script>
 </body>
 
 </html>
