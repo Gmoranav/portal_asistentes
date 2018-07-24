@@ -30,10 +30,14 @@ module.exports.registrar = function(req, res){
             });
         }
 
-
-
     });
+};
 
 
-
+module.exports.listar_carreras = function(req, res){
+    carreraModel.find().sort({nombre_carrera : 'asc'}).then(
+        function(carreras){
+            res.send(carreras);
+        }
+    );
 };
