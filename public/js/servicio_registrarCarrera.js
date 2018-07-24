@@ -3,7 +3,7 @@
  * let lista_carrera =[];
  */
 
-function registrar_carrera(psCodigoCarrera, psNombreCarrera, pnCreditosTotales, psFechaCreacion, sltSede){
+function registrar_carrera(psCodigoCarrera, psNombreCarrera, pnCreditosTotales, psFechaCreacion, psltSede , psAcreditacion){
 
     let respuesta = '';
     let peticion = $.ajax({
@@ -19,7 +19,8 @@ function registrar_carrera(psCodigoCarrera, psNombreCarrera, pnCreditosTotales, 
             nombre_carrera : psNombreCarrera,
             creditos_totales : pnCreditosTotales,
             fecha_creacion : psFechaCreacion,
-            slt_sede : sltSede
+            slt_sede : psltSede,
+            acreditacion : psAcreditacion
 
         }
 
