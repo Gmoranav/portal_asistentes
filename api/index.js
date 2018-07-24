@@ -77,9 +77,14 @@ const laboratorios = require('./components/laboratorios/laboratorios.route');
 /**
  * Le indicamos que le de acceso externo a las rutas inicializadas
  */
+//Yanory
 app.use('/api' , usuarios);
+//Joseph
 app.use('/api' , cursos);
 app.use('/api', carreras);
+//Freddy
+app.use('/api', grupos);
+app.use('/api', laboratorios);
 
 // Se guarda todo lo que se ha realizado
 module.exports = app;
