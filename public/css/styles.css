@@ -562,23 +562,75 @@ body {
 
 .body-login{
     display: flex;
+    flex-direction: column;
     height: 100vh;
-
     justify-content: center;
     align-items: center;
+    background: linear-gradient(90deg, #A12169 0%, #36348C 100%);
 }
 
 .container-login__form input{
     width: 100%;
     height: 30px;
-    padding-left: 10px;
+    padding: 10px, 10px;
     border: 1px solid #E5E5E5;
     font-size: 12px;
     color: #585858;
     border-radius: 3px;
 }
-.body-login__container{
+
+.container-login__form{
+
     display: flex;
     flex-direction: column;
-    width: 302px;
+    align-self: auto;
+}
+
+.body-login__container{
+
+    border-radius: 8px;
+    background: #E5E5E5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 305px;
+    height: 321px;
+    padding: 10px;
+}
+
+.container-login__name{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+.credits-klokwerk{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.body-login__container button{
+    
+    width: 100%;
+    margin: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.credits-klokwerk__1{
+    color: #BDBDBD;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.credits-klokwerk__2{
+    color: #E5E5E5;
+    font-weight: bold;
+    font-size: 16px;
 }
