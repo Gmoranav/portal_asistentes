@@ -51,7 +51,7 @@ function obtenerDatosFormulario(){
     bError = validar();
     if(bError == true){
         swal({
-            type : 'Warning',
+            type : 'warning',
             title : 'No se pudo registrar el usuario', 
             text: 'Por favor revise los campos resaltados', 
             confirmButtonText : 'Listo'
@@ -79,14 +79,14 @@ function obtenerDatosFormulario(){
 
         if (respuesta.success = true){
             swal({
-                type : 'Success',
+                type : 'success',
                 title : 'Transacción procesada',
                 text: 'El usuario se registró adecuadamente', 
                 confirmButtonText : 'Listo'
             });
         }else{
             swal({
-                type : 'Warning',
+                type : 'warning',
                 title : 'Transacción fallida', 
                 text: 'No se pudo registrar el usuario', 
                 confirmButtonText : 'Listo'
@@ -252,4 +252,3 @@ function limpiarFormulario(){
     inputTelefono.value = '';
     inputCorreo.value = '';
 }
-
