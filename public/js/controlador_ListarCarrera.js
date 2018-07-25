@@ -35,13 +35,13 @@ function imprimirListaCarrera(/*pFiltro*/plistaCarreras){
             let cnombre_carrera = fila.insertCell();
             let cSede = fila.insertCell();
             let cCreditos_totales = fila.insertCell();
-          //let cAcreditada = fila.insertCell();
+            let cAcreditada = fila.insertCell();
 
         
             cnombre_carrera.innerHTML = plistaCarreras[i]['nombre_carrera'];
             cSede.innerHTML = plistaCarreras[i]['slt_sede'];
             cCreditos_totales.innerHTML = plistaCarreras[i]['creditos_totales'];
-            //cAcreditada.innerHTML = plistaCarreras[i]['Acreditada'];
+            cAcreditada.innerHTML = plistaCarreras[i]['acreditacion'];
 
         //} 
     }
