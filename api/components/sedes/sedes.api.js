@@ -17,7 +17,7 @@ module.exports.registrar = function (req, res) {
         if (error) {
             res.json({
                 success: false,
-                msj: 'La sede NO se registró : ' + error
+                msj: 'La sede no se registró : ' + error
             });
         } else {
             res.json({
