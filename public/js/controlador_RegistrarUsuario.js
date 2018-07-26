@@ -1,19 +1,7 @@
-/*
-Responsabilidades del controlador
-    - Leer datos de la interfaz
-    - Imprimir datos dentro de la interfaz
-    - Validar datos (formularios)
-    - Responder a eventos (click, change, keyup...)
-    - Se comunica con el servicio, cuando se requiera algún procesamiento de datos
-*/
 
 'use strict';
 
-
-
 const botonRegistrar = document.querySelector('#btnRegistrar');
-
-
 
 
 //const inputimagenUrl = document.querySelector('#imageUpload');
@@ -30,17 +18,8 @@ const inputCanton = document.querySelector('#txtCanton');
 const inputProvincia = document.querySelector('#txtProvincia');
 const inputTelefono = document.querySelector('#txtTelefono');
 const inputCorreo = document.querySelector('#txtCorreo');
-/*const inputUsuario = document.querySelector('#txtCedula');
-const inputContrasenna = document.querySelector('#txtCedula');*/
-//const inputFiltro = document.querySelector('#txtFiltro'); esto lo vemos con el profe el miercoles
 
 botonRegistrar.addEventListener('click' , obtenerDatosFormulario);
-
-/*esto lo vemos el miercoles con el profe
-inputFiltro.addEventListener('keyup' , function(){
-    imprimirListaPersonas(inputFiltro.value)
-});*/
-
 
 function obtenerDatosFormulario(){
     
@@ -51,13 +30,14 @@ function obtenerDatosFormulario(){
     bError = validar();
     if(bError == true){
         swal({
-            type : 'warning',
-            title : 'No se pudo registrar el usuario', 
-            text: 'Por favor revise los campos resaltados', 
-            confirmButtonText : 'Listo'
+            type: 'warning',
+            title: 'No se pudo registrar el usuario',
+            text: 'Por favor revise los campos resaltados',
+            confirmButtonText: 'Entendido'
         });
+        
     }else{
-
+   
         let imagenUrl = "urlImagen";
         let sNombre = inputNombre.value; 
         let sSegundoNombre = inputSegundoNombre.value;
@@ -89,7 +69,7 @@ function obtenerDatosFormulario(){
                 type : 'warning',
                 title : 'Transacción fallida', 
                 text: 'No se pudo registrar el usuario', 
-                confirmButtonText : 'Listo'
+                confirmButtonText : 'Entendido'
             });
         }
 
@@ -110,31 +90,31 @@ function validar(){
 
     //Validación del nombre
     if(inputNombre.value == '' || (regexSoloLetras.test(inputNombre.value)==false) ){
-        inputNombre.classList.add('error_input');
+        inputNombre.classList.add('input_error');
         bError = true;
     }else{
-        inputNombre.classList.remove('error_input');
+        inputNombre.classList.remove('input_error');
     }
     //Validación del segundo nombre
     if(inputSegundoNombre.value == (regexSoloLetras.test(inputSegundoNombre.value)==false)){
-        inputSegundoNombre.classList.add('error_input');
+        inputSegundoNombre.classList.add('input_error');
         bError = true;
     }else{
-        inputSegundoNombre.classList.remove('error_input');
+        inputSegundoNombre.classList.remove('input_error');
     }
     //Validación del primer apellido
     if(inputPrimerApellido.value == '' || (regexSoloLetras.test(inputPrimerApellido.value)==false)){
-        inputPrimerApellido.classList.add('error_input');
+        inputPrimerApellido.classList.add('input_error');
         bError = true;
     }else{
-        inputPrimerApellido.classList.remove('error_input');
+        inputPrimerApellido.classList.remove('input_error');
     }
     //Validación del segungo apellido
     if(inputSegundoApellido.value == '' || (regexSoloLetras.test(inputSegundoApellido.value)==false)){
-        inputSegundoApellido.classList.add('error_input');
+        inputSegundoApellido.classList.add('input_error');
         bError = true;
     }else{
-        inputSegundoApellido.classList.remove('error_input');
+        inputSegundoApellido.classList.remove('input_error');
     }
     //Validacion de la cédula
     if(inputCedula.value == '' /*|| (regexSoloNumerosGuiones.test(inputCedula.value)==false)*/){
@@ -187,17 +167,17 @@ function validar(){
     }
     //Validación del teléfono
     if(inputTelefono.value == '' /*|| (regexSoloNumerosGuiones.test(inputTelefono.value) == false)*/){
-        inputTelefono.classList.add('error_input');
+        inputTelefono.classList.add('input_error');
         bError = true;
     }else{
-        inputTelefono.classList.remove('error_input');
+        inputTelefono.classList.remove('input_error');
     }
     //Validación del correo
     if(inputCorreo.value == '' || (regexEmail.test(inputCorreo.value) == false)){
-        inputCorreo.classList.add('error_input');
+        inputCorreo.classList.add('input_error');
         bError = true;
     }else{
-        inputCorreo.classList.remove('error_input');
+        inputCorreo.classList.remove('input_error');
     }
 
     return bError;
@@ -218,22 +198,6 @@ $("#imageUpload").change(function() {
     readURL(this);
 });
 
-/*
-function validarImagen(fileName){
-  let extensiones_permitidas = new Array("png","jpg","jpeg");
-  var extension_Archivo = nombre_Archivo.split('.').pop();
-  for(var i = 0; i <= extensiones_permitidas.length; i++)
-  {
-      if(extensiones_permitidas[i]==extension_Archivo)
-      {
-		return true; // valid file extension
-      }
-  }
-  alert("not a csv file");
-  //I get the input element via Id and set value='';
-  document.getElementById('imageUpload').value='';
-  return false;
-}*/
 
 function limpiarFormulario(){
 
