@@ -1,79 +1,46 @@
-'use strict'
-/**
- * Exportamos todas las dependencias necesarias para establecer la conexión
- */
-const express = require('express'),
-      app = express(),
-      path = require('path'),
-      bodyParser = require('body-parser'),
-      morgan =  require('morgan'),
-      mongoose = require('mongoose');
+'use strict';
+const solicitudModel = require('./solicitudes.model');
 
-/**
- * Se definen las variables necesarias para la conexión con MongoDB
- */
-let db = mongoose.connection,
-    dburl = 'mongodb://abc:abc123@ds139122.mlab.com:39122/db_portal_asistentes',
-    port = 4000;
+module.exports.registrar_solicitud = function(req, res){
+    /**Todo para registrar un usuario va aqui */
+    let nuevaSolicitud = new solicitudModel({
+ 
+        primer_nombre : req.body.primer_nombre,
+        segundo_nombre : req.body.segundo_nombre,
+        primer_apellido : req.body.primer_apellido,
+        segundo_apellido : req.body.segundo_apellido,
+        curso : req.body.curso,
+        periodo : req.body.periodo,
+        grupo : req.body.grupo,
+        cantidad_alumnos : req.body.cantidad_alumnos,
+        horario : req.body.horario
 
-/**'mongodb://Proyecto1:ingenieria1@ds135441.mlab.com:35441/db_portal_asistentes',
- * Se le indica que cree un servidor extra dentro del puerto 4000 y escuche los cambios que se le hagan a esos archivos
- */
-let server = app.listen(port,_server());
+    });
 
-/**
- * Se define la conexión con Mongoose, enviándole como parámetro la url de la base de datos
- */
-mongoose.connect(dburl);
-
-/**
- * Si la conexión falla, imprime en consola el error
- */
-db.on('error', console.error.bind(console, 'Error de conexión: '));
-
-/**
- * Si la conexión es exitosa nos imprime en la consola que se ha establecido conexión con Mongo
- */
-db.once('open', function () {
-  console.log('Base de datos conectada correctamente');
-});
-
-/**
- * Le indicamos a express que envíe las respuestas a la carpeta "public"
- */
-app.use(express.static(path.join(__dirname, 'public')));
-
-/**
- * Le indicamos a la aplicación que el formato de los datos va a ser JSON
- */
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(morgan('dev'));
-
-app.use( function(req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 
-  'Origin, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, X-Response-Time, X-PINGOTHER, X-CSRF-Token,Authorization');
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  next();
-});
-
-/**
- * Exportams todas las rutas dentro del index.js
- */
-const solicitudes = require('./components/solicitudes/solicitudes.route');
-/*crear variable*/
-
-/**
- * Le indicamos que le de acceso externo a las rutas inicializadas
- */
-app.use('/api', solicitudes);
-/*referenciar variable api*/
-
-// Se guarda todo lo que se ha realizado
-module.exports = app;
-
-function _server(){
-  console.log('Conexión con el back-end establecida en el puerto ' + port);
+    nuevaSolicitud.save(function(error){
+        if(error){
+            res.json({
+                success : false,
+                msj : ' La solicitud no pudo ser registrado : ' + error
+            });
+        }else{
+            res.json({
+                success : true,
+                msj : ' La solicitud ha sido registrada de forma exitosa'
+            });
+        }
+    });
 };
+
+
+/*Funcion para Listar*/
+
+
+module.exports.listar_solicitudes = function(req, res){
+    solicitudModel.find().sort({primer_nombre: 'asc'}).then(
+        function(solicitudes){
+            res.send(solicitudes);
+        }
+    ); 
+};
+
