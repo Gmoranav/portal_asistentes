@@ -1,10 +1,6 @@
 'use strict';
 
-
-
-
 function obtenerListaCarreras(){
-
 
     let listaCarreras = [];
 
@@ -16,7 +12,6 @@ function obtenerListaCarreras(){
         dataType : 'json',
         async : false,
         data:{
-            
         }
       });
     
