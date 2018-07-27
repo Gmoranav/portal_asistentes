@@ -15,6 +15,3 @@ router.route('/listar_sedes')
     });
 
 module.exports = router;
-
-
-
