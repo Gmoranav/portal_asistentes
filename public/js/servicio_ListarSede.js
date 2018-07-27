@@ -4,11 +4,10 @@ Responsabilidades del servicio
     - Almacenamiento temporal de los datos
     - Comunicar el public (front-end) con el api (back-end)
 */
-
 'use strict';
 
-function obtenerSedes() {
-    let llenarSedes = [];
+function obtener_sedes() {
+    let llenar_sedes = [];
     let peticion = $.ajax({
         url: 'http://localhost:4000/api/listar_sedes',
         type: 'get',
@@ -20,7 +19,7 @@ function obtenerSedes() {
     });
 
     peticion.done(function (response) {
-        llenarSedes = response;
+        llenar_sedes = response;
         console.log("envio exitoso");
     });
 
@@ -29,5 +28,5 @@ function obtenerSedes() {
         console.log(response);
     });
 
-    return llenarSedes;
+    return llenar_sedes;
 }
