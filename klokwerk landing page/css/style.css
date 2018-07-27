@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    font-style: Regular;
+    font-size: 14px;
+    line-height: 20px;
+    color: #595959;
+    overflow: hidden;
+}
+
+a{
+    color: #e6e6e6;
+    text-decoration: none;
+    Font-Size: 15.35px;
+    Line-Height: 26px;
+}
+
+li {
+    margin-bottom: 35px;
+}
+
+
+#searchNav {
+    height: 60px;
+    width: 60px;
+    background: #E89C0E;
+}
+
+#portafolioText {
+    display: flex;
+    justify-content: space-evenly;
+    background: #F1F1F1;
+}
+
+#portafolioText p {
+    Font-Size: 34.85px;
+    Line-Height: 57px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#portafolioText #textbold {
+    Font-Size: 60.64px;
+    Line-Height: 57px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+#tooltip {
+    padding: 20px;
+}
+
+.body-container{
+    display: flex;
+}
+
+.panel-menu{
+    width: 240px;
+    padding: 60px;
+    background-color:#1F1F1F;
+    transition: width 0.05s;
+}
+
+.panel-menu--hide{
+    width: 0px;
+    padding: 0px;
+    transition: width 0.2s;
+}
+.panel-menu--hide nav{
+    display: none;
+}
+
+.panel-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    /*padding: 20px;*/
+    /*background-color: #36348C;*/
+    background: linear-gradient(#095CC0 0%, #2D8AF9 91.5%);
+}
+
+.panel-header>div{
+    display: flex;
+    align-items: center;
+}
+/*.panel-header div img{
+    width: 120px;
+    margin-left: 20px;
+}*/
+
+.page{
+    overflow-y: scroll;
+    height: 82vh;
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+}
+
+#bigCircle {
+    width: 314px;
+    height: 314px;
+    background: #FFFFFF;
+    border-radius: 190px;
+    border: 15px solid #C4C4C4;
+    align-content: space-between;
+}
+
+#imgBigCircle {
+    width: 314px;
+    height: 314px;
+}
+
+#smallCircle {
+    width: 186px;
+    height: 186px;
+    background: #FFFFFF;
+    border-radius: 190px;
+    border: 15px solid #C4C4C4;
+    align-content: space-evenly;
+}
+
+#triangleLeft {
+    width: 0px;
+    height: 0px;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-right: 30px solid #C4C4C4;
+}
+
+#triangleRight {
+    width: 0px;
+    height: 0px;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-left: 30px solid #C4C4C4;
+}
+
+.portafolio {
+    height: 500px;
+    background: #F1F1F1;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    height: 210px;
+    background-color: #000000;
+}
+
+footer #imgKlokwerkBlack {
+    height: 28px;
+    width: 141.22px;
+}
+
+.nosotrosDiv {
+    height: 800px;
+}
+
+.equipoDiv {
+    display: flex;
+    flex-direction: column;
+    height: 800px;
+}
+
+#teamBubbles {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#smallCircleTeam {
+    margin-right: 12px;
+    width: 86px;
+    height: 86px;
+    background: #FFFFFF;
+    border-radius: 190px;
+    border: 7px solid #C4C4C4;
+}
+
+#bigCircleTeam{
+    width: 165px;
+    height: 165px;
+    background: #c4c4c4;
+    border-radius: 190px;
+}
+
+#teamDescription {
+    float: right;
+}
+
+#equipoText {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 40px;
+    margin-top: 60px;
+}
+
+#equipoText p {
+    Font-Size: 34.85px;
+    Line-Height: 57px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#equipoText #textbold {
+    Font-Size: 60.64px;
+    Line-Height: 57px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
