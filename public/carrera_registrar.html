@@ -140,7 +140,7 @@
                         <label for="numCreditosTotales">Cantidad de créditos
                             <span>*</span>
                         </label>
-                        <input type="text" id="numCreditosTotales" required placeholder="Créditos Totales">
+                        <input type="text" id="numCreditosTotales" required placeholder="Créditos Totales" min="0">
                     </div>
                 </div>
 
@@ -149,7 +149,7 @@
                                 <label for="txtfechaCreacion">Fecha de Creación
                                     <span>*</span>
                                 </label>
-                                <input type="text" id="txtfechaCreacion" required>
+                                <input type="text" id="txtfechaCreacion" required placeholder="25/05/2009">
                             </div>
                 </div>
 
@@ -165,11 +165,15 @@
                         </select>
                 </div>
                 <div class="form-row">
-                    <div  class="form-group form-group-3">
-                    <label for="txtAcredicatacion">Acreditación?
+                    <div  class="form-group form-group-2">
+                        <label for="sltAcredicatacion">Acreditación
                         <span>*</span>
-                    </label>
-                    <input type="text" id="txtAcredicatacion" required placeholder="Si/No">
+                        </label>
+                        <select id="sltAcredicatacion" required>
+                            <option value="">Seleccione una opción</option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
+                        </select>
 
                     </div>
                 </div>
@@ -177,6 +181,7 @@
                         <a href="carrera_listar.html" class="button button--secundario" type="button" id="btnCancelar">Cancelar</a>
                         <button class="button button--principal" type="button" id="btnRegistrar">Registrar</button>
                 </div>
+
             </form>
         </main>
 
@@ -185,8 +190,9 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.25.0/dist/sweetalert2.all.min.js"></script>
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/components.js"></script>
-    <script src="js/controlador_registrarCarrera.js"></script>
     <script src="js/servicio_registrarCarrera.js"></script>
+    <script src="js/controlador_registrarCarrera.js"></script>
+    
 </body>
 
 </html>

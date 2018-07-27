@@ -1,16 +1,16 @@
 'use strict';
 //la siguiente constante hace referencia al archivo de periodos.model
-const periodosModel = require ('./periodos.model');
+const periodos_model = require ('./periodos.model');
 
 //se va a exportar REGISTRAR (funcion) - debe recibir la peticion y la respuesta
 module.exports.registrar = function (req, res){
-    let nuevoPeriodo = new periodosModel({
+    let nuevo_periodo = new periodos_model({
         // estas propiedades vienen del periodos.model.js 
-        nombrePeriodo : req.body.nombrePeriodo, 
-        estadoPeriodo : req.body.estadoPeriodo,
+        nombre_periodo : req.body.nombre_periodo, 
+        estado_periodo : req.body.estado_periodo,
     });
 
-    nuevoPeriodo.save(function(error){
+    nuevo_periodo.save(function(error){
 
         if(error){
             res.json({
@@ -25,7 +25,6 @@ module.exports.registrar = function (req, res){
         }
     });
 };
-
 
 
 //FUNCION PARA LISTAR LOS DATOS: 
