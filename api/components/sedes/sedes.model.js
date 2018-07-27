@@ -2,11 +2,11 @@
 let mongoose = require('mongoose');
 
 let RegistrarSedeSchema = new mongoose.Schema({
-    nombreSede : {type : String, required : true},
-    provinciaSede : {type : String, required : true},
-    cantonSede : {type : String, required : true},
-    distritoSede : {type : String, required : true},
-    ubicacionSede : {type : String, required : true},
+    nombre_sede : {type : String, required : true},
+    provincia_sede : {type : String, required : true},
+    canton_sede : {type : String, required : true},
+    distrito_sede : {type : String, required : true},
+    ubicacion_sede : {type : String, required : true},
 });
 
 module.exports = mongoose.model('Sede' , RegistrarSedeSchema);
