@@ -8,19 +8,19 @@ Responsabilidades del controlador
 */
 
 'use strict';
-const botonRegistrar = document.querySelector('#btnRegistrar');
+const boton_registrar = document.querySelector('#btnRegistrar');
 
-botonRegistrar.addEventListener('click', obtenerDatos);
+boton_registrar.addEventListener('click', obtener_datos);
 
-const inputNombreCuatri = document.querySelector('#txtNombreCuatrimestre');
-const inputEstadoCuatri = document.querySelector('#txtEstadoCuatrimestre');
+const input_nombre_cuatri = document.querySelector('#txtNombreCuatrimestre');
+const input_estado_cuatri = document.querySelector('#txtEstadoCuatrimestre');
 
-function obtenerDatos() {
+function obtener_datos() {
 
     let bError = false;
 
-    let sNombreCuatri = inputNombreCuatri.value;
-    let sEstadoCuatri = inputEstadoCuatri.value;
+    let sNombreCuatri = input_nombre_cuatri.value;
+    let sEstadoCuatri = input_estado_cuatri.value;
 
     bError = validar();
     if (bError == true) {
@@ -32,7 +32,7 @@ function obtenerDatos() {
         });
     } else {
 
-        registrarPeriodo(sNombreCuatri, sEstadoCuatri);
+        registrar_periodo(sNombreCuatri, sEstadoCuatri);
 
         swal({
             type: 'success',
@@ -41,7 +41,7 @@ function obtenerDatos() {
             confirmButtonText: 'Listo'
         });
 
-        limpiarFormulario();
+        limpiar_formulario();
     }
 };
 
@@ -49,26 +49,26 @@ function validar() {
     let bError = false;
 
 
-    if (inputNombreCuatri.value == '') {
+    if (input_nombre_cuatri.value == '') {
 
-        inputNombreCuatri.classList.add('input_error');
+        input_nombre_cuatri.classList.add('input_error');
         bError = true;
     } else {
-        inputNombreCuatri.classList.remove('input_error');
+        input_nombre_cuatri.classList.remove('input_error');
     }
 
-    if (inputEstadoCuatri.value == '') {
-        inputEstadoCuatri.classList.add('input_error');
+    if (input_estado_cuatri.value == '') {
+        input_estado_cuatri.classList.add('input_error');
         bError = true;
     } else {
-        inputEstadoCuatri.classList.remove('input_error');
+        input_estado_cuatri.classList.remove('input_error');
     }
 
     return bError;
 };
 
-function limpiarFormulario() {
-    inputNombreCuatri.value = '';
-    inputEstadoCuatri.value = '';
+function limpiar_formulario() {
+    input_nombre_cuatri.value = '';
+    input_estado_cuatri.value = '';
 }
 
