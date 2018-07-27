@@ -6,7 +6,7 @@ let inputNombreCarrera = document.querySelector('#txtNombreCarrera');
 let inputCreditosTotales = document.querySelector('#numCreditosTotales');
 let inputFechaCreacion = document.querySelector('#txtfechaCreacion');
 let selectSede = document.querySelector('#sltSede');
-let inputAcreditacion = document.querySelector('#txtAcredicatacion');
+let selectAcreditacion = document.querySelector('#sltAcredicatacion');
 
 botonRegistrar.addEventListener('click' , obtenerDatosCarrera);
 
@@ -18,25 +18,12 @@ function obtenerDatosCarrera(){
     let nCreditosTotales = inputCreditosTotales.value;
     let sFechaCreacion = inputFechaCreacion.value;
     let sltSede = selectSede.value;
-    let sAcreditacion = inputAcreditacion.value;
+    let sAcreditacion = selectAcreditacion.value;
 
     let bError= validar();
+    let respuesta;
 
-    if (bError == false){
-
-        registrar_carrera(sCodigoCarrera, sNombreCarrera, nCreditosTotales, sFechaCreacion, sltSede, sAcreditacion);
-        
-        swal({
-            type: 'success',
-            title: 'Se registró la carrera con éxito!',
-            confirmButtonText: 'Entendido'
-        });
-
-        limpiarFormulario();
-
-        
-    
-    }else{
+    if (bError == true){
 
         swal({
             type: 'warning',
@@ -45,6 +32,49 @@ function obtenerDatosCarrera(){
             confirmButtonText: 'Entendido'
         });
 
+        
+
+        
+    
+    }else{
+
+        respuesta = registrar_carrera(sCodigoCarrera, sNombreCarrera, nCreditosTotales, sFechaCreacion, sltSede, sAcreditacion);
+        
+        
+        if (respuesta.success == true) {    
+            
+            swal({
+            type: 'success',
+            title: 'Transacción Procesada',
+            text: "Se registró la carrera con éxito!",
+            showCancelButton: true,
+            confirmButtonText: 'Volver a la lista',
+            cancelButtonText: 'Continuar Aqui',
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#ecf0f1',
+            
+            function (isConfirm) {
+                if(isConfirm){
+                    window.location.href = "carrera_listar.html";
+                }
+            }
+        
+            });
+            
+        }else{
+
+            swal({
+                type: 'warning',
+                title: 'No se pudo registrar el curso',
+                text: 'Por favor revise los campos resaltados',
+                confirmButtonText: 'Entendido'
+            });
+
+
+        }
+       
+
+        limpiarFormulario();
 
     };
 
@@ -55,7 +85,6 @@ function obtenerDatosCarrera(){
 function validar(){
     let bError = false;
     let regExpNumeros = /^[0-9]+$/;
-    let regExpOpciones = /^[si,Si|no,No]+$/;
 
     if (inputCodigoCarrera.value == ''){
         
@@ -97,12 +126,12 @@ function validar(){
         selectSede.classList.remove('input_error');
     };
 
-    if (inputAcreditacion.value = '' || regExpOpciones.test(inputAcreditacion.value) == false) {
+    if (selectAcreditacion.value = '') {
         
         bError= true;
-        inputAcreditacion.classList.add('input_error');
+        selectAcreditacion.classList.add('input_error');
     }else{
-        inputAcreditacion.classList.remove('input_error');
+        selectAcreditacion.classList.remove('input_error');
     };
 
     return bError;
@@ -114,5 +143,5 @@ function limpiarFormulario(){
     inputCreditosTotales.value = '';
     inputFechaCreacion.value = '';
     selectSede.value = '';
-    inputAcreditacion.value = ''; 
+    sltAcredicatacion.value = ''; 
 };
