@@ -1,18 +1,18 @@
 'use strict';
-const sedesModel = require('./sedes.model');
+const sedes_model = require('./sedes.model');
 
 
 module.exports.registrar = function (req, res) {
-    let nuevaSede = new sedesModel({
+    let nueva_sede = new sedes_model({
 
-        nombreSede: req.body.nombreSede,
-        provinciaSede: req.body.provinciaSede,
-        cantonSede: req.body.cantonSede,
-        distritoSede: req.body.distritoSede,
-        ubicacionSede: req.body.ubicacionSede,
+        nombre_sede: req.body.nombre_sede,
+        provincia_sede: req.body.provincia_sede,
+        canton_sede: req.body.canton_sede,
+        distrito_sede: req.body.distrito_sede,
+        ubicacion_sede: req.body.ubicacion_sede,
     });
 
-    nuevaSede.save(function (error) {
+    nueva_sede.save(function (error) {
 
         if (error) {
             res.json({
@@ -30,7 +30,7 @@ module.exports.registrar = function (req, res) {
 
 
 module.exports.listar_sedes = function (req, res) {
-    sedesModel.find().sort({ nombreSede: 'asc' }).then(
+    sedes_model.find().sort({ nombre_sede: 'asc' }).then(
         function (sedes) {
             res.send(sedes);
         }
