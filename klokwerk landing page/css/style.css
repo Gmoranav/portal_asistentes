@@ -10,6 +10,12 @@ body{
     overflow: hidden;
 }
 
+span {
+    font-size: 60.64px;
+    color: #797979;
+    padding-top: 50px;
+}
+
 a{
     color: #e6e6e6;
     text-decoration: none;
@@ -21,6 +27,9 @@ li {
     margin-bottom: 35px;
 }
 
+p {
+    width: 436px;
+}
 
 #searchNav {
     height: 60px;
@@ -36,14 +45,20 @@ li {
 
 #portafolioText p {
     Font-Size: 34.85px;
-    Line-Height: 57px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #portafolioText #textbold {
-    Font-Size: 60.64px;
-    Line-Height: 57px;
+    Font-Size: 20px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.portafolioDiv {
+    background:#F1F1F1;
+}
+
+.img-cenfotec {
+    margin-left: 15px;
 }
 
 
@@ -53,7 +68,8 @@ li {
 }
 
 #tooltip {
-    padding: 20px;
+    padding-left: 21px;
+    padding-top: 8px;
 }
 
 .body-container{
@@ -83,7 +99,7 @@ li {
     width: auto;
     /*padding: 20px;*/
     /*background-color: #36348C;*/
-    background: linear-gradient(to right, #095CC0 0%, #2D8AF9 100%);
+    background: linear-gradient(#095CC0 0%, #2D8AF9 91.5%);
 }
 
 .panel-header>div{
@@ -97,13 +113,21 @@ li {
 
 .page{
     overflow-y: scroll;
-    height: 82vh;
+    height: 90vh;
 }
 
 .container{
     width: 100%;
     height: 100vh;
     background-color: white;
+}
+
+.bottom {
+    margin-left: 10%;
+    height:225px;
+    width:450px;
+    border-radius: 0 0 450px 450px;
+    background: #f1f1f1;
 }
 
 #bigCircle {
@@ -156,7 +180,7 @@ li {
 footer {
     display: flex;
     justify-content: center;
-    height: 210px;
+    height: 200px;
     background-color: #000000;
 }
 
@@ -165,20 +189,58 @@ footer #imgKlokwerkBlack {
     width: 141.22px;
 }
 
-.nosotrosDiv {
-    height: 800px;
+.dunes {
+    display: flex;
+    height: 550px;
+    background-image: url(../img/Dunes-Landscapes-Evolving-Drew-Doggett-Light-in-Profile-copy.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.dunes div {
+    align-self: center;
+    margin-left: 10%;
+}
+
+.dunes p {
+    color: #ffffff;
+    font-size: 21px;
+}
+
+.dunes h3 {
+    color: #ffffff;
+    font-style: bold;
+    font-size: 47px;
+}
+
+.acercaDeDiv {
+    display: flex;
+    height: 600px;
+}
+
+.dunesInnerText {
+    align-self: center;
+    height: 250px;
+    background: #FFFFFF;
 }
 
 .equipoDiv {
     display: flex;
     flex-direction: column;
-    height: 800px;
+}
+
+#teamDescriptions {
+
+    margin-left: 10%;
 }
 
 #teamBubbles {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin-bottom: 100px;
 }
 
 #smallCircleTeam {
@@ -195,26 +257,30 @@ footer #imgKlokwerkBlack {
     height: 165px;
     background: #c4c4c4;
     border-radius: 190px;
+    margin-right: 20px;
 }
 
-#teamDescription {
-    float: right;
-}
-
-#equipoText {
+#teamDescriptions {
     display: flex;
-    justify-content: space-evenly;
+    padding-bottom: 30px;
+    
+}
+
+#sectionHeaderText {
+    display: flex;
+    justify-content: center;
+    margin-left: 13%;
     margin-bottom: 40px;
     margin-top: 60px;
 }
 
-#equipoText p {
+#sectionHeaderText p {
     Font-Size: 34.85px;
     Line-Height: 57px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-#equipoText #textbold {
+#sectionHeaderText #textbold {
     Font-Size: 60.64px;
     Line-Height: 57px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
