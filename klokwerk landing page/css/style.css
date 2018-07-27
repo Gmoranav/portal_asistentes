@@ -83,7 +83,7 @@ li {
     width: auto;
     /*padding: 20px;*/
     /*background-color: #36348C;*/
-    background: linear-gradient(#095CC0 0%, #2D8AF9 91.5%);
+    background: linear-gradient(to right, #095CC0 0%, #2D8AF9 100%);
 }
 
 .panel-header>div{
