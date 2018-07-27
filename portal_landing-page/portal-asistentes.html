@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Portal asistentes</title>
-    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/reset.css">
             <link rel="stylesheet"  type="text/css" href="../public/css/styles.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 
@@ -40,12 +40,12 @@
 
     <div class="container">
 
-        <header class="panel-header">
+        <header class="panel-header panel-header--cenfo-landing">
             <div>
                 <button id="button-nav-collapse" type="button">
                     <i id="hamburguer" class="fas fa-bars"></i>
                 </button>
-                <img src="img/cenfo.png" class="img-cenfotec">
+                <img src="../public/img/cenfo.png" class="img-cenfotec">
             </div>
             <nav>
                 <a href="inicio_sesion.html">Acceder</a>
@@ -58,25 +58,29 @@
             </nav>
         </header>
 
-        <main class="page">
-            <div class="seccion vista-principal">
-                <div class="portal">
+<main class="page main--cenfo-landing">
+        <!--Acá empieza el contenido principal-->
+
+            <div class="section banner-principal">
+
+                <div class="info-portal">
                     <h3>PORTAL</h3>
-                    <h1>ASISTENTES</h1>
+                    <h2>ASISTENTES</h2>
                     <nav>
-                        <a href='#'>Solicitar acceso</a>
+                        <a href='#'>Solicitar acceso</a>&nbsp;&nbsp;|&nbsp;
                         <a href='#'>Acceder</a>
                     </nav>
                 </div>
-                <img src="img/cenfo.png" class="img-cenfotec">
+                <img src="../public/img/cenfo.png" class="img-cenfotec">
+
+                            <div class="section section--quote">
+                                <p>“El arte supremo del maestro es despertar el placer de la <br>
+                                        expresión creativa y conocimiento”</p>
+                                <h6>Albert Einstein</h6>
+                                <img src="img/cenfo.png" class="img-cenfotec">
+                            </div>
             </div>
 
-            <div class="seccion vista-principal-1">
-                <p>“El arte supremo del maestro es despertar el placer de la <br>
-                        expresión creativa y conocimiento”</p>
-                <h6>Albert Einstein</h6>
-                <img src="img/cenfo.png" class="img-cenfotec">
-            </div>
 
             <div class="seccion" id="acerca-de">
                 <div>
@@ -168,11 +172,9 @@
 
     </div>
 
-    <script src="js/jquery-3.3.1.js"></script>
-    <script src="js/components.js"></script>
+    <script src="../public/js/jquery-3.3.1.js"></script>
+    <script src="../public/js/components.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.25.0/dist/sweetalert2.all.min.js"></script>
-    <script src="js/servicio_ListarCarrera.js"></script>
-    <script src="js/controlador_ListarCarrera.js"></script>
 </body>
 
 </html>
