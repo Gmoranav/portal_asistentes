@@ -4,33 +4,30 @@ Responsabilidades del servicio
     - Almacenamiento temporal de los datos
     - Comunicar el public (front-end) con el api (back-end)
 */
-
 'use strict';
 
-window.addEventListener('load', llenarTabla);
+window.addEventListener('load', llenar_tabla);
 
-function llenarTabla() {
-    let llenarSedes = obtenerSedes();
+function llenar_tabla() {
+    let llenar_sedes = obtener_sedes();
     let tbody = document.querySelector('#tbodyListar');
     tbody.innerHTML = '';
 
-    for (let i = 0; i < llenarSedes.length; i++) {
+    for (let i = 0; i < llenar_sedes.length; i++) {
         let fila = tbody.insertRow();
 
-        let celdaNombreSede = fila.insertCell();
-        let celdaProvinciaSede = fila.insertCell();
-        let celdaCantonSede = fila.insertCell();
-        let celdaDistritoSede = fila.insertCell();
-        let celdaUbicacionSede = fila.insertCell();
+        let celda_nombre_sede = fila.insertCell();
+        let celda_provincia_sede = fila.insertCell();
+        let celda_canton_sede = fila.insertCell();
+        let celda_distrito_sede = fila.insertCell();
+        let celda_ubicacion_sede = fila.insertCell();
 
-        celdaNombreSede.innerHTML = llenarSedes[i]['nombreSede'];
-        celdaProvinciaSede.innerHTML = llenarSedes[i]['provinciaSede'];
-        celdaCantonSede.innerHTML = llenarSedes[i]['cantonSede'];
-        celdaDistritoSede.innerHTML = llenarSedes[i]['distritoSede'];
-        celdaUbicacionSede.innerHTML = llenarSedes[i]['ubicacionSede'];
+        celda_nombre_sede.innerHTML = llenar_sedes[i]['nombre_sede'];
+        celda_provincia_sede.innerHTML = llenar_sedes[i]['provincia_sede'];
+        celda_canton_sede.innerHTML = llenar_sedes[i]['canton_sede'];
+        celda_distrito_sede.innerHTML = llenar_sedes[i]['distrito_sede'];
+        celda_ubicacion_sede.innerHTML = llenar_sedes[i]['ubicacion_sede'];
     }
 };
-
-
 
 
