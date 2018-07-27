@@ -159,7 +159,7 @@ p {
 }
 
 table{
-    background: #fff;
+    background: #fff !important;
 }
 
 /*COMPONENTS:*/
