@@ -294,7 +294,8 @@ div.form-row.buttons .button--secundario{
 
 /* Input error */
 form .form-group input.input_error, select.input_error{
-border: 2px solid #B53471;
+border: 0.5px solid rgba(255, 0, 0, 0.3);
+box-shadow: 0px 0px 4px 0px rgba(255, 0, 0, .6);
 }
 
 /**/
