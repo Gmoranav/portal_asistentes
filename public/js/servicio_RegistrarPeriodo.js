@@ -1,13 +1,6 @@
-/*
-Responsabilidades del servicio
-    - Procesamiento de datos (cálculos)
-    - Almacenamiento temporal de los datos
-    - Comunicar el public (front-end) con el api (back-end)
-*/
-
 'use strict';
 
-function registrarPeriodo(sNombreCuatri, sEstadoCuatri){
+function registrar_periodo(sNombreCuatri, sEstadoCuatri){
     let respuesta = '';
     let peticion = $.ajax({
         url : 'http://localhost:4000/api/registrar_periodo', 
@@ -16,8 +9,8 @@ function registrarPeriodo(sNombreCuatri, sEstadoCuatri){
         dataType : 'json',
         async : false,
         data:{
-            nombrePeriodo :sNombreCuatri,
-            estadoPeriodo : sEstadoCuatri,
+            nombre_periodo :sNombreCuatri,
+            estado_periodo : sEstadoCuatri,
         }
       });
     
