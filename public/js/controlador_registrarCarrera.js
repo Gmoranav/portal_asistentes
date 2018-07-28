@@ -52,13 +52,12 @@ function obtenerDatosCarrera(){
             cancelButtonText: 'Continuar Aqui',
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#ecf0f1',
-            
-            function (isConfirm) {
-                if(isConfirm){
+            }).then((result) => {
+                if(result.value){
+
                     window.location.href = "carrera_listar.html";
                 }
-            }
-        
+
             });
             
         }else{
