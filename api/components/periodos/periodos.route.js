@@ -11,14 +11,14 @@ router.route('/registrar_periodo')
     });
 
 
-/*misma funcion para LISTAR
-router.route('listar_periodos')
-    //el metodo .get para obtener informacion de la base de datos (listar)
+
+router.route('/listar_periodos')
+
     .get(function(req, res){
         periodos.listar_periodos(req, res);
-    }); */
+    });
 
 
-//la informacion de los metodos se exporta al backEnd con la siguiente instruccion:
+
 module.exports = router;
 

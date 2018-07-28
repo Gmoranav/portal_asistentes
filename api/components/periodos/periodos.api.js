@@ -27,12 +27,11 @@ module.exports.registrar = function (req, res){
 };
 
 
-//FUNCION PARA LISTAR LOS DATOS: 
+
 module.exports.listar_periodos = function(req, res){
-    //la palabra 'find()' nos permite devolver toda la informacion de la base de datos
-    //el .sort lo que hace es que devuelve los valores de manera ordenada: por titulo de modo ascendente 'asc'
-    libroModel.find().sort({titulo : 'asc'}).then(
-          // despues de buscar todos los periodos va a ejecutar la siguente funcion (guarda los resultados d la busqueda en una variable) : 
+    
+    periodos_model.find().sort({nombre_periodo : 'asc'}).then(
+          
           function(periodos){
              res.send(periodos);
           }
