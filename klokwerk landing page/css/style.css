@@ -191,12 +191,11 @@ footer #imgKlokwerkBlack {
 
 .dunes {
     display: flex;
-    height: 550px;
-    background-image: url(../img/Dunes-Landscapes-Evolving-Drew-Doggett-Light-in-Profile-copy.jpg);
+    height: 100vh;
+    background-image: url(../img/black-dunes.png);
     background-attachment: fixed;
-    background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100%;
 }
 
 .dunes div {
@@ -263,7 +262,7 @@ footer #imgKlokwerkBlack {
 #teamDescriptions {
     display: flex;
     padding-bottom: 30px;
-    
+
 }
 
 #sectionHeaderText {

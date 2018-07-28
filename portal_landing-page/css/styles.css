@@ -51,6 +51,7 @@ z-index: 99;
     align-items: center;
     flex-direction: column;
     background-attachment: fixed;
+    background-size: cover;
 }
 
 .info-portal{
