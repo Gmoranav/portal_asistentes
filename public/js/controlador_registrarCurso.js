@@ -18,21 +18,9 @@ function obtenerDatosCurso(){
     let sltCarreraCurso = selectCarreraCurso.value;
 
     let bError = validar();
+    let respuesta;
 
-    if(bError == false){
-
-        registrar_curso(sNombreCurso , sCodigoCurso , sltSede , nCantidadCreditos, sltCarreraCurso);
-        
-
-        swal({
-            type: 'success',
-            title: 'Se registró el curso con éxito!',
-            confirmButtonText: 'Entendido'
-        });
-
-        limpiarFormulario();
-        
-    }else{
+    if(bError == true){
 
         swal({
             type: 'warning',
@@ -41,8 +29,46 @@ function obtenerDatosCurso(){
             confirmButtonText: 'Entendido'
         });
 
+       
+        
+    }else{
+
+
+        respuesta = registrar_curso(sNombreCurso , sCodigoCurso , sltSede , nCantidadCreditos, sltCarreraCurso);
+        
+        if (respuesta.success == true){
+
+            swal({
+                type: 'success',
+                title: 'Transacción Procesada',
+                text: "Se registró el curso con éxito!",
+                showCancelButton: true,
+                confirmButtonText: 'Volver a la lista',
+                cancelButtonText: 'Continuar Aqui',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#ecf0f1',
+                }).then((result) => {
+                    if(result.value){
+    
+                        window.location.href = "curso_listar.html";
+                    }
+    
+                });
+
+
+        }else{
+            
+            swal({
+                type: 'warning',
+                title: 'No se pudo registrar el curso',
+                text: 'Por favor revise los campos resaltados',
+                confirmButtonText: 'Entendido'
+            });
+        }
+        
     };
 
+    limpiarFormulario();
 
 };
 

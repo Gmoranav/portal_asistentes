@@ -32,9 +32,6 @@ function obtenerDatosCarrera(){
             confirmButtonText: 'Entendido'
         });
 
-        
-
-        
     
     }else{
 
