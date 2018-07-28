@@ -1,15 +1,10 @@
 'use strict';
-const express = require('express');
-const router = express.Router();
+let mongoose = require('mongoose');
 
-const periodos = require('./periodos.api');
-
-router.route('/registrar_periodo')
-
-    .post(function(req, res){
-        periodos.registrar(req, res);
-    });
-
+let RegistrarPeriodoSchema = new mongoose.Schema({
+    nombre_periodo : {type : String, required : true},
+    estado_periodo : {type : String, required : true},
+});
 
 //Periodo debe ir en singular y en mayuscula
 //El nombre de la coleccion debe coincidir con el nombre en la base de datos
