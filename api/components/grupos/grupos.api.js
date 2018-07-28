@@ -37,7 +37,7 @@ module.exports.registrar_grupos = function(req, res){
 };
 
 module.exports.listar_grupos = function(req, res){
-    grupoModel.find().sort({nombre : 'asc'}).then(
+    grupoModel.find().sort({$natural:-1}).then(
         function(grupos){
             res.send(grupos);
         }
