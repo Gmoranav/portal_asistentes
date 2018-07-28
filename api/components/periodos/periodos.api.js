@@ -9,7 +9,6 @@ module.exports.registrar = function (req, res){
         nombre_periodo : req.body.nombre_periodo, 
         estado_periodo : req.body.estado_periodo,
     });
-
     nuevo_periodo.save(function(error){
 
         if(error){
@@ -25,9 +24,6 @@ module.exports.registrar = function (req, res){
         }
     });
 };
-
-
-
 module.exports.listar_periodos = function(req, res){
     
     periodos_model.find().sort({nombre_periodo : 'asc'}).then(
