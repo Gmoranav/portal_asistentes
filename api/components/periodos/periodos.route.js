@@ -11,8 +11,6 @@ router.route('/registrar_periodo')
     });
 
 
-
-
 /*misma funcion para LISTAR
 router.route('listar_periodos')
     //el metodo .get para obtener informacion de la base de datos (listar)
@@ -23,13 +21,4 @@ router.route('listar_periodos')
 
 //la informacion de los metodos se exporta al backEnd con la siguiente instruccion:
 module.exports = router;
-
-
-
-/**
- *PARA LEVANTAR EL SERVIDOR, ESCRIBIR: 'node server.js' EN LA CONSOLA Y DARLE ENTER
- *(Debe mostrar un mensaje de conexion establecida)
- */
-
-    
 
