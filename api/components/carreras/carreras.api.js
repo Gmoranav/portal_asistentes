@@ -35,7 +35,9 @@ module.exports.registrar = function(req, res){
 
 
 module.exports.listar_carreras = function(req, res){
+    //carreraModel.find().sort({nombre_carrera : 'asc'}).then(
     carreraModel.find().sort({$natural:-1}).then(
+
         function(carreras){
             res.send(carreras);
         }
