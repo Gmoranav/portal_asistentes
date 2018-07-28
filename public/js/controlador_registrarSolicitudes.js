@@ -41,7 +41,6 @@ botonRegistrar.addEventListener('click' , obtenerDatosFormulario);
 //el nombre de esta función se mantiene
 function obtenerDatosFormulario(){
     
-    let bError = false;
     
 
     //nombrar estas variables con el mismo nombre de las "const" de arriba
@@ -72,29 +71,60 @@ function obtenerDatosFormulario(){
     }
     
     
-    //cambiar Example y parámetros de la función por lo que se esté registrando, pornerlo en singular
-    respuesta = registrarSolicitudes(sPrimerNombre, sSegundoNombre, sPrimerApellido, sSegundoApellido, sCurso, sPeriodo, sGrupo,
-    nCantidadAlumnos, shorario);
+    
 
 
     bError = validar();
+    let respuesta;
+
+
     if(bError == true){
+
         swal({
             type : 'warning',
-            title : 'No se pudo registrar el example', //cambiar example según lo que se esté registrando
+            title : 'No se pudo registrar la solicitud', //cambiar example según lo que se esté registrando
             text: 'Por favor revise los campos resaltados', //
-            confirmButtonText : 'Listo'
+            confirmButtonText : 'Aceptar'
         });
        
     }else{
 
-        //esta funcion está en el servicio
-        swal({
-            type : 'success',
-            title : 'Transacción procesada',
-            text: 'La solicitúd se registró adecuadamente', //cambiar example por lo que se esté registrando
-            confirmButtonText : 'Listo'
-        });
+        //cambiar Example y parámetros de la función por lo que se esté registrando, pornerlo en singular
+        respuesta = registrarSolicitudes(sPrimerNombre, sSegundoNombre, sPrimerApellido, sSegundoApellido, sCurso, sPeriodo, sGrupo,
+        nCantidadAlumnos, shorario);
+
+        if (respuesta.success == true){
+
+             //esta funcion está en el servicio
+            swal({
+                type: 'success',
+                title: 'Transacción Procesada',
+                text: "Se registró la solicitud con éxito!",
+                showCancelButton: true,
+                reverseButtons: true,
+                confirmButtonText: 'Volver a la lista',
+                cancelButtonText: 'Continuar Aqui',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#556566',
+                }).then((result) => {
+                    if(result.value){
+    
+                        window.location.href = "solicitud-asistente_listar.html";
+                        }
+    
+                    });
+
+        }else{
+
+            swal({
+                type: 'error',
+                title: 'No se pudo registrar la solicitud',
+                text: 'Por favor contactar al administrador',
+                confirmButtonText: 'Aceptar'
+            });
+
+        }
+       
 
         //este nombre queda igual
         limpiarFormulario();
