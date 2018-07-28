@@ -214,9 +214,16 @@ footer #imgKlokwerkBlack {
     font-size: 47px;
 }
 
-.acercaDeDiv {
+.acerca-de {
     display: flex;
-    height: 600px;
+    height: 50vh;
+    /*background-image: url(../img/gold-dunes.png);*/
+}
+
+
+.acerca-de img{
+    position: absolute;
+    top: 50;
 }
 
 .dunesInnerText {
