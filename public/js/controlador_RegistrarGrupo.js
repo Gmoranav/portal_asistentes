@@ -48,24 +48,53 @@ function obtenerDatosFormulario(){
     
     
     bError = validar();
+    let respuesta;
 
     if(bError == true){
         swal({
             type : 'Warning',
             title : 'No se pudo registrar el grupo', //cambiar example según lo que se esté registrando
             text: 'Por favor revise los campos resaltados', //
-            confirmButtonText : 'Listo'
+            confirmButtonText : 'Aceptar'
         });
        
     }else{
+
         //cambiar Example y parámetros de la función por lo que se esté registrando, pornerlo en singular
-        registrarGrupo(sNombre, sLaboratorio, sProfesor, sCantidadEstu, sHorario);//esta funcion está en el servicio
-        swal({
-            type : 'Success',
-            title : 'Transacción procesada',
-            text: 'El grupo se registró adecuadamente', //cambiar example por lo que se esté registrando
-            confirmButtonText : 'Listo'
-        });
+        respuesta = registrarGrupo(sNombre, sLaboratorio, sProfesor, sCantidadEstu, sHorario);//esta funcion está en el servicio
+        
+        if(respuesta.success == true){
+
+            swal({
+                type: 'success',
+                title: 'Transacción Procesada',
+                text: "Se registró el grupo con éxito!",
+                showCancelButton: true,
+                reverseButtons: true,
+                confirmButtonText: 'Volver a la lista',
+                cancelButtonText: 'Continuar Aqui',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#556566',
+                }).then((result) => {
+                    if(result.value){
+    
+                        window.location.href = "grupo_listar.html";
+                    }
+    
+                });
+
+        }else{
+
+            swal({
+                type: 'error',
+                title: 'No se pudo registrar el grupo',
+                text: 'Por favor contactar al administrador',
+                confirmButtonText: 'Aceptar'
+            });
+
+
+        }
+
 
         //este nombre queda igual
         limpiarFormulario();

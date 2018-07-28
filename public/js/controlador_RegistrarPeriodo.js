@@ -23,23 +23,51 @@ function obtener_datos() {
     let sEstadoCuatri = input_estado_cuatri.value;
 
     bError = validar();
+    let respuesta;
+
     if (bError == true) {
+
         swal({
             type: 'warning',
-            title: 'No se pudo registrar el cuatrimestre',
+            title: 'No se pudo registrar el periodo',
             text: 'Por favor revise los campos resaltados',
-            confirmButtonText: 'Listo'
+            confirmButtonText: 'Aceptar'
         });
+
     } else {
 
-        registrar_periodo(sNombreCuatri, sEstadoCuatri);
+        respuesta = registrar_periodo(sNombreCuatri, sEstadoCuatri);
+
+       if(respuesta.success == true){
 
         swal({
             type: 'success',
-            title: 'Transacción procesada',
-            text: 'El cuatrimestre se registró adecuadamente',
-            confirmButtonText: 'Listo'
+            title: 'Transacción Procesada',
+            text: "Se registró el periodo con éxito!",
+            showCancelButton: true,
+            reverseButtons: true,
+            confirmButtonText: 'Volver a la lista',
+            cancelButtonText: 'Continuar Aqui',
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#556566',
+            }).then((result) => {
+                if(result.value){
+
+                    window.location.href = "periodo_listar.html";
+                }
+
+            });
+
+       }else{
+
+        swal({
+            type: 'error',
+            title: 'No se pudo registrar el periodo',
+            text: 'Por favor contactar al administrador',
+            confirmButtonText: 'Aceptar'
         });
+
+       }
 
         limpiar_formulario();
     }
