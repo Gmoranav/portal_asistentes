@@ -1,3 +1,7 @@
+validacion_rol();
+
+
+
 var button_collapse = document.getElementById("button-nav-collapse");
 
 button_collapse.addEventListener("click", function () {
@@ -41,6 +45,16 @@ button_dropdown.addEventListener("click", function () {
 
 });
 
+let boton_salirPortal = document.querySelector('#boton_salir');
+boton_salir.addEventListener('click', salir);
+
+function salir(){
+
+    window.location.href = "inicioSesion.html"  
+}
+
+   
+
 
 function readURL(input) {
     if (input.files && input.files[0]) {
@@ -58,9 +72,6 @@ $("#imageUpload").change(function() {
 });
 
 
-
-
-window.onload = validacion_rol;
 
 function  validacion_rol () {
 
@@ -87,7 +98,7 @@ function  validacion_rol () {
     }
 
     if(tipoDeAcceso === 'Profesor'){
-        menu_option_usuario.className = "hidden";
+        document.getElementById('hide-usuario').classList.add("hidden");
         menu_option_sede.className = "hidden";
         menu_option_carrera.className = "hidden";
         menu_option_curso.className = "hidden";

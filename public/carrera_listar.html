@@ -25,8 +25,8 @@
                         <li>
                             <a href="perfil.html">Perfil</a>
                         </li>
-                        <li>
-                            <a href="usuario_listar.html" id="hide-usuario" class="">Usuarios</a>
+                        <li  id="hide-usuario">
+                            <a href="usuario_listar.html" class="">Usuarios</a>
                         </li>
                         <li>
                             <a>Asistentes</a>
@@ -92,7 +92,7 @@
                             <p>correo@example.com</p>
                             <div class="dropdown-profile__actions">
                                 <a href="perfil.html" class="link-brand">Perfil</a>
-                                <button class="button--secundario">salir</button>
+                                <button class="button--secundario" id="boton_Salida">salir</button>
                             </div>
                         </div>
                     </div>
@@ -150,7 +150,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.25.0/dist/sweetalert2.all.min.js"></script>
     <script src="js/jquery-3.3.1.js"></script>
-    <script src="js/controlador_InicioSesion.js"></script>
     <script src="js/components.js"></script>
     <script src="js/servicio_ListarCarrera.js"></script>
     <script src="js/controlador_ListarCarrera.js"></script>

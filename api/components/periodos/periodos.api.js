@@ -26,7 +26,7 @@ module.exports.registrar = function (req, res){
 };
 module.exports.listar_periodos = function(req, res){
     
-    periodos_model.find().sort({nombre_periodo : 'asc'}).then(
+    periodos_model.find().sort({$natural:-1}).then(
           
           function(periodos){
              res.send(periodos);

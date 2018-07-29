@@ -36,7 +36,7 @@ module.exports.registrar = function(req, res){
 };
 
 module.exports.listar_cursos = function (req, res){
-    cursoModel.find().sort({ nombre_curso: 'asc' }).then(
+    cursoModel.find().sort({$natural:-1}).then(
         function (cursos){
             res.send(cursos);
         }

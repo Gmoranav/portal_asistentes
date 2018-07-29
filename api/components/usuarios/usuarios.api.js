@@ -36,7 +36,7 @@ module.exports.registrar_usuario = function(req, res){
 };
 
 module.exports.listar_usuarios = function(req, res){
-    usuarioModel.find().sort({primer_apellido : 'asc'}).then(
+    usuarioModel.find().sort({$natural:-1}).then(
         function(usuarios){
             res.send(usuarios);
         }

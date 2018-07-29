@@ -61,7 +61,7 @@ function obtenerDatosCurso(){
             
             swal({
                 type: 'error',
-                title: 'No se pudo registrar el curso',
+                title: 'Problemas de conexión',
                 text: 'Por favor contactar al administrador',
                 confirmButtonText: 'Aceptar'
             });

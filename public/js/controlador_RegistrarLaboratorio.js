@@ -83,7 +83,7 @@ function obtenerDatosFormulario(){
 
             swal({
                 type: 'error',
-                title: 'No se pudo registrar el laboratorio',
+                title: 'Problemas de conexión',
                 text: 'Por favor contactar al administrador',
                 confirmButtonText: 'Aceptar'
             });
