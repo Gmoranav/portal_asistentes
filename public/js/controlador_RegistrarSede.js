@@ -1629,24 +1629,51 @@ function obtenerDatos() {
     let sUbicacionSede = inputUbicacionSede.value;
 
     bError = validar();
+    let respuesta;
+
+
     if (bError == true) {
         swal({
             type: 'warning',
             title: 'No se pudo registrar la sede',
             text: 'Por favor revise los campos resaltados',
-            confirmButtonText: 'Listo'
+            confirmButtonText: 'Aceptar'
         });
-    } else {
+    }else{
 
         //AQUI SUCEDE LA MAGIA = SERVICIO
-        registrarSede(sNombreSede, sProvinciaSede, sCantonSede, sDistritoSede, sUbicacionSede);
+        respuesta = registrarSede(sNombreSede, sProvinciaSede, sCantonSede, sDistritoSede, sUbicacionSede);
 
-        swal({
-            type: 'success',
-            title: 'Transacción procesada',
-            text: 'La sede se registró adecuadamente',
-            confirmButtonText: 'Listo'
-        });
+        if(respuesta.success == true){
+
+            swal({
+                type: 'success',
+                title: 'Transacción Procesada',
+                text: "Se registró la sede con éxito!",
+                showCancelButton: true,
+                reverseButtons: true,
+                confirmButtonText: 'Volver a la lista',
+                cancelButtonText: 'Continuar Aqui',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#556566',
+                }).then((result) => {
+                    if(result.value){
+    
+                        window.location.href = "sede_listar.html";
+                    }
+    
+                });
+            
+        }else{
+
+            swal({
+                type: 'error',
+                title: 'No se pudo registrar la sede',
+                text: 'Por favor contactar al administrador',
+                confirmButtonText: 'Aceptar'
+            });
+    
+        }
 
         limpiarFormulario();
     }

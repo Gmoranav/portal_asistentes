@@ -1,7 +1,5 @@
 var button_collapse = document.getElementById("button-nav-collapse");
 
-document.getElementById('hamburguer').className = "fas fa-times";
-
 button_collapse.addEventListener("click", function () {
     /*this.classList.toggle("active");*/
 
@@ -25,7 +23,8 @@ button_collapse.addEventListener("click", function () {
 
 
 
-var button_dropdown = document.getElementById("toggle-profile-dropdown");
+
+let button_dropdown = document.getElementById("toggle-profile-dropdown");
 
 button_dropdown.addEventListener("click", function () {
     /*this.classList.toggle("active");*/
@@ -42,6 +41,7 @@ button_dropdown.addEventListener("click", function () {
 
 });
 
+
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -53,7 +53,61 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
-
 $("#imageUpload").change(function() {
     readURL(this);
 });
+
+
+
+
+window.onload = validacion_rol;
+
+function  validacion_rol () {
+
+    let tipoDeAcceso = JSON.parse(localStorage.getItem('tipoDeRol'));
+    console.log(tipoDeAcceso);
+
+    let menu_option_usuario = document.getElementById('hide-usuario');
+    let menu_option_solicitud = document.getElementById('hide-solicitud');
+    let menu_option_sede = document.getElementById('hide-sede');
+    let menu_option_carrera = document.getElementById('hide-carrera');
+    let menu_option_curso = document.getElementById('hide-curso');
+    let menu_option_periodo = document.getElementById('hide-periodo');
+    let menu_option_grupo = document.getElementById('hide-grupo');
+    let menu_option_laboratorio = document.getElementById('hide-laboratorio');
+    let menu_option_info_academica = document.getElementById('hide-info-academica');
+    
+
+    if(tipoDeAcceso === 'Rectoría' || tipoDeAcceso === 'Decanatura'){
+        menu_option_usuario.className = "hidden";
+    }
+
+    if(tipoDeAcceso === 'AsistenteDecanatura'){
+        menu_option_usuario.className = "hidden";
+    }
+
+    if(tipoDeAcceso === 'Profesor'){
+        menu_option_usuario.className = "hidden";
+        menu_option_sede.className = "hidden";
+        menu_option_carrera.className = "hidden";
+        menu_option_curso.className = "hidden";
+        menu_option_periodo.className = "hidden";
+        menu_option_grupo.className = "hidden";
+        menu_option_laboratorio.className = "hidden";
+        menu_option_info_academica.className = "hidden";
+    }
+
+    if(tipoDeAcceso === 'AsistenteProfesor'){
+        menu_option_usuario.className = "hidden";
+        menu_option_sede.className = "hidden";
+        menu_option_carrera.className = "hidden";
+        menu_option_curso.className = "hidden";
+        menu_option_periodo.className = "hidden";
+        menu_option_grupo.className = "hidden";
+        menu_option_laboratorio.className = "hidden";
+        menu_option_solicitud.className = "hidden"
+        menu_option_info_academica.className = "hidden";
+    }
+};
+
+

@@ -27,9 +27,9 @@ function obtenerDatosCarrera(){
 
         swal({
             type: 'warning',
-            title: 'No se pudo registrar el curso',
+            title: 'No se pudo registrar la carrera',
             text: 'Por favor revise los campos resaltados',
-            confirmButtonText: 'Entendido'
+            confirmButtonText: 'Aceptar'
         });
 
     
@@ -45,10 +45,11 @@ function obtenerDatosCarrera(){
             title: 'Transacción Procesada',
             text: "Se registró la carrera con éxito!",
             showCancelButton: true,
+            reverseButtons: true,
             confirmButtonText: 'Volver a la lista',
             cancelButtonText: 'Continuar Aqui',
             confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#ecf0f1',
+            cancelButtonColor: '#556566',
             }).then((result) => {
                 if(result.value){
 
@@ -60,10 +61,10 @@ function obtenerDatosCarrera(){
         }else{
 
             swal({
-                type: 'warning',
-                title: 'No se pudo registrar el curso',
-                text: 'Por favor revise los campos resaltados',
-                confirmButtonText: 'Entendido'
+                type: 'error',
+                title: 'No se pudo registrar la carrera',
+                text: 'Por favor contactar al administrador',
+                confirmButtonText: 'Aceptar'
             });
 
 
@@ -114,7 +115,7 @@ function validar(){
         inputFechaCreacion.classList.remove('input_error');
     };
 
-    if (selectSede.value = ''){
+    if (selectSede.value == ''){
 
         bError= true;
         selectSede.classList.add('input_error');
@@ -122,7 +123,7 @@ function validar(){
         selectSede.classList.remove('input_error');
     };
 
-    if (selectAcreditacion.value = '') {
+    if (selectAcreditacion.value == '') {
         
         bError= true;
         selectAcreditacion.classList.add('input_error');

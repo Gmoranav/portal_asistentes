@@ -638,7 +638,13 @@ body {
     font-size: 16px;
 }
 
+<<<<<<< HEAD
 
 .hidden{
   display: none;
 }
+=======
+.hidden{
+    display: none;
+}
+>>>>>>> a03c037fd9c8ca4c8014a7bffe213268a1dbf3cb

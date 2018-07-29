@@ -26,7 +26,7 @@ function obtenerDatosCurso(){
             type: 'warning',
             title: 'No se pudo registrar el curso',
             text: 'Por favor revise los campos resaltados',
-            confirmButtonText: 'Entendido'
+            confirmButtonText: 'Aceptar'
         });
 
        
@@ -43,10 +43,11 @@ function obtenerDatosCurso(){
                 title: 'Transacción Procesada',
                 text: "Se registró el curso con éxito!",
                 showCancelButton: true,
+                reverseButtons: true,
                 confirmButtonText: 'Volver a la lista',
                 cancelButtonText: 'Continuar Aqui',
                 confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#ecf0f1',
+                cancelButtonColor: '#556566',
                 }).then((result) => {
                     if(result.value){
     
@@ -59,10 +60,10 @@ function obtenerDatosCurso(){
         }else{
             
             swal({
-                type: 'warning',
+                type: 'error',
                 title: 'No se pudo registrar el curso',
-                text: 'Por favor revise los campos resaltados',
-                confirmButtonText: 'Entendido'
+                text: 'Por favor contactar al administrador',
+                confirmButtonText: 'Aceptar'
             });
         }
         
