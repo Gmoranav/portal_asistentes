@@ -1,5 +1,13 @@
 /*estilos landing page portal asistentes*/
 
+p:not(.section--quote){
+  margin-top: 20px;
+}
+
+.section--quote p{
+    margin-top:0;
+  }
+
 .main--cenfo-landing{
   height: 100vh;
   position: relative;
@@ -113,6 +121,58 @@ z-index: 99;
     width: 100%;
     font-size: 10px;
 }
+
+#acerca-de.seccion{
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  margin: 30px;
+  align-items: center;
+}
+
+#FAQ-titulo.seccion{
+  font-size: 28px;
+  text-align: center;
+  padding: 30px;
+  background-color: #f1f1f1;
+}
+
+#FAQ-titulo.seccion>i{
+  margin-right: 5px;
+}
+
+#FAQ.seccion{
+  width: 80%;
+  margin: auto;
+  padding: 49px;
+}
+
+.pregunta-respuesta{
+  margin-bottom: 40px;
+}
+
+.pregunta-respuesta>.preguntas{
+  font-size: 18px;
+  font-weight: 700;
+}
+
+#footer-contacto.seccion {
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 42px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+
+  #footer-contacto.seccion h4{
+font-size: 36px;
+margin-bottom: 18px;
+    }
 /*
 #acerca-de{
     height: 450px;
@@ -164,3 +224,32 @@ footer{
 
 }
 */
+
+
+.tittle{
+  font-size: 36px;
+  line-height: 1;
+  position: relative;
+  /* left: 55px; */
+  /* margin-bottom: 63px; */
+  margin: 50px;
+}
+
+.tittle span{
+  font-size: 72px;
+  font-weight: 600;
+}
+
+ .acerca-de__paragraph{
+  font-size: 17px;
+  line-height: 1.3;
+ }
+
+ footer .img-cenfotec{
+margin: 40px 0;
+
+ }
+
+ footer p{
+     font-weight: 400;
+ }

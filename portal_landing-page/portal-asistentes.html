@@ -18,25 +18,27 @@
 <body class="body-container">
 
     <!--Acá empieza la navegación que es parte de todas las paginas-->
-    <aside id="panel-menu" class="panel-menu">
+    <aside id="panel-menu" class="panel-menu panel-menu--hide">
             <nav>
                     <ul>
                         <li>
-                            <a href="pagina_principal.html">
+                            <a href="#top"><img src="../public/img/cenfo.png" style="width:120px"class="img-cenfotec"></a>
                         </li>
                         <li>
-                            <a href="#seccion_1">Acerca de</a>
+                            <a href="#acerca-de">Acerca de</a>
                         </li>
 
                         <li>
-                            <a href="#seccion_2">FAQ</a>
+                            <a href="#FAQ-titulo">FAQ</a>
                         </li>
                         <li>
-                            <a href="#seccion_3">Contacto</a>
+                            <a href="#footer-contacto">Contacto</a>
                         </li>
                     </ul>
                 </nav>
     </aside>
+
+
 
     <div class="container">
 
@@ -45,7 +47,7 @@
                 <button id="button-nav-collapse" type="button">
                     <i id="hamburguer" class="fas fa-bars"></i>
                 </button>
-                <img src="../public/img/cenfo.png" class="img-cenfotec">
+                <a  href="#top" ><img src="../public/img/cenfo.png" class="img-cenfotec"></a>
             </div>
             <nav>
                 <a href="inicio_sesion.html">Acceder</a>
@@ -61,43 +63,53 @@
 <main class="page main--cenfo-landing">
         <!--Acá empieza el contenido principal-->
 
-            <div class="section banner-principal">
+            <div  id="top" class="section banner-principal">
 
                 <div class="info-portal">
                     <h3>PORTAL</h3>
                     <h2>ASISTENTES</h2>
                     <nav>
-                        <a href='#'>Solicitar acceso</a>&nbsp;&nbsp;|&nbsp;
-                        <a href='#'>Acceder</a>
+                        <!--<a href='#'>Solicitar acceso</a>&nbsp;&nbsp;|&nbsp;-->
+                        <a href='../public/inicioSesion.html'  target="_blank">Acceder</a>
                     </nav>
                 </div>
                 <img src="../public/img/cenfo.png" class="img-cenfotec">
 
-                            <div class="section section--quote">
-                                <p>“El arte supremo del maestro es despertar el placer de la <br>
-                                        expresión creativa y conocimiento”</p>
-                                <h6>Albert Einstein</h6>
-                                <img src="img/cenfo.png" class="img-cenfotec">
-                            </div>
+                    <div class="section section--quote">
+                        <p>“El arte supremo del maestro es despertar el placer de la <br>
+                                expresión creativa y conocimiento”</p>
+                        <h6>Albert Einstein</h6>
+                        <img src="img/cenfotec-logo-blanco.png" class="img-cenfotec">
+                    </div>
             </div>
 
 
             <div class="seccion" id="acerca-de">
-                <div>
-                    <p>Acerca del portal de</p>
-                    <p>ASISTENCIA</p>
-                </div>
-                <p>Bajo el mando de los estándares y mediante un <br>
-                    entorno de trabajo óptimo, desarrollamos <br>
-                    aplicaciones web acorde a las necesidades de <br>
-                    los clientes, maximizando sus recursos y <br>
-                    creando soluciones de calidad.
-                </p>
 
-                <p>Con nuestro enfoque en ciclos, visualizamos <br>
-                    las tareas y hacemos el tiempo blando y <br>
-                    tangible como la arena.
-                </p>
+                <div class="tittle acerca-de__tittle">
+                  Acerca del portal de
+                  <br>
+                  <span>ASISTENCIA</span>
+                </div>
+
+
+                <div class="tittle acerca-de__paragraph">
+
+                  <p>Es una herramienta que facilita el manejo y seguimiento de las
+                  solicitudes de asistentes para los cursos que imparten los
+                  profesores de la universidad.</p>
+
+                  <p>Este portal permite llevar un control de las actividades que realiza
+                  cada asistente durante el cuatrimestre, así como del tiempo
+                  invertido en cada una de ellas.</p>
+
+                  <p>Es una manera sencilla de administrar la asignación de asistentes
+                  a los cursos de cada carrera, asegurando que sean asignados a
+                  tiempo antes de iniciar cada periodo.</p>
+
+
+
+                </div>
             </div>
 
             <div class="seccion" id="FAQ-titulo">
@@ -161,19 +173,17 @@
                         <p>
                             Teléfonos: 2281-1555 / 4000-3950
                         </p>
-                        <img src="img/cenfo.png" class="img-cenfotec">
+                        <img src="img/cenfotec-icono.png" class="img-cenfotec">
 
                     </div>
             </footer>
 
         </main>
 
-
-
     </div>
 
     <script src="../public/js/jquery-3.3.1.js"></script>
-    <script src="../public/js/components.js"></script>
+    <script src="js/components.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.25.0/dist/sweetalert2.all.min.js"></script>
 </body>
 
