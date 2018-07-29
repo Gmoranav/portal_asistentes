@@ -92,7 +92,7 @@ function cerrarSesión() {
 function redireccionarUsuario() {
     let usuarioAutenticado = getUsuarioAutenticado();
 
-    window.location = "carrera_listar.html";
+    window.location = "dashboard.html";
 
     switch (usuarioAutenticado.rol) {
         case 'Administrador':
