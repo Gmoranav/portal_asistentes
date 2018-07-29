@@ -72,7 +72,7 @@ function obtenerDatosFormulario(){
     
     
     
-
+    let bError = false;
 
     bError = validar();
     let respuesta;
