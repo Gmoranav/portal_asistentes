@@ -44,6 +44,19 @@ button_dropdown.addEventListener("click", function () {
 
 });
 
+<<<<<<< HEAD
+=======
+let boton_salirPortal = document.querySelector('#boton_salir');
+boton_salirPortal.addEventListener('click', salir);
+
+function salir(){
+
+    window.location.href = "inicioSesion.html";  
+}
+
+   
+
+>>>>>>> 9d1097da8fd782f96a6e6894e6b4a0b72564b07b
 
 function readURL(input) {
     if (input.files && input.files[0]) {
