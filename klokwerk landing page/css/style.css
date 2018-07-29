@@ -27,93 +27,71 @@ li {
     margin-bottom: 35px;
 }
 
-p {
+.dunesInnerText p {
     width: 436px;
 }
 
-#searchNav {
-    height: 60px;
-    width: 60px;
-    background: #E89C0E;
+.nav {
+  height: 60px;
+  width: 30%;
+  background: #E89C0E;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
-#portafolioText {
-    display: flex;
-    justify-content: space-evenly;
+.portafolio {
+  background: #F1F1F1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.portafolio-slider {
+    //display: flex;
+    //justify-content: space-evenly;
     background: #F1F1F1;
 }
 
-#portafolioText p {
+.portafolio-slider  p {
     Font-Size: 34.85px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-#portafolioText #textbold {
+.portafolio-slider  #textbold {
     Font-Size: 20px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.portafolioDiv {
-    background:#F1F1F1;
-}
+
 
 .img-cenfotec {
     margin-left: 15px;
 }
 
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-}
-
-#tooltip {
-    padding-left: 21px;
-    padding-top: 8px;
-}
-
-.body-container{
-    display: flex;
-}
-
-.panel-menu{
-    width: 240px;
-    padding: 60px;
-    background-color:#1F1F1F;
-    transition: width 0.05s;
-}
-
-.panel-menu--hide{
-    width: 0px;
-    padding: 0px;
-    transition: width 0.2s;
-}
-.panel-menu--hide nav{
-    display: none;
-}
-
 .panel-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: auto;
-    /*padding: 20px;*/
-    /*background-color: #36348C;*/
-    background: linear-gradient(#095CC0 0%, #2D8AF9 91.5%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: auto;
+  /* padding: 20px; */
+  /* background-color: #36348C; */
+  background: linear-gradient(90deg, #095CC0 0%, #2D8AF9 91.5%);
 }
 
 .panel-header>div{
     display: flex;
     align-items: center;
 }
-/*.panel-header div img{
-    width: 120px;
-    margin-left: 20px;
-}*/
+.panel-header div img{
+    /*width: 120px;
+    margin-left: 20px;*/
+}
 
 .page{
     overflow-y: scroll;
     height: 90vh;
+    overflow-x: hidden;
 }
 
 .container{
@@ -169,12 +147,13 @@ p {
     border-left: 30px solid #C4C4C4;
 }
 
-.portafolio {
+.portafolio__slider {
     height: 500px;
     background: #F1F1F1;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+        width: 1150px;
 }
 
 footer {
@@ -182,6 +161,8 @@ footer {
     justify-content: center;
     height: 200px;
     background-color: #000000;
+    padding-top: 77px;
+
 }
 
 footer #imgKlokwerkBlack {
@@ -189,19 +170,85 @@ footer #imgKlokwerkBlack {
     width: 141.22px;
 }
 
+.parallax-container{
+  /* margin: 0; */
+  /* padding: 0; */
+  perspective: 2px;
+  /* transform-style: preserve-3d; */
+  /* height: 100%; */
+  /* overflow-y: scroll; */
+  /* overflow-x: hidden; */
+  /* font-family: Nunito; */
+}
+
 .dunes {
-    display: flex;
-    height: 550px;
-    background-image: url(../img/Dunes-Landscapes-Evolving-Drew-Doggett-Light-in-Profile-copy.jpg);
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  background: cover;
+  background-size: 50%;
+
+  position: relative;
+  /*transform-style: inherit;*/
+  /*box-sizing: border-box;*/
+  min-height: 86vh;
+  display: flex;
+  height: 50vh;
+/**/}
+  /*background-image: url(../img/black-dunes.png);*/
+/*  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: -104px;*/
+/*
+  position: relative;
+  padding: 25vh 10%;
+  min-height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  box-shadow: 0 -1px 10px rgba(0, 0, 0, .7);
+  transform-style: inherit;
+}
+*/
+.dunes:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  /* box-shadow: 0 0 8px 1px rgba(0, 0, 0, .7);*/
+}
+
+#dunes:before {
+  background-image: url(../img/black-dunes.png);
+      transform: translateZ(-1px) scale(3);
+      background-repeat: no-repeat;
+      background-size: inherit;
+      background-position: center;
+      top: -369px;
+      left: -12px;
+      background-size: 50%;
+      height: 100vh;
+  }
+
+
+/*.dunes:nth-child(2n) .title {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.dunes:nth-child(2n+1) .title {
+  margin-left: auto;
+  margin-right: 0;
+}*/
+
+.dunes, .dunes:before {
+  background: 50% 50% / cover;
 }
 
 .dunes div {
-    align-self: center;
-    margin-left: 10%;
+  align-self: center;
+  margin-left: 48%;
+  z-index: 1;
 }
 
 .dunes p {
@@ -215,73 +262,289 @@ footer #imgKlokwerkBlack {
     font-size: 47px;
 }
 
-.acercaDeDiv {
-    display: flex;
-    height: 600px;
+.acerca-de {
+  background-image: url(../img/gold-dunes.png);
+  background-size: 100%;
+  align-self: center;
+  /* margin-left: 48%; */
+  z-index: 2;
+  height: 100vh;
+  position: relative;
+  top: -299px;
+  display: flex;
+  justify-content: center;
 }
 
-.dunesInnerText {
-    align-self: center;
-    height: 250px;
-    background: #FFFFFF;
+.acerca-de__content{
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* height: 1045px; */
+  /* flex-direction: column; */
+  width: 662px;
+  position: relative;
+  top: 257px;
 }
 
-.equipoDiv {
-    display: flex;
-    flex-direction: column;
+.tittle{
+  font-size: 36px;
+      line-height: 1;
+      position: relative;
+      /* left: 55px; */
+          margin-bottom: 63px;
 }
 
-#teamDescriptions {
-
-    margin-left: 10%;
+.tittle span{
+  font-size: 72px;
+  font-weight: 600;
+}
+.portafolio>.tittle{
+margin-bottom: -4px;
+margin-top: 73px;
+}
+.acerca-de__parragraph{
+  width: 600px;/*
+  position: relative;
+  left: -241px;
+  top: 427px;*/
+  font-size: 16px;
+  line-height: 2;
 }
 
-#teamBubbles {
+.acerca-de__parragraph>div{
+    margin-bottom: 30px;
+}
+
+.acerca-de__parragraph>div>h2{
+    margin-bottom: 5px;
+}
+
+
+  .equipoDiv {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 70px;
+  }
+
+
+.team-descriptions{
+  justify-content: center;
+  width: 1200px;
+}
+/*
+.tab {
     display: flex;
     flex-direction: row;
     justify-content: center;
     margin-bottom: 100px;
 }
+*/
 
-#smallCircleTeam {
-    margin-right: 12px;
-    width: 86px;
-    height: 86px;
-    background: #FFFFFF;
-    border-radius: 190px;
-    border: 7px solid #C4C4C4;
+
+.tablinks {
+  margin-right: 12px;
+  width: 136px;
+  height: 136px;
+  background: #FFFFFF;
+  border-radius: 190px;
+  border: 7px solid #C4C4C4;
+  box-shadow: 1px 0px 8px 1px rgba(0,0,0,0.3);
 }
 
-#bigCircleTeam{
+
+.tab {
+    overflow: hidden;
+    padding: 5px;
+}
+
+.tab div{
+    overflow: hidden;
+}
+
+/* Style the buttons inside the tab */
+
+#yanory-tab{
+      background-image: url(../img/yanory-thumb.png);
+      background-size: cover;
+}
+
+#yanory-tab:hover, #yanory-tab.active{
+      background-image: url(../img/yanory-thumb-hover.png);
+      background-size: cover;
+}
+
+#gonzalo-tab{
+      background-image: url(../img/gonzalo-thumb.png);
+      background-size: cover;
+}
+
+#gonzalo-tab:hover, #gonzalo-tab.active{
+      background-image: url(../img/gonzalo-thumb-hover.png);
+      background-size: cover;
+}
+
+#david-tab{
+      background-image: url(../img/david-thumb.png);
+      background-size: cover;
+}
+
+#david-tab:hover, #david-tab.active{
+      background-image: url(../img/david-thumb-hover.png);
+      background-size: cover;
+}
+
+#freddy-tab{
+      background-image: url(../img/freddy-thumb.png);
+      background-size: cover;
+}
+
+#freddy-tab:hover, #freddy-tab.active{
+      background-image: url(../img/freddy-thumb-hover.png);
+      background-size: cover;
+}
+
+#joseph-tab{
+      background-image: url(../img/joseph-thumb.png);
+      background-size: cover;
+}
+
+#joseph-tab:hover, #joseph-tab.active{
+      background-image: url(../img/joseph-thumb-hover.png);
+      background-size: cover;
+}
+
+
+.picture{
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+        border-radius: 190px;
+        box-shadow: 1px 0px 8px 1px rgba(0,0,0,0.3);
+
+}
+
+  .picture--yanory{
+    background-image: url(../img/yanory-thumb.png);
+  }
+
+  .picture--gonzalo{
+    background-image: url(../img/gonzalo-thumb.png);
+  }
+  .picture--david{
+    background-image: url(../img/david-thumb.png);
+  }
+  .picture--freddy{
+    background-image: url(../img/freddy-thumb.png);
+  }
+  .picture--joseph{
+    background-image: url(../img/joseph-thumb.png);
+  }
+
+
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+    padding: 45px;
+    height: 270px;
+}
+
+.tabcontent-paragraph{
+  width: 490px;
+  margin-left: 43px;
+}
+
+.tabcontent-paragraph h3{
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.tabcontent-paragraph h4{
+  font-size: 20px;
+  font-weight: 600;
+  color: grey;
+}
+
+.tabcontent-paragraph p{
+  font-size: 24px;
+  line-height: 1.5;
+}
+
+.tabcontent-paragraph>p>span{
+  font-size: 16px;
+}
+
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.picture--big{
     width: 165px;
     height: 165px;
     background: #c4c4c4;
     border-radius: 190px;
     margin-right: 20px;
+
 }
 
 #teamDescriptions {
     display: flex;
     padding-bottom: 30px;
-    
+
 }
 
-#sectionHeaderText {
-    display: flex;
+.sectionHeaderText {
+  /*  display: flex;
     justify-content: center;
     margin-left: 13%;
     margin-bottom: 40px;
-    margin-top: 60px;
+    margin-top: 60px;*/
 }
 
-#sectionHeaderText p {
+.sectionHeaderText p {
     Font-Size: 34.85px;
     Line-Height: 57px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-#sectionHeaderText #textbold {
+.sectionHeaderText #textbold {
     Font-Size: 60.64px;
     Line-Height: 57px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.Show
+
+.hide{
+
 }

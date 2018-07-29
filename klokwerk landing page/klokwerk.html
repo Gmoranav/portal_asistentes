@@ -1,188 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Klokwerk</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
-        crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Klokwerk</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+  crossorigin="anonymous">
 </head>
 
 <body class="body-container">
-    
-    <aside id="panel-menu" class="panel-menu">
-        <nav>
-            <ul>
-                <li>
-                    <a href="">
-                        <i class=""></i>&nbsp;Inicio
-                    </a>
-                </li>
-                <li>
-                    <a href="">Acerca de</a>
-                </li>
-                <li>
-                    <a href="">Portafolio</a>
-                </li>
-                <li>
-                    <a href="">Equipo</a>
-                </li>
-                <li>
-                    <a href="">Contacto</a>
-                </li>
-            </ul>
+  <div class="parallax-container">
+
+    <div  class="container">
+      <header  class="panel-header">
+        <div>
+          <img src="img/KlokWerk.png" class="img-cenfotec">
+        </div>
+
+        <nav class="nav">
+          <a href="#dunes">
+            <i class="far fa-clock" id="tooltip"></i>Inicio
+          </a>
+          <a href="#acerca-de">Acerca de</a>
+          <a href="#portafolio">Portafolio
+          </a>
+          <a href="#equipo">Equipo
+          </a>
         </nav>
-    </aside>
 
-    <div class="container">
-        <header class="panel-header">
-            <div>
-                <button id="button-nav-collapse" type="button">
-                    <i id="hamburguer" class="fas fa-bars"></i>
-                </button>
-                <img src="img/KlokWerk.png" class="img-cenfotec">
+      </header>
+
+      <main class="page">
+
+        <div id="dunes" class="dunes" >
+          <div >
+            <p alt="" >Materializamos su tiempo</p>
+            <h3>Escalando su negocio</h3>
+            <img src="img/KlokWerk.png" >
+          </div>
+        </div>
+
+        <div id="acerca-de" class="acerca-de">
+          <!--img src="img/gold-dunes.png"></img-->
+          <div class="acerca-de__content">
+            <div class="tittle acerca-de__tittle">
+              Acerca de
+              <br>
+              <span>Nosotros</span>
             </div>
 
-            <nav id="searchNav">
-                <a href="#">
-                    <i class="fas fa-lg fa-search tooltip" id="tooltip"><span class="tooltiptext"></span></i>
-                </a>
-            </nav>
-        
-        </header>
+            <div class="acerca-de__parragraph">
+              <div class="acerca-de__mision">
+                <h2>Misión</h2>
+                <p>Bajo el mando de los estándares y mediante un entorno de trabajo óptimo,
+                  desarrollamos aplicaciones web acorde a las necesidades de los clientes,
+                  maximizando sus recursos y creando soluciones de calidad.</p>
 
-        <main class="page">
-
-            <div class="dunes">
-                <div>
-                    <p>Materializamos su tiempo</p>
-                    <h3>Escalando su negocio</h3>
-                    <img src="img/KlokWerk.png" alt="" srcset="">
+                  <p>Con nuestro enfoque en ciclos, visualizamos las tareas y hacemos el tiempo
+                    blando y tangible como la arena.</p>
+                  </div>
+                  <div class="acerca-de__vision">
+                    <h2>Visión</h2>
+                    <p>Ser la empresa líder más confiable en el desarrollo de aplicaciones web que
+                      ofrece servicios integrales basados en las necesidades del cliente.</p>
+                    </div>
+                    <div class="acerca-de__valores">
+                      <h2>Valores</h2>
+                      <p>Integridad</p>
+                      <p>Trabajo en equipo</p>
+                      <p>Compromiso</p>
+                      <p>Transparencia</p>
+                      <p>Innovación</p>
+                    </div>
+                  </div>
                 </div>
-            </div>
+              </div>
 
-            <div class="acercaDeDiv">
-                    <div id="sectionHeaderText">
-                        <div> 
-                            <p>Acerca de</p>
-                            <br>
-                            <span>nosotros</span>
+
+              <div id="portafolio" class="portafolio">
+
+                <div class="tittle">
+                  Portafolio de
+                  <br>
+                  <span>Trabajos</span>
+                </div>
+
+
+                <div class="portafolio__slider">
+                  <a href="" id="triangleLeft"></a>
+                  <div id="smallCircle"></div>
+                  <div id="bigCircle">
+                    <a href="../portal_landing-page/portal-asistentes.html"><img src="img/big.PNG" alt="universidad cenfotec" id="imgBigCircle"></a>
+                  </div>
+                  <div id="smallCircle"></div>
+                  <a href="" id="triangleRight"></a>
+                </div>
+
+              </div>
+
+              <div id="equipo" class="equipoDiv">
+
+                <div class="tittle">Nuestro
+                  <br>
+                  <span>Equipo</span>
+                </div>
+
+                <!--div class="team-bubbles">
+                  <div class="tabs" id="yanory"></div>
+                  <div class="tabs"  id="gonzalo"></div>
+                  <div class="tabs" id="divid"></div>
+                  <div class="tabs"  id="joseph"></div>
+                  <div class="tabs"  id="freddy"></div>
+                </div-->
+
+                <div class="tab">
+                  <button id="yanory-tab" class="tablinks" onclick="openDev(event, 'yanory')"></button>
+                  <button id="gonzalo-tab" class="tablinks" onclick="openDev(event, 'gonzalo')"></button>
+                  <button id="david-tab" class="tablinks" onclick="openDev(event, 'david')"></button>
+                  <button id="joseph-tab" class="tablinks" onclick="openDev(event, 'joseph')"></button>
+                  <button id="freddy-tab" class="tablinks" onclick="openDev(event, 'freddy')"></button>
+                </div>
+
+
+                <div id="yanory" class="tabcontent">
+
+                  <div class="picture picture--yanory"></div>
+                  <div class="tabcontent-paragraph">
+                    <h3>Yanory Morera</h3>
+                    <h4>Coordinadora</h4>
+                    <p>"No hay que apagar la luz del otro para permitir que brille la nuestra."<br> <span>Gandhi</span></p>
+                    </div>
+                  </div>
+
+
+                  <div id="gonzalo" class="tabcontent">
+
+                    <div class="picture picture--gonzalo"></div>
+                    <div class="tabcontent-paragraph">
+                      <h3>Gonzalo Mora</h3>
+                      <h4>Encargado de Desarrollo.</h4>
+                      <p>"No he fracasado. He encontrado diez mil maneras de como no hacer una bombilla." <br><span>Tomas Edison</span></p>
+                      </div>
+                    </div>
+
+
+                    <div id="david" class="tabcontent">
+
+                      <div class="picture picture--david"></div>
+                      <div class="tabcontent-paragraph">
+                        <h3>David</h3>
+                          <h4>Encargado de Soporte</h4>
+                        <p>“No te des por vencido, ni aun vencido”. <br><span>Almafuerte</span></p>
                         </div>
-                    </div>
-                <div class="dunesInnerText">
-                    <p>Bajo el mando de los estándares y mediante un entorno de trabajo óptimo, desarrollamos
-                    aplicaciones web acorde a las necesidades de los clientes, maximizando sus recursos y creando 
-                    soluciones de calidad.
-                    <br>
-                    Con nuestro enfoque en ciclos, visualizamos las tareas y hacemos el tiempo blando y tangible como la arena.</p>
-                </div>
-            </div>
+                      </div>
 
-            <div class="dunes"></div>
 
-            <div class="portafolioDiv">
+                      <div id="joseph" class="tabcontent">
 
-                <div>
-                    <div id="sectionHeaderText">
-                        <div> 
-                            <p>Portafolio de</p>
-                            <br>
-                            <span>Trabajos</span>
+                        <div class="picture picture--joseph"></div>
+                        <div class="tabcontent-paragraph">
+                          <h3>Joseph</h3>
+                          <h4>Encargado de Calidad</h4>
+                          <p>“Solamente hay una esquina del universo que tu
+                            puedes mejorar, y esa esquina eres tu mismo.” <br><span>Aldous Huxley</span></p>
+                          </div>
                         </div>
-                    </div>
-                </div>
 
-            
-                <div class="portafolio">
-                    <a href="" id="triangleLeft"></a>
-                    <div id="smallCircle"></div>
-                    <div id="bigCircle">
-                        <img src="img/big.PNG" alt="universidad cenfotec" id="imgBigCircle">
-                    </div>
-                    <div id="smallCircle"></div>
-                    <a href="" id="triangleRight"></a>
-                </div>
+                          <div id="freddy" class="tabcontent">
 
+                            <div class="picture picture--freddy"></div>
+                            <div class="tabcontent-paragraph">
+                              <h3>Freddy Lobo</h3>
+                              <h4>Encargado de Calidad</h4>
+                              <p>"Keep cool but care" <br><span>Thomas Pynchon. </span></p>
+                              </div>
+                            </div>
+                  <!--div class="">
+                  <div id="bigCircleTeam"></div>
+                  <div>
+                  <h3>Gonzalo Mora</h3>
+                  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                  accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
+                </div>
+              </div>
+
+              <div class="">
+              <div id="bigCircleTeam"></div>
+              <div>
+              <h3>David Aguilar</h3>
+              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+              accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
             </div>
+          </div>
 
-            <div class="equipoDiv">
+          <div class="">
+          <div id="bigCircleTeam"></div>
+          <div>
+          <h3>Joseph Alvarado</h3>
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
+        </div>
+      </div>
 
-                <div id="sectionHeaderText">
-                    <div> 
-                        <p>Nuestro</p>
-                        <br>
-                        <span>Equipo</span>
-                    </div>
-                </div>
-
-                <div id="teamBubbles">
-                    <div id="smallCircleTeam"></div>
-                    <div id="smallCircleTeam"></div>
-                    <div id="smallCircleTeam"></div>
-                    <div id="smallCircleTeam"></div>
-                    <div id="smallCircleTeam"></div>
-                </div>
-
-                <div id="teamDescriptions">
-                    <div id="bigCircleTeam"></div>
-                    <div>
-                        <h3>Yanory Morera</h3>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem 
-                        accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
-                    </div>
-                </div>
-
-                <div id="teamDescriptions">
-                    <div id="bigCircleTeam"></div>
-                    <div>
-                        <h3>Gonzalo Mora</h3>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem 
-                        accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
-                    </div>
-                </div>
-
-                <div id="teamDescriptions">
-                    <div id="bigCircleTeam"></div>
-                    <div>
-                        <h3>David Aguilar</h3>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem 
-                        accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
-                    </div>
-                </div>
-
-                <div id="teamDescriptions">
-                    <div id="bigCircleTeam"></div>
-                    <div>
-                        <h3>Joseph Alvarado</h3>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem 
-                        accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
-                    </div>
-                </div>
-
-                <div id="teamDescriptions">
-                    <div id="bigCircleTeam"></div>
-                    <div>
-                        <h3>Freddy Lobo</h3>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem 
-                        accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <footer>
-                <img src="img/klokwerk black.png" id="imgKlokwerkBlack" alt="">
-            </footer>
-
-
-        </main>
-        
+      <div class="">
+      <div id="bigCircleTeam"></div>
+      <div>
+      <h3>Freddy Lobo</h3>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+      accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
     </div>
+  </div>
+</div-->
+</div>
 
-    <script src="js/components.js"></script>
+<footer>
+  <img src="img/klokwerk black.png" id="imgKlokwerkBlack" alt="">
+</footer>
 
+
+</main>
+
+</div>
+
+</div>
+<script src="js/components.js"></script>
 </body>
 </html>

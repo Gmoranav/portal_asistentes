@@ -190,7 +190,7 @@ table{
     padding: 4px 8px;
     color: #fff;
     font-size: 11px;
-    border-radius: 8px; 
+    border-radius: 8px;
     margin: 5px !important;
 }
 
@@ -502,7 +502,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
   }
-  
+
 
 /*END PROFILE IMAGE EDIT*/
 
@@ -616,7 +616,7 @@ body {
 }
 
 .body-login__container button{
-    
+
     width: 100%;
     margin: 10px 0px;
     display: flex;
@@ -637,3 +637,14 @@ body {
     font-weight: bold;
     font-size: 16px;
 }
+
+<<<<<<< HEAD
+
+.hidden{
+  display: none;
+}
+=======
+.hidden{
+    display: none;
+}
+>>>>>>> a03c037fd9c8ca4c8014a7bffe213268a1dbf3cb

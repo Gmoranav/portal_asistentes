@@ -27,7 +27,7 @@ function obtenerDatosCarrera(){
 
         swal({
             type: 'warning',
-            title: 'No se pudo registrar el curso',
+            title: 'No se pudo registrar la carrera',
             text: 'Por favor revise los campos resaltados',
             confirmButtonText: 'Aceptar'
         });
@@ -62,7 +62,7 @@ function obtenerDatosCarrera(){
 
             swal({
                 type: 'error',
-                title: 'No se pudo registrar el curso',
+                title: 'No se pudo registrar la carrera',
                 text: 'Por favor contactar al administrador',
                 confirmButtonText: 'Aceptar'
             });
@@ -115,7 +115,7 @@ function validar(){
         inputFechaCreacion.classList.remove('input_error');
     };
 
-    if (selectSede.value = ''){
+    if (selectSede.value == ''){
 
         bError= true;
         selectSede.classList.add('input_error');
@@ -123,7 +123,7 @@ function validar(){
         selectSede.classList.remove('input_error');
     };
 
-    if (selectAcreditacion.value = '') {
+    if (selectAcreditacion.value == '') {
         
         bError= true;
         selectAcreditacion.classList.add('input_error');
