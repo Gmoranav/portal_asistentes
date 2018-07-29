@@ -7,7 +7,7 @@ Responsabilidades del servicio
 
 'use strict';
 
-function registrarSede(sNombreSede, sProvinciaSede, sCantonSede, sDistritoSede, sUbicacionSede) {
+function registrar_sede(sNombreSede, sProvinciaSede, sCantonSede, sDistritoSede, sUbicacionSede) {
     let respuesta = '';
     let peticion = $.ajax({
         url: 'http://localhost:4000/api/registrar_sede',
@@ -16,11 +16,11 @@ function registrarSede(sNombreSede, sProvinciaSede, sCantonSede, sDistritoSede, 
         dataType: 'json',
         async: false,
         data: {
-            nombreSede: sNombreSede,
-            provinciaSede: sProvinciaSede,
-            cantonSede: sCantonSede,
-            distritoSede: sDistritoSede,
-            ubicacionSede: sUbicacionSede,
+            nombre_sede: sNombreSede,
+            provincia_sede: sProvinciaSede,
+            canton_sede: sCantonSede,
+            distrito_sede: sDistritoSede,
+            ubicacion_sede: sUbicacionSede,
         }
     });
 
