@@ -115,7 +115,7 @@ function validar(){
         inputFechaCreacion.classList.remove('input_error');
     };
 
-    if (selectSede.value = ''){
+    if (selectSede.value == ''){
 
         bError= true;
         selectSede.classList.add('input_error');
@@ -123,7 +123,7 @@ function validar(){
         selectSede.classList.remove('input_error');
     };
 
-    if (selectAcreditacion.value = '') {
+    if (selectAcreditacion.value == '') {
         
         bError= true;
         selectAcreditacion.classList.add('input_error');

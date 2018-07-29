@@ -1639,7 +1639,7 @@ function obtenerDatos() {
             text: 'Por favor revise los campos resaltados',
             confirmButtonText: 'Aceptar'
         });
-    } else {
+    }else{
 
         //AQUI SUCEDE LA MAGIA = SERVICIO
         respuesta = registrarSede(sNombreSede, sProvinciaSede, sCantonSede, sDistritoSede, sUbicacionSede);
