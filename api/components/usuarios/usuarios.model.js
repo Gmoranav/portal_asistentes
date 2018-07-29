@@ -12,7 +12,7 @@ let usuarioSchema = new mongoose.Schema({
     primer_apellido : {type : String, requerid : true},
     segundo_apellido : {type : String, required : true},
     cedula : {type : String, unique : true, required : true},
-    fecha_ingreso : {type : Date, required : true},
+    fecha_ingreso : {type : String, required : true},
     rol : {type : String, required : true},
     direccion : {type: String, required : true},
     distrito : {type : String, required : true},
