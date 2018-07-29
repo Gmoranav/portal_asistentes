@@ -33,7 +33,7 @@ module.exports.registrar_laboratorios = function(req, res){
 };
 
 module.exports.listar_laboratorios = function(req, res){
-    laboratorioModel.find().sort({nombre : 'asc'}).then(
+    laboratorioModel.find().sort({$natural:-1}).then(
         function(laboratorios){
             res.send(laboratorios);
         }

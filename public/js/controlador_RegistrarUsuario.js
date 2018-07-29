@@ -33,7 +33,7 @@ function obtenerDatosFormulario(){
             type: 'warning',
             title: 'No se pudo registrar el usuario',
             text: 'Por favor revise los campos resaltados',
-            confirmButtonText: 'Entendido'
+            confirmButtonText: 'Aceptar'
         });
         
     }else{
@@ -59,17 +59,28 @@ function obtenerDatosFormulario(){
 
         if (respuesta.success = true){
             swal({
-                type : 'success',
-                title : 'Transacción procesada',
-                text: 'El usuario se registró adecuadamente', 
-                confirmButtonText : 'Listo'
-            });
+                type: 'success',
+                title: 'Transacción Procesada',
+                text: "Se registró el usuario con éxito!",
+                showCancelButton: true,
+                reverseButtons: true,
+                confirmButtonText: 'Volver a la lista',
+                cancelButtonText: 'Continuar Aqui',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#556566',
+                }).then((result) => {
+                    if(result.value){
+    
+                        window.location.href = "usuario_listar.html";
+                    }
+    
+                });
         }else{
             swal({
-                type : 'warning',
+                type : 'error',
                 title : 'Transacción fallida', 
                 text: 'No se pudo registrar el usuario', 
-                confirmButtonText : 'Entendido'
+                confirmButtonText : 'Aceptar'
             });
         }
 
