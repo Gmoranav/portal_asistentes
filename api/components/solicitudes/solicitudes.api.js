@@ -37,7 +37,7 @@ module.exports.registrar_solicitud = function(req, res){
 
 
 module.exports.listar_solicitudes = function(req, res){
-    solicitudModel.find().sort({primer_nombre: 'asc'}).then(
+    solicitudModel.find().sort({$natural:-1}).then(
         function(solicitudes){
             res.send(solicitudes);
         }

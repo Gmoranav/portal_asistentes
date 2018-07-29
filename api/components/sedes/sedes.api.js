@@ -30,7 +30,7 @@ module.exports.registrar = function (req, res) {
 
 
 module.exports.listar_sedes = function (req, res) {
-    sedes_model.find().sort({ nombre_sede: 'asc' }).then(
+    sedes_model.find().sort({$natural:-1}).then(
         function (sedes) {
             res.send(sedes);
         }
