@@ -87,7 +87,7 @@ function obtenerDatosFormulario(){
 
             swal({
                 type: 'error',
-                title: 'No se pudo registrar el grupo',
+                title: 'Problemas de conexión',
                 text: 'Por favor contactar al administrador',
                 confirmButtonText: 'Aceptar'
             });

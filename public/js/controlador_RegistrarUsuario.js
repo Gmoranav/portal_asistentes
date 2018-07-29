@@ -1681,8 +1681,8 @@ function obtenerDatosFormulario(){
         }else{
             swal({
                 type : 'error',
-                title : 'Transacción fallida', 
-                text: 'No se pudo registrar el usuario', 
+                title : 'Problemas de conexión', 
+                text: 'Por favor contactar al administrador', 
                 confirmButtonText : 'Aceptar'
             });
         }
