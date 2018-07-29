@@ -266,7 +266,26 @@ table{
 }
 
 .button--dashboard{
-    background-color: #fff;
+  width: 47%;
+  /* text-align: left; */
+  background-color: #fff;
+  border: 2px solid #f1f1f1;
+  margin: 5px 5px;
+  float: left;
+}
+.button--dashboard a{
+      font-size: 16px;
+  color: #8F2570;
+  font-weight: 600;
+  }
+
+.button--dashboard:hover{
+      background-color: #f1f1f1;
+}
+
+.button--dashboard:hover a{
+      background-color: #f1f1f1;
+        color: #8F2570;
 }
 
 .button--add-item{
@@ -643,4 +662,64 @@ body {
 
 .hidden{
     display: none;
+}
+
+/************************************/
+
+.profile-info.profile-info--dashboard {
+    position: static;
+    width: auto;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 1px 0px 8px 1px rgba(0,0,0,0.3);
+    margin: 10px;
+}
+
+.box-container-dashboard{
+    padding: 40px;
+    display: flex;
+        flex-direction: column;
+}
+
+.avatar.dropdown-profile__avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+}
+
+.dashboard-row{
+    display: flex;
+    flex-direction: row;
+}
+.dashboard-column{
+
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 1px 0px 8px 1px rgba(0,0,0,0.3);
+  margin: 10px;
+
+      width: 50%;
+}
+.dashboard-column h2{
+     margin-bottom: 15px;
+     }
+.card-perfil-dashboard{
+
+}
+.dashboard-column>a{
+  color: #8F2570;
+  width: 47%;
+  /* text-align: left; */
+  background-color: #fff;
+  margin: 10px 5px;
+  float: left;
+  font-weight: 600;
+}
+
+.dashboard-column>a:hover{
+  color: #6B1853;
+}
+
+.dashboard-column>a>i{
+  margin-right:5px;
 }

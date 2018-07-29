@@ -44,7 +44,7 @@
                         </li>
                         <li>
                             <a href="sede_listar.html" id="hide-sede">Sedes</a>
-                            
+
                         </li>
                         <li>
                             <a href="carrera_listar.html" id="hide-carrera">Carreras</a>
@@ -75,7 +75,7 @@
                         </button>
                         <img src="img/cenfo.png" class="img-cenfotec">
                     </div>
-        
+
                     <nav>
                         <a href="#">
                             <i class="fas fa-lg fa-search tooltip"><span class="tooltiptext">Buscar</span></i>
@@ -83,13 +83,21 @@
                         <a href="dashboard.html">
                             <i class="fas fa-lg fa-home tooltip"><span class="tooltiptext">Inicio</span></i>
                         </a>
-        
+
                         <div "dropdown-profile">
                             <button type="button" id="toggle-profile-dropdown" class="avatar">YM</button>
                             <div id="profile-info-dropdown" class="profile-info profile-info--hide">
-        
+
                                 <div class="avatar dropdown-profile__avatar">YM</div>
-                                
+                                <div class="dropdown-profile__info">
+                                    <h3>User Name</h3>
+                                    <label class="tag">admin</label>
+                                    <p>correo@example.com</p>
+                                    <div class="dropdown-profile__actions">
+                                        <a href="#" class="link-brand">Perfil</a>
+                                        <button class="button--secundario" id="boton_salir">salir</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </nav>
@@ -104,85 +112,94 @@
         <main class="page">
             <section class="box-container-dashboard">
                 <!--mostrar información básica del usuario-->
-                <div class="card-perfil-dashboard">
+                <!--div class="card-perfil-dashboard">
                     <h3>User Name</h3>
                     <label class="tag">admin</label>
                     <p>correo@example.com</p>
                     <div class="dropdown-profile__actions">
                         <a href="#" class="link-brand">Perfil</a>
                     </div>
+                </div-->
+
+
+                <div class="profile-info profile-info--dashboard">
+
+                    <div class="avatar dropdown-profile__avatar">YM</div>
+                    <div class="dropdown-profile__info">
+                        <h3>User Name</h3>
+                        <label class="tag">admin</label>
+                        <p>correo@example.com</p>
+                        <div class="dropdown-profile__actions">
+                            <a href="#" class="link-brand">Perfil</a>
+                        </div>
+                    </div>
                 </div>
 
                 <!--botones para reportes-->
-
+<div class="dashboard-row">
                 <div class="dashboard-column">
-                    <div class="dashboard-column-buttons" id="button-usuario">
-                        <button type="button" class="buttons-dashboard">
-                            <i class="fas fa-plus-circle"></i>
+                  <h2>Reportes</h2>
+
+                    <div id="button-usuario">
+                        <button type="button" class="button button--dashboard">
                             <a href="usuario_listar.html">Usuario</a>
                         </button>
                     </div>
 
-                    <div class="dashboard-column-buttons" id="button-solicitud">
-                        <button type="button" class="buttons-dashboard">
-                            <i class="fas fa-plus-circle"></i>
+                    <div id="button-solicitud">
+                      <button type="button" class="button button--dashboard">
                             <a href="solicitud-asistente_listar.html">Solicitud asistente</a>
                         </button>
                     </div>
-    
 
-                    <div class="dashboard-column-buttons" id="button-bitacora">
-                        <button type="button" class="buttons-dashboard">
-                            <i class="fas fa-plus-circle"></i>
+
+                    <div id="button-bitacora">
+                      <button type="button" class="button button--dashboard">
                             <a href="#">Bitácora</a>
                         </button>
                     </div>
 
-                    <div class="dashboard-column-buttons" id="button-sede">
-                        <button type="button" class="buttons-dashboard">
-                             <i class="fas fa-plus-circle"></i>
+                    <div id="button-sede">
+                      <button type="button" class="button button--dashboard">
                             <a href="sede_listar.html">Sedes</a>
                         </button>
                     </div>
 
-                    <div class="dashboard-column-buttons" id="button-carrera">
-                        <button type="button" class="buttons-dashboard">
-                            <i class="fas fa-plus-circle"></i>
+                    <div id="button-carrera">
+                      <button type="button" class="button button--dashboard">
                             <a href="carrera_listar.html">Carreras</a>
                         </button>
                     </div>
 
-                    <div class="dashboard-column-buttons" id="button-curso">
-                        <button type="button" class="buttons-dashboard">
-                            <i class="fas fa-plus-circle"></i>
+                    <div id="button-curso">
+                      <button type="button" class="button button--dashboard">
                             <a href="curso_listar.html">Cursos</a>
                         </button>
                     </div>
 
-                    <div class="dashboard-column-buttons" id="button-periodo">
-                        <button type="button" class="buttons-dashboard">
-                            <i class="fas fa-plus-circle"></i>
+                    <div id="button-periodo">
+                      <button type="button" class="button button--dashboard">
                             <a href="periodo_listar.html">Períodos</a>
                         </button>
                     </div>
 
-                    <div class="dashboard-column-buttons" id="button-grupo">
-                        <button type="button" class="buttons-dashboard">
-                            <i class="fas fa-plus-circle"></i>
+                    <div id="button-grupo">
+                      <button type="button" class="button button--dashboard">
                             <a href="grupo_listar.html">Grupos</a>
                         </button>
                     </div>
 
-                    <div class="dashboard-column-buttons" id="button-laboratorio">
-                        <button type="button" class="buttons-dashboard">
-                            <i class="fas fa-plus-circle"></i>
+                    <div id="button-laboratorio">
+                      <button type="button" class="button button--dashboard">
                             <a href="laboratorio_listar.html">Laboratorios</a>
                         </button>
                     </div>
+
                 </div>
 
 
                 <div class="dashboard-column configuracion">
+                                    <h2>Configuración</h2>
                     <a href="usuario_registrar.html" id="link-usuario"><i class="fas fa-plus-circle"></i>Registrar usuario</a>
                     <a href="solicitud-asistente_registrar.html" id="link-solicitud"><i class="fas fa-plus-circle"></i>Registrar solicitud de asistente</a>
                     <a href="#" id="link-bitacora"><i class="fas fa-plus-circle"></i>Bitacora</a>
@@ -193,7 +210,7 @@
                     <a href="grupo_registrar.html" id="link-grupo"><i class="fas fa-plus-circle"></i>Registrar grupos</a>
                     <a href="laboratorio_registrar.html" id="link-laboratorio"><i class="fas fa-plus-circle"></i>Registrar laboratorios</a>
                 </div>
-
+</div>
             </section>
         </main>
 
