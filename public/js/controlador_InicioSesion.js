@@ -17,7 +17,7 @@ function obtener_credenciales_usuario() {
         swal({
             type: 'warning',
             title: 'Campos incompletos',
-            text: 'Falta información, verifique los campos resaltados',
+            text: 'Falta información, verifique usuario y contraseña',
             confirmButtonText: 'Listo'
         });
     } else {
@@ -32,7 +32,7 @@ function obtener_credenciales_usuario() {
             swal({
                 type: 'warning',
                 title: 'Acceso denegado',
-                text: 'El usuario no se encuentra registrado',
+                text: 'Usuario o contraseña incorrectos',
                 confirmButtonText: 'Listo'
             });
         }
