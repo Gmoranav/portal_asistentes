@@ -27,7 +27,7 @@ function obtenerDatosCarrera(){
 
         swal({
             type: 'warning',
-            title: 'No se pudo registrar el curso',
+            title: 'No se pudo registrar la carrera',
             text: 'Por favor revise los campos resaltados',
             confirmButtonText: 'Aceptar'
         });
@@ -62,7 +62,7 @@ function obtenerDatosCarrera(){
 
             swal({
                 type: 'error',
-                title: 'No se pudo registrar el curso',
+                title: 'No se pudo registrar la carrera',
                 text: 'Por favor contactar al administrador',
                 confirmButtonText: 'Aceptar'
             });

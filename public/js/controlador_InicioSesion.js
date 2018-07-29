@@ -1,14 +1,14 @@
 // Debe enlazar este script en su documento html
 // Debe crear en html un botón  que tenga el id indicado aquí para llamar una función con él
-let boton_inicio = document.querySelector("#btnRegistrar");
-boton_inicio.addEventListener('click', obtener_credenciales_usuario);
+let boton_inicio = document.querySelector('#btnRegistrar');
+boton_inicio.addEventListener("click", obtener_credenciales_usuario);
 
 // función que toma los datos del formulario inicio sesión
 function obtener_credenciales_usuario() {
 
     let bError = false;
-    let cedula = document.querySelector("#txtCedula").value;
-    let contrasenna = document.querySelector("#txtContrasenna").value;
+    let cedula = document.querySelector('#txtCedula').value;
+    let contrasenna = document.querySelector('#txtContrasenna').value;
 
 
     bError = validar();
