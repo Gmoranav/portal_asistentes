@@ -18,7 +18,7 @@ function obtener_credenciales_usuario() {
             type: 'warning',
             title: 'Campos incompletos',
             text: 'Falta información, verifique los campos resaltados',
-            confirmButtonText: 'Aceptar'
+            confirmButtonText: 'Listo'
         });
     } else {
         let valido = validar_credenciales(cedula, contrasenna);
@@ -33,7 +33,7 @@ function obtener_credenciales_usuario() {
                 type: 'warning',
                 title: 'Acceso denegado',
                 text: 'El usuario no se encuentra registrado',
-                confirmButtonText: 'Aceptar'
+                confirmButtonText: 'Listo'
             });
         }
     }
@@ -92,7 +92,7 @@ function cerrarSesión() {
 function redireccionarUsuario() {
     let usuarioAutenticado = getUsuarioAutenticado();
 
-    window.location = "carrera_listar.html";
+    window.location = "dashboard.html";
 
     switch (usuarioAutenticado.rol) {
         case 'Administrador':

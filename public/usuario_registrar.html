@@ -19,23 +19,23 @@
             <nav>
                     <ul>
                         <li>
-                            <a href="pagina_principal.html">
+                            <a href="dashboard.html">
                                 <i class="fas fa-home fa-fw"></i>&nbsp;Inicio</a>
                         </li>
                         <li>
-                            <a href="perfil.html">Perfil</a>
+                            <a href="#">Perfil</a>
                         </li>
                         <li>
-                            <a href="usuario_listar.html" >Usuarios</a>
+                            <a href="usuario_listar.html" id="hide-usuario">Usuarios</a>
                         </li>
                         <li>
                             <a>Asistentes</a>
                             <ul>
                                 <li>
-                                    <a href="solicitud-asistente_listar.html">Solicitudes</a>
+                                    <a href="solicitud-asistente_listar.html" id="hide-solicitud">Solicitudes</a>
                                 </li>
                                 <li>
-                                    <a href="#">Información Académica</a>
+                                    <a href="#" id="hide-info-academica">Información Académica</a>
                                 </li>
                                 <li>
                                     <a href="#">Bitácoras</a>
@@ -43,22 +43,22 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="sede_listar.html">Sedes</a>
+                            <a href="sede_listar.html" id="hide-sede">Sedes</a>
                         </li>
                         <li>
-                            <a href="carrera_listar.html">Carreras</a>
+                            <a href="carrera_listar.html" id="hide-carrera">Carreras</a>
                         </li>
                         <li>
-                            <a href="curso_listar.html">Cursos</a>
+                            <a href="curso_listar.html" id="hide-curso">Cursos</a>
                         </li>
                         <li>
-                            <a href="periodo_listar.html">Periodos</a>
+                            <a href="periodo_listar.html" id="hide-periodo">Periodos</a>
                         </li>
                         <li>
-                            <a href="grupo_listar.html">Grupos</a>
+                            <a href="grupo_listar.html" id="hide-grupo">Grupos</a>
                         </li>
                         <li>
-                            <a href="laboratorio_listar.html">Laboratorios</a>
+                            <a href="laboratorio_listar.html" id="hide-laboratorio">Laboratorios</a>
                         </li>
                     </ul>
                 </nav>
@@ -79,7 +79,7 @@
                         <a href="#">
                             <i class="fas fa-lg fa-search tooltip"><span class="tooltiptext">Buscar</span></i>
                         </a>
-                        <a href="pagina_principal.html">
+                        <a href="dashboard.html">
                             <i class="fas fa-lg fa-home tooltip"><span class="tooltiptext">Inicio</span></i>
                         </a>
         
@@ -93,8 +93,8 @@
                                     <label class="tag">admin</label>
                                     <p>correo@example.com</p>
                                     <div class="dropdown-profile__actions">
-                                        <a href="perfil.html" class="link-brand">Perfil</a>
-                                        <button class="button--secundario">salir</button>
+                                        <a href="#" class="link-brand">Perfil</a>
+                                        <button class="button--secundario" id="boton_salir">salir</button>
                                     </div>
                                 </div>
                             </div>
@@ -162,7 +162,7 @@
                         <label for="txtCedula">Cédula
                             <span>*</span>
                         </label>
-                        <input type="text" id="txtCedula" placeholder="4-1254-0847" required>
+                        <input type="text" id="txtCedula" placeholder="402540847" required>
                     </div>
                 </div>
                 
@@ -172,7 +172,7 @@
                         <label for="txtFechaIngreso">Fecha de ingreso
                             <span>*</span>
                         </label>
-                        <input type="date" id="txtFechaIngreso" required>
+                        <input type="text" id="txtFechaIngreso" required>
                     </div>
                 </div>
                 
@@ -205,32 +205,34 @@
                 <!--fila provincia-canton-distrito-->
                 <div class="form-row">
                     <div class="form-group form-group-3">
-                        <label for="txtDistrito">Distrito
-                            <span>*</span>
-                        </label>
-                        <input type="text" id="txtDistrito" required>
-                    </div>
-
-                    <div class="form-group form-group-3">
-                        <label for="txtCanton">Cantón
-                            <span>*</span>
-                        </label>
-                        <input type="text" id="txtCanton" required>
-                    </div>
-
-                    <div class="form-group form-group-3">
                         <label for="txtProvincia">Provincia
                             <span>*</span>
                         </label>
                         <select id="txtProvincia" requiered>
                             <option value="">--Seleccione una provincia--</option>
-                            <option value="San_Jose">San José</option>
                             <option value="Alajuela">Alajuela</option>
                             <option value="Cartago">Cartago</option>
-                            <option value="Heredia">Heredia</option>
                             <option value="Guanacaste">Guanacaste</option>
+                            <option value="Heredia">Heredia</option>
+                            <option value="Limón">Limón</option>
                             <option value="Puntarenas">Puntarenas</option>
-                            <option value="Limon">Limón</option>
+                            <option value="San José">San José</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-group-3">
+                        <label for="txtCanton">Cantón
+                            <span>*</span>
+                        </label>
+                        <select id="txtCanton">
+                            <option value="">--Seleccione el cantón--</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-group-3">
+                        <label for="txtDistrito">Distrito
+                            <span>*</span>
+                        </label>
+                        <select id="txtDistrito">
+                            <option value="">--Seleccione el distrito--</option>
                         </select>
                     </div>
                 </div>
@@ -264,6 +266,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.25.0/dist/sweetalert2.all.min.js"></script>
     <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/controlador_InicioSesion.js"></script>
     <script src="js/components.js"></script>
     <script src="js/servicio_RegistrarUsuario.js"></script>
     <script src="js/controlador_RegistrarUsuario.js"></script>

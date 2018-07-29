@@ -62,7 +62,7 @@ function obtener_datos() {
 
         swal({
             type: 'error',
-            title: 'No se pudo registrar el periodo',
+            title: 'Problemas de conexión',
             text: 'Por favor contactar al administrador',
             confirmButtonText: 'Aceptar'
         });

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+        crossorigin="anonymous">
+</head>
+
+<body class="body-container">
+
+    <!--Acá empieza la navegación que es parte de todas las paginas-->
+    <aside id="panel-menu" class="panel-menu">
+            <nav>
+                    <ul>
+                        <li>
+                            <a href="dashboard.html">
+                                <i class="fas fa-home fa-fw"></i>&nbsp;Inicio</a>
+                        </li>
+                        <li>
+                            <a href="#">Perfil</a>
+                        </li>
+                        <li>
+                            <a href="usuario_listar.html">Usuarios</a>
+                        </li>
+                        <li>
+                            <a>Asistentes</a>
+                            <ul>
+                                <li>
+                                    <a href="solicitud-asistente_listar.html">Solicitudes</a>
+                                </li>
+                                <li>
+                                    <a href="informacion_academica_registrar.html">Información Académica</a>
+                                </li>
+                                <li>
+                                    <a href="bitacora_listar.html">Bitácoras</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="sede_listar.html">Sedes</a>
+                        </li>
+                        <li>
+                            <a href="carrera_listar.html">Carreras</a>
+                        </li>
+                        <li>
+                            <a href="curso_listar.html">Cursos</a>
+                        </li>
+                        <li>
+                            <a href="periodo_listar.html">Periodos</a>
+                        </li>
+                        <li>
+                            <a href="grupo_listar.html">Grupos</a>
+                        </li>
+                        <li>
+                            <a href="laboratorio_listar.html">Laboratorios</a>
+                        </li>
+                    </ul>
+                </nav>
+    </aside>
+
+    <div class="container">
+
+
+            <header class="panel-header">
+                    <div>
+                        <button id="button-nav-collapse" type="button">
+                            <i id="hamburguer" class="fas fa-bars"></i>
+                        </button>
+                        <img src="img/cenfo.png" class="img-cenfotec">
+                    </div>
+        
+                    <nav>
+                        <a href="#">
+                            <i class="fas fa-lg fa-search tooltip"><span class="tooltiptext">Buscar</span></i>
+                        </a>
+                        <a href="dashboard.html">
+                            <i class="fas fa-lg fa-home tooltip"><span class="tooltiptext">Inicio</span></i>
+                        </a>
+        
+                        <div "dropdown-profile">
+                            <button type="button" id="toggle-profile-dropdown" class="avatar">YM</button>
+                            <div id="profile-info-dropdown" class="profile-info profile-info--hide">
+        
+                                <div class="avatar dropdown-profile__avatar">YM</div>
+                                
+                            </div>
+                        </div>
+                    </nav>
+                </header>
+
+        <div class="header-page">
+            <h1>Dashboard </h1>
+        </div>
+        <!--Acá termina la navegación que es parte de todas las paginas-->
+
+        <!--este main parte de todas las paginas y engloba el contenido-->
+        <main class="page">
+            <section class="box-container-dashboard">
+                <!--mostrar información básica del usuario-->
+                <div class="card-perfil-dashboard">
+                    <h3>User Name</h3>
+                    <label class="tag">admin</label>
+                    <p>correo@example.com</p>
+                    <div class="dropdown-profile__actions">
+                        <a href="#" class="link-brand">Perfil</a>
+                    </div>
+                </div>
+
+                <!--botones para reportes-->
+
+                <div class="dashboard-column">
+                    <div class="dashboard-column-buttons" id="button-usuario">
+                        <button type="button" class="buttons-dashboard">
+                            <i class="fas fa-plus-circle"></i>
+                            <a href="usuario_listar.html">Usuario</a>
+                        </button>
+                    </div>
+
+                    <div class="dashboard-column-buttons" id="button-solicitud">
+                        <button type="button" class="buttons-dashboard">
+                            <i class="fas fa-plus-circle"></i>
+                            <a href="solicitud-asistente_listar.html">Solicitud asistente</a>
+                        </button>
+                    </div>
+    
+
+                    <div class="dashboard-column-buttons" id="button-bitacora">
+                        <button type="button" class="buttons-dashboard">
+                            <i class="fas fa-plus-circle"></i>
+                            <a href="#">Bitácora</a>
+                        </button>
+                    </div>
+
+                    <div class="dashboard-column-buttons" id="button-sede">
+                        <button type="button" class="buttons-dashboard">
+                             <i class="fas fa-plus-circle"></i>
+                            <a href="sede_listar.html">Sedes</a>
+                        </button>
+                    </div>
+
+                    <div class="dashboard-column-buttons" id="button-carrera">
+                        <button type="button" class="buttons-dashboard">
+                            <i class="fas fa-plus-circle"></i>
+                            <a href="carrera_listar.html">Carreras</a>
+                        </button>
+                    </div>
+
+                    <div class="dashboard-column-buttons" id="button-curso">
+                        <button type="button" class="buttons-dashboard">
+                            <i class="fas fa-plus-circle"></i>
+                            <a href="curso_listar.html">Cursos</a>
+                        </button>
+                    </div>
+
+                    <div class="dashboard-column-buttons" id="button-periodo">
+                        <button type="button" class="buttons-dashboard">
+                            <i class="fas fa-plus-circle"></i>
+                            <a href="periodo_listar.html">Períodos</a>
+                        </button>
+                    </div>
+
+                    <div class="dashboard-column-buttons" id="button-grupo">
+                        <button type="button" class="buttons-dashboard">
+                            <i class="fas fa-plus-circle"></i>
+                            <a href="grupo_listar.html">Grupos</a>
+                        </button>
+                    </div>
+
+                    <div class="dashboard-column-buttons" id="button-laboratorio">
+                        <button type="button" class="buttons-dashboard">
+                            <i class="fas fa-plus-circle"></i>
+                            <a href="laboratorio_listar.html">Laboratorios</a>
+                        </button>
+                    </div>
+                </div>
+
+
+                <div class="dashboard-column configuracion">
+                    <a href="usuario_registrar.html" id="link-usuario"><i class="fas fa-plus-circle"></i>Registrar usuario</a>
+                    <a href="solicitud-asistente_registrar.html" id="link-solicitud"><i class="fas fa-plus-circle"></i>Registrar solicitud de asistente</a>
+                    <a href="#" id="link-bitacora"><i class="fas fa-plus-circle"></i>Bitacora</a>
+                    <a href="sede_registrar.html" id="link-sede"><i class="fas fa-plus-circle"></i>Registrar sede</a>
+                    <a href="carrera_registrar.html" id="link-carrera"><i class="fas fa-plus-circle"></i>Rgistrar carrera</a>
+                    <a href="curso_registrar.html" id="link-curso"><i class="fas fa-plus-circle"></i>Registrar curso</a>
+                    <a href="periodo_registrar.html" id="link-periodo"><i class="fas fa-plus-circle"></i>Registrar período</a>
+                    <a href="grupo_registrar.html" id="link-grupo"><i class="fas fa-plus-circle"></i>Registrar grupos</a>
+                    <a href="laboratorio_registrar.html" id="link-laboratorio"><i class="fas fa-plus-circle"></i>Registrar laboratorios</a>
+                </div>
+
+            </section>
+        </main>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.25.0/dist/sweetalert2.all.min.js"></script>
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/servicio_RegistrarUsuario.js"></script>
+    <script src="js/controlador_RegistrarUsuario.js"></script>
+</body>
+
+</html>

@@ -118,7 +118,7 @@ function obtenerDatosFormulario(){
 
             swal({
                 type: 'error',
-                title: 'No se pudo registrar la solicitud',
+                title: 'Problemas de conexión',
                 text: 'Por favor contactar al administrador',
                 confirmButtonText: 'Aceptar'
             });

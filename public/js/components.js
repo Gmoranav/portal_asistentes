@@ -1,3 +1,6 @@
+validacion_rol_dashboard();
+validacion_rol_nav();
+
 var button_collapse = document.getElementById("button-nav-collapse");
 
 button_collapse.addEventListener("click", function () {
@@ -41,6 +44,16 @@ button_dropdown.addEventListener("click", function () {
 
 });
 
+let boton_salirPortal = document.querySelector('#boton_salir');
+boton_salirPortal.addEventListener('click', salir);
+
+function salir(){
+
+    window.location.href = "inicioSesion.html";  
+}
+
+   
+
 
 function readURL(input) {
     if (input.files && input.files[0]) {
@@ -57,12 +70,90 @@ $("#imageUpload").change(function() {
     readURL(this);
 });
 
+function validacion_rol_dashboard (){
+    let tipoAcceso = JSON.parse(localStorage.getItem('tipoDeRol'));
+    console.log(tipoAcceso);
+
+    let button_usuario = document.getElementById('button-usuario');
+    let button_solicitud = document.getElementById('button-solicitud');
+    let button_sede = document.getElementById('button-sede');
+    let button_carrera = document.getElementById('button-carrera');
+    let button_curso = document.getElementById('button-curso');
+    let button_periodo = document.getElementById('button-periodo');
+    let button_grupo = document.getElementById('button-grupo');
+    let button_laboratorio = document.getElementById('button-laboratorio');
+
+    let link_usuario = document.getElementById('link-usuario');
+    let link_solicitud = document.getElementById('link-solicitud');
+    let link_sede = document.getElementById('link-sede');
+    let link_carrera = document.getElementById('link-carrera');
+    let link_curso = document.getElementById('link-curso');
+    let link_periodo = document.getElementById('link-periodo');
+    let link_grupo = document.getElementById('link-grupo');
+    let link_laboratorio = document.getElementById('link-laboratorio');
+
+    if(tipoAcceso === 'Rectoría' || tipoAcceso === 'Decanatura'){
+        button_usuario.className = "hidden";
+        link_usuario.className = "hidden";
+    }
+
+    if(tipoAcceso === 'AsistenteDecanatura'){
+        button_usuario.className = "hidden";
+        link_usuario.className = "hidden";
+    }
+
+    if(tipoAcceso === 'Profesor'){
+        button_usuario.className = "hidden";
+        link_usuario.className = "hidden";
+
+        button_sede.className = "hidden";
+        link_sede.className = "hidden";
+
+        button_carrera.className = "hidden";
+        link_carrera.className = "hidden";
+
+        button_curso.className = "hidden";
+        link_curso.className = "hidden";
+
+        button_periodo.className = "hidden";
+        link_periodo.className = "hidden";
+
+        button_grupo.className = "hidden";
+        link_grupo.className = "hidden";
+
+        button_laboratorio.className = "hidden";
+        link_laboratorio.className = "hidden";
+    }
+
+    if(tipoAcceso === 'AsistenteProfesor'){
+        button_usuario.className = "hidden";
+        link_usuario.className = "hidden";
+
+        button_solicitud.className = "hidden";
+        link_solicitud.className = "hidden";
+
+        button_sede.className = "hidden";
+        link_sede.className = "hidden";
+
+        button_carrera.className = "hidden";
+        link_carrera.className = "hidden";
+
+        button_curso.className = "hidden";
+        link_curso.className = "hidden";
+
+        button_periodo.className = "hidden";
+        link_periodo.className = "hidden";
+
+        button_grupo.className = "hidden";
+        link_grupo.className = "hidden";
+
+        button_laboratorio.className = "hidden";
+        link_laboratorio.className = "hidden";
+    }
+};
 
 
-
-window.onload = validacion_rol;
-
-function  validacion_rol () {
+function  validacion_rol_nav () {
 
     let tipoDeAcceso = JSON.parse(localStorage.getItem('tipoDeRol'));
     console.log(tipoDeAcceso);
