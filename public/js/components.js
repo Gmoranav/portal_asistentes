@@ -44,8 +44,6 @@ button_dropdown.addEventListener("click", function () {
 
 });
 
-<<<<<<< HEAD
-=======
 let boton_salirPortal = document.querySelector('#boton_salir');
 boton_salirPortal.addEventListener('click', salir);
 
@@ -56,7 +54,6 @@ function salir(){
 
    
 
->>>>>>> 9d1097da8fd782f96a6e6894e6b4a0b72564b07b
 
 function readURL(input) {
     if (input.files && input.files[0]) {
@@ -106,6 +103,9 @@ function validacion_rol_dashboard (){
     }
 
     if(tipoAcceso === 'Profesor'){
+        button_usuario.className = "hidden";
+        link_usuario.className = "hidden";
+
         button_sede.className = "hidden";
         link_sede.className = "hidden";
 
@@ -126,6 +126,9 @@ function validacion_rol_dashboard (){
     }
 
     if(tipoAcceso === 'AsistenteProfesor'){
+        button_usuario.className = "hidden";
+        link_usuario.className = "hidden";
+
         button_solicitud.className = "hidden";
         link_solicitud.className = "hidden";
 
