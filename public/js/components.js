@@ -46,11 +46,11 @@ button_dropdown.addEventListener("click", function () {
 });
 
 let boton_salirPortal = document.querySelector('#boton_salir');
-boton_salir.addEventListener('click', salir);
+boton_salirPortal.addEventListener('click', salir);
 
 function salir(){
 
-    window.location.href = "inicioSesion.html"  
+    window.location.href = "inicioSesion.html";  
 }
 
    
