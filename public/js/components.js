@@ -64,7 +64,9 @@ window.onload = validacion_rol;
 
 function  validacion_rol () {
 
-    let rol = getRol();
+    let tipoDeAcceso = JSON.parse(localStorage.getItem('tipoDeRol'));
+    console.log(tipoDeAcceso);
+
     let menu_option_usuario = document.getElementById('hide-usuario');
     let menu_option_solicitud = document.getElementById('hide-solicitud');
     let menu_option_sede = document.getElementById('hide-sede');
@@ -75,18 +77,16 @@ function  validacion_rol () {
     let menu_option_laboratorio = document.getElementById('hide-laboratorio');
     let menu_option_info_academica = document.getElementById('hide-info-academica');
     
-    let rol = 'AsistenteProfesor';
 
-  
-    if(rol === 'Rectoria' || rol === 'Decanatura'){
+    if(tipoDeAcceso === 'Rectoría' || tipoDeAcceso === 'Decanatura'){
         menu_option_usuario.className = "hidden";
     }
 
-    if(rol === 'AsistenteDecanatura'){
+    if(tipoDeAcceso === 'AsistenteDecanatura'){
         menu_option_usuario.className = "hidden";
     }
 
-    if(rol === 'Profesor'){
+    if(tipoDeAcceso === 'Profesor'){
         menu_option_usuario.className = "hidden";
         menu_option_sede.className = "hidden";
         menu_option_carrera.className = "hidden";
@@ -97,7 +97,7 @@ function  validacion_rol () {
         menu_option_info_academica.className = "hidden";
     }
 
-    if(rol === 'AsistenteProfesor'){
+    if(tipoDeAcceso === 'AsistenteProfesor'){
         menu_option_usuario.className = "hidden";
         menu_option_sede.className = "hidden";
         menu_option_carrera.className = "hidden";
