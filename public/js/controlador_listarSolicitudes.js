@@ -1,40 +1,137 @@
 /*
-Responsabilidades del servicio
-    - Procesamiento de datos (cálculos)
-    - Almacenamiento temporal de los datos
-    - Comunicar el public (front-end) con el api (back-end)
+Responsabilidades del controlador
+    - Leer datos de la interfaz
+    - Imprimir datos dentro de la interfaz
+    - Validar datos (formularios)
+    - Responder a eventos (click, change, keyup...)
+    - Se comunica con el servicio, cuando se requiera algún procesamiento de datos
 */
 
 'use strict';
 
-function obtenerListaSolicitudes(){
+window.addEventListener('load', listarSolicitudes)
 
-    //cambiar Examples por lo que se vaya a listar. Debe estar en plural
-    let listaSolicitudes = [];
+function imprimirListaSolicitudes(/*pFiltro*/plistaSolicitudes){
 
-    //let respuesta = '';
-    let peticion = $.ajax({
-        //*cambiar examples en el url por lo que se vaya a registrar, debe estar en plural
-        url : 'http://localhost:4000/api/listar_solicitudes',
-        type : 'get',
-        contentType : 'application/x-www-form-urlencoded; charset=utf-8',
-        dataType : 'json',
-        async : false,
-        data:{
-        }
-      });
-    
-      peticion.done(function(response){
-        listaSolicitudes = response;
-      });
-    
-      peticion.fail(function(response){
-        listaSolicitudes = response;
-      });
+   // let plistaSolicitudes = obtenerListaSolicitudes();
+
+    let tbody = document.querySelector('#tblListarSolicitudes')//Cambiar Examples por lo que se vaya a listar, usar nombre en plural
+                                                            //(ejemplo: cursos, sedes...)
+
+    /*if(!plistaSolicitudes){
+        plistaSolicitudes = '';
+    }*/
+
+    tbody.innerHTML = '';
+
+    //Cambiar Examples por lo que se vaya a listar, usar nombre en plural (ejemplo: cursos, sedes...)
+    for(let i = 0; i < plistaSolicitudes.length; i++){
+
+        /*los nombres que están entre corchetes y comillas simples
+        deben ser los mismos que están en la función registrarExamples del archivo servicio.
+        Están en la sección data{}.  NO los que vienen por parámetro sino lo que se declaran en
+        la función.  Se deben colocar en el mismo orden*/
 
 
-    //cambiar Examples por lo que se vaya a listar. Debe estar en plural
-    return listaSolicitudes;
+
+
+        //if(let i = 0; i < plistaSolicitudes.length; i++){
+            let fila = tbody.insertRow();
+
+            let sPrimerNombre = plistaSolicitudes[i]['primer_nombre'];
+            let sSegundoNombre = plistaSolicitudes[i]['segundo_nombre'];
+            let sPrimerApellido = plistaSolicitudes[i]['primer_apellido'];
+            let sSegundoApellido = plistaSolicitudes[i]['segundo_apellido'];
+
+            let espacio = ' ';
+
+            let snombreCompleto = fila.insertCell();
+            let sCurso = fila.insertCell();
+            let sPeriodo = fila.insertCell();
+            let sGrupo = fila.insertCell();
+            let nCantidadAlumnos = fila.insertCell();
+            /*let shorario = fila.insertCell();*/
+
+            snombreCompleto.innerHTML = sPrimerNombre.concat(espacio,
+                sSegundoNombre, espacio, sPrimerApellido, espacio, sSegundoApellido);
+
+            sCurso.innerHTML = plistaSolicitudes[i]['curso'];
+            sPeriodo.innerHTML = plistaSolicitudes[i]['periodo'];
+            sGrupo.innerHTML = plistaSolicitudes[i]['grupo'];
+            nCantidadAlumnos.innerHTML = plistaSolicitudes[i]['cantidad_alumnos'];
+            /*shorario.innerHTML = plistaSolicitudes[i]['horario'];*/
+        //}
+
+    }
+
+};
+
+//dejar las palabras "lista" y "listar" y cambiar Examples por lo que se esté listando
+// por ejemplo: cursos, carreras, sedes.  Debe estar en plural
+
+
+function listarSolicitudes(){
+
+        let listaSolicitudes = obtenerListaSolicitudes();
+        imprimirListaSolicitudes(listaSolicitudes);
 }
 
 
+
+
+//en esta función solo hay que cambiar los input por lo que se requiera, todo lo demas queda igual
+function validar(){
+    let bError = false;
+
+    let regexSoloLetras = /^[a-z A-ZáéíóúÁÉÍÓÚñÑ]+$/;
+    let regexSoloNumeros = /^[0-9]{1,3}$/;
+
+
+
+
+
+    //Validación del nombre completo
+    if(inputPrimerNombre.value == '' || (regexSoloLetras.test(inputPrimerNombre.value)==false) ){
+        inputPrimerNombre.classList.add('input_error');
+        bError = true;
+    }else{
+        inputPrimerNombre.classList.remove('input_error');
+    }
+    //Validación del correo
+    if(inputPrimerApellido.value == ''){
+        inputPrimerApellido.classList.add('input_error');
+        bError = true;
+    }else{
+        inputPrimerApellido.classList.remove('input_error');
+    }
+
+    if(inputSegundoApellido.value == ''){
+        inputSegundoApellido.classList.add('input_error');
+        bError = true;
+    }else{
+        inputSegundoApellido.classList.remove('input_error');
+    }
+
+    //Validación de la edad
+    if(inputCantidadAlumnos.value == '' || (regexSoloNumeros.test(inputCantidadAlumnos.value) == false) || Number(inputCantidadAlumnos.value) < Number(inputCantidadAlumnos.min)  || Number(inputCantidadAlumnos.value) > Number(inputCantidadAlumnos.max)){
+        inputCantidadAlumnos.classList.add('input_error');
+        bError = true;
+    }else{
+        inputCantidadAlumnos.classList.remove('input_error');
+    }
+
+    return bError;
+};
+
+//en esta función solo hay que cambiar los input por lo que se requiera, todo lo demas queda igual
+function limpiarFormulario(){
+    inputPrimerNombre.value = '';
+    inputSegundoNombre.value = '';
+    inputPrimerApellido.value ='';
+    inputSegundoApellido.value = '';
+    inputCurso.value = '';
+    inputGrupo.value = '';
+    inputPeriodo.value = '';
+    inputCantidadAlumnos.value = 0;
+    inputHorario.value = '';
+}
