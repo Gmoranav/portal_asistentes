@@ -11,9 +11,15 @@ module.exports.registrar_grupos = function(req, res){
     let nuevoGrupo = new grupoModel({
 
         /**Este es el mismo input que el de model.js */
+        sedeGrupo : req.body.sedeGrupo,
+        carreraGrupo : req.body.carreraGrupo,
+        cursoGrupo : req.body.cursoGrupo,
+        periodoGrupo : req.body.periodoGrupo,
         nombre : req.body.nombre,
         laboratorio : req.body.laboratorio,
         profesor : req.body.profesor,
+        profesor2 : req.body.profesor2,
+        profesor3 : req.body.profesor3,
         cantidad_de_estudiantes : req.body.cantidad_de_estudiantes,
         horario : req.body.horario
 
@@ -41,19 +47,5 @@ module.exports.listar_grupos = function(req, res){
         function(grupos){
             res.send(grupos);
         }
-    ); 
-};
-
-
-/**
- * 
- * module.exports.listar_carreras = function(req, res){
-    //carreraModel.find().sort({nombre_carrera : 'asc'}).then(
-    carreraModel.find().sort({$natural:-1}).then(
-
-        function(carreras){
-            res.send(carreras);
-        }
     );
 };
- */
