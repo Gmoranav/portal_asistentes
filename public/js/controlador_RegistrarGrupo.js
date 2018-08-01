@@ -18,9 +18,15 @@ const botonRegistrar = document.querySelector('#btnRegistrar');
 
 //estos nombres cambiarlos por lo que corresponda en el html
 //manejarlos en singular
+const inputSede = document.querySelector('#txtSedeGrupo');
+const inputCarrera = document.querySelector('#txtCarreraGrupo');
+const inputCurso = document.querySelector('#txtCursoGrupo');
+const inputPeriodo = document.querySelector('#txtPeriodoGrupo');
 const inputNombre = document.querySelector('#txtNombre');
 const inputLaboratorio = document.querySelector('#txtLaboratorio');
 const inputProfesor = document.querySelector('#txtProfesor');
+const inputProfesor2 = document.querySelector('#txtProfesor2');
+const inputProfesor3 = document.querySelector('#txtProfesor3');
 const inputCantidadEstu = document.querySelector('#txtCantEstudiantes');
 const inputHorario = document.querySelector('#txtHorario');
 //const inputFiltro = document.querySelector('#txtFiltro'); esto lo vemos con el profe el miercoles
@@ -39,107 +45,46 @@ function obtenerDatosFormulario(){
     let bError = false;
 
     //nombrar estas variables con el mismo nombre de las "const" de arriba
+    let sSede = inputSede.value;
+    let sCarrera = inputCarrera.value;
+    let sCurso = inputCurso.value;
+    let sPeriodo = inputPeriodo.value;
     let sNombre = inputNombre.value;
     let sLaboratorio = inputLaboratorio.value;
     let sProfesor = inputProfesor.value;
+    let sProfesor2 = inputProfesor2.value;
+    let sProfesor3 = inputProfesor3.value;
     let sCantidadEstu = Number(inputCantidadEstu.value);
     let sHorario = inputHorario.value;
 
     
     
     bError = validar();
-    let respuesta;
 
     if(bError == true){
         swal({
             type : 'Warning',
             title : 'No se pudo registrar el grupo', //cambiar example según lo que se esté registrando
             text: 'Por favor revise los campos resaltados', //
-            confirmButtonText : 'Aceptar'
+            confirmButtonText : 'Listo'
         });
        
     }else{
-
         //cambiar Example y parámetros de la función por lo que se esté registrando, pornerlo en singular
-        respuesta = registrarGrupo(sNombre, sLaboratorio, sProfesor, sCantidadEstu, sHorario);//esta funcion está en el servicio
-        
-        if(respuesta.success == true){
-
-            swal({
-                type: 'success',
-                title: 'Transacción Procesada',
-                text: "Se registró el grupo con éxito!",
-                showCancelButton: true,
-                reverseButtons: true,
-                confirmButtonText: 'Volver a la lista',
-                cancelButtonText: 'Continuar Aqui',
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#556566',
-                }).then((result) => {
-                    if(result.value){
-    
-                        window.location.href = "grupo_listar.html";
-                    }
-    
-                });
-
-        }else{
-
-            swal({
-                type: 'error',
-                title: 'Problemas de conexión',
-                text: 'Por favor contactar al administrador',
-                confirmButtonText: 'Aceptar'
-            });
-
-
-        }
-
+        registrarGrupo(sSede, sCarrera, sCurso, sPeriodo, sNombre, sLaboratorio, sProfesor, sProfesor2,
+        sProfesor3, sCantidadEstu, sHorario);//esta funcion está en el servicio
+        swal({
+            type : 'Success',
+            title : 'Transacción procesada',
+            text: 'El grupo se registró adecuadamente', //cambiar example por lo que se esté registrando
+            confirmButtonText : 'Listo'
+        });
 
         //este nombre queda igual
         limpiarFormulario();
     }
     
 };
-
-/*Cambiar Examples por lo que se vaya a listar, usar nombre en plural (ejemplo: cursos, sedes...)
-function imprimirListaGrupos(){
-    
-    let listaGrupos = obtenerListaGrupos();
-    let tbody = document.querySelector('#box-container table-list tbody');//Cambiar Examples por lo que se vaya a listar, usar nombre en plural
-                                                            //(ejemplo: cursos, sedes...)
-    /*if(!pFiltro){
-        pFiltro = '';
-    }*/
-/*    tbody.innerHTML = '';
-
-
-    //Cambiar Examples por lo que se vaya a listar, usar nombre en plural (ejemplo: cursos, sedes...)
-    for(let i = 0; i < listaGrupos.length; i++){
-
-        /*los nombres que están entre corchetes y comillas simples
-        deben ser los mismos que están en la función registrarExamples del archivo servicio.
-        Están en la sección data{}.  NO los que vienen por parámetro sino lo que se declaran en
-        la función.  Se deben colocar en el mismo orden*/
-/*        let fila = tbody.insertRow();
-                    
-        let cNombre = fila.insertCell();
-        let cLaboratorio = fila.insertCell();
-        let cProfesor = fila.insertCell();
-        let cEstudiantes = fila.insertCell();
-        let cHorario = fila.insertCell();
-        
-        
-        cNombre.innerHTML = listaGrupos[i]['nombre'];
-        cLaboratorio.innerHTML = listaGrupos[i]['laboratorio'];
-        cProfesor.innerHTML = listaGrupos[i]['profesor'];
-        cEstudiantes.innerHTML = listaGrupos[i]['cantidad_de_estudiantes'];
-        cHorario.innerHTML = listaGrupos[i]['horario'];
-        
-        
-    }
-
-};*/
 
 //dejar las palabras "lista" y "listar" y cambiar Examples por lo que se esté listando
 // por ejemplo: cursos, carreras, sedes.  Debe estar en plural
@@ -157,6 +102,34 @@ function validar(){
     let regexSoloNumeros = /^[0-9]{1,3}$/;
 
     //Validación del nombre del grupo
+    if(inputSede.value == ''){
+        inputSede.classList.add('input_error');
+        bError = true;
+    }else{
+        inputSede.classList.remove('input_error');
+    }
+
+    if(inputCarrera.value == ''){
+        inputCarrera.classList.add('input_error');
+        bError = true;
+    }else{
+        inputCarrera.classList.remove('input_error');
+    }
+
+    if(inputCurso.value == ''){
+        inputCurso.classList.add('input_error');
+        bError = true;
+    }else{
+        inputCurso.classList.remove('input_error');
+    }
+
+    if(inputPeriodo.value == ''){
+        inputPeriodo.classList.add('input_error');
+        bError = true;
+    }else{
+        inputPeriodo.classList.remove('input_error');
+    }
+
     if(inputNombre.value == ''){
         inputNombre.classList.add('input_error');
         bError = true;
@@ -199,9 +172,14 @@ function validar(){
 
 //en esta función solo hay que cambiar los input por lo que se requiera, todo lo demas queda igual
 function limpiarFormulario(){
+    inputCarrera.value = '';
+    inputCurso.value = '';
+    inputPeriodo.value = '';
     inputNombre.value = '';    
     inputLaboratorio.value = '';
-    inputProfesor.value ='';
+    inputProfesor.value = '';
+    inputProfesor2.value = '';
+    inputProfesor3.value = '';
     inputCantidadEstu.value = 0;
     inputHorario.value = '';
 }
