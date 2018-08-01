@@ -113,29 +113,83 @@
 
                 <div class="form-row">
                     <div class="form-group form-group-2">
+                        <label for="txtSedeGrupo">Sede
+                            <span>*</span>
+                        </label>
+                        <select name="" id="txtSedeGrupo">
+                            <option value="Sede San Pedro">Sede San Pedro</option>
+                            <option value="Sede AFZ">Sede AFZ</option>
+                            <option value="Virtual">Virtual</option>
+                            <option value="Espacio San Carlos">Espacio San Carlos</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group form-group-2">
+                        <label for="txtCarreraGrupo">Carrera
+                            <span>*</span>
+                        </label>
+                        <input type="text" id="txtCarreraGrupo" placeholder="Carrera" required>
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group form-group-2">
+                        <label for="txtCursoGrupo">Curso
+                            <span>*</span>
+                        </label>
+                        <input type="text" id="txtCursoGrupo" placeholder="Curso" required>
+                    </div>
+
+                    <div class="form-group form-group-2">
+                        <label for="txtPeriodoGrupo">Periodo
+                            <span>*</span>
+                        </label>
+                        <select name="" id="txtPeriodoGrupo">
+                            <option value="">--seleccionar un periodo--</option>
+                            <option value="Primer cuatrimestre">Primer cuatrimestre</option>
+                            <option value="Segundo cuatrimestre">Segundo cuatrimestre</option>
+                            <option value="Tercer cuatrimestre">Tercer cuatrimestre</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group form-group-2">
                         <label for="txtNombre">Nombre
                             <span>*</span>
                         </label>
                         <input type="text" id="txtNombre" placeholder="Nombre" required>
                     </div>
 
-                </div>
-
-                <div class="form-row">
                     <div class="form-group form-group-2">
                         <label for="txtLaboratorio">Laboratorio
                             <span>*</span>
                         </label>
                         <input type="text" id="txtLaboratorio" placeholder="Laboratorio" required>
                     </div>
+
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group form-group-2">
+                    <div class="form-group form-group-3">
                         <label for="txtProfesor">Profesor
                             <span>*</span>
                         </label>
                         <input type="text" id="txtProfesor" placeholder="Profesor" required>
+                    </div>
+                    
+                    <div class="form-group form-group-3">
+                        <label for="txtProfesor2">Profesor
+                        </label>
+                        <input type="text" id="txtProfesor2" placeholder="Profesor" required>
+                    </div>
+                    
+                    <div class="form-group form-group-3">
+                        <label for="txtProfesor3">Profesor
+                        </label>
+                        <input type="text" id="txtProfesor3" placeholder="Profesor" required>
                     </div>
                 </div>
 
@@ -146,9 +200,7 @@
                         </label>
                         <input type="number" id="txtCantEstudiantes" min=0 max=30 placeholder="0" required>
                     </div>
-                </div>
 
-                <div class="form-row ">
                     <div class="form-group form-group-2">
                         <label for="txtHorario">Horario
                             <span>*</span>
@@ -161,6 +213,7 @@
                     <a href="grupo_listar.html" class="button button--secundario" type="button" id="btnCancelar">Cancelar</a>
                     <button class="button button--principal" type="button" id="btnRegistrar">Registrar</button>
                 </div>
+                
             </form>
         </main>
 
