@@ -18,6 +18,7 @@ const botonRegistrar = document.querySelector('#btnRegistrar');
 
 //estos nombres cambiarlos por lo que corresponda en el html
 //manejarlos en singular
+const inputSede = document.querySelector('#txtSedeGrupo');
 const inputNombreLaboratorio = document.querySelector('#txtNombreLaboratorio');
 const inputCantidadEspacios = document.querySelector('#numCantEspacios');
 //const inputFiltro = document.querySelector('#txtFiltro'); esto lo vemos con el profe el miercoles
@@ -38,6 +39,7 @@ function obtenerDatosFormulario(){
     //nombrar estas variables con el mismo nombre de las "const" de arriba
     let sNombreLaboratorio = inputNombreLaboratorio.value;
     let sCantidadEspacios = inputCantidadEspacios.value;
+    let sSedeLab = inputSede.value;
 
     
     
@@ -56,7 +58,7 @@ function obtenerDatosFormulario(){
     }else{
 
         //cambiar Example y parámetros de la función por lo que se esté registrando, pornerlo en singular
-        respuesta = registrarLaboratorio(sNombreLaboratorio, sCantidadEspacios);//esta funcion está en el servicio
+        respuesta = registrarLaboratorio(sNombreLaboratorio, sCantidadEspacios, sSedeLab);//esta funcion está en el servicio
        
         if(respuesta.success == true){
 
@@ -129,6 +131,14 @@ function validar(){
         inputCantidadEspacios.classList.remove('input_error');
     }
 
+    if(inputSede.value == '' ) {
+        inputSede.classList.add('input_error');
+        bError = true;
+    }else{
+        inputSede.classList.remove('input_error');
+    }
+    
+
     return bError;
 };
 
@@ -136,4 +146,5 @@ function validar(){
 function limpiarFormulario(){
     inputNombreLaboratorio.value = '';    
     inputCantidadEspacios.value = '';
+    inputSede.value='';
 }
