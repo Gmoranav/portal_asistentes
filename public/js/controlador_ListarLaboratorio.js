@@ -21,11 +21,13 @@ function imprimirListaLaboratorios(){
         Están en la sección data{}.  NO los que vienen por parámetro sino lo que se declaran en
         la función.  Se deben colocar en el mismo orden*/
         let fila = tbody.insertRow();
-                    
+        
+        let cSede = fila.insertCell();
         let cNombreLaboratorio = fila.insertCell();
         let cCantEspacios = fila.insertCell();
+
         
-        
+        cSede.innerHTML = listaLaboratorios[i]['sede_laboratorio'];
         cNombreLaboratorio.innerHTML = listaLaboratorios[i]['nombre_laboratorio'];
         cCantEspacios.innerHTML = listaLaboratorios[i]['cantidad_espacios'];
         
