@@ -109,13 +109,28 @@
 
         <!--este main parte de todas las paginas y engloba el contenido-->
         <main class="page">
+            
             <form class="box-container">
+
+                <div class="form-group form-group-2">
+                    <label for="txtSedeGrupo">Sede
+                        <span>*</span>
+                    </label>
+                    <select name="" id="txtSedeGrupo">
+                        <option value="">--seleccionar sede--</option>
+                        <option value="Sede San Pedro">Sede San Pedro</option>
+                        <option value="Sede AFZ">Sede AFZ</option>
+                        <option value="Virtual">Virtual</option>
+                        <option value="Espacio San Carlos">Espacio San Carlos</option>
+                    </select>
+                </div>
+            
                 <div class="form-row">
                     <div class="form-group form-group-2">
                         <label for="txtNombreLaboratorio">Nombre del laboratorio
                             <span>*</span>
                         </label>
-                        <input type="text" id="txtNombreLaboratorio" placeholder="Nombre del laboratorio" required>
+                        <input type="text" id="txtNombreLaboratorio" placeholder="Laboratorio" required>
                     </div>
                 </div>
 
