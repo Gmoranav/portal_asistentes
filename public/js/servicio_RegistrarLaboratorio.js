@@ -9,7 +9,7 @@ Responsabilidades del servicio
 
 //cambiar el nombre Example por lo que se esté registrando, debe estar en singular
 //cambiar los parametros manteniendo una s al principio cuando es texto y n cuando es numero
-function registrarLaboratorio(psNombreLaboratorio, psCantidadEspacios){
+function registrarLaboratorio(psNombreLaboratorio, psCantidadEspacios, psSedeLab){
     let respuesta = '';
     let peticion = $.ajax({
 
@@ -25,7 +25,8 @@ function registrarLaboratorio(psNombreLaboratorio, psCantidadEspacios){
             //las variables son las que hay que usan en el archivo controlador
             //en la función imprimirListaExamples
             nombre_laboratorio : psNombreLaboratorio,
-            cantidad_espacios : psCantidadEspacios
+            cantidad_espacios : psCantidadEspacios,
+            sede_laboratorio : psSedeLab
         }
     });
     
@@ -41,34 +42,3 @@ function registrarLaboratorio(psNombreLaboratorio, psCantidadEspacios){
 
     return respuesta;
 }
-
-//cambiar Examples por lo que se vaya a listar. Debe estar en plural
-/*function obtenerListaLaboratorios(){
-
-    //cambiar Examples por lo que se vaya a listar. Debe estar en plural
-    let listaLaboratorios = []; //THIS
-
-    
-    let peticion = $.ajax({
-        //*cambiar examples en el url por lo que se vaya a registrar, debe estar en plural
-        url : 'http://localhost:4000/api/listar_laboratorio',
-        type : 'get',
-        contentType : 'application/x-www-form-urlencoded; charset=utf-8',
-        dataType : 'json',
-        async : false,
-        data:{
-            
-        }
-      });
-    
-      peticion.done(function(response){
-        listaLaboratorios = response;
-      });
-    
-      peticion.fail(function(response){
-        //listaLaboratorios = console.log('Importación fallida');
-      });
-
-      return listaLaboratorios;
-    //cambiar Examples por lo que se vaya a listar. Debe estar en plural
-};*/
