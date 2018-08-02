@@ -12,7 +12,8 @@ module.exports.registrar_laboratorios = function(req, res){
 
         /**Este es el mismo input que el de model.js */
         nombre_laboratorio : req.body.nombre_laboratorio,
-        cantidad_espacios : req.body.cantidad_espacios
+        cantidad_espacios : req.body.cantidad_espacios,
+        sede_laboratorio : req.body.sede_laboratorio
     });
 
     nuevoLaboratorio.save(function(error){
