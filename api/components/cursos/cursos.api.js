@@ -6,9 +6,8 @@ module.exports.registrar = function(req, res){
     let nuevoCurso = new cursoModel({
         nombre_curso : req.body.nombre_curso,
         codigo_curso : req.body.codigo_curso,
-        slt_sede : req.body.slt_sede,
         cantidad_creditos : req.body.cantidad_creditos,
-        slt_carreraCurso : req.body.slt_carreraCurso
+        
 
 
     });

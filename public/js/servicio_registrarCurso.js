@@ -5,7 +5,7 @@
  */
 
 
-function registrar_curso(psNombreCurso , psCodigoCurso , psltSede , nCantidadCreditos, psltCarreraCurso){
+function registrar_curso(psNombreCurso , psCodigoCurso , nCantidadCreditos){
 
     let respuesta = '';
     let peticion = $.ajax({
@@ -19,9 +19,8 @@ function registrar_curso(psNombreCurso , psCodigoCurso , psltSede , nCantidadCre
 
             nombre_curso : psNombreCurso,
             codigo_curso : psCodigoCurso,
-            slt_sede : psltSede,
             cantidad_creditos : nCantidadCreditos,
-            slt_carreraCurso : psltCarreraCurso
+            
 
         }
     });
