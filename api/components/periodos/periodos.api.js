@@ -24,6 +24,8 @@ module.exports.registrar = function (req, res){
         }
     });
 };
+
+
 module.exports.listar_periodos = function(req, res){
     
     periodos_model.find().sort({$natural:-1}).then(
@@ -32,4 +34,27 @@ module.exports.listar_periodos = function(req, res){
              res.send(periodos);
           }
     );
+};
+
+//buscar
+module.exports.buscar_periodo_id = function(req, res){
+    periodos_model.findById({_id: req.body.nombre_periodo}).then(
+        function(periodo){
+            res.send(periodo);
+        }
+    );
+};
+
+//modificar (en route y api) - findByIdAndUpdate para saber cual cambiar 
+module.exports.modificar_periodo = function(req, res){ 
+    periodos_model.findByIdAndUpdate(req.body._id, { $set: req.body },
+        
+        function(err, periodo){
+            if (err) {
+                res.json({success: false, msg: 'El periodo no se pudo modificar. ' + handleError(err) });
+
+            }else{
+                res.json({success: true, msg: 'El periodo se modificó con éxito' + res });
+            }
+        });
 };
