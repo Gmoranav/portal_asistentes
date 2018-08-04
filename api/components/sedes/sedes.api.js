@@ -36,3 +36,26 @@ module.exports.listar_sedes = function (req, res) {
         }
     );
 };
+
+//buscar  - buscar_sede_id debe ser igual al path del route
+module.exports.buscar_sede_id = function(req, res){
+    sedes_model.findById({_id: req.body._id}).then(  //busca por el id asignado por mongodb
+        function(sede){
+            res.send(sede);
+        }
+    );
+};
+
+//modificar (en route y api) - findByIdAndUpdate para saber cual cambiar 
+module.exports.modificar_sede = function(req, res){ 
+    sedes_model.findByIdAndUpdate(req.body._id, { $set: req.body },
+        
+        function(err, sede){
+            if (err) {
+                res.json({success: false, msg: 'La sede no se pudo modificar. ' + handleError(err) });
+
+            }else{
+                res.json({success: true, msg: 'La sede se modificó con éxito' + res });
+            }
+        });
+};

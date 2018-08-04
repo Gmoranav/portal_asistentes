@@ -14,4 +14,17 @@ router.route('/listar_sedes')
         sedes.listar_sedes(req, res);
     });
 
+//buscar sede
+router.route('/buscar_sede_id')
+    .post(function(req, res){
+        sedes.buscar_sede_id(req, res);
+    }); 
+
+//modificar sede
+router.route('/modificar_sede')
+    .post(function(req, res){
+        sedes.modificar_sede(req, res);
+    });
+
+
 module.exports = router;
