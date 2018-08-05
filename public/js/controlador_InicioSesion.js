@@ -134,7 +134,9 @@ function redireccionarUsuario() {
 
         case 'AsistenteProfesor':
             // acciones de asistente de profesor
-            console.log("AsistenteProfesor");
+            console.log("Asistente Profesor autenticado");
+            var tipoDeRol = "AsistenteProfesor";
+            localStorage.setItem('tipoDeRol', JSON.stringify(tipoDeRol));
 
             break;
         default:
