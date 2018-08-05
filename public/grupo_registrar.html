@@ -19,23 +19,23 @@
             <nav>
                     <ul>
                         <li>
-                            <a href="dashboard.html">
+                            <a onclick="redireccionaDashboard()">
                                 <i class="fas fa-home fa-fw"></i>&nbsp;Inicio</a>
                         </li>
                         <li>
                             <a href="#">Perfil</a>
                         </li>
-                        <li>
-                            <a href="usuario_listar.html" id="hide-usuario">Usuarios</a>
+                        <li  id="hide-usuario">
+                            <a onclick="redireccionUsuarioListar()" class="">Usuarios</a>
                         </li>
                         <li>
                             <a>Asistentes</a>
                             <ul>
                                 <li>
-                                    <a href="solicitud-asistente_listar.html" id="hide-solicitud">Solicitudes</a>
+                                    <a onclick="redireccionSolicitudAsistenteListar()" id="hide-solicitud">Solicitudes</a>
                                 </li>
                                 <li>
-                                    <a href="#" id="hide-info-academica">Información Académica</a>
+                                    <a href="#" id="hide-info-academica">Información Académica </a>
                                 </li>
                                 <li>
                                     <a href="#">Bitácoras</a>
@@ -43,22 +43,22 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="sede_listar.html" id="hide-sede">Sedes</a>
+                            <a onclick="redireccionSedeListar()" id="hide-sede">Sedes</a>
                         </li>
                         <li>
-                            <a href="carrera_listar.html" id="hide-carrera">Carreras</a>
+                            <a onclick="redireccionCarreraListar()" id="hide-carrera">Carreras</a>
                         </li>
                         <li>
-                            <a href="curso_listar.html" id="hide-curso">Cursos</a>
+                            <a onclick="redireccionCursoListar()" id="hide-curso">Cursos</a>
                         </li>
                         <li>
-                            <a href="periodo_listar.html" id="hide-periodo">Periodos</a>
+                            <a onclick="redireccionPeriodoListar()" id="hide-periodo">Periodos</a>
                         </li>
                         <li>
-                            <a href="grupo_listar.html" id="hide-grupo">Grupos</a>
+                            <a onclick="redireccionGrupoListar()" id="hide-grupo">Grupos</a>
                         </li>
                         <li>
-                            <a href="laboratorio_listar.html" id="hide-laboratorio">Laboratorios</a>
+                            <a onclick="redireccionLaboratorioListar()" id="hide-laboratorio">Laboratorios</a>
                         </li>
                     </ul>
                 </nav>
@@ -79,7 +79,7 @@
                         <a href="#">
                             <i class="fas fa-lg fa-search tooltip"><span class="tooltiptext">Buscar</span></i>
                         </a>
-                        <a href="dashboard.html">
+                        <a onclick="redireccionaDashboard()">
                             <i class="fas fa-lg fa-home tooltip"><span class="tooltiptext">Inicio</span></i>
                         </a>
         
@@ -210,7 +210,7 @@
                 </div>
 
                 <div class="form-row buttons">
-                    <a href="grupo_listar.html" class="button button--secundario" type="button" id="btnCancelar">Cancelar</a>
+                    <a onclick="redireccionGrupoListar()" class="button button--secundario" type="button" id="btnCancelar">Cancelar</a>
                     <button class="button button--principal" type="button" id="btnRegistrar">Registrar</button>
                 </div>
                 

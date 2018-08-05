@@ -1,4 +1,4 @@
-validacion_rol_dashboard();
+//validacion_rol_dashboard();
 validacion_rol_nav();
 
 var button_collapse = document.getElementById("button-nav-collapse");
@@ -24,9 +24,6 @@ button_collapse.addEventListener("click", function () {
 
 });
 
-
-
-
 let button_dropdown = document.getElementById("toggle-profile-dropdown");
 
 button_dropdown.addEventListener("click", function () {
@@ -41,36 +38,90 @@ button_dropdown.addEventListener("click", function () {
         panel_profile.className = "profile-info profile-info--hide";
     }
 
-
 });
 
 let boton_salirPortal = document.querySelector('#boton_salir');
 boton_salirPortal.addEventListener('click', salir);
 
-function salir(){
-
-    window.location.href = "inicioSesion.html";  
+function salir() {
+    window.location.href = "inicioSesion.html";
 }
 
-   
+function redireccionListarAsistentes() {
+    window.location = "solicitud-asistente_listar.html";
+}
+function redireccionSedes() {
+    window.location = "sede_listar.html";
+}
 
+function redireccionCarreraListar() {
+    window.location = "carrera_listar.html";
+}
+function redireccionCarreraRegistrar() {
+    window.location = "carrera_registrar.html";
+}
+function redireccionCursoListar() {
+    window.location = "curso_listar.html";
+}
+function redireccionCursoRegistrar() {
+    window.location = "curso_registrar";
+}
+function redireccionaDashboard() {
+    window.location = "dashboard.html";
+}
+function redireccionGrupoListar() {
+    window.location = "grupo_listar.html";
+}
+function redireccionGrupoRegistrar() {
+    window.location = "grupo_registrar.html";
+}
+function redireccionLaboratorioListar() {
+    window.location = "laboratorio_listar.html";
+}
+function redireccionLaboratorioRegistrar() {
+    window.location = "laboratorio_registrar.html";
+}
+function redireccionPeriodoListar() {
+    window.location = "periodo_listar.html";
+}
+function redireccionPeriodoRegistrar() {
+    window.location = "periodo_registrar.html";
+}
+function redireccionSedeListar() {
+    window.location = "sede_listar.html";
+}
+function redireccionSedeRegistrar() {
+    window.location = "sede_registrar.html";
+}
+function redireccionSolicitudAsistenteListar() {
+    window.location = "solicitud-asistente_listar.html";
+}
+function redireccionSolicitudAsistenteRegistrar() {
+    window.location = "solicitud-asistente_registrar.html";
+}
+function redireccionUsuarioListar() {
+    window.location = "usuario_listar.html";
+}
+function redireccionUsuarioRegistrar() {
+    window.location = "usuario_registrar.html";
+}
 
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
-        reader.onload = function(e) {
-            $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+        reader.onload = function (e) {
+            $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
             $('#imagePreview').hide();
             $('#imagePreview').fadeIn(650);
         }
         reader.readAsDataURL(input.files[0]);
     }
 }
-$("#imageUpload").change(function() {
+$("#imageUpload").change(function () {
     readURL(this);
 });
 
-function validacion_rol_dashboard (){
+function validacion_rol_dashboard() {
     let tipoAcceso = JSON.parse(localStorage.getItem('tipoDeRol'));
     console.log(tipoAcceso);
 
@@ -92,17 +143,17 @@ function validacion_rol_dashboard (){
     let link_grupo = document.getElementById('link-grupo');
     let link_laboratorio = document.getElementById('link-laboratorio');
 
-    if(tipoAcceso === 'Rectoría' || tipoAcceso === 'Decanatura'){
+    if (tipoAcceso === 'Rectoría' || tipoAcceso === 'Decanatura') {
         button_usuario.className = "hidden";
         link_usuario.className = "hidden";
     }
 
-    if(tipoAcceso === 'AsistenteDecanatura'){
+    if (tipoAcceso === 'AsistenteDecanatura') {
         button_usuario.className = "hidden";
         link_usuario.className = "hidden";
     }
 
-    if(tipoAcceso === 'Profesor'){
+    if (tipoAcceso === 'Profesor') {
         button_usuario.className = "hidden";
         link_usuario.className = "hidden";
 
@@ -125,7 +176,7 @@ function validacion_rol_dashboard (){
         link_laboratorio.className = "hidden";
     }
 
-    if(tipoAcceso === 'AsistenteProfesor'){
+    if (tipoAcceso === 'AsistenteProfesor') {
         button_usuario.className = "hidden";
         link_usuario.className = "hidden";
 
@@ -153,7 +204,7 @@ function validacion_rol_dashboard (){
 };
 
 
-function  validacion_rol_nav () {
+function validacion_rol_nav() {
 
     let tipoDeAcceso = JSON.parse(localStorage.getItem('tipoDeRol'));
     console.log(tipoDeAcceso);
@@ -167,17 +218,17 @@ function  validacion_rol_nav () {
     let menu_option_grupo = document.getElementById('hide-grupo');
     let menu_option_laboratorio = document.getElementById('hide-laboratorio');
     let menu_option_info_academica = document.getElementById('hide-info-academica');
-    
 
-    if(tipoDeAcceso === 'Rectoría' || tipoDeAcceso === 'Decanatura'){
+
+    if (tipoDeAcceso === 'Rectoría' || tipoDeAcceso === 'Decanatura') {
         menu_option_usuario.className = "hidden";
     }
 
-    if(tipoDeAcceso === 'AsistenteDecanatura'){
+    if (tipoDeAcceso === 'AsistenteDecanatura') {
         menu_option_usuario.className = "hidden";
     }
 
-    if(tipoDeAcceso === 'Profesor'){
+    if (tipoDeAcceso === 'Profesor') {
         menu_option_usuario.className = "hidden";
         menu_option_sede.className = "hidden";
         menu_option_carrera.className = "hidden";
@@ -188,7 +239,7 @@ function  validacion_rol_nav () {
         menu_option_info_academica.className = "hidden";
     }
 
-    if(tipoDeAcceso === 'AsistenteProfesor'){
+    if (tipoDeAcceso === 'AsistenteProfesor') {
         menu_option_usuario.className = "hidden";
         menu_option_sede.className = "hidden";
         menu_option_carrera.className = "hidden";

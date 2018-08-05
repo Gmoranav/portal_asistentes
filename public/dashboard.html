@@ -19,23 +19,23 @@
             <nav>
                     <ul>
                         <li>
-                            <a href="dashboard.html">
+                            <a onclick="redireccionaDashboard()">
                                 <i class="fas fa-home fa-fw"></i>&nbsp;Inicio</a>
                         </li>
                         <li>
                             <a href="#">Perfil</a>
                         </li>
-                        <li>
-                            <a href="usuario_listar.html" id="hide-usuario">Usuarios</a>
+                        <li  id="hide-usuario">
+                            <a onclick="redireccionUsuarioListar()" class="">Usuarios</a>
                         </li>
                         <li>
                             <a>Asistentes</a>
                             <ul>
                                 <li>
-                                    <a href="solicitud-asistente_listar.html" id="hide-solicitud">Solicitudes</a>
+                                    <a onclick="redireccionSolicitudAsistenteListar()" id="hide-solicitud">Solicitudes</a>
                                 </li>
                                 <li>
-                                    <a href="informacion_academica_registrar.html" id="hide-info-academica">Información Académica</a>
+                                    <a href="#" id="hide-info-academica">Información Académica </a>
                                 </li>
                                 <li>
                                     <a href="#">Bitácoras</a>
@@ -43,23 +43,22 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="sede_listar.html" id="hide-sede">Sedes</a>
-
+                            <a onclick="redireccionSedeListar()" id="hide-sede">Sedes</a>
                         </li>
                         <li>
-                            <a href="carrera_listar.html" id="hide-carrera">Carreras</a>
+                            <a onclick="redireccionCarreraListar()" id="hide-carrera">Carreras</a>
                         </li>
                         <li>
-                            <a href="curso_listar.html" id="hide-curso">Cursos</a>
+                            <a onclick="redireccionCursoListar()" id="hide-curso">Cursos</a>
                         </li>
                         <li>
-                            <a href="periodo_listar.html" id="hide-periodo">Periodos</a>
+                            <a onclick="redireccionPeriodoListar()" id="hide-periodo">Periodos</a>
                         </li>
                         <li>
-                            <a href="grupo_listar.html" id="hide-grupo">Grupos</a>
+                            <a onclick="redireccionGrupoListar()" id="hide-grupo">Grupos</a>
                         </li>
                         <li>
-                            <a href="laboratorio_listar.html" id="hide-laboratorio">Laboratorios</a>
+                            <a onclick="redireccionLaboratorioListar()" id="hide-laboratorio">Laboratorios</a>
                         </li>
                     </ul>
                 </nav>
@@ -142,13 +141,13 @@
 
                     <div id="button-usuario">
                         <button type="button" class="button button--dashboard">
-                            <a href="usuario_listar.html">Usuario</a>
+                            <a onclick="redireccionUsuarioListar()">Usuario</a>
                         </button>
                     </div>
 
                     <div id="button-solicitud">
                       <button type="button" class="button button--dashboard">
-                            <a href="solicitud-asistente_listar.html">Solicitud asistente</a>
+                            <a onclick="redireccionSolicitudAsistenteListar()">Solicitud asistente</a>
                         </button>
                     </div>
 
@@ -161,54 +160,53 @@
 
                     <div id="button-sede">
                       <button type="button" class="button button--dashboard">
-                            <a href="sede_listar.html">Sedes</a>
+                            <a onclick="redireccionSedeListar()">Sedes</a>
                         </button>
                     </div>
 
                     <div id="button-carrera">
                       <button type="button" class="button button--dashboard">
-                            <a href="carrera_listar.html">Carreras</a>
+                            <a onclick="redireccionCarreraListar()">Carreras</a>
                         </button>
                     </div>
 
                     <div id="button-curso">
                       <button type="button" class="button button--dashboard">
-                            <a href="curso_listar.html">Cursos</a>
+                            <a onclick="redireccionCursoListar()">Cursos</a>
                         </button>
                     </div>
 
                     <div id="button-periodo">
                       <button type="button" class="button button--dashboard">
-                            <a href="periodo_listar.html">Períodos</a>
+                            <a onclick="redireccionPeriodoListar()">Períodos</a>
                         </button>
                     </div>
 
                     <div id="button-grupo">
                       <button type="button" class="button button--dashboard">
-                            <a href="grupo_listar.html">Grupos</a>
+                            <a onclick="redireccionGrupoListar()">Grupos</a>
                         </button>
                     </div>
 
                     <div id="button-laboratorio">
                       <button type="button" class="button button--dashboard">
-                            <a href="laboratorio_listar.html">Laboratorios</a>
+                            <a onclick="redireccionLaboratorioListar()">Laboratorios</a>
                         </button>
                     </div>
 
                 </div>
 
-
                 <div class="dashboard-column configuracion">
                                     <h2>Configuración</h2>
-                    <a href="usuario_registrar.html" id="link-usuario"><i class="fas fa-plus-circle"></i>Registrar usuario</a>
-                    <a href="solicitud-asistente_registrar.html" id="link-solicitud"><i class="fas fa-plus-circle"></i>Registrar solicitud de asistente</a>
+                    <a onclick="redireccionUsuarioRegistrar()" id="link-usuario"><i class="fas fa-plus-circle"></i>Registrar usuario</a>
+                    <a onclick="redireccionSolicitudAsistenteRegistrar()" id="link-solicitud"><i class="fas fa-plus-circle"></i>Registrar solicitud de asistente</a>
                     <a href="#" id="link-bitacora"><i class="fas fa-plus-circle"></i>Bitacora</a>
-                    <a href="sede_registrar.html" id="link-sede"><i class="fas fa-plus-circle"></i>Registrar sede</a>
-                    <a href="carrera_registrar.html" id="link-carrera"><i class="fas fa-plus-circle"></i>Rgistrar carrera</a>
-                    <a href="curso_registrar.html" id="link-curso"><i class="fas fa-plus-circle"></i>Registrar curso</a>
-                    <a href="periodo_registrar.html" id="link-periodo"><i class="fas fa-plus-circle"></i>Registrar período</a>
-                    <a href="grupo_registrar.html" id="link-grupo"><i class="fas fa-plus-circle"></i>Registrar grupos</a>
-                    <a href="laboratorio_registrar.html" id="link-laboratorio"><i class="fas fa-plus-circle"></i>Registrar laboratorios</a>
+                    <a onclick="redireccionSedeRegistrar()" id="link-sede"><i class="fas fa-plus-circle"></i>Registrar sede</a>
+                    <a onclick="redireccionCarreraRegistrar()" id="link-carrera"><i class="fas fa-plus-circle"></i>Rgistrar carrera</a>
+                    <a onclick="redireccionCursoRegistrar()" id="link-curso"><i class="fas fa-plus-circle"></i>Registrar curso</a>
+                    <a onclick="redireccionPeriodoRegistrar()" id="link-periodo"><i class="fas fa-plus-circle"></i>Registrar período</a>
+                    <a onclick="redireccionGrupoRegistrar()" id="link-grupo"><i class="fas fa-plus-circle"></i>Registrar grupos</a>
+                    <a onclick="redireccionLaboratorioRegistrar()" id="link-laboratorio"><i class="fas fa-plus-circle"></i>Registrar laboratorios</a>
                 </div>
 </div>
             </section>
