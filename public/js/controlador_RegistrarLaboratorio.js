@@ -1,12 +1,3 @@
-/*
-Responsabilidades del controlador
-    - Leer datos de la interfaz
-    - Imprimir datos dentro de la interfaz
-    - Validar datos (formularios)
-    - Responder a eventos (click, change, keyup...)
-    - Se comunica con el servicio, cuando se requiera algún procesamiento de datos
-*/
-
 'use strict';
 
 
@@ -148,3 +139,4 @@ function limpiarFormulario(){
     inputCantidadEspacios.value = '';
     inputSede.value='';
 }
+
