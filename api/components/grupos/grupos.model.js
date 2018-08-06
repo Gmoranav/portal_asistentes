@@ -16,9 +16,7 @@ let grupoSchema = new mongoose.Schema({
     periodoGrupo : {type : String, required : true},
     nombre : {type : String, required : true, unique : true},
     laboratorio : {type : String, required : true},
-    profesor : {type : String, required : true},
-    profesor2 : {type : String, required : false},
-    profesor3 : {type : String, required : false},
+    profesores : {type : String, required : true},
     cantidad_de_estudiantes : {type : String, required : true},
     horario : {type : String, required : true}
 
