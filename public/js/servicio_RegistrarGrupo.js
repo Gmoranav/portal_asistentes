@@ -1,16 +1,10 @@
-/*
-Responsabilidades del servicio
-    - Procesamiento de datos (cálculos)
-    - Almacenamiento temporal de los datos
-    - Comunicar el public (front-end) con el api (back-end)
-*/
-
 'use strict';
+
+
 
 //cambiar el nombre Example por lo que se esté registrando, debe estar en singular
 //cambiar los parametros manteniendo una s al principio cuando es texto y n cuando es numero
-function registrarGrupo(psSede, psCarrera, psCurso, psPeriodo, psNombre, psLaboratorio, psProfesor, 
-psProfesor2, psProfesor3, psCantidadEstu, psHorario){
+function registrarGrupo(psSede, psCarrera, psCurso, psPeriodo, psNombre, psLaboratorio, psProfesor, psCantidadEstu, psHorario){
     let respuesta = '';
     let peticion = $.ajax({
 
@@ -31,9 +25,7 @@ psProfesor2, psProfesor3, psCantidadEstu, psHorario){
             periodoGrupo : psPeriodo,
             nombre : psNombre,
             laboratorio : psLaboratorio,
-            profesor : psProfesor,
-            profesor2 : psProfesor2,
-            profesor3 : psProfesor3,
+            profesores : psProfesor,
             cantidad_de_estudiantes : psCantidadEstu,
             horario : psHorario
         }
@@ -51,3 +43,4 @@ psProfesor2, psProfesor3, psCantidadEstu, psHorario){
 
     return respuesta;
 }
+
