@@ -17,9 +17,7 @@ module.exports.registrar_grupos = function(req, res){
         periodoGrupo : req.body.periodoGrupo,
         nombre : req.body.nombre,
         laboratorio : req.body.laboratorio,
-        profesor : req.body.profesor,
-        profesor2 : req.body.profesor2,
-        profesor3 : req.body.profesor3,
+        profesores : req.body.profesores,
         cantidad_de_estudiantes : req.body.cantidad_de_estudiantes,
         horario : req.body.horario
 
@@ -49,3 +47,4 @@ module.exports.listar_grupos = function(req, res){
         }
     );
 };
+
