@@ -1,20 +1,11 @@
-/*
-Responsabilidades del controlador
-    - Leer datos de la interfaz
-    - Imprimir datos dentro de la interfaz
-    - Validar datos (formularios)
-    - Responder a eventos (click, change, keyup...)
-    - Se comunica con el servicio, cuando se requiera algún procesamiento de datos
-*/
-
 'use strict';
+
+
 
 
 //dejar este nombre del botón igual a como está aquí y dejarlo igual en el HTML: btnRegistrar
 const botonRegistrar = document.querySelector('#btnRegistrar');
-
-
-
+const botonRegistrarProfesor = document.querySelector('#ProfeButton');
 
 //estos nombres cambiarlos por lo que corresponda en el html
 //manejarlos en singular
@@ -23,12 +14,12 @@ const inputCarrera = document.querySelector('#txtCarreraGrupo');
 const inputCurso = document.querySelector('#txtCursoGrupo');
 const inputPeriodo = document.querySelector('#txtPeriodoGrupo');
 const inputNombre = document.querySelector('#txtNombre');
+const inputProfesor = document.querySelector('#selectProfesores')
 const inputLaboratorio = document.querySelector('#txtLaboratorio');
-const inputProfesor = document.querySelector('#txtProfesor');
-const inputProfesor2 = document.querySelector('#txtProfesor2');
-const inputProfesor3 = document.querySelector('#txtProfesor3');
 const inputCantidadEstu = document.querySelector('#txtCantEstudiantes');
 const inputHorario = document.querySelector('#txtHorario');
+
+let arregloProfesores = [];
 //const inputFiltro = document.querySelector('#txtFiltro'); esto lo vemos con el profe el miercoles
 
 
@@ -36,8 +27,18 @@ const inputHorario = document.querySelector('#txtHorario');
 inputFiltro.addEventListener('keyup' , function(){
     imprimirListaPersonas(inputFiltro.value)
 });*/
-
+botonRegistrarProfesor.addEventListener('click', guardarProfesores)
 botonRegistrar.addEventListener('click' , obtenerDatosFormulario);
+
+
+function guardarProfesores() {
+
+    let sProfesores = inputProfesor.value;
+
+    arregloProfesores.push(sProfesores)
+
+}
+
 
 //el nombre de esta función se mantiene
 function obtenerDatosFormulario(){
@@ -51,15 +52,16 @@ function obtenerDatosFormulario(){
     let sPeriodo = inputPeriodo.value;
     let sNombre = inputNombre.value;
     let sLaboratorio = inputLaboratorio.value;
-    let sProfesor = inputProfesor.value;
-    let sProfesor2 = inputProfesor2.value;
-    let sProfesor3 = inputProfesor3.value;
+    let sProfesor = arregloProfesores.join(', ');
     let sCantidadEstu = Number(inputCantidadEstu.value);
     let sHorario = inputHorario.value;
 
     
     
     bError = validar();
+
+    let respuesta;
+    
 
     if(bError == true){
         swal({
@@ -71,30 +73,71 @@ function obtenerDatosFormulario(){
        
     }else{
         //cambiar Example y parámetros de la función por lo que se esté registrando, pornerlo en singular
-        registrarGrupo(sSede, sCarrera, sCurso, sPeriodo, sNombre, sLaboratorio, sProfesor, sProfesor2,
-        sProfesor3, sCantidadEstu, sHorario);//esta funcion está en el servicio
-        swal({
-            type : 'Success',
-            title : 'Transacción procesada',
-            text: 'El grupo se registró adecuadamente', //cambiar example por lo que se esté registrando
-            confirmButtonText : 'Listo'
-        });
+        respuesta = registrarGrupo(sSede, sCarrera, sCurso, sPeriodo, sNombre, sLaboratorio, sProfesor, sCantidadEstu, sHorario);//esta funcion está en el servicio
+        
+        if (respuesta.success == true){
+
+            swal({
+                type: 'success',
+                title: 'Transacción Procesada',
+                text: "El grupo se registró con éxito!",
+                showCancelButton: true,
+                reverseButtons: true,
+                confirmButtonText: 'Volver a la lista',
+                cancelButtonText: 'Continuar Aqui',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#556566',
+                }).then((result) => {
+                    if(result.value){
+    
+                        window.location.href = "grupo_listar.html";
+                    }
+    
+                });
+
+
+        }else{
+            
+            swal({
+                type: 'error',
+                title: 'Problemas de conexión',
+                text: 'Por favor contactar al administrador',
+                confirmButtonText: 'Aceptar'
+            });
+        }
 
         //este nombre queda igual
-        limpiarFormulario();
+        
     }
+
+    limpiarFormulario();
     
 };
 
-//dejar las palabras "lista" y "listar" y cambiar Examples por lo que se esté listando
-// por ejemplo: cursos, carreras, sedes.  Debe estar en plural
-/*function listarExamples(){
+/*
+FUNCION PARA POPULAR UN SELECT
 
-        let listaExamples = obtenerListaExamples();
-        imprimirListaExamples();
+function llenarSelectProfesores() {
+    // se llaman los datos de los proyectos 
+    let lista_profesores = obtenerListaGrupos();
+    
+    // ciclo for que recorre la lista de proyectos
+    for (let i = 0; i < lista_profesores.length; i++) {
+
+        // creación de elemento html
+        let option = document.createElement("option");
+        // opciones que se van a mostrar en el select
+        option.text = lista_profesores[i]['profesores']
+        option.value = lista_profesores[i]['profesores'];
+        // id del elemento html donde se van a crear las opciones
+        let select = document.querySelector("#selectProfesores");
+        // se añade la opción al DOM (al html)
+        select.add(option);
+    }  
 }*/
 
-//en esta función solo hay que cambiar los input por lo que se requiera, todo lo demas queda igual
+
+
 function validar(){
     let bError = false;
 
@@ -172,14 +215,14 @@ function validar(){
 
 //en esta función solo hay que cambiar los input por lo que se requiera, todo lo demas queda igual
 function limpiarFormulario(){
+    inputSede.value = '';
     inputCarrera.value = '';
     inputCurso.value = '';
     inputPeriodo.value = '';
     inputNombre.value = '';    
     inputLaboratorio.value = '';
     inputProfesor.value = '';
-    inputProfesor2.value = '';
-    inputProfesor3.value = '';
     inputCantidadEstu.value = 0;
     inputHorario.value = '';
 }
+
