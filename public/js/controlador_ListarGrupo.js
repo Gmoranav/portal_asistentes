@@ -22,22 +22,28 @@ function imprimirListaGrupos(){
         Están en la sección data{}.  NO los que vienen por parámetro sino lo que se declaran en
         la función.  Se deben colocar en el mismo orden*/
         let fila = tbody.insertRow();
-                    
+        
+        let cSede = fila.insertCell();
+        let cCarrera = fila.insertCell();
+        let cCurso = fila.insertCell();
+        let cProfesor = fila.insertCell();
+        let cPeriodo =  fila.insertCell();
         let cNombre = fila.insertCell();
         let cLaboratorio = fila.insertCell();
-        let cProfesor = fila.insertCell();
         let cEstudiantes = fila.insertCell();
-        let cHorario = fila.insertCell();
+
+
         
-        
+        cSede.innerHTML = listaGrupos[i]['sedeGrupo'];
+        cCarrera.innerHTML = listaGrupos[i]['carreraGrupo'];
+        cCurso.innerHTML = listaGrupos[i]['cursoGrupo'];
+        cProfesor.innerHTML = listaGrupos[i]['profesores'];
+        cPeriodo.innerHTML = listaGrupos[i]['periodoGrupo'];
         cNombre.innerHTML = listaGrupos[i]['nombre'];
         cLaboratorio.innerHTML = listaGrupos[i]['laboratorio'];
-        cProfesor.innerHTML = listaGrupos[i]['profesor'];
         cEstudiantes.innerHTML = listaGrupos[i]['cantidad_de_estudiantes'];
-        cHorario.innerHTML = listaGrupos[i]['horario'];
         
         
     }
 
 };
-
