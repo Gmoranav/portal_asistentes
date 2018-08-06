@@ -17,4 +17,3 @@ let laboratorioSchema = new mongoose.Schema({
 }); 
 
 module.exports = mongoose.model('Laboratorio', laboratorioSchema);
-
