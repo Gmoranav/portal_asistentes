@@ -64,7 +64,7 @@ function redireccionCursoListar() {
     window.location = "curso_listar.html";
 }
 function redireccionCursoRegistrar() {
-    window.location = "curso_registrar";
+    window.location = "curso_registrar.html";
 }
 function redireccionaDashboard() {
     window.location = "dashboard.html";
