@@ -1,7 +1,6 @@
 'use strict';
 
-
-
+window.addEventListener('load' , llenarSelectsRegistrarGrupo);
 
 //dejar este nombre del botón igual a como está aquí y dejarlo igual en el HTML: btnRegistrar
 const botonRegistrar = document.querySelector('#btnRegistrar');
@@ -114,27 +113,6 @@ function obtenerDatosFormulario(){
     
 };
 
-/*
-FUNCION PARA POPULAR UN SELECT
-
-function llenarSelectProfesores() {
-    // se llaman los datos de los proyectos 
-    let lista_profesores = obtenerListaGrupos();
-    
-    // ciclo for que recorre la lista de proyectos
-    for (let i = 0; i < lista_profesores.length; i++) {
-
-        // creación de elemento html
-        let option = document.createElement("option");
-        // opciones que se van a mostrar en el select
-        option.text = lista_profesores[i]['profesores']
-        option.value = lista_profesores[i]['profesores'];
-        // id del elemento html donde se van a crear las opciones
-        let select = document.querySelector("#selectProfesores");
-        // se añade la opción al DOM (al html)
-        select.add(option);
-    }  
-}*/
 
 
 
@@ -213,6 +191,115 @@ function validar(){
     return bError;
 };
 
+function llenarSelectsRegistrarGrupo () {
+
+    llenarSelectCursos();
+    llenarSelectCarreras();
+    llenarSelectSedes();
+    llenarSelectPeriodos();
+    llenarSelectLaboratorios();
+
+
+    function llenarSelectCursos() {
+        // se llaman los datos de los proyectos 
+        let lista_cursos = obtenerCursos();
+        
+        // ciclo for que recorre la lista de proyectos
+        for (let i = 0; i < lista_cursos.length; i++) {
+    
+            // creación de elemento html
+            let option = document.createElement("option");
+            // opciones que se van a mostrar en el select
+            option.text = lista_cursos[i]['nombre_curso']
+            option.value = lista_cursos[i]['nombre_curso'];
+            // id del elemento html donde se van a crear las opciones
+            let select = document.querySelector("#txtCursoGrupo");
+            // se añade la opción al DOM (al html)
+            select.add(option);
+        }  
+    }
+
+    function llenarSelectCarreras() {
+        // se llaman los datos de los proyectos 
+        let lista_carreras = obtenerListaCarreras();
+        
+        // ciclo for que recorre la lista de proyectos
+        for (let i = 0; i < lista_carreras.length; i++) {
+    
+            // creación de elemento html
+            let option = document.createElement("option");
+            // opciones que se van a mostrar en el select
+            option.text = lista_carreras[i]['nombre_carrera']
+            option.value = lista_carreras[i]['nombre_carrera'];
+            // id del elemento html donde se van a crear las opciones
+            let select = document.querySelector("#txtCarreraGrupo");
+            // se añade la opción al DOM (al html)
+            select.add(option);
+        }  
+    }
+
+    function llenarSelectSedes() {
+        // se llaman los datos de los proyectos 
+        let lista_sedes = obtener_sedes();
+        
+        // ciclo for que recorre la lista de proyectos
+        for (let i = 0; i < lista_sedes.length; i++) {
+    
+            // creación de elemento html
+            let option = document.createElement("option");
+            // opciones que se van a mostrar en el select
+            option.text = lista_sedes[i]['nombre_sede']
+            option.value = lista_sedes[i]['nombre_sede'];
+            // id del elemento html donde se van a crear las opciones
+            let select = document.querySelector("#txtSedeGrupo");
+            // se añade la opción al DOM (al html)
+            select.add(option);
+        }  
+    }
+    
+    function llenarSelectPeriodos() {
+        // se llaman los datos de los proyectos 
+        let lista_periodos = obtenerListaPeriodos();
+        
+        // ciclo for que recorre la lista de proyectos
+        for (let i = 0; i < lista_periodos.length; i++) {
+    
+            // creación de elemento html
+            let option = document.createElement("option");
+            // opciones que se van a mostrar en el select
+            option.text = lista_periodos[i]['nombre_periodo']
+            option.value = lista_periodos[i]['nombre_periodo'];
+            // id del elemento html donde se van a crear las opciones
+            let select = document.querySelector("#txtPeriodoGrupo");
+            // se añade la opción al DOM (al html)
+            select.add(option);
+        }  
+    }
+    
+    
+    function llenarSelectLaboratorios() {
+        // se llaman los datos de los proyectos 
+        let lista_laboratorios = obtenerListaLaboratorios();
+        
+        // ciclo for que recorre la lista de proyectos
+        for (let i = 0; i < lista_laboratorios.length; i++) {
+    
+            // creación de elemento html
+            let option = document.createElement("option");
+            // opciones que se van a mostrar en el select
+            option.text = lista_laboratorios[i]['nombre_laboratorio']
+            option.value = lista_laboratorios[i]['nombre_laboratorio'];
+            // id del elemento html donde se van a crear las opciones
+            let select = document.querySelector("#txtLaboratorio");
+            // se añade la opción al DOM (al html)
+            select.add(option);
+        }  
+    }
+
+}
+
+
+
 //en esta función solo hay que cambiar los input por lo que se requiera, todo lo demas queda igual
 function limpiarFormulario(){
     inputSede.value = '';
@@ -225,4 +312,3 @@ function limpiarFormulario(){
     inputCantidadEstu.value = 0;
     inputHorario.value = '';
 }
-
