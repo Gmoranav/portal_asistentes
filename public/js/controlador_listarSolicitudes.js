@@ -50,6 +50,7 @@ function imprimirListaSolicitudes(/*pFiltro*/plistaSolicitudes){
             let sPeriodo = fila.insertCell();
             let sGrupo = fila.insertCell();
             let nCantidadAlumnos = fila.insertCell();
+            let cConfiguracion = fila.insertCell();
             /*let shorario = fila.insertCell();*/
 
             snombreCompleto.innerHTML = sPrimerNombre.concat(espacio,
@@ -60,6 +61,16 @@ function imprimirListaSolicitudes(/*pFiltro*/plistaSolicitudes){
             sGrupo.innerHTML = plistaSolicitudes[i]['grupo'];
             nCantidadAlumnos.innerHTML = plistaSolicitudes[i]['cantidad_alumnos'];
             /*shorario.innerHTML = plistaSolicitudes[i]['horario'];*/
+
+            /*se crean los componentes para actualizar*/
+            let botonModificar = document.createElement('a');
+            botonModificar.classList.add('fas');
+            botonModificar.classList.add('fa-pen');
+
+            botonModificar.dataset._id = plistaSolicitudes[i]['_id'];
+
+            cConfiguracion.appendChild(botonModificar);
+            //let botonModificar = library.add(faUserAstronaut);
         //}
 
     }

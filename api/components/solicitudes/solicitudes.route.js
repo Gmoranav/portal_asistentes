@@ -13,5 +13,14 @@ router.route('/listar_solicitudes')
         solicitudesApi.listar_solicitudes(req, res);
     });
 
+router.route('/buscar_usuario_id')
+    .post(function(req, res){
+      solicitudesApi.buscar_solicitud_por_id(req, res);
+    });
+
+router.route('/modificar_usuario_id')
+    .post(function (req, res){
+      users.modificar_usuario(req, res);
+    });
 
 module.exports = router;

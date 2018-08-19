@@ -2,6 +2,7 @@
 validacion_rol_nav();
 
 var button_collapse = document.getElementById("button-nav-collapse");
+document.getElementById('hamburguer').className = "fas fa-times";
 
 button_collapse.addEventListener("click", function () {
     /*this.classList.toggle("active");*/
@@ -16,10 +17,11 @@ button_collapse.addEventListener("click", function () {
         panel_menu.className = "panel-menu panel-menu--hide";
     }
 
-    if (icon_menu.className === "fas fa-bars") {
-        icon_menu.className = "fas fa-times";
-    } else {
+
+    if (icon_menu.className === "fas fa-times") {
         icon_menu.className = "fas fa-bars";
+    } else {
+        icon_menu.className = "fas fa-times";
     }
 
 });
@@ -53,7 +55,9 @@ function redireccionListarAsistentes() {
 function redireccionSedes() {
     window.location = "sede_listar.html";
 }
-
+function redireccionPerfil() {
+    window.location = "usuario_perfil.html";
+}
 function redireccionCarreraListar() {
     window.location = "carrera_listar.html";
 }
@@ -251,5 +255,3 @@ function validacion_rol_nav() {
         menu_option_info_academica.className = "hidden";
     }
 };
-
-

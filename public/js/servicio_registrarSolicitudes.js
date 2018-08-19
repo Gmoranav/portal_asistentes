@@ -9,7 +9,7 @@ Responsabilidades del servicio
 
 //cambiar el nombre Example por lo que se esté registrando, debe estar en singular
 //cambiar los parametros manteniendo una s al principio cuando es texto y n cuando es numero
-function registrarSolicitudes(sPrimerNombre, sSegundoNombre, sApellido, sSegundoApellido, sCurso, 
+function registrarSolicitudes(sPrimerNombre, sSegundoNombre, sApellido, sSegundoApellido, sCurso,
     sPeriodo, sGrupo, nCantidadAlumnos, sHorario){
     let respuesta = '';
     let peticion = $.ajax({
@@ -29,19 +29,19 @@ function registrarSolicitudes(sPrimerNombre, sSegundoNombre, sApellido, sSegundo
             segundo_nombre : sSegundoNombre,
             primer_apellido : sApellido,
             segundo_apellido : sSegundoApellido,
-            curso : sCurso,
-            periodo : sPeriodo, 
-            grupo : sGrupo, 
-            cantidad_alumnos : nCantidadAlumnos, 
-            horario : sHorario
+            //curso : sCurso,
+            //periodo : sPeriodo,
+            grupo : sGrupo,
+            //cantidad_alumnos : nCantidadAlumnos,
+            //horario : sHorario
         }
       });
-    
+
       peticion.done(function(response){
        respuesta = response;
        console.log('envio exitoso');
       });
-    
+
       peticion.fail(function(response){
         console.log("ERROR!!!! ENVIO FALLIDO!!!! ");
         console.log(response);
@@ -51,9 +51,3 @@ function registrarSolicitudes(sPrimerNombre, sSegundoNombre, sApellido, sSegundo
 }
 
 //cambiar Examples por lo que se vaya a listar. Debe estar en plural
-
-
-
-
-
-

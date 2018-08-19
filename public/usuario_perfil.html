@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Registrar Solicitud</title>
+    <title>Registrar Usuario</title>
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
@@ -23,7 +23,7 @@
                                 <i class="fas fa-home fa-fw"></i>&nbsp;Inicio</a>
                         </li>
                         <li>
-                            <a href="#">Perfil</a>
+                            <a onclick="redireccionPerfil()">Perfil</a>
                         </li>
                         <li  id="hide-usuario">
                             <a onclick="redireccionUsuarioListar()" class="">Usuarios</a>
@@ -63,6 +63,7 @@
                     </ul>
                 </nav>
     </aside>
+
     <div class="container">
 
 
@@ -102,26 +103,43 @@
                 </header>
 
         <div class="header-page">
-            <h1>Registrar Solicitud de Asistencia</h1>
+            <h1>Registrar Usuario </h1>
         </div>
         <!--Acá termina la navegación que es parte de todas las paginas-->
 
         <!--este main parte de todas las paginas y engloba el contenido-->
         <main class="page">
             <form class="box-container">
+
+                <div class="form-row">
+                    <div class="avatar-upload">
+                        <div class="avatar-edit">
+                            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                            <label for="imageUpload">
+                                <i class="fas fa-pencil-alt"></i>
+                            </label>
+                        </div>
+                        <div class="avatar-preview">
+                            <div id="imagePreview" style="background-image: url(img/profile-img.png);">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--fila nombre-->
                 <div class="form-row">
                     <div class="form-group form-group-2">
-                        <label for="txtPrimerNombre">Primer Nombre
+                        <label for="txtNombre">Nombre
                             <span>*</span>
                         </label>
-                        <input type="text" id="txtPrimerNombre" required>
+                        <input type="text" id="txtNombre" required>
                     </div>
+
                     <div class="form-group form-group-2">
-                        <label for="txtSegundoNombre">Segundo Nombre
-                        </label>
+                        <label for="txtSegundoNombre">Segundo Nombre</label>
                         <input type="text" id="txtSegundoNombre">
                     </div>
                 </div>
+                <!--fila apellidos-->
                 <div class="form-row">
                     <div class="form-group form-group-2">
                         <label for="txtPrimerApellido">Primer Apellido
@@ -134,63 +152,124 @@
                         <label for="txtSegundoApellido">Segundo Apellido
                             <span>*</span>
                         </label>
-                        <input type="text" id="txtSegundoApellido">
+                        <input type="text" id="txtSegundoApellido" required>
                     </div>
                 </div>
 
-                <div class="form-row">
-                    <div class="form-group form-group-2">
-                        <label for="txtGrupo">Curso
+                <!--fila cédula-->
+                <div class="form-row ">
+                    <div class="form-group form-group-3">
+                        <label for="txtCedula">Cédula
+                            <span>*</span>
                         </label>
-                        <select id="txtGrupo">
-                            <option value="">--Seleccione Grupo--</option>
-                            <option value="Programación 1">Programación 1</option>
-                            <option value="Proyecto de Ingeniería de Software 1 ">Proyecto de Ingeniería de Software 1</option>
-                            <option value="Programación 2">Programación 2</option>
-                            <option value="Introducción a Bases de Datos">Introducción a Bases de Datos</option>
+                        <input type="text" id="txtCedula" placeholder="402540847" required>
+                    </div>
+                </div>
+
+                <!--fila fecha de ingreso-->
+                <div class="form-row ">
+                    <div class="form-group form-group-3">
+                        <label for="txtFechaIngreso">Fecha de ingreso
+                            <span>*</span>
+                        </label>
+                        <input type="text" id="txtFechaIngreso" required>
+                    </div>
+                </div>
+
+                <!--fila rol-->
+                <div class="form-row ">
+                    <div class="form-group form-group-3">
+                        <label for="txtRol">Rol
+                            <span>*</span>
+                        </label>
+                        <select id="txtRol" requiered>
+                            <option value="">--Seleccione un rol--</option>
+                            <option value="Administrador">Administrador</option>
+                            <option value="Rectoría">Rectoría</option>
+                            <option value="Decanatura">Decanatura</option>
+                            <option value="AsistenteDecanatura">Asistente de decanatura</option>
+                            <option value="Profesor">Profesor</option>
+                            <option value="AsistenteProfesor">Asistente de profesor</option>
                         </select>
                     </div>
-
-                    <div class="form-group form-group-2">
-                        <label for="txtGrupo">Grupo
+                </div>
+                <!--fila dirección exacta-->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="txtDireccion">Dirección exacta
+                            <span>*</span>
                         </label>
-                        <select id="txtGrupo">
-                            <option value="">--Seleccione Grupo--</option>
-                            <option value="Programación 1">Programación 1</option>
-                            <option value="Proyecto de Ingeniería de Software 1 ">Proyecto de Ingeniería de Software 1</option>
-                            <option value="Programación 2">Programación 2</option>
-                            <option value="Introducción a Bases de Datos">Introducción a Bases de Datos</option>
+                        <input type="text" id="txtDireccion" required>
+                    </div>
+                </div>
+                <!--fila provincia-canton-distrito-->
+                <div class="form-row">
+                    <div class="form-group form-group-3">
+                        <label for="txtProvincia">Provincia
+                            <span>*</span>
+                        </label>
+                        <select id="txtProvincia" requiered>
+                            <option value="">--Seleccione una provincia--</option>
+                            <option value="Alajuela">Alajuela</option>
+                            <option value="Cartago">Cartago</option>
+                            <option value="Guanacaste">Guanacaste</option>
+                            <option value="Heredia">Heredia</option>
+                            <option value="Limón">Limón</option>
+                            <option value="Puntarenas">Puntarenas</option>
+                            <option value="San José">San José</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-group-3">
+                        <label for="txtCanton">Cantón
+                            <span>*</span>
+                        </label>
+                        <select id="txtCanton">
+                            <option value="">--Seleccione el cantón--</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-group-3">
+                        <label for="txtDistrito">Distrito
+                            <span>*</span>
+                        </label>
+                        <select id="txtDistrito">
+                            <option value="">--Seleccione el distrito--</option>
                         </select>
                     </div>
                 </div>
 
+                <!--fila telefono-->
                 <div class="form-row">
-                    <div class="form-group form-group-2">
-                        <label for="">Cantidad de Alumnos
-                          <span id="">Curso36 Alumnos
-                          </span>
+                    <div class="form-group form-group-3">
+                        <label for="txtTelefono">Teléfono
+                            <span>*</span>
                         </label>
-
+                        <input type="text" id="txtTelefono" placeholder="8745-0258" required>
                     </div>
                 </div>
-
+                <!--fila correo electronico-->
+                <div class="form-row">
+                    <div class="form-group form-group-2">
+                        <label for="txtCorreo">Correo
+                            <span>*</span>
+                        </label>
+                        <input type="email" id="txtCorreo" placeholder="ejemplo@ucenfotec.ac.cr" required>
+                    </div>
+                </div>
                 <div class="form-row buttons">
-                <a onclick="redireccionSolicitudAsistenteListar()" class="button button--secundario" type="button" id="btnCancelar">Cancelar</a>
-                <button class="button button--principal" type="button" id="btnRegistrar">Registrar</button>
+                    <a onclick="redireccionUsuarioListar()" class="button button--secundario" type="button" id="btnCancelar">Cancelar</a>
+                    <button class="button button--principal" type="button" id="btnRegistrar">Registrar</button>
                 </div>
-
             </form>
         </main>
 
 
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.25.0/dist/sweetalert2.all.min.js"></script>
     <script src="js/jquery-3.3.1.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2"></script>
     <script src="js/controlador_InicioSesion.js"></script>
     <script src="js/components.js"></script>
-    <script src="js/servicio_registrarSolicitudes.js"></script>
-    <script src="js/controlador_registrarSolicitudes.js"></script>
+    <script src="js/servicio_RegistrarUsuario.js"></script>
+    <script src="js/controlador_RegistrarUsuario.js"></script>
 </body>
 
 </html>
