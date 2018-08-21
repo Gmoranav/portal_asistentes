@@ -1,5 +1,5 @@
 'use strict';
-let mongoose = require('mongoose');
+let mongoose = require('mongoose');  //mongoose es el que nos permite conectarnos a la base de datos
 
 let RegistrarSedeSchema = new mongoose.Schema({
     nombre_sede : {type : String, required : true},

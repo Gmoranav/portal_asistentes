@@ -30,3 +30,29 @@ function obtener_sedes() {
 
     return llenar_sedes;
 }
+
+function obtener_sede_por_id(p_id) { //funcion viene del controlador
+    let sede = '';
+    let peticion = $.ajax({
+  
+      url: 'http://localhost:4000/api/buscar_sede_id', //ruta proviene del api
+      type: 'post',
+      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType: 'json',
+      async: false,
+      data: {
+        _id: p_id
+      }
+    });
+  
+    peticion.done(function (response) {
+      sede = response;
+    });
+  
+    peticion.fail(function (response) {
+  
+    });
+  
+    return sede;
+  
+  };
