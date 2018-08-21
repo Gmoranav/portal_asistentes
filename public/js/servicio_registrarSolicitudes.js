@@ -29,7 +29,7 @@ function registrarSolicitudes(sPrimerNombre, sSegundoNombre, sApellido, sSegundo
             segundo_nombre : sSegundoNombre,
             primer_apellido : sApellido,
             segundo_apellido : sSegundoApellido,
-            //curso : sCurso,
+            curso : sCurso,
             //periodo : sPeriodo,
             grupo : sGrupo,
             //cantidad_alumnos : nCantidadAlumnos,
@@ -49,5 +49,7 @@ function registrarSolicitudes(sPrimerNombre, sSegundoNombre, sApellido, sSegundo
 
       return respuesta;
 }
+
+
 
 //cambiar Examples por lo que se vaya a listar. Debe estar en plural

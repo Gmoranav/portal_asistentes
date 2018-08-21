@@ -59,16 +59,16 @@ module.exports.agregar_solicitud=function(req,res){
 }
 */
 
-module.exports.buscar_solicitud_por_id = function(req,res){
-    solicitudModel.finById({_id: req.body.id}).then(
+module.exports.buscar_solicitud_id = function(req,res){
+    solicitudModel.findById({_id: req.body.id}).then(
       function(solicitud){
         res.send(solicitud);
       }
     );
 };
 
-module.exports.modificar_usuario = function(req, res){
-  userModel.findByIdAndUpdate(req.body._id,{ $set: req.body },
+module.exports.modificar_solicitud = function(req, res){
+  solicitudModel.findByIdAndUpdate(req.body.id,{ $set: req.body },
     function(error){
         if(error){
             res.json({
