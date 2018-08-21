@@ -38,7 +38,7 @@ module.exports.listar_periodos = function(req, res){
 
 //buscar
 module.exports.buscar_periodo_id = function(req, res){
-    periodos_model.findById({_id: req.body.nombre_periodo}).then(
+    periodos_model.findById({_id : req.body._id}).then(  //donde el _id concuerde con lo que se le esta pasando por req.body.NOMBRE_PERIODO
         function(periodo){
             res.send(periodo);
         }

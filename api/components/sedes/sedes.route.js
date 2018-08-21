@@ -21,7 +21,7 @@ router.route('/buscar_sede_id')
     }); 
 
 //modificar sede
-router.route('/modificar_sede')
+router.route('/modificar_sede')  //el archivo "./sedes.api" es el que responde a esta ruta
     .post(function(req, res){
         sedes.modificar_sede(req, res);
     });
