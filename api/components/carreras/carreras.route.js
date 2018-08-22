@@ -14,4 +14,10 @@ router.route('/listar_carreras')
         carrerasApi.listar_carreras(req, res);
 });
 
+router.route('/buscar_carrera_id')
+    .post(function(req,res){
+        carrerasApi.buscar_carrera_id(req, res);
+    });
+
+
 module.exports = router;
