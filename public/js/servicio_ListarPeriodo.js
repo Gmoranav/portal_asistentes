@@ -7,14 +7,8 @@ Responsabilidades del servicio
 
 'use strict';
 
-
-
-
 function obtenerListaPeriodos() {
-
-
   let listaPeriodos = [];
-
   let peticion = $.ajax({
 
     url: 'http://localhost:4000/api/listar_periodos',
@@ -37,6 +31,7 @@ function obtenerListaPeriodos() {
 
   return listaPeriodos;
 }
+
 
 function obtener_periodo_por_id(p_id) { //funcion viene del controlador
   let periodo = '';
@@ -61,5 +56,4 @@ function obtener_periodo_por_id(p_id) { //funcion viene del controlador
   });
 
   return periodo;
-
 };

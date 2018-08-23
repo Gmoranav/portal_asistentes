@@ -5,7 +5,7 @@ let boton_inicio = document.querySelector('#btnRegistrar');
 boton_inicio.addEventListener("click", obtener_credenciales_usuario);
 
 function redireccionRecuperarContrasenna() {
-    window.location = "recuperarContrasenna.html";
+    window.location = "recuperar_Contrasenna.html";
 }
 
 // función que toma los datos del formulario inicio sesión

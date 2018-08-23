@@ -14,6 +14,7 @@ boton_registrar.addEventListener('click', obtener_datos);
 
 const input_nombre_cuatri = document.querySelector('#txtNombreCuatrimestre');
 const input_estado_cuatri = document.querySelector('#txtEstadoCuatrimestre');
+const input_id = document.querySelector('#txtID');
 
 function obtener_datos() {
 
@@ -100,3 +101,32 @@ function limpiar_formulario() {
     input_estado_cuatri.value = '';
 }
 
+
+
+// ***  inicio: para enviar la informacion para modificar al formulario.  (del controlador_ListarPeriodo.js) *** 
+window.onload = function() {
+    cargar_datos_modificar();
+   };
+
+   function cargar_datos_modificar(){
+    
+    let periodo = [];
+    
+    periodo = getSedeParaModificar();
+    if (periodo[0]!= undefined){
+
+        input_nombre_cuatri.value = periodo[0]; 
+        input_estado_cuatri.value = periodo[1];  
+        
+
+        periodo = [];
+        localStorage.setItem("periodoParaModificar", JSON.stringify(periodo));
+        botonModificar.hidden = false;
+        botonRegistrar.hidden = true;
+    }
+};
+
+function getSedeParaModificar() {
+    return JSON.parse(localStorage.getItem("periodoParaModificar"));
+}
+// fin: enviar info del listar al form 

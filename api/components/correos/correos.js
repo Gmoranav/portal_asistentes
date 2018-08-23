@@ -1,17 +1,20 @@
 'use strict'
 const nodeMailer = require('nodemailer');
 
+//Primero permitir el acceso de aplicaciones menos seguras (dar click en el siguente link: https://myaccount.google.com/lesssecureapps
+// y seleccionar SI. 
+
 const transporter = nodeMailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'grupovirtual.proyecto1@gmail.com', // desde esta direccion se envian los correo (hay que inventar un correo en gmail)
+        user: 'grupovirtual.proyecto1@gmail.com', // desde esta direccion se envian los correo (poner la direccion de correo de gmail)
         pass: 'uCenfoProyecto.1'  //contrasena del correo
     } 
 });
 
 
 let mailOptions = {
-    from: 'grupovirtual.proyecto1@gmail.com', //poner el mismo correo que en la linea 6 (correo del equipo)
+    from: 'grupovirtual.proyecto1@gmail.com', //poner el mismo correo que en la linea 10 (correo del equipo)
     to: '',
     subject: '',
     html: ''

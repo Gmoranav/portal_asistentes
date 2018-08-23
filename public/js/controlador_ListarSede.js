@@ -22,7 +22,7 @@ function llenar_tabla() {
         let celda_distrito_sede = fila.insertCell();
         let celda_ubicacion_sede = fila.insertCell();
 
-        let cConfiguracion = fila.insertCell();  // se crea esta variable para asignarle el boton
+        let cConfiguracion = fila.insertCell();  // se crea esta variable para asignarle el boton del lapiz
 
         celda_nombre_sede.innerHTML = llenar_sedes[i]['nombre_sede'];
         celda_provincia_sede.innerHTML = llenar_sedes[i]['provincia_sede'];
@@ -37,27 +37,44 @@ function llenar_tabla() {
         botonModificar.classList.add('fa-pencil-alt'); // clase de fontawsome para agregar el lapiz
 
         botonModificar.dataset._id = llenar_sedes[i]['_id'];  //para que el lapiz pueda obetner el id de la linea
-
         botonModificar.addEventListener('click', buscar_por_id); // funcion declarada mas abajo del controlador 
-
         cConfiguracion.appendChild(botonModificar); // agrega el lapiz al html
 
     }
 };
 
+function listarSede() {
 
-function buscar_por_id(){  //funcion que se ejecuta en el servicio
+    let listaSede = obtenerListaSede();
+    console.log('entra a listar sedes');
+    imprimirListaSede(listaSede);
+};
+
+function buscar_por_id() {  //funcion que se ejecuta en el servicio
     //binding -> permite que una funcion quede enlazada al componente que la llama
     let _id = this.dataset._id;
     let sede = obtener_sede_por_id(_id);
+    let datosSede = [];
+    let i = 0;
 
-  /*  input_NombreP.value = periodo['input_NombreP'];
-    input_EstadoP.value = periodo['estado_periodo'];   */
- 
-    
+    datosSede[0] = sede['nombre_sede'];
+    datosSede[1] = sede['provincia_sede'];
+    datosSede[2] = sede['canton_sede'];
+    datosSede[3] = sede['distrito_sede'];
+    datosSede[4] = sede['ubicacion_sede'];
+
     console.log(sede);
 
+    setSedeParaModificar(datosSede);
 
+    cargar_pagina();
+    function cargar_pagina() {
+        window.location.replace('sede_registrar.html');
+    }
 
 };
 
+function setSedeParaModificar(infoSede) {
+    localStorage.setItem("sedeParaModificar", JSON.stringify(infoSede));
+    console.log(JSON.parse(localStorage.getItem("sedeParaModificar")));
+};

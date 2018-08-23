@@ -684,6 +684,20 @@ body {
     display: none;
 }
 
+.textType-loginForm1{
+
+    font-family: Open Sans;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.textType-loginForm{
+
+    font-family: Open Sans;
+    font-size: 12px;
+
+}
+
 /************************************/
 
 .profile-info.profile-info--dashboard {
