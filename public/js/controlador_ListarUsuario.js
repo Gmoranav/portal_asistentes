@@ -3,16 +3,16 @@
 
 window.addEventListener('load', listarUsuarios);
 
-const inputFiltroNombre = document.querySelector('#txtNombre');
+//const inputFiltroNombre = document.querySelector('#txtNombre');
 const inputFiltroRol = document.querySelector('#txtRol');
-const inputFiltroIngreso = document.querySelector('#txtIngreso');
-const inputFiltroCorreo = document.querySelector('#txtCorreo');
-
-inputFiltroNombre.addEventListener('keyup', function(){
-        imprimirListaUsuarios(listarUsuarios, inputFiltroNombre.value)
-});
+/*const inputFiltroIngreso = document.querySelector('#txtIngreso');
+const inputFiltroCorreo = document.querySelector('#txtCorreo');*/
 
 inputFiltroRol.addEventListener('keyup', function(){
+        imprimirListaUsuarios(listarUsuarios, inputFiltroRol.value)
+});
+
+/*inputFiltroRol.addEventListener('keyup', function(){
         imprimirListaUsuarios(listarUsuarios, inputFiltroRol.value)
 });
 
@@ -22,7 +22,7 @@ inputFiltroIngreso.addEventListener('keyup', function(){
 
 inputFiltroCorreo.addEventListener('keyup', function(){
         imprimirListaUsuarios(listarUsuarios, inputFiltroCorreo.value)
-});
+});*/
 
 
 function imprimirListaUsuarios(plistaUsuarios, pFiltro){

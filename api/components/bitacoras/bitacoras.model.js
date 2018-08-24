@@ -8,22 +8,22 @@ let bitacoraSchema = new mongoose.Schema({
 
     nombre_profesor : {type : String, required : true},
     primer_nombre_asistente : {type : String, required : true},
-    segundo_nombre_asistente : {type : String, required : false},
-    primer_apellido_asistente : {type : String, requerid : false},
-    segundo_apellido_asistente : {type : String, required : false},
-    curso : {type : String, required : false},
-    grupo : {type : String, required : false},
+    segundo_nombre_asistente : {type : String},
+    primer_apellido_asistente : {type : String},
+    segundo_apellido_asistente : {type : String},
+    curso : {type : String},
+    grupo : {type : String},
     //subdocumento. La bitacora tiene varios registros que los hace
     //el asistente del profesor
     registros : [
         {
-            fecha : {type : String, required : false},
-            hora_inicio : {type: String, required : false},
-            hora_fin : {type : String, required : false},
-            descripcion : {type : String, required : false},
+            fecha : {type : String},
+            hora_inicio : {type: String},
+            hora_fin : {type : String},
+            descripcion : {type : String},
         }
     ],   
-    estado : {type : Number, required : false}
+    estado : {type : Number}
 }); 
 
 module.exports = mongoose.model('Bitacora', bitacoraSchema);

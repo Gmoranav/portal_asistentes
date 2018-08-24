@@ -64,6 +64,7 @@ app.use( function(req, res, next) {
  */
 //Yanory
 const usuarios = require('./components/usuarios/usuarios.route');
+const bitacoras = require('./components/bitacoras/bitacoras.route');
 //Joseph
 const cursos = require('./components/cursos/cursos.route');
 const carreras = require('./components/carreras/carreras.route');
@@ -82,6 +83,7 @@ const periodos = require('./components/periodos/periodos.route');
  */
 //Yanory
 app.use('/api' , usuarios);
+app.use('/api' , bitacoras);
 //Joseph
 app.use('/api' , cursos);
 app.use('/api', carreras);
