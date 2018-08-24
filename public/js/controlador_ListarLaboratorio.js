@@ -86,6 +86,7 @@ function buscar_por_id () {
 
 function remover_laboratorio(){
     let _id = this.dataset._id;
+    let estado = 0;
     swal({
         title: '¿Está seguro?',
         text: "El laboratorio se eliminará permanentemente",
@@ -96,7 +97,7 @@ function remover_laboratorio(){
         confirmButtonText: 'Eliminar'
       }).then((result) => {
         if (result.value) {
-            eliminar_laboratorio(_id);
+            eliminar_laboratorio(_id, estado);
             imprimirListaLaboratorios();
           swal(
             '¡Eliminado!',

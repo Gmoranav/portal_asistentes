@@ -62,7 +62,7 @@ module.exports.modificar_laboratorio = function (req, res) {
 };
 
 module.exports.eliminar_laboratorio = function (req, res) {
-    laboratorioModel.findByIdAndDelete(req.body._id,
+    laboratorioModel.findByIdAndUpdate(req.body._id, {$set: req.body},
         function (err, user) {
             if (err) {
                 res.json({ success: false, msg: 'El laboratorio no se ha podido eliminar. ' + handleError(err) });
