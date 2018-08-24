@@ -73,15 +73,24 @@ function imprimirListaUsuarios(plistaUsuarios, pFiltro){
             botonModificar.classList.add('fas');
             botonModificar.classList.add('fa-pencil-alt');
 
+            let botonEliminar = document.createElement('a');
+            botonEliminar.classList.add('fas');
+            botonEliminar.classList.add('fa-trash-alt');
+
+
             //dataset es una 
             //propiedad que permite definir atributos personalizados
             //para un elemento de html
             botonModificar.dataset._id = plistaUsuarios[i]['_id'];
+            botonEliminar.dataset._id = plistaUsuarios[i]['_id'];
 
             //un eventListener queda enlazado a la función que llama
             botonModificar.addEventListener('click', buscar_por_id);
+            botonEliminar.addEventListener('click', remover_usuario);
 
             cConfiguracion.appendChild(botonModificar);
+            cConfiguracion.appendChild(botonEliminar);
+
         }//fin if
     }//fin for
 };
@@ -132,3 +141,26 @@ function setUsuarioParaModificar(infoUsuario) {
 };
 
 
+function remover_usuario(){
+        let _id = this.dataset._id; //SE SALVA EL ID DE LO QUE SE DESEA BORRAR
+        swal({
+            title: '¿Está seguro?',
+            text: "El usuario se eliminará permanentemente",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Eliminar'
+          }).then((result) => {
+            if (result.value) {
+                eliminar_usuario(_id); 
+                listarUsuarios();
+                swal(
+                        '¡Eliminado!',
+                        'El usuario ha sido eliminado con éxito',
+                        'success'
+                )
+              
+            }
+        });
+};
