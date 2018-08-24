@@ -13,4 +13,14 @@ router.route('/listar_usuarios')
         usuariosApi.listar_usuarios(req, res);
     });
 
+router.route('/buscar_usuario_id')
+    .post(function(req, res){
+    usuariosApi.buscar_usuario_por_id(req, res);
+});
+
+router.route('/modificar_usuario')
+    .post(function(req, res){
+    usuariosApi.modificar_usuario(req, res);
+});
+
 module.exports = router;

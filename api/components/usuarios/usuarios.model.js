@@ -15,7 +15,7 @@ let usuarioSchema = new mongoose.Schema({
     fecha_ingreso : {type : String, required : true},
     rol : {type : String, required : true},
     direccion : {type: String, required : true},
-    distrito : {type : String, required : true},
+    distrito : {type : String, required : false},
     canton : {type : String, required : true},
     provincia : {type : String, required : true},
     telefono : {type : String, required : true},
