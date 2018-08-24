@@ -23,9 +23,9 @@ router.route('/modificar_usuario')
     usuariosApi.modificar_usuario(req, res);
 });
 
-router.route('/eliminar_usuario')
+router.route('/desactivar_usuario')
 .post(function (req, res) {
-    usuariosApi.eliminar_usuario(req, res);
+    usuariosApi.desactivar_usuario(req, res);
 });
 
 

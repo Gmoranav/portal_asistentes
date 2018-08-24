@@ -1,9 +1,8 @@
 'use strict';
 
 function registrarUsuarios(imagenUrl, sNombre, sSegundoNombre, sPrimerApellido, sSegundoApellido, sCedula, dFechaIngreso, sltRol, 
-    sDireccion, sDistrito, sCanton, sltProvincia, sTelefono, sCorreo){
+    sDireccion, sDistrito, sCanton, sltProvincia, sTelefono, sCorreo, pcontrasenna, pestado, pingresos){
     let respuesta = '';
-    let estado = 1;
     let peticion = $.ajax({
 
 
@@ -30,8 +29,9 @@ function registrarUsuarios(imagenUrl, sNombre, sSegundoNombre, sPrimerApellido, 
             telefono : sTelefono,
             correo : sCorreo,
             usuario : sCedula,
-            contrasenna : sCedula,
-            estado : estado
+            contrasenna : pcontrasenna,
+            estado : pestado,
+            ingresos : pingresos
         }
       });
     

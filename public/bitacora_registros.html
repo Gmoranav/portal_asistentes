@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registrar Bitácora</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" 
+        integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+        crossorigin="anonymous">
+</head>
+
+<body class="body-container">
+
+    <!--Acá empieza la navegación que es parte de todas las paginas-->
+    <aside id="panel-menu" class="panel-menu">
+            <nav>
+                    <ul>
+                        <li>
+                            <a onclick="redireccionaDashboard()">
+                                <i class="fas fa-home fa-fw"></i>&nbsp;Inicio</a>
+                        </li>
+                        <li>
+                            <a href="#">Perfil</a>
+                        </li>
+                        <li  id="hide-usuario">
+                            <a onclick="redireccionUsuarioListar()" class="">Usuarios</a>
+                        </li>
+                        <li>
+                            <a>Asistentes</a>
+                            <ul>
+                                <li>
+                                    <a onclick="redireccionSolicitudAsistenteListar()" id="hide-solicitud">Solicitudes</a>
+                                </li>
+                                <li>
+                                    <a href="#" id="hide-info-academica">Información Académica </a>
+                                </li>
+                                <li>
+                                    <a href="#">Bitácoras</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a onclick="redireccionSedeListar()" id="hide-sede">Sedes</a>
+                        </li>
+                        <li>
+                            <a onclick="redireccionCarreraListar()" id="hide-carrera">Carreras</a>
+                        </li>
+                        <li>
+                            <a onclick="redireccionCursoListar()" id="hide-curso">Cursos</a>
+                        </li>
+                        <li>
+                            <a onclick="redireccionPeriodoListar()" id="hide-periodo">Periodos</a>
+                        </li>
+                        <li>
+                            <a onclick="redireccionGrupoListar()" id="hide-grupo">Grupos</a>
+                        </li>
+                        <li>
+                            <a onclick="redireccionLaboratorioListar()" id="hide-laboratorio">Laboratorios</a>
+                        </li>
+                    </ul>
+                </nav>
+    </aside>
+
+    <div class="container">
+
+
+            <header class="panel-header">
+                    <div>
+                        <button id="button-nav-collapse" type="button">
+                            <i id="hamburguer" class="fas fa-bars"></i>
+                        </button>
+                        <img src="img/cenfo.png" class="img-cenfotec">
+                    </div>
+        
+                    <nav>
+                        <a onclick="redireccionaDashboard()">
+                            <i class="fas fa-lg fa-home tooltip"><span class="tooltiptext">Inicio</span></i>
+                        </a>
+        
+                        <div "dropdown-profile">
+                            <button type="button" id="toggle-profile-dropdown" class="avatar">YM</button>
+                            <div id="profile-info-dropdown" class="profile-info profile-info--hide">
+        
+                                <div class="avatar dropdown-profile__avatar">YM</div>
+                                <div class="dropdown-profile__info">
+                                    <h3>User Name</h3>
+                                    <label class="tag">admin</label>
+                                    <p>correo@example.com</p>
+                                    <div class="dropdown-profile__actions">
+                                        <a href="#" class="link-brand">Perfil</a>
+                                        <button class="button--secundario" id="boton_salir">salir</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </header>
+
+        <div class="header-page">
+            <h1>Registrar Bitácora </h1>
+        </div>
+        <!--Acá termina la navegación que es parte de todas las paginas-->
+
+        <!--este main parte de todas las paginas y engloba el contenido-->
+        <main class="page">
+            <form class="box-container">
+                <input type="text" id="txtId" hidden></input>
+                <!--fila nombre-->
+                <div class="form-row">
+                    <div class="form-group form-group-2">
+                        <label for="txtNombre">Nombre Profesor
+                            <span>*</span>
+                        </label>
+                        <input type="text" id="txtNombre" required>
+                    </div>
+                </div>
+                <!--fila nombre-->
+                <div class="form-row">
+                    <div class="form-group form-group-2">
+                        <label for="txtSegundoNombre">DATOS ASISTENTE</label>
+                        <label for="txtNombre">Primer Nombre
+                            <span>*</span>
+                        </label>
+                        <input type="text" id="txtNombre" required>
+                    </div>
+
+                    <div class="form-group form-group-2">                            
+                        <label for="txtSegundoNombre">Segundo Nombre</label>
+                        <input type="text" id="txtSegundoNombre">
+                    </div>
+                </div> 
+                <!--fila apellidos-->
+                <div class="form-row">
+                    <div class="form-group form-group-2">
+                        <label for="txtPrimerApellido">Primer Apellido
+                            <span>*</span>
+                        </label>
+                        <input type="text" id="txtPrimerApellido" required>
+                    </div>
+
+                    <div class="form-group form-group-2">
+                        <label for="txtSegundoApellido">Segundo Apellido
+                            <span>*</span>
+                        </label>
+                        <input type="text" id="txtSegundoApellido" required>
+                    </div>
+                </div> 
+
+                <!--fila curso-->
+                <div class="form-row ">
+                    <div class="form-group form-group-3">
+                        <label for="txtCurso">Curso
+                            <span>*</span>
+                        </label>
+                        <input type="text" id="txtCurso"  required>
+                    </div>
+                </div>
+                
+                <!--fila fecha de ingreso-->
+                <div class="form-row ">
+                    <div class="form-group form-group-3">
+                        <label for="txtGrupo">Grupo
+                            <span>*</span>
+                        </label>
+                        <input type="text" id="txtGrupo" required>
+                    </div>
+                </div>
+                <!--select cursos-->
+                <div class="form-group form-group-3">
+                    <label for="sltCursos">Curso
+                        <span>*</span>
+                    </label>
+                    <select id="sltCursos">
+                        <option value="">--Seleccione el curso--</option>
+                    </select>
+                </div>
+                
+                <!--Registros-->
+                <!--fecha-->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="txtFecha">Fecha
+                            <span>*</span>
+                        </label>
+                        <input type="text" id="txtFecha">
+                    </div>
+                </div>
+                
+                <!--fila hora inicio-->
+                <div class="form-row">
+                    <div class="form-group form-group-3">
+                        <label for="txtHoraInicio">Hora Inicio
+                            <span>*</span>
+                        </label>
+                        <input type="text" id="txtHoraInicio">
+                    </div>
+                </div>
+                <!--fila hora fin-->
+                <div class="form-row">
+                    <div class="form-group form-group-2">
+                        <label for="txtHoraFin">Hora Fin
+                            <span>*</span>
+                        </label>
+                        <input type="text" id="txtHoraFin">
+                    </div>
+                </div>
+                <!--descripcion-->
+                <div class="form-row">
+                    <div class="form-group form-group-2">
+                        <label for="txtDescripcion">Descripción
+                            <span>*</span>
+                        </label>
+                        <input type="text" id="txtDescripcion">
+                    </div>
+                </div>
+                
+                <div class="form-row buttons">
+                    <a onclick="redireccionUsuarioListar()" class="button button--secundario" type="button" id="btnCancelar">Cancelar</a>
+                    <button class="button button--principal" type="button" id="btnAgregarRegistrosBitacora">Agregar Registro</button>
+                    <button class="button button--principal" type="button" id="btnModificarRegistrosBitacora">Modificar</button>
+                </div>
+            </form>
+        </main>
+
+
+    </div>
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.25.0/dist/sweetalert2.all.min.js"></script>
+    <script src="js/controlador_InicioSesion.js"></script>
+    <script src="js/servicio_Imagen.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/servicio_RegistrarUsuario.js"></script>
+    <script src="js/controlador_ListarUsuario.js"></script>
+    <script src="js/controlador_RegistrarUsuario.js"></script>
+</body>
+
+</html>

@@ -1,5 +1,21 @@
 'use strict';
 const usuarioModel = require('./usuarios.model');
+/*const nodemailer = require('nodemailer');
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'grupovirtual.proyecto1@gmail.com',
+        pass: 'uCenfoProyecto.1'
+    }
+});
+
+let mailOptions = {
+    from: 'grupovirtual.proyecto1@gmail.com',
+    to: '',
+    subject: 'Credenciales Portal Assietentes',
+    html: ''
+};*/
 
 module.exports.registrar_usuario = function(req, res){
     /**Todo para registrar un usuario va aqui */
@@ -19,9 +35,10 @@ module.exports.registrar_usuario = function(req, res){
         provincia : req.body.provincia,
         telefono : req.body.telefono,
         correo : req.body.correo,
-        usuario : req.body.usuario,
+        usuario : req.body.cedula,
         contrasenna : req.body.contrasenna,
-        estado : req.body.estado
+        estado : req.body.estado,
+        ingresos : req.body.ingresos
 
     });
 
@@ -30,6 +47,47 @@ module.exports.registrar_usuario = function(req, res){
         if(error){
             res.json({ success: false, msj: ' El usuario no pudo ser registrado : ' + error});
         }else{
+         /*   mailOptions.to = nuevoUsuario.correo;
+            mailOptions.html = 
+            <html>
+                <head>
+                    <style>
+                        h1{
+                            background: #ff7675;
+                            padding: 15px 0 15px 0;
+                            text-align: center;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <h1>Bienvenido ${nuevoUsuario.nombre + nuevoUsuario.primer_apellido} </h1>
+                    <p>Sus datos de registro son </p>
+                    <table>
+                        <tr>
+                            <td>Nombre</td>
+                            <td>${nuevoUsuario.nombre + nuevoUsuario.primer_apellido}</td>
+                        </tr>
+                        <tr>
+                            <td>Rol</td>
+                            <td>${nuevoUsuario.rol}</td>
+                        </tr>
+                    </table>
+                    <p>Su usuario es:</p>
+                    <p>${nuevoUsuario.cedula}</p>
+
+                    <p>Su clave temporal es:</p>
+                    <p>${nuevoUsuario.contrasenna}</p>
+
+                </body>
+            </html>
+            ;
+            transporter.sendMail(mailOptions, function(error, info){
+                if(error){
+                    console.log(error);
+                }else{
+                    console.log('Email sent: ' + info.response);
+                }
+            });*/
             res.json({ success: true, msj: ' El usuario ha sido registrado de forma exitosa'});
         }
     });
@@ -65,14 +123,14 @@ module.exports.modificar_usuario = function(req, res){
     });
 };
 
-module.exports.eliminar_usuario = function (req, res) {
-    usuarioModel.findByIdAndDelete(req.body._id,
+module.exports.desactivar_usuario = function (req, res) {
+    usuarioModel.findByIdAndUpdate(req.body._id, {$set: req.body},
         function (err, user) {
             if (err) {
-                res.json({ success: false, msg: 'El usuario no se ha podido eliminar. ' + handleError(err) });
+                res.json({ success: false, msg: 'El usuario no se ha podido desactivar. ' + handleError(err) });
 
             } else {
-                res.json({ success: true, msg: 'Se ha eliminado correctamente. ' + res });
+                res.json({ success: true, msg: 'Se ha desactivado correctamente. ' + res });
             }
         });
 };

@@ -8,12 +8,15 @@ function redireccionRecuperarContrasenna() {
     window.location = "recuperar_Contrasenna.html";
 }
 
+
+
 // función que toma los datos del formulario inicio sesión
 function obtener_credenciales_usuario() {
 
     let bError = false;
     let cedula = document.querySelector('#txtCedula').value;
     let contrasenna = document.querySelector('#txtContrasenna').value;
+    let valido = [];
 
     bError = validar();
 
@@ -25,22 +28,29 @@ function obtener_credenciales_usuario() {
             confirmButtonText: 'Listo'
         });
     } else {
-        let valido = validar_credenciales(cedula, contrasenna);
 
-        if (valido) {
-            console.log("Acceso permitido");
-            redireccionarUsuario();
-        }
-        else {
-            console.log("Accesso denegado");
-            swal({
-                type: 'warning',
-                title: 'Acceso denegado',
-                text: 'Usuario o contraseña incorrectos',
-                confirmButtonText: 'Listo'
-            });
-        }
-    }
+        valido = validar_credenciales(cedula, contrasenna);
+        if(valido[1] == true){//está ingresando por primera vez
+            window.location = "cambiar_Contrasenna.html";
+            console.log(valido);
+            //cambiar_contrasenna(cedula);
+        }else{
+
+            if(valido[0] == true){ 
+                console.log("Acceso permitido");
+                redireccionarUsuario();
+            }else{
+                console.log("Accesso denegado");
+                swal({
+                    type: 'warning',
+                    title: 'Acceso denegado',
+                    text: 'Usuario o contraseña incorrectos',
+                    confirmButtonText: 'Listo'
+                });
+            }//fin else
+        }//fin else
+    }//fin else
+};//fin funcion
 
     function validar() {
         let bError = false;
@@ -76,7 +86,7 @@ function obtener_credenciales_usuario() {
         } else {
             console.log("Acceso denegado");
         } */
-}
+
 
 // funcion encargada de enviar los datos al servicio de autenticación para ver si existen entre los usuarios registrados
 function validar_credenciales(cedula, contrasenna) {

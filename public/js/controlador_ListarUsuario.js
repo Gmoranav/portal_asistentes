@@ -37,61 +37,75 @@ function imprimirListaUsuarios(plistaUsuarios, pFiltro){
     tbody.innerHTML = '';
 
     for(let i = 0; i < plistaUsuarios.length; i++){
-
-        if(plistaUsuarios[i]['rol'].toLowerCase().includes(pFiltro.toLowerCase())){
-            let fila = tbody.insertRow();
-                        
-            let nombre = plistaUsuarios[i]['nombre'];
-            let segundo_nombre = plistaUsuarios[i]['segundo_nombre'];
-            let primer_apellido = plistaUsuarios[i]['primer_apellido'];
-            let segundo_apellido = plistaUsuarios[i]['segundo_apellido'];
-            let NombreCompleto;
-            let cNombre = fila.insertCell();
-            let cRol = fila.insertCell();
-            let cFechaIngreso = fila.insertCell();
-            let cCorreo = fila.insertCell();
-            let cConfiguracion = fila.insertCell();
-
-            /*let imagen = document.createElement('img');
-            imagen.src = plistaUsuarios[i]['foto'];
-            imagen.classList.add('imageSettings');
-
-            cFoto.appendChild(imagen);*/
-            if (segundo_nombre != 'undefined'){
-                NombreCompleto = primer_apellido.concat(' ', segundo_apellido, ' ', nombre, ' ', segundo_nombre);
-            }else{
-                NombreCompleto = primer_apellido.concat(' ', segundo_apellido, ' ', nombre);
-            }
+        if(plistaUsuarios[i]['estado']==1){
+                if(plistaUsuarios[i]['rol'].toLowerCase().includes(pFiltro.toLowerCase())){
+                        let fila = tbody.insertRow();
+                                    
+                        let nombre = plistaUsuarios[i]['nombre'];
+                        let segundo_nombre = plistaUsuarios[i]['segundo_nombre'];
+                        let primer_apellido = plistaUsuarios[i]['primer_apellido'];
+                        let segundo_apellido = plistaUsuarios[i]['segundo_apellido'];
+                        let NombreCompleto;
+                        let cNombre = fila.insertCell();
+                        let cRol = fila.insertCell();
+                        let cFechaIngreso = fila.insertCell();
+                        let cCorreo = fila.insertCell();
+                        let cConfiguracion = fila.insertCell();
             
-            cNombre.innerHTML = NombreCompleto;
-            cRol.innerHTML = plistaUsuarios[i]['rol'];
-            cFechaIngreso.innerHTML = plistaUsuarios[i]['fecha_ingreso'];
-            cCorreo.innerHTML = plistaUsuarios[i]['correo'];
+                        /*let imagen = document.createElement('img');
+                        imagen.src = plistaUsuarios[i]['foto'];
+                        imagen.classList.add('imageSettings');
+            
+                        cFoto.appendChild(imagen);*/
+                        if (segundo_nombre != 'undefined'){
+                            NombreCompleto = primer_apellido.concat(' ', segundo_apellido, ' ', nombre, ' ', segundo_nombre);
+                        }else{
+                            NombreCompleto = primer_apellido.concat(' ', segundo_apellido, ' ', nombre);
+                        }
+                        
+                        cNombre.innerHTML = NombreCompleto;
+                        cRol.innerHTML = plistaUsuarios[i]['rol'];
+                        cFechaIngreso.innerHTML = plistaUsuarios[i]['fecha_ingreso'];
+                        cCorreo.innerHTML = plistaUsuarios[i]['correo'];
+            
+                        //se crean los componentes para modificar
+                        let botonModificar = document.createElement('a');
+                        botonModificar.classList.add('fas');
+                        botonModificar.classList.add('fa-pencil-alt');
+                        botonModificar.classList.add('tooltip');
 
-            //se crean los componentes para actualizar
-            let botonModificar = document.createElement('a');
-            botonModificar.classList.add('fas');
-            botonModificar.classList.add('fa-pencil-alt');
+                        let tooltipModificar = document.createElement('span');
+                        tooltipModificar.textContent = "Editar";
+                        tooltipModificar.setAttribute('class', 'tooltiptext');
+                        botonModificar.appendChild(tooltipModificar);
+            
+                        //se crean los componentes para desactivar
+                        let botonDesactivar = document.createElement('a');
+                        botonDesactivar.classList.add('fas');
+                        botonDesactivar.classList.add('fa-ban');
+                        botonDesactivar.classList.add('tooltip');
 
-            let botonEliminar = document.createElement('a');
-            botonEliminar.classList.add('fas');
-            botonEliminar.classList.add('fa-trash-alt');
-
-
-            //dataset es una 
-            //propiedad que permite definir atributos personalizados
-            //para un elemento de html
-            botonModificar.dataset._id = plistaUsuarios[i]['_id'];
-            botonEliminar.dataset._id = plistaUsuarios[i]['_id'];
-
-            //un eventListener queda enlazado a la función que llama
-            botonModificar.addEventListener('click', buscar_por_id);
-            botonEliminar.addEventListener('click', remover_usuario);
-
-            cConfiguracion.appendChild(botonModificar);
-            cConfiguracion.appendChild(botonEliminar);
-
+                        let tooltipDesactivar = document.createElement('span');
+                        tooltipDesactivar.textContent = "Desactivar";
+                        tooltipDesactivar.setAttribute('class', 'tooltiptext');
+                        botonDesactivar.appendChild(tooltipDesactivar);
+            
+                        //dataset es una 
+                        //propiedad que permite definir atributos personalizados
+                        //para un elemento de html
+                        botonModificar.dataset._id = plistaUsuarios[i]['_id'];
+                        botonDesactivar.dataset._id = plistaUsuarios[i]['_id'];
+            
+                        //un eventListener queda enlazado a la función que llama
+                        botonModificar.addEventListener('click', buscar_por_id);
+                        botonDesactivar.addEventListener('click', desactivar_usuario);
+            
+                        cConfiguracion.appendChild(botonModificar);
+                        cConfiguracion.appendChild(botonDesactivar);
+            
+                }//fin if
         }//fin if
+        
     }//fin for
 };
 
@@ -143,6 +157,7 @@ function setUsuarioParaModificar(infoUsuario) {
 
 function remover_usuario(){
         let _id = this.dataset._id; //SE SALVA EL ID DE LO QUE SE DESEA BORRAR
+        let estado = 0;
         swal({
             title: '¿Está seguro?',
             text: "El usuario se eliminará permanentemente",
@@ -153,7 +168,7 @@ function remover_usuario(){
             confirmButtonText: 'Eliminar'
           }).then((result) => {
             if (result.value) {
-                eliminar_usuario(_id); 
+                eliminar_usuario(_id, estado); 
                 listarUsuarios();
                 swal(
                         '¡Eliminado!',
