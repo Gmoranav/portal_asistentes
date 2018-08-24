@@ -56,3 +56,29 @@ function obtener_sede_por_id(p_id) { //funcion viene del controlador
     return sede;
   
   };
+
+
+// funcion para eliminar una sede (va a sedes.api.js y a sedes.route.js)
+function eliminar_sede(p_id){
+    let respuesta = '';
+    let peticion = $.ajax({
+        url : 'http://localhost:4000/api/eliminar_sede',
+        type : 'post',
+        contentType : 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType : 'json',
+        async : false,
+        data:{
+            _id: p_id
+        }
+      });
+    
+      peticion.done(function(response){
+       respuesta = response;
+      });
+    
+      peticion.fail(function(response){
+       
+      });
+  
+      return respuesta;
+  };

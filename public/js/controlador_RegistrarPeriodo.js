@@ -112,7 +112,7 @@ window.onload = function() {
     
     let periodo = [];
     
-    periodo = getSedeParaModificar();
+    periodo = getPeriodoParaModificar();
     if (periodo[0]!= undefined){
 
         input_nombre_cuatri.value = periodo[0]; 
@@ -126,7 +126,7 @@ window.onload = function() {
     }
 };
 
-function getSedeParaModificar() {
+function getPeriodoParaModificar() {
     return JSON.parse(localStorage.getItem("periodoParaModificar"));
 }
 // fin: enviar info del listar al form 

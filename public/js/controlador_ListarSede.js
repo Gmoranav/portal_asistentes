@@ -30,7 +30,7 @@ function llenar_tabla() {
         celda_distrito_sede.innerHTML = llenar_sedes[i]['distrito_sede'];
         celda_ubicacion_sede.innerHTML = llenar_sedes[i]['ubicacion_sede'];
 
-        //se crean los componentes para actualizar:
+        //se crean los componentes para actualizar/eliminar:
 
         let botonModificar = document.createElement('a');  //agrega el link para modficar
         botonModificar.classList.add('fas');  // clase de fontawsome para agregar el lapiz
@@ -38,7 +38,17 @@ function llenar_tabla() {
 
         botonModificar.dataset._id = llenar_sedes[i]['_id'];  //para que el lapiz pueda obetner el id de la linea
         botonModificar.addEventListener('click', buscar_por_id); // funcion declarada mas abajo del controlador 
-        cConfiguracion.appendChild(botonModificar); // agrega el lapiz al html
+
+
+        let botonEliminar = document.createElement('a'); //agrega el link para eliminar
+        botonEliminar.classList.add('fas'); // clase de fontawsome para agregar el basurero
+        botonEliminar.classList.add('fa-trash-alt'); // clase de fontawsome para agregar el basurero
+
+        botonEliminar.dataset._id = llenar_sedes[i]['_id']; //para que el basurero pueda obetner el id de la linea
+        botonEliminar.addEventListener('click', remover_sede); //esta funcion se llama en el evento click del basurero (se encuentra mas abajo en este controlador)
+
+        cConfiguracion.appendChild(botonModificar); // agregamos al html el lapiz
+        cConfiguracion.appendChild(botonEliminar);  // agregamos al html el basurero
 
     }
 };
@@ -78,3 +88,28 @@ function setSedeParaModificar(infoSede) {
     localStorage.setItem("sedeParaModificar", JSON.stringify(infoSede));
     console.log(JSON.parse(localStorage.getItem("sedeParaModificar")));
 };
+
+
+//funcion para eliminar de la base de datos  (Va al servicio_ListarSede.js)
+function remover_sede() {
+    let _id = this.dataset._id;
+    swal({
+        title: '¿Está seguro?',
+        text: "La sede se eliminará permanentemente",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Eliminar'
+    }).then((result) => {
+        if (result.value) {
+            eliminar_sede(_id);
+            llenar_tabla();
+            swal(
+                '¡Eliminado!',
+                'La sede ha sido eliminada con éxito',
+                'success'
+            )
+        }
+    });
+}

@@ -9,13 +9,11 @@ Responsabilidades del controlador
 
 'use strict';
 
-window.addEventListener('load', listarSede);
+window.addEventListener('load', listarPeriodo);
 
-function imprimirListaSede(plistaPeriodos) {
+function imprimirListaPeriodo(plistaPeriodos) {
 
     let tbody = document.querySelector('#tblListarPeriodos');
-    /* let input_NombreP = document.querySelector('#txtNombrePeriodo'); 
-    let input_EstadoP = document.querySelector('#txtEstadoPeriodo');  */
 
     tbody.innerHTML = '';
 
@@ -37,28 +35,28 @@ function imprimirListaSede(plistaPeriodos) {
         botonModificar.classList.add('fa-pencil-alt'); // clase de fontawsome para agregar el lapiz
 
         botonModificar.dataset._id = plistaPeriodos[i]['_id'];  //para que el lapiz pueda obetner el id de la linea
-        botonModificar.addEventListener('click', buscar_por_id); // funcion declarada mas abajo del controlador 
+        botonModificar.addEventListener('click', buscar_por_id); //esta funcion se llama en el evento click del lapiz (se encuentra mas abajo en este controlador)
         cConfiguracion.appendChild(botonModificar); // agrega el lapiz al html
 
-        /*
-        let botonEliminar = document.createElement('a');
-        botonEliminar.classList.add('fas');
-        botonEliminar.classList.add('fa-trash-alt');
 
-        botonEliminar.dataset._id = plistaPeriodos[i]['_id'];
+        let botonEliminar = document.createElement('a'); //agrega el link para eliminar
+        botonEliminar.classList.add('fas'); // clase de fontawsome para agregar el basurero
+        botonEliminar.classList.add('fa-trash-alt'); // clase de fontawsome para agregar el basurero
 
-        botonEliminar.addEventListener('click', remover_usuario);
+        botonEliminar.dataset._id = plistaPeriodos[i]['_id']; //para que el basurero pueda obetner el id de la linea
+        botonEliminar.addEventListener('click', remover_periodo); //esta funcion se llama en el evento click del basurero (se encuentra mas abajo en este controlador)
 
-        cConfiguracion.appendChild(botonModificar);
-        cConfiguracion.appendChild(botonEliminar);  */
+        cConfiguracion.appendChild(botonModificar); // agregamos al html el lapiz
+        cConfiguracion.appendChild(botonEliminar);  // agregamos al html el basurero
     }
 };
 
-function listarSede() {
+//muestra la informacion como una lista en el html
+function listarPeriodo() {
 
     let listaPeriodos = obtenerListaPeriodos();
     console.log('entra a listar periodos');
-    imprimirListaSede(listaPeriodos);
+    imprimirListaPeriodo(listaPeriodos);
 };
 
 
@@ -71,11 +69,10 @@ function buscar_por_id() {  //funcion que se ejecuta en el servicio
 
     datosPeriodo[0] = periodo['nombre_periodo'];
     datosPeriodo[1] = periodo['estado_periodo'];
-   // datosPeriodo[3] = periodo['_id'];
 
     console.log(periodo);
 
-    setSedeParaModificar(datosPeriodo);
+    setPeriodoParaModificar(datosPeriodo);
 
     cargar_pagina();
 
@@ -84,7 +81,31 @@ function buscar_por_id() {  //funcion que se ejecuta en el servicio
     }
 };
 
-function setSedeParaModificar(infoPeriodo) {
+function setPeriodoParaModificar(infoPeriodo) {
     localStorage.setItem("periodoParaModificar", JSON.stringify(infoPeriodo));
     console.log(JSON.parse(localStorage.getItem("periodoParaModificar")));
 };
+
+//funcion para eliminar de la base de datos  (Va al servicio_ListarPeriodo.js)
+function remover_periodo() {
+    let _id = this.dataset._id;
+    swal({
+        title: '¿Está seguro?',
+        text: "El periodo se eliminará permanentemente",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Eliminar'
+    }).then((result) => {
+        if (result.value) {
+            eliminar_periodo(_id);
+            listarPeriodo();
+            swal(
+                '¡Eliminado!',
+                'El periodo ha sido eliminado con éxito',
+                'success'
+            )
+        }
+    });
+}

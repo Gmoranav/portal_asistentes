@@ -57,3 +57,29 @@ function obtener_periodo_por_id(p_id) { //funcion viene del controlador
 
   return periodo;
 };
+
+
+// funcion para eliminar un periodo (va al periodos.api.js y a periodos.route.js)
+function eliminar_periodo(p_id){
+  let respuesta = '';
+  let peticion = $.ajax({
+      url : 'http://localhost:4000/api/eliminar_periodo',
+      type : 'post',
+      contentType : 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType : 'json',
+      async : false,
+      data:{
+          _id: p_id
+      }
+    });
+  
+    peticion.done(function(response){
+     respuesta = response;
+    });
+  
+    peticion.fail(function(response){
+     
+    });
+
+    return respuesta;
+};

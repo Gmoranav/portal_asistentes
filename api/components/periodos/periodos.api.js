@@ -58,3 +58,17 @@ module.exports.modificar_periodo = function(req, res){
             }
         });
 };
+
+
+//eliminar periodo
+module.exports.eliminar_periodo = function (req, res) {
+    periodos_model.findByIdAndDelete(req.body._id,
+        function (err, periodo) {
+            if (err) {
+                res.json({ success: false, msg: 'El laboratorio no se ha podido eliminar. ' + handleError(err) });
+
+            } else {
+                res.json({ success: true, msg: 'Se ha eliminado correctamente. ' + res });
+            }
+        });
+};

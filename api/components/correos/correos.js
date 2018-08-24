@@ -23,7 +23,7 @@ let mailOptions = {
 module.exports.envio=function(datos) {
 
     mailOptions.to = datos.to;
-    mailOptions.subject = datos.subject; //subjet del email
+    mailOptions.subject = datos.subject; //subject del email
     mailOptions.html =
         `<html>  
             <head>

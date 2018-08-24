@@ -59,3 +59,16 @@ module.exports.modificar_sede = function(req, res){
             }
         });
 };
+
+//eliminar sede
+module.exports.eliminar_sede = function (req, res) {
+    sedes_model.findByIdAndDelete(req.body._id,
+        function (err, sede) {
+            if (err) {
+                res.json({ success: false, msg: 'La sede no se ha podido eliminar. ' + handleError(err) });
+
+            } else {
+                res.json({ success: true, msg: 'La sede se ha eliminado correctamente. ' + res });
+            }
+        });
+};

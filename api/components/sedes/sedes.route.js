@@ -16,14 +16,20 @@ router.route('/listar_sedes')
 
 //buscar sede
 router.route('/buscar_sede_id')
-    .post(function(req, res){
+    .post(function (req, res) {
         sedes.buscar_sede_id(req, res);
-    }); 
+    });
 
 //modificar sede
 router.route('/modificar_sede')  //el archivo "./sedes.api" es el que responde a esta ruta
-    .post(function(req, res){
+    .post(function (req, res) {
         sedes.modificar_sede(req, res);
+    });
+
+//eliminar
+router.route('/eliminar_sede')
+    .post(function (req, res) {
+        sedes.eliminar_sede(req, res);
     });
 
 
