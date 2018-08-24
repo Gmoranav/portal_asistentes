@@ -1736,3 +1736,35 @@ function limpiarFormulario() {
     input_distrito_sede.value = '';
     input_canton_sede.value = '';
 }
+
+
+
+// ***  inicio: para enviar la informacion para modificar al formulario.  (del controlador_ListarPeriodo.js) *** 
+window.onload = function() {
+    cargar_datos_modificar();
+   };
+
+   function cargar_datos_modificar(){
+    
+    let sede = [];
+    
+    sede = getSedeParaModificar();
+    if (sede[0]!= undefined){
+
+        input_nombre_sede.value = sede[0];
+        input_provincia_sede.value = sede[1];
+        input_canton_sede.value = sede[2];
+        input_distrito_sede.value = sede[3];
+        input_ubicacion_sede.value = sede[4];
+
+        sede = [];
+        localStorage.setItem("sedeParaModificar", JSON.stringify(sede));
+        botonModificar.hidden = false;
+        botonRegistrar.hidden = true;
+    }
+};
+
+function getSedeParaModificar() {
+    return JSON.parse(localStorage.getItem("sedeParaModificar"));
+}
+// fin: enviar info del listar al form 

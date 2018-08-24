@@ -50,6 +50,8 @@ function imprimirListaSolicitudes(/*pFiltro*/plistaSolicitudes){
             let sPeriodo = fila.insertCell();
             let sGrupo = fila.insertCell();
             let nCantidadAlumnos = fila.insertCell();
+            let cConfiguracion = fila.insertCell();
+            let cConfiguracion2 = fila.insertCell();
             /*let shorario = fila.insertCell();*/
 
             snombreCompleto.innerHTML = sPrimerNombre.concat(espacio,
@@ -60,6 +62,27 @@ function imprimirListaSolicitudes(/*pFiltro*/plistaSolicitudes){
             sGrupo.innerHTML = plistaSolicitudes[i]['grupo'];
             nCantidadAlumnos.innerHTML = plistaSolicitudes[i]['cantidad_alumnos'];
             /*shorario.innerHTML = plistaSolicitudes[i]['horario'];*/
+
+            /*se crean los componentes para actualizar*/
+            let botonModificar = document.createElement('a');
+            botonModificar.classList.add('fas');
+            botonModificar.classList.add('fa-pen');
+
+            botonModificar.dataset._id = plistaSolicitudes[i]['_id'];
+
+            botonModificar.addEventListener('click', buscarId);
+
+            cConfiguracion.appendChild(botonModificar);
+            //let botonModificar = library.add(faUserAstronaut);
+            /*let botonDetalleSolicitud = document.createElement('a');
+            botonDetalleSolicitud.classList.add('fas');
+            botonDetalleSolicitud.classList.add('fa-external-link-square-alt');
+
+            botonDetalleSolicitud.dataset._id = plistaSolicitudes[i]['_id'];
+
+            botonDetalleSolicitud.addEventListener('click', buscar_por_id)
+
+            cConfiguracion2.appendChild(botonDetalleSolicitud);*/
         //}
 
     }
@@ -121,6 +144,12 @@ function validar(){
     }
 
     return bError;
+};
+
+function buscarId(){
+  let _id = this.dataset._id;
+  let solicitud = obtenerSolicitudId(_id);
+  console.log(solicitud);
 };
 
 //en esta función solo hay que cambiar los input por lo que se requiera, todo lo demas queda igual

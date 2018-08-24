@@ -48,7 +48,7 @@ module.exports.buscar_sede_id = function(req, res){
 
 //modificar (en route y api) - findByIdAndUpdate para saber cual cambiar 
 module.exports.modificar_sede = function(req, res){ 
-    sedes_model.findByIdAndUpdate(req.body._id, { $set: req.body },
+    sedes_model.findByIdAndUpdate(req.body._id, { $set: req.body },  //$set sirve para modificar (caerle encima a la informacion existente)
         
         function(err, sede){
             if (err) {

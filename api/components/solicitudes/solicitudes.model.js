@@ -16,8 +16,10 @@ let solicitudSchema = new mongoose.Schema({
     cantidad_alumnos : {type : Number, required : true},
     horario : {type : String, required : true}
     /*crear uno por input*/
-    
-}); 
+    /*grupos : [grupo : {type : String},]*/
 
-/*Test = el nombre de la carpeta que estamos trabajando en mayuscula y singular*/ 
+
+});
+
+/*Test = el nombre de la carpeta que estamos trabajando en mayuscula y singular*/
 module.exports = mongoose.model('Solicitud', solicitudSchema);

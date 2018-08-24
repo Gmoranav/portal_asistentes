@@ -19,11 +19,11 @@ const inputPrimerNombre = document.querySelector('#txtPrimerNombre');
 const inputSegundoNombre = document.querySelector('#txtSegundoNombre');
 const inputPrimerApellido = document.querySelector('#txtPrimerApellido');
 const inputSegundoApellido = document.querySelector('#txtSegundoApellido');
-const inputCurso = document.querySelector('#txtCurso');
-const inputPeriodo = document.querySelector('#txtPeriodo');
+//const inputCurso = document.querySelector('#txtCurso');
+//const inputPeriodo = document.querySelector('#txtPeriodo');
 const inputGrupo = document.querySelector('#txtGrupo');
-const inputCantidadAlumnos = document.querySelector('#numCantidadAlumnos');
-const inputHorario = document.querySelector('#txtHorario');
+//const inputCantidadAlumnos = document.querySelector('#numCantidadAlumnos');
+//const inputHorario = document.querySelector('#txtHorario');
 
 //const inputFiltro = document.querySelector('#txtFiltro'); esto lo vemos con el profe el miercoles
 
@@ -40,38 +40,30 @@ botonRegistrar.addEventListener('click' , obtenerDatosFormulario);
 
 //el nombre de esta función se mantiene
 function obtenerDatosFormulario(){
-    
-    
+
+
 
     //nombrar estas variables con el mismo nombre de las "const" de arriba
     let sPrimerNombre = inputPrimerNombre.value;
     let sSegundoNombre = inputSegundoNombre.value;
     let sPrimerApellido = inputPrimerApellido.value;
     let sSegundoApellido = inputSegundoApellido.value;
-    let sCurso  = inputCurso .value;
-    let sPeriodo  = inputPeriodo .value;
+    //let sCurso  = inputCurso .value;
+    //let sPeriodo  = inputPeriodo .value;
     let sGrupo  = inputGrupo .value;
-    let nCantidadAlumnos = Number(inputCantidadAlumnos.value);
-    let shorario = inputHorario.value;
+    //let nCantidadAlumnos = Number(inputCantidadAlumnos.value);
+    //let shorario = inputHorario.value;
 
     if(sSegundoNombre == ''){
         sSegundoNombre = ' ';
     }
 
-    if(sCurso == ''){
-        sCurso = ' ';
-    }
-
-    if(sPeriodo == ''){
-        sPeriodo = ' ';
-    }
-
     if(sGrupo == ''){
         sGrupo = ' ';
     }
-    
-    
-    
+
+
+
     let bError = false;
 
     bError = validar();
@@ -86,7 +78,7 @@ function obtenerDatosFormulario(){
             text: 'Por favor revise los campos resaltados', //
             confirmButtonText : 'Aceptar'
         });
-       
+
     }else{
 
         //cambiar Example y parámetros de la función por lo que se esté registrando, pornerlo en singular
@@ -108,10 +100,10 @@ function obtenerDatosFormulario(){
                 cancelButtonColor: '#556566',
                 }).then((result) => {
                     if(result.value){
-    
+
                         window.location.href = "solicitud-asistente_listar.html";
                         }
-    
+
                     });
 
         }else{
@@ -124,7 +116,7 @@ function obtenerDatosFormulario(){
             });
 
         }
-       
+
 
         //este nombre queda igual
         limpiarFormulario();
@@ -132,7 +124,7 @@ function obtenerDatosFormulario(){
 
 
 
-    
+
 };
 
 //en esta función solo hay que cambiar los input por lo que se requiera, todo lo demas queda igual
@@ -167,35 +159,18 @@ function validar(){
         inputSegundoApellido.classList.remove('input_error');
     }
 
-    //Validación cantidad de alumnos
-    if(inputCantidadAlumnos.value == '' /*|| (regexSoloNumeros.test(inputCantidadAlumnos.value) == false) || Number(inputCantidadAlumnos.value) < Number(inputCantidadAlumnos.min)  || Number(inputCantidadAlumnos.value) > Number(inputCantidadAlumnos.max)*/){
-        inputCantidadAlumnos.classList.add('input_error');
-        bError = true;
-    }else{
-        inputCantidadAlumnos.classList.remove('input_error');
-    }
-
-    //Validación horario
-    if(inputHorario.value == '' /*|| (regexSoloNumeros.test(inputCantidadAlumnos.value) == false) || Number(inputCantidadAlumnos.value) < Number(inputCantidadAlumnos.min)  || Number(inputCantidadAlumnos.value) > Number(inputCantidadAlumnos.max)*/){
-        inputHorario.classList.add('input_error');
-        bError = true;
-    }else{
-        inputHorario.classList.remove('input_error');
-    }
-
     return bError;
 };
 
 //en esta función solo hay que cambiar los input por lo que se requiera, todo lo demas queda igual
 function limpiarFormulario(){
-    inputPrimerNombre.value = '';    
+    inputPrimerNombre.value = '';
     inputSegundoNombre.value = '';
     inputPrimerApellido.value ='';
     inputSegundoApellido.value = '';
-    inputCurso.value = '';
+    //inputCurso.value = '';
     inputGrupo.value = '';
-    inputPeriodo.value = '';
-    inputCantidadAlumnos.value = 0;
-    inputHorario.value = '';
+    //inputPeriodo.value = '';
+    //inputCantidadAlumnos.value = 0;
+    //inputHorario.value = '';
 }
-

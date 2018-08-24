@@ -28,3 +28,26 @@ function obtenerListaGrupos(){
     //cambiar Examples por lo que se vaya a listar. Debe estar en plural
 };
 
+function eliminar_grupo(p_id){
+  let respuesta = '';
+  let peticion = $.ajax({
+      url : 'http://localhost:4000/api/eliminar_grupo',
+      type : 'post',
+      contentType : 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType : 'json',
+      async : false,
+      data:{
+          _id: p_id
+      }
+    });
+  
+    peticion.done(function(response){
+     respuesta = response;
+    });
+  
+    peticion.fail(function(response){
+     
+    });
+
+    return respuesta;
+};

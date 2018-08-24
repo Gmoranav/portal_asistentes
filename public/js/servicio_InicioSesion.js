@@ -39,4 +39,3 @@ function removerCredenciales() {
 function getUsuarioAutenticado() {
     return JSON.parse(sessionStorage.getItem("UsuarioAutenticado"));
 }
-

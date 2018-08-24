@@ -23,11 +23,11 @@ function obtenerListaSolicitudes(){
         data:{
         }
       });
-    
+
       peticion.done(function(response){
         listaSolicitudes = response;
       });
-    
+
       peticion.fail(function(response){
         listaSolicitudes = response;
       });
@@ -35,6 +35,32 @@ function obtenerListaSolicitudes(){
 
     //cambiar Examples por lo que se vaya a listar. Debe estar en plural
     return listaSolicitudes;
-}
+};
 
 
+function obtenerSolicitudId(pid){
+  let solicitud = '';
+  let peticion = $.ajax({
+
+      //*cambiar example en el url por lo que se vaya a registrar, debe estar en singular
+      url : 'http://localhost:4000/api/buscar_solicitud_id',
+      type : 'post',
+      contentType : 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType : 'json',
+      async : false,
+      data:{
+          _id : pid
+      }
+    });
+
+    peticion.done(function(response){
+     respuesta = response;
+     console.log('envio exitoso');
+    });
+
+    peticion.fail(function(response){
+      console.log("ERROR!!!! ENVIO FALLIDO!!!! ");
+      console.log(response);
+    });
+    return solicitud;
+};

@@ -73,7 +73,7 @@
                         </button>
                         <img src="img/cenfo.png" class="img-cenfotec">
                     </div>
-        
+
                     <nav>
                         <a href="#">
                             <i class="fas fa-lg fa-search tooltip"><span class="tooltiptext">Buscar</span></i>
@@ -81,11 +81,11 @@
                         <a onclick="redireccionaDashboard()">
                             <i class="fas fa-lg fa-home tooltip"><span class="tooltiptext">Inicio</span></i>
                         </a>
-        
+
                         <div "dropdown-profile">
                             <button type="button" id="toggle-profile-dropdown" class="avatar">YM</button>
                             <div id="profile-info-dropdown" class="profile-info profile-info--hide">
-        
+
                                 <div class="avatar dropdown-profile__avatar">YM</div>
                                 <div class="dropdown-profile__info">
                                     <h3>User Name</h3>
@@ -140,10 +140,22 @@
 
                 <div class="form-row">
                     <div class="form-group form-group-2">
-                        <label for="txtCurso">Curso
+                        <label for="txtGrupo">Curso
                         </label>
-                        <select id="txtCurso">
-                            <option value="">--Seleccione Curso--</option>
+                        <select id="txtGrupo">
+                            <option value="">--Seleccione Grupo--</option>
+                            <option value="Programación 1">Programación 1</option>
+                            <option value="Proyecto de Ingeniería de Software 1 ">Proyecto de Ingeniería de Software 1</option>
+                            <option value="Programación 2">Programación 2</option>
+                            <option value="Introducción a Bases de Datos">Introducción a Bases de Datos</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group form-group-2">
+                        <label for="txtGrupo">Grupo
+                        </label>
+                        <select id="txtGrupo">
+                            <option value="">--Seleccione Grupo--</option>
                             <option value="Programación 1">Programación 1</option>
                             <option value="Proyecto de Ingeniería de Software 1 ">Proyecto de Ingeniería de Software 1</option>
                             <option value="Programación 2">Programación 2</option>
@@ -152,48 +164,13 @@
                     </div>
                 </div>
 
-
                 <div class="form-row">
-                        <div class="form-group form-group-2">
-                            <label for="txtPeriodo">Periodo
-                            </label>
-                            <select id="txtPeriodo">
-                                <option value="">- Seleccione Periodo -</option>
-                                <option value="1 Cuatrimestre SOFT-1">1 Cuatrimestre SOFT-1</option>
-                                <option value="2 Cuatrimestre SOFT-1">2 Cuatrimestre SOFT-1</option>
-                                <option value="3 Cuatrimestre SOFT-1">3 Cuatrimestre SOFT-1</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group form-group-2">
-                                <label for="txtGrupo">Grupo
-                                </label>
-                                <select id="txtGrupo">
-                                    <option value="">- Seleccione Grupo -</option>
-                                    <option value="Grupo-I">Grupo-I</option>
-                                    <option value="Grupo-II">Grupo-II</option>
-                                    <option value="Grupo-III">Grupo-III</option>
-                                    <option value="Grupo-IV">Grupo-IV</option>
-                                    <option value="Grupo-V">Grupo-V</option>
-                                </select>
-                            </div>
-                    </div>
-
-                    <div class="form-row ">
-                            <div class="form-group form-group-3">
-                                <label for="numCantidadAlumnos">Cantidad de Alumnos
-                                    <span>*</span>
-                                </label>
-                                <input type="number" id="numCantidadAlumnos" min="0" required>
-                            </div>
-                        </div>
-
-                <div class="form-row ">
-                    <div class="form-group form-group-3">
-                        <label for="txtHorario">Hora
-                            <span>*</span>
+                    <div class="form-group form-group-2">
+                        <label for="">Cantidad de Alumnos:
+                          <span id="">Curso36 Alumnos
+                          </span>
                         </label>
-                        <input type="time" id="txtHorario" required>
+
                     </div>
                 </div>
 
@@ -209,7 +186,7 @@
     </div>
 
     <script src="js/jquery-3.3.1.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2"></script>
     <script src="js/controlador_InicioSesion.js"></script>
     <script src="js/components.js"></script>
     <script src="js/servicio_registrarSolicitudes.js"></script>

@@ -43,3 +43,13 @@ module.exports.listar_carreras = function(req, res){
         }
     );
 };
+
+
+module.exports.buscar_carrera_id = function(req, res){
+    carreraModel.findById({_id: req.body.id}).then(
+        function(carrera){
+            res.send(carrera);
+        }
+    );
+
+};

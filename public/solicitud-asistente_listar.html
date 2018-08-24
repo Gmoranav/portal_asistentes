@@ -122,7 +122,8 @@
                         <th>Periodo</th>
                         <th>Grupo</th>
                         <th>Cant. Alumnos</th>
-   
+                        <th></th>
+                        <th></th>
 
                     </tr>
                     <tr>
@@ -141,6 +142,8 @@
                         <th>
                             <input type="text" id="txtNombre">
                         </th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody id="tblListarSolicitudes">
@@ -151,6 +154,18 @@
             </table>
         </main>
     </div>
+
+    <div class="modal modal-solicitud-none">
+        <div class="modal-container">
+
+          <div class="form-row buttons">
+            <a onclick="redireccionSolicitudAsistenteListar()" class="button button--secundario" type="button" id="btnCancelar">Cancelar</a>
+            <button class="button button--principal" type="button" id="btnRegistrar">Registrar</button>
+          </div>
+
+        </div>
+    </div>
+
 
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/controlador_InicioSesion.js"></script>
