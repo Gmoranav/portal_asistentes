@@ -58,6 +58,7 @@ function obtenerDatosFormulario(){
     let sProfesor = arregloProfesores.join(', ');
     let sCantidadEstu = Number(inputCantidadEstu.value);
     let sHorario = inputHorario.value;
+    let estado = 1;
 
     
     
@@ -76,7 +77,7 @@ function obtenerDatosFormulario(){
        
     }else{
         //cambiar Example y parámetros de la función por lo que se esté registrando, pornerlo en singular
-        respuesta = registrarGrupo(sSede, sCarrera, sCurso, sPeriodo, sNombre, sLaboratorio, sProfesor, sCantidadEstu, sHorario);//esta funcion está en el servicio
+        respuesta = registrarGrupo(sSede, sCarrera, sCurso, sPeriodo, sNombre, sLaboratorio, sProfesor, sCantidadEstu, sHorario, estado);//esta funcion está en el servicio
         
         if (respuesta.success == true){
 

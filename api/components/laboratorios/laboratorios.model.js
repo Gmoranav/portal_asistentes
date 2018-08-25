@@ -13,7 +13,7 @@ let laboratorioSchema = new mongoose.Schema({
     nombre_laboratorio : {type : String, required : true},
     cantidad_espacios : {type : String, required : true},
     sede_laboratorio : {type : String, required : true},
-    estado : {type : Number}
+    estado : {type : Number, required : true}
 
 }); 
 
