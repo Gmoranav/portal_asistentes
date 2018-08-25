@@ -98,7 +98,7 @@ function imprimirListaUsuarios(plistaUsuarios, pFiltro){
             
                         //un eventListener queda enlazado a la función que llama
                         botonModificar.addEventListener('click', buscar_por_id);
-                        botonDesactivar.addEventListener('click', desactivar_usuario);
+                        botonDesactivar.addEventListener('click', remover_usuario);
             
                         cConfiguracion.appendChild(botonModificar);
                         cConfiguracion.appendChild(botonDesactivar);
@@ -168,7 +168,7 @@ function remover_usuario(){
             confirmButtonText: 'Eliminar'
           }).then((result) => {
             if (result.value) {
-                eliminar_usuario(_id, estado); 
+                desactivar_usuario(_id, estado); 
                 listarUsuarios();
                 swal(
                         '¡Eliminado!',

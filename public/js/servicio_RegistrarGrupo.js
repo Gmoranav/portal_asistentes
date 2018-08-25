@@ -4,7 +4,7 @@
 
 //cambiar el nombre Example por lo que se esté registrando, debe estar en singular
 //cambiar los parametros manteniendo una s al principio cuando es texto y n cuando es numero
-function registrarGrupo(psSede, psCarrera, psCurso, psPeriodo, psNombre, psLaboratorio, psProfesor, psCantidadEstu, psHorario){
+function registrarGrupo(psSede, psCarrera, psCurso, psPeriodo, psNombre, psLaboratorio, psProfesor, psCantidadEstu, psHorario, pestado){
     let respuesta = '';
     let peticion = $.ajax({
 
@@ -27,7 +27,8 @@ function registrarGrupo(psSede, psCarrera, psCurso, psPeriodo, psNombre, psLabor
             laboratorio : psLaboratorio,
             profesores : psProfesor,
             cantidad_de_estudiantes : psCantidadEstu,
-            horario : psHorario
+            horario : psHorario,
+            estado : pestado
         }
       });
     

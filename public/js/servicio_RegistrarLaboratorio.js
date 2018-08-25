@@ -9,7 +9,7 @@ Responsabilidades del servicio
 
 //cambiar el nombre Example por lo que se esté registrando, debe estar en singular
 //cambiar los parametros manteniendo una s al principio cuando es texto y n cuando es numero
-function registrarLaboratorio(psNombreLaboratorio, psCantidadEspacios, psSedeLab){
+function registrarLaboratorio(psNombreLaboratorio, psCantidadEspacios, psSedeLab, pestado){
     let respuesta = '';
     let peticion = $.ajax({
 
@@ -26,7 +26,8 @@ function registrarLaboratorio(psNombreLaboratorio, psCantidadEspacios, psSedeLab
             //en la función imprimirListaExamples
             nombre_laboratorio : psNombreLaboratorio,
             cantidad_espacios : psCantidadEspacios,
-            sede_laboratorio : psSedeLab
+            sede_laboratorio : psSedeLab,
+            estado : pestado
         }
     });
     

@@ -34,6 +34,7 @@ function obtenerDatosFormulario(){
     let sNombreLaboratorio = inputNombreLaboratorio.value;
     let sCantidadEspacios = inputCantidadEspacios.value;
     let sSedeLab = inputSede.value;
+    let estado = 1;
 
     
     
@@ -52,7 +53,7 @@ function obtenerDatosFormulario(){
     }else{
 
         //cambiar Example y parámetros de la función por lo que se esté registrando, pornerlo en singular
-        respuesta = registrarLaboratorio(sNombreLaboratorio, sCantidadEspacios, sSedeLab);//esta funcion está en el servicio
+        respuesta = registrarLaboratorio(sNombreLaboratorio, sCantidadEspacios, sSedeLab, estado);//esta funcion está en el servicio
        
         if(respuesta.success == true){
 

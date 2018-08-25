@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -152,3 +153,159 @@
 </body>
 
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Listar Bitácoras</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+        crossorigin="anonymous">
+</head>
+
+<body class="body-container">
+
+    <!--Acá empieza la navegación que es parte de todas las paginas-->
+    <aside id="panel-menu" class="panel-menu">
+            <nav>
+                    <ul>
+                        <li>
+                            <a onclick="redireccionaDashboard()">
+                                <i class="fas fa-home fa-fw"></i>&nbsp;Inicio</a>
+                        </li>
+                        <li>
+                            <a onclick="redireccionPerfil()">Perfil</a>
+                        </li>
+                        <li  id="hide-usuario">
+                            <a onclick="redireccionUsuarioListar()" class="">Usuarios</a>
+                        </li>
+                        <li>
+                            <a>Asistentes</a>
+                            <ul>
+                                <li>
+                                    <a onclick="redireccionSolicitudAsistenteListar()" id="hide-solicitud">Solicitudes</a>
+                                </li>
+                                <li>
+                                    <a href="#" id="hide-info-academica">Información Académica </a>
+                                </li>
+                                <li>
+                                    <a href="redireccionBitacoraListar()">Bitácoras</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a onclick="redireccionSedeListar()" id="hide-sede">Sedes</a>
+                        </li>
+                        <li>
+                            <a onclick="redireccionCarreraListar()" id="hide-carrera">Carreras</a>
+                        </li>
+                        <li>
+                            <a onclick="redireccionCursoListar()" id="hide-curso">Cursos</a>
+                        </li>
+                        <li>
+                            <a onclick="redireccionPeriodoListar()" id="hide-periodo">Periodos</a>
+                        </li>
+                        <li>
+                            <a onclick="redireccionGrupoListar()" id="hide-grupo">Grupos</a>
+                        </li>
+                        <li>
+                            <a onclick="redireccionLaboratorioListar()" id="hide-laboratorio">Laboratorios</a>
+                        </li>
+                    </ul>
+                </nav>
+    </aside>
+
+    <div class="container">
+
+        <header class="panel-header">
+            <div>
+                <button id="button-nav-collapse" type="button">
+                    <i id="hamburguer" class="fas fa-bars"></i>
+                </button>
+                <img src="img/cenfo.png" class="img-cenfotec">
+            </div>
+            <nav>
+                <a onclick="redireccionaDashboard()">
+                    <i class="fas fa-lg fa-home tooltip"><span class="tooltiptext">Inicio</span></i>
+                </a>
+
+                <div "dropdown-profile">
+                    <button type="button" id="toggle-profile-dropdown" class="avatar">YM</button>
+                    <div id="profile-info-dropdown" class="profile-info profile-info--hide">
+
+                        <div class="avatar dropdown-profile__avatar">YM</div>
+                        <div class="dropdown-profile__info">
+                            <h3>User Name</h3>
+                            <label class="tag">admin</label>
+                            <p>correo@example.com</p>
+                            <div class="dropdown-profile__actions">
+                                <a href="#" class="link-brand">Perfil</a>
+                                <button class="button--secundario" id="boton_salir">salir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="header-page">
+            <h1>Listar Bitácoras
+                <a onclick="redireccionUsuarioRegistrar()" class="button--add-item">
+                    <i class="fas fa-lg fa-plus-circle tooltip">
+                        <span class="tooltiptext">Agregar Registro</span>
+                    </i>
+                </a>
+            </h1>
+        </div>
+        <!--Acá termina la navegación que es parte de todas las paginas-->
+
+        <!--este main parte de todas las paginas y engloba el contenido-->
+
+        <main class="page">
+            <table id = "tblBitacoras" class="box-container table-list">
+                <thead>
+                    <tr>
+                        <th>Curso</th>
+                        <th>Profesor</th>
+                        <th>Estudiante</th>
+                        <th class="table-actions"></th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <input type="text" id="txtCurso">
+                        </th>
+                        <th>
+                            <input type="text" id="txtProfesor">
+                        </th>
+                        <th>
+                            <input type="text" id="txtEstudiante">
+                        </th>
+                        <th class="table-actions"></th>
+                    </tr>
+                </thead>
+                <tbody id="tblListarBitacoras">
+
+
+                </tbody>
+            </table>
+
+        </main>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.25.0/dist/sweetalert2.all.min.js"></script>
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/controlador_InicioSesion.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/controlador_RegistrarBitacora.js"></script>
+    <script src="js/controlador_ListarBitacora.js"></script>
+    
+</body>
+
+</html>
+>>>>>>> db7f21455462ef9d5b61f754e05acb3b520225e1

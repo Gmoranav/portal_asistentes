@@ -18,7 +18,8 @@ let grupoSchema = new mongoose.Schema({
     laboratorio : {type : String, required : true},
     profesores : {type : String, required : true},
     cantidad_de_estudiantes : {type : String, required : true},
-    horario : {type : String, required : true}
+    horario : {type : String, required : true},
+    estado : {type : Number, required : true}
 
 }); 
 
