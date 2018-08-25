@@ -136,7 +136,3 @@ function desactivar_laboratorio(){
         }
       });
 }
-
-function cargar_pagina(){
-    window.location.replace('laboratorio_registrar.html');
-};
