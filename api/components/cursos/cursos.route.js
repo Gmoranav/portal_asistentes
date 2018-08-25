@@ -14,5 +14,14 @@ router.route('/listar_cursos')
 
     });
 
+router.route('/buscar_curso_id')
+    .post(function(req,res){
+        cursos.buscar_curso_id(req,res);  
+    });    
+
+router.route('/modificar_curso')
+    .post(function(req,res){
+        cursos.modificar_curso(req,res);
+    });
 
 module.exports = router;

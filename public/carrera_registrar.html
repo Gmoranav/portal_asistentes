@@ -110,7 +110,7 @@
         <!--este main parte de todas las paginas y engloba el contenido-->
         <main class="page">
             <form class="box-container">
-
+                <input type="text" id="txtId" hidden></input>
                 
                 <div class="form-row">
 
@@ -180,6 +180,7 @@
                 <div class="form-row buttons">
                         <a onclick="redireccionCarreraListar()" class="button button--secundario" type="button" id="btnCancelar">Cancelar</a>
                         <button class="button button--principal" type="button" id="btnRegistrar">Registrar</button>
+                        <button class="button button--principal" type="button" id="btnModificar">Modificar</button>
                 </div>
 
             </form>
@@ -192,6 +193,7 @@
     <script src="js/controlador_InicioSesion.js"></script>
     <script src="js/components.js"></script>
     <script src="js/servicio_registrarCarrera.js"></script>
+    <script src="js/controlador_ListarCarrera.js"></script>
     <script src="js/controlador_registrarCarrera.js"></script>
     
 </body>

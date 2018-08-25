@@ -19,5 +19,9 @@ router.route('/buscar_carrera_id')
         carrerasApi.buscar_carrera_id(req, res);
     });
 
+router.route('/modificar_carrera')
+    .post(function(req,res){
+        carrerasApi.modificar_carrera(req,res);
+      });
 
 module.exports = router;

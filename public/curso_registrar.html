@@ -110,7 +110,7 @@
         <!--este main parte de todas las paginas y engloba el contenido-->
         <main class="page">
             <form class="box-container">
-
+                <input type="text" id="txtId" hidden></input>
 
                 <div class="form-row">
                     <div class="form-group form-group-2">
@@ -146,6 +146,7 @@
                     <div class="form-row buttons">
                         <a onclick="redireccionCursoListar()" class="button button--secundario" type="button" id="btnCancelar">Cancelar</a>
                         <button class="button button--principal" type="button" id="btnRegistrar">Registrar</button>
+                        <button class="button button--principal" type="button" id="btnModificar">Modificar</button>
                     </div>
             </form>
         </main>
@@ -156,8 +157,10 @@
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/controlador_InicioSesion.js"></script>
     <script src="js/components.js"></script>
-    <script src="js/controlador_registrarCurso.js"></script>
     <script src="js/servicio_registrarCurso.js"></script>
+    <script src="js/controlador_ListarCurso.js"></script>
+    <script src="js/controlador_registrarCurso.js"></script>
+    
 </body>
 
 </html>

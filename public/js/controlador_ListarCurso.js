@@ -27,3 +27,23 @@ function llenarTabla(){
     } 
 
 };
+
+function buscar_por_id(){
+
+    let _id = this.dataset._id;
+    let cursoPorId = obtener_curso_por_id(_id);
+    let datosCurso = [];
+
+    datosCurso[0] = cursoPorId['nombre_curso'];
+    datosCurso[1] = cursoPorId['codigo_curso'];
+    datosCurso[2] = cursoPorId['cantidad_creditos'];
+
+    setCursoParaModificar(datosCurso);
+    cargar_pagina();
+
+};
+
+function setCursoParaModificar(infoUsuario) {
+    localStorage.setItem("CursoParaModificar", JSON.stringify(infoUsuario));
+    console.log(JSON.parse(localStorage.getItem("CursoParaModificar")));
+};
