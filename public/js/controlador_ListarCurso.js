@@ -14,15 +14,23 @@ function llenarTabla(){
 
         let celdaNombreCurso = fila.insertCell();
         let celdaCodigo = fila.insertCell();
-        let celdaSede = fila.insertCell();
         let celdaCantidadCreditos = fila.insertCell();
-        let celdaCarreras = fila.insertCell();
+        let cConfiguracion = fila.insertCell();
+       
 
         celdaNombreCurso.innerHTML = llenarCursos[i]['nombre_curso'];
         celdaCodigo.innerHTML = llenarCursos[i]['codigo_curso'];
-        celdaSede.innerHTML = llenarCursos[i]['slt_sede'];
         celdaCantidadCreditos.innerHTML = llenarCursos[i]['cantidad_creditos'];
-        celdaCarreras.innerHTML =llenarCursos[i]['slt_carreraCurso'];
+       
+        //Se crean los componentes para actualizar 
+        let botonModificar = document.createElement('a');
+        botonModificar.classList.add('fas');
+        botonModificar.classList.add('fa-pencil-alt');   
+
+        botonModificar.dataset._id = llenarCursos[i]['_id'];
+        botonModificar.addEventListener('click' , buscar_por_id);
+
+        cConfiguracion.appendChild(botonModificar); 
 
     } 
 
