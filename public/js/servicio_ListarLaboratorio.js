@@ -43,7 +43,7 @@ function obtener_laboratorio_por_id (p_id) {
         dataType : 'json',
         async : false,
         data:{
-            
+          _id : p_id
         }
       });
     
