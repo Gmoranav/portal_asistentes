@@ -39,6 +39,17 @@ function imprimirListaGrupos(){
         cEstudiantes.innerHTML = listaGrupos[i]['cantidad_de_estudiantes'];
         cNombre.innerHTML = listaGrupos[i]['nombre'];
 
+        //se crean los componentes para modificar
+        let botonModificar = document.createElement('a');
+        botonModificar.classList.add('fas');
+        botonModificar.classList.add('fa-pencil-alt');
+        botonModificar.classList.add('tooltip');
+
+        let tooltipModificar = document.createElement('span');
+        tooltipModificar.textContent = "Editar";
+        tooltipModificar.setAttribute('class', 'tooltiptext');
+        botonModificar.appendChild(tooltipModificar);
+
         let botonDesactivar = document.createElement('a');
         botonDesactivar.classList.add('fas');
         botonDesactivar.classList.add('fa-ban');
@@ -52,8 +63,8 @@ function imprimirListaGrupos(){
         //dataset es una 
         //propiedad que permite definir atributos personalizados
         //para un elemento de html
-        botonModificar.dataset._id = listaLaboratorios[i]['_id'];
-        botonDesactivar.dataset._id = listaLaboratorios[i]['_id'];
+        botonModificar.dataset._id = listaGrupos[i]['_id'];
+        botonDesactivar.dataset._id = listaGrupos[i]['_id'];
 
 
         //un eventListener queda enlazado a la función que llama
