@@ -103,6 +103,7 @@ function buscar_por_id () {
     datosLaboratorio[0] = laboratorio['sede_laboratorio']; 
     datosLaboratorio[1] = laboratorio['nombre_laboratorio']; 
     datosLaboratorio[2] = laboratorio['cantidad_espacios']; 
+    datosLaboratorio[3] = laboratorio['_id'];
 
     setLaboratorioParaModificar(datosLaboratorio);
     cargar_pagina_laboratorio();

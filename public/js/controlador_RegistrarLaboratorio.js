@@ -227,6 +227,8 @@ function cargar_datos_modificar_laboratorio(){
         inputSede.value = laboratorio[0]; 
         inputNombreLaboratorio.value = laboratorio[1];
         inputCantidadEspacios.value = laboratorio[2];
+        inputId.value = laboratorio[3];
+
 
 
         laboratorio = [];
