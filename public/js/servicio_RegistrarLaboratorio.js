@@ -54,10 +54,6 @@ function modificarLaboratorio(psNombreLaboratorio, psCantidadEspacios, psSedeLab
         dataType : 'json',
         async : false,
         data:{
-
-            //cambiar los nombres por lo que se requiera
-            //las variables son las que hay que usan en el archivo controlador
-            //en la función imprimirListaExamples
             nombre_laboratorio : psNombreLaboratorio,
             cantidad_espacios : psCantidadEspacios,
             sede_laboratorio : psSedeLab

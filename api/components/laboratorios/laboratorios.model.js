@@ -10,7 +10,7 @@ let laboratorioSchema = new mongoose.Schema({
     /**Las propiedades para crear usuarios con rol */
 
     /**El example seria el input al que se le solicita al usuario */
-    nombre_laboratorio : {type : String, required : true, unique : true},
+    nombre_laboratorio : {type : String, required : true},
     cantidad_espacios : {type : String, required : true},
     sede_laboratorio : {type : String, required : true},
     estado : {type : Number}

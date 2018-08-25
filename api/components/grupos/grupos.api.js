@@ -76,10 +76,10 @@ module.exports.desactivar_grupo = function (req, res) {
     grupoModel.findByIdAndDelete(req.body._id,
         function (err, user) {
             if (err) {
-                res.json({ success: false, msg: 'El grupo no se ha podido eliminar. ' + handleError(err) });
+                res.json({ success: false, msg: 'El grupo no se ha podido desactivar. ' + handleError(err) });
 
             } else {
-                res.json({ success: true, msg: 'Se ha eliminado correctamente. ' + res });
+                res.json({ success: true, msg: 'Se ha desactivado correctamente. ' + res });
             }
         });
 };
