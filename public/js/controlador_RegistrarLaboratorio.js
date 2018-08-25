@@ -23,7 +23,7 @@ inputFiltro.addEventListener('keyup' , function(){
 });*/
 
 botonRegistrar.addEventListener('click' , obtenerDatosFormulario);
-botonModificar.addEventListener('click' , obtenerDatosModificar);
+botonModificar.addEventListener('click' , modificarDatosLaboratorio);
 
 //el nombre de esta función se mantiene
 function obtenerDatosFormulario(){
@@ -93,7 +93,7 @@ function obtenerDatosFormulario(){
     
 };
 
-function obtenerDatosModificar(){
+function modificarDatosLaboratorio(){
     
     let bError = false;
 
@@ -203,15 +203,15 @@ function limpiarFormulario(){
 }
 
 
-function cargar_pagina(){
+function cargar_pagina_laboratorio(){
     window.location.replace('laboratorio_registrar.html');
 };
 
 window.onload = function() {
-    cargar_datos_modificar();
+    cargar_datos_modificar_laboratorio();
 };
 
-function cargar_datos_modificar(){
+function cargar_datos_modificar_laboratorio(){
     
     let laboratorio = [];
 

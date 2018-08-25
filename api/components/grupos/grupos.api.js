@@ -48,13 +48,31 @@ module.exports.listar_grupos = function(req, res){
     );
 };
 
+module.exports.buscar_grupo_por_id = function (req, res) {
+    grupoModel.findById({ _id: req.body._id }).then(
+        function (grupos) {
+            res.send(grupos);
+        }
+    );
+};
+
+module.exports.modificar_grupo = function (req, res) {
+    grupoModel.findByIdAndUpdate(req.body._id, { $set: req.body },
+        function (err, user) {
+            if (err) {
+                res.json({ success: false, msg: 'El grupo no se ha podido modificar. ' + handleError(err) });
+
+            } else {
+                res.json({ success: true, msg: 'Se ha actualizado correctamente. ' + res });
+            }
+        });
+};
 
 
 
 
 
-
-module.exports.eliminar_grupo = function (req, res) {
+module.exports.desactivar_grupo = function (req, res) {
     grupoModel.findByIdAndDelete(req.body._id,
         function (err, user) {
             if (err) {
