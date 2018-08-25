@@ -25,7 +25,13 @@ function llenarTabla(){
         //Se crean los componentes para actualizar 
         let botonModificar = document.createElement('a');
         botonModificar.classList.add('fas');
-        botonModificar.classList.add('fa-pencil-alt');   
+        botonModificar.classList.add('fa-pencil-alt'); 
+        botonModificar.classList.add('tooltip');
+
+        let tooltipModificar = document.createElement('span');
+        tooltipModificar.textContent = "Editar";
+        tooltipModificar.setAttribute('class', 'tooltiptext');
+        botonModificar.appendChild(tooltipModificar);  
 
         botonModificar.dataset._id = llenarCursos[i]['_id'];
         botonModificar.addEventListener('click' , buscar_por_id);
