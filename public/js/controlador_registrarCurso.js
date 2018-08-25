@@ -97,7 +97,7 @@ function obtenerDatosCursoModificar(){
     }else{
 
 
-        respuesta = registrar_curso(_id, sNombreCurso , sCodigoCurso, nCantidadCreditos);
+        respuesta = modificar_curso(_id, sNombreCurso , sCodigoCurso, nCantidadCreditos);
         
         if (respuesta.success == true){
 

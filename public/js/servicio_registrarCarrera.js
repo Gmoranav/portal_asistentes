@@ -41,7 +41,7 @@ function registrar_carrera(psCodigoCarrera, psNombreCarrera, pnCreditosTotales, 
 
 };
 
-function modificarCarrera(_id, psCodigoCarrera, psNombreCarrera, pnCreditosTotales, psFechaCreacion, psltSede , psAcreditacion){
+function modificar_carrera(_id, psCodigoCarrera, psNombreCarrera, pnCreditosTotales, psFechaCreacion, psltSede , psAcreditacion){
 
     let respuesta = '';
     let peticion = $.ajax({

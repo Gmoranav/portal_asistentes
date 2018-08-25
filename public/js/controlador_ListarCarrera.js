@@ -12,23 +12,46 @@ Responsabilidades del controlador
 //const botonRegistrar = document.querySelector('#btnRegistrar');
 //botonRegistrar.addEventListener('click', listarUsuarios);
 
-window.addEventListener('load', listarCarreras);
+window.addEventListener('load', imprimirListaCarrera);
 
-function imprimirListaCarrera(/*pFiltro*/plistaCarreras){
-    
-    
+//Filtros 
+const inputFiltroNombre = document.querySelector('#txtNombreCarrera');
+const inputFiltroSede = document.querySelector('#sltSede');
+const inputFiltroCreditos = document.querySelector('#numCreditosTotales');
+const inputFiltroAcreditacion = document.querySelector('txtAcreditacion');
+
+//EventListeners de los filtros
+inputFiltroNombre.addEventListener('keyup' , function(){
+    imprimirListaCarrera(listaCarreras, inputFiltroNombre.value)
+});
+inputFiltroSede.addEventListener('keyup', function(){
+    imprimirListaCarreraSede()
+});
+inputFiltroCreditos.addEventListener('keyup', function(){
+    imprimirListaCarreraCreditos()
+});
+inputFiltroAcreditacion.addEventListener('keyup', function(){
+    imprimirListaCarreraAcreditacion()
+});
+
+
+
+
+
+function imprimirListaCarrera(plistaCarreras){
     let tbody = document.querySelector('#tblListarCarreras');
-    /*if(!pFiltro){
+    
+    //Filtros 
+    if(!pFiltro){
         pFiltro = '';
-    }*/
+    }
+
     tbody.innerHTML = '';
-
-
     
     for(let i = 0; i < plistaCarreras.length; i++){
 
        
-        //if(plistaUsuarios[i]['nombre_completo'].toLowerCase().includes(pFiltro.toLowerCase())){
+        if(plistaCarreras[i]['nombre_completo'].toLowerCase().includes(pFiltro.toLowerCase())){
             let fila = tbody.insertRow();
                         
             
@@ -56,7 +79,7 @@ function imprimirListaCarrera(/*pFiltro*/plistaCarreras){
 
             cConfiguracion.appendChild(botonModificar); 
 
-        //} 
+        } 
     }
 };
 
@@ -65,7 +88,9 @@ function listarCarreras(){
 
         let listaCarreras = obtenerListaCarreras();
         imprimirListaCarrera(listaCarreras);
+        
 };
+
 
 
 function buscar_por_id(){
@@ -82,6 +107,7 @@ function buscar_por_id(){
     datosCarrera[3] = carreraPorId['fecha_creacion'];
     datosCarrera[4] = carreraPorId['slt_sede'];
     datosCarrera[5] = carreraPorId['acreditacion'];
+    datosCarrera[6] = carreraPorId['_id'];
 
     setCarreraParaModificar(datosCarrera);
     cargar_pagina();

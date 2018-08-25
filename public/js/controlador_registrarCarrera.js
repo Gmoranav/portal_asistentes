@@ -106,7 +106,7 @@ function obtenerDatosCarreraModificar(){
     
     }else{
 
-        respuesta = registrar_carrera(_id, sCodigoCarrera, sNombreCarrera, nCreditosTotales, sFechaCreacion, sltSede, sAcreditacion);
+        respuesta = modificar_carrera(_id, sCodigoCarrera, sNombreCarrera, nCreditosTotales, sFechaCreacion, sltSede, sAcreditacion);
         
         
         if (respuesta.success == true) {    

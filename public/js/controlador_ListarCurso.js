@@ -45,6 +45,7 @@ function buscar_por_id(){
     datosCurso[0] = cursoPorId['nombre_curso'];
     datosCurso[1] = cursoPorId['codigo_curso'];
     datosCurso[2] = cursoPorId['cantidad_creditos'];
+    datosCurso[3] =  cursoPorId['_id'];
 
     setCursoParaModificar(datosCurso);
     cargar_pagina();
