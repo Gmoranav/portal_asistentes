@@ -113,7 +113,7 @@ function setLaboratorioParaModificar(infoLaboratorio) {
     console.log(JSON.parse(localStorage.getItem("laboratorioParaModificar")));
 };
 
-function remover_laboratorio(){
+function desactivar_laboratorio(){
     let _id = this.dataset._id;
     let estado = 0;
     swal({
