@@ -140,3 +140,7 @@ function limpiarFormulario(){
     inputSede.value='';
 }
 
+function cargar_pagina(){
+    window.location.replace('laboratorio_registrar.html');
+};
+

@@ -44,28 +44,42 @@ function imprimirListaLaboratorios() {
             cNombreLaboratorio.innerHTML = listaLaboratorios[i]['nombre_laboratorio'];
             cCantEspacios.innerHTML = listaLaboratorios[i]['cantidad_espacios'];
 
+            //se crean los componentes para modificar
             let botonModificar = document.createElement('a');
             botonModificar.classList.add('fas');
             botonModificar.classList.add('fa-pencil-alt');
+            botonModificar.classList.add('tooltip');
 
+            let tooltipModificar = document.createElement('span');
+            tooltipModificar.textContent = "Editar";
+            tooltipModificar.setAttribute('class', 'tooltiptext');
+            botonModificar.appendChild(tooltipModificar);
+
+            //se crean los componentes para desactivar
+            let botonDesactivar = document.createElement('a');
+            botonDesactivar.classList.add('fas');
+            botonDesactivar.classList.add('fa-ban');
+            botonDesactivar.classList.add('tooltip');
+
+            let tooltipDesactivar = document.createElement('span');
+            tooltipDesactivar.textContent = "Desactivar";
+            tooltipDesactivar.setAttribute('class', 'tooltiptext');
+            botonDesactivar.appendChild(tooltipDesactivar);
+
+            //dataset es una 
+            //propiedad que permite definir atributos personalizados
+            //para un elemento de html
             botonModificar.dataset._id = listaLaboratorios[i]['_id'];
+            botonDesactivar.dataset._id = listaLaboratorios[i]['_id'];
 
+
+            //un eventListener queda enlazado a la función que llama
             botonModificar.addEventListener('click', buscar_por_id);
-
-            let botonEliminar = document.createElement('a');
-            botonEliminar.classList.add('fas');
-            botonEliminar.classList.add('fa-trash-alt');
-
-            botonEliminar.dataset._id = listaLaboratorios[i]['_id'];
-
-            botonEliminar.addEventListener('click', remover_laboratorio);
-
-
-
-
+            botonDesactivar.addEventListener('click', desactivar_laboratorio);
 
             cConfiguracion.appendChild(botonModificar);
-            cConfiguracion.appendChild(botonEliminar);
+            cConfiguracion.appendChild(botonDesactivar);
+
         }
 
     }
@@ -78,11 +92,26 @@ function buscar_por_id () {
     let _id = this.dataset._id;
 
     let laboratorio = obtener_laboratorio_por_id(_id);
+    let datosLaboratorio = [];
+    let i = 0;
 
-    /*inputNombreLaboratorio.value = laboratorio['sede_laboratorio'];    
-    inputCantidadEspacios.value = laboratorio['nombre_laboratorio'];
-    inputSede.value= laboratorio['nombre_laboratorio'];*/
+    console.log(usuario);
+    //binding permite enlazar la función con el contexto que la llama
+    //en este caso con el boton Modificar
+
+
+    datosLaboratorio[0] = laboratorio['sede_laboratorio']; 
+    datosLaboratorio[1] = laboratorio['nombre_laboratorio']; 
+    datosLaboratorio[2] = laboratorio['cantidad_espacios']; 
+
+    setLaboratorioParaModificar(datosLaboratorio);
+    cargar_pagina();
 }
+
+function setLaboratorioParaModificar(infoLaboratorio) {
+    localStorage.setItem("laboratorioParaModificar", JSON.stringify(infoLaboratorio));
+    console.log(JSON.parse(localStorage.getItem("laboratorioParaModificar")));
+};
 
 function remover_laboratorio(){
     let _id = this.dataset._id;
