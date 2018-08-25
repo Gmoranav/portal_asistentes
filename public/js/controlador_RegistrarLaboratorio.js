@@ -156,6 +156,8 @@ function obtenerDatosModificar(){
 
         //este nombre queda igual
         limpiarFormulario();
+        botonModificar.hidden = true;
+        botonRegistrar.hidden = false;
     };
     
 };
