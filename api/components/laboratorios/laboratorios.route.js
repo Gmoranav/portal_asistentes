@@ -24,7 +24,7 @@ router.route('/modificar_laboratorio')
         laboratoriosApi.modificar_laboratorio(req, res);
     });
 
-router.route('/eliminar_laboratorio')
+router.route('/desactivar_laboratorio')
 .post(function (req, res) {
     laboratoriosApi.eliminar_laboratorio(req, res);
 });

@@ -39,28 +39,43 @@ function imprimirListaGrupos(){
         cEstudiantes.innerHTML = listaGrupos[i]['cantidad_de_estudiantes'];
         cNombre.innerHTML = listaGrupos[i]['nombre'];
 
+        //se crean los componentes para modificar
         let botonModificar = document.createElement('a');
         botonModificar.classList.add('fas');
         botonModificar.classList.add('fa-pencil-alt');
+        botonModificar.classList.add('tooltip');
 
+        let tooltipModificar = document.createElement('span');
+        tooltipModificar.textContent = "Editar";
+        tooltipModificar.setAttribute('class', 'tooltiptext');
+        botonModificar.appendChild(tooltipModificar);
+
+        let botonDesactivar = document.createElement('a');
+        botonDesactivar.classList.add('fas');
+        botonDesactivar.classList.add('fa-ban');
+        botonDesactivar.classList.add('tooltip');
+
+        let tooltipDesactivar = document.createElement('span');
+        tooltipDesactivar.textContent = "Desactivar";
+        tooltipDesactivar.setAttribute('class', 'tooltiptext');
+        botonDesactivar.appendChild(tooltipDesactivar);
+
+        //dataset es una 
+        //propiedad que permite definir atributos personalizados
+        //para un elemento de html
         botonModificar.dataset._id = listaGrupos[i]['_id'];
+        botonDesactivar.dataset._id = listaGrupos[i]['_id'];
 
+
+        //un eventListener queda enlazado a la función que llama
         botonModificar.addEventListener('click', buscar_por_id);
-
-        let botonEliminar = document.createElement('a');
-        botonEliminar.classList.add('fas');
-        botonEliminar.classList.add('fa-trash-alt');
-
-        botonEliminar.dataset._id = listaGrupos[i]['_id'];
-
-        botonEliminar.addEventListener('click', remover_grupo);
-
+        botonDesactivar.addEventListener('click', desactivar_grupo);
 
 
 
 
         cConfiguracion.appendChild(botonModificar);
-        cConfiguracion.appendChild(botonEliminar);
+        cConfiguracion.appendChild(botonDesactivar);
         
         
     }
@@ -71,14 +86,32 @@ function buscar_por_id () {
 
     let _id = this.dataset._id;
 
-    let laboratorio = obtener_laboratorio_por_id(_id);
+    let grupo = obtener_grupo_por_id(_id);
+    let datosGrupo = [];
+    let i = 0;
 
-    /*inputNombreLaboratorio.value = laboratorio['sede_laboratorio'];    
-    inputCantidadEspacios.value = laboratorio['nombre_laboratorio'];
-    inputSede.value= laboratorio['nombre_laboratorio'];*/
+    console.log(grupo);
+    //binding permite enlazar la función con el contexto que la llama
+    //en este caso con el boton Modificar
+
+
+    datosGrupo[0] = grupo['sedeGrupo']; 
+    datosGrupo[1] = grupo['carreraGrupo']; 
+    datosGrupo[2] = grupo['cursoGrupo']; 
+    datosGrupo[3] = grupo['laboratorio']; 
+    datosGrupo[4] = grupo['cantidad_de_estudiantes']; 
+    datosGrupo[5] = grupo['nombre']; 
+
+    setGrupoParaModificar(datosGrupo);
+    cargar_pagina_grupo();
 }
 
-function remover_grupo(){
+function setGrupoParaModificar(infoGrupo) {
+    localStorage.setItem("grupoParaModificar", JSON.stringify(infoGrupo));
+    console.log(JSON.parse(localStorage.getItem("grupoParaModificar")));
+};
+
+function desactivar_grupo(){
     let _id = this.dataset._id;
     swal({
         title: '¿Está seguro?',
