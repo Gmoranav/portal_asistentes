@@ -1,4 +1,4 @@
-function obtenergrupoPorID(){
+function obtenerListaGrupos(){
 
     //cambiar Examples por lo que se vaya a listar. Debe estar en plural
     let listaGrupos = []; //THIS
