@@ -1,6 +1,6 @@
 'use strict';
 const usuarioModel = require('./usuarios.model');
-/*const nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -13,9 +13,9 @@ const transporter = nodemailer.createTransport({
 let mailOptions = {
     from: 'grupovirtual.proyecto1@gmail.com',
     to: '',
-    subject: 'Credenciales Portal Assietentes',
+    subject: 'Credenciales Portal Asistentes',
     html: ''
-};*/
+};
 
 module.exports.registrar_usuario = function(req, res){
     /**Todo para registrar un usuario va aqui */
@@ -35,7 +35,6 @@ module.exports.registrar_usuario = function(req, res){
         provincia : req.body.provincia,
         telefono : req.body.telefono,
         correo : req.body.correo,
-        usuario : req.body.cedula,
         contrasenna : req.body.contrasenna,
         estado : req.body.estado,
         ingresos : req.body.ingresos
@@ -47,8 +46,8 @@ module.exports.registrar_usuario = function(req, res){
         if(error){
             res.json({ success: false, msj: ' El usuario no pudo ser registrado : ' + error});
         }else{
-         /*   mailOptions.to = nuevoUsuario.correo;
-            mailOptions.html = 
+            mailOptions.to = nuevoUsuario.correo;
+            mailOptions.html = `
             <html>
                 <head>
                     <style>
@@ -60,12 +59,12 @@ module.exports.registrar_usuario = function(req, res){
                     </style>
                 </head>
                 <body>
-                    <h1>Bienvenido ${nuevoUsuario.nombre + nuevoUsuario.primer_apellido} </h1>
+                    <h1>Bienvenido ${nuevoUsuario.nombre} </h1>
                     <p>Sus datos de registro son </p>
                     <table>
                         <tr>
                             <td>Nombre</td>
-                            <td>${nuevoUsuario.nombre + nuevoUsuario.primer_apellido}</td>
+                            <td>${nuevoUsuario.nombre + ' ' + nuevoUsuario.primer_apellido}</td>
                         </tr>
                         <tr>
                             <td>Rol</td>
@@ -80,14 +79,14 @@ module.exports.registrar_usuario = function(req, res){
 
                 </body>
             </html>
-            ;
+            `;
             transporter.sendMail(mailOptions, function(error, info){
                 if(error){
                     console.log(error);
                 }else{
                     console.log('Email sent: ' + info.response);
                 }
-            });*/
+            });
             res.json({ success: true, msj: ' El usuario ha sido registrado de forma exitosa'});
         }
     });
@@ -113,10 +112,10 @@ module.exports.modificar_usuario = function(req, res){
     /*se buscar el registro que tenga el _id y con set
     se modifica todo el cuerpo de la petición*/
     usuarioModel.findByIdAndUpdate(req.body._id, {$set: req.body},
-    function(err, user){
-        if(err){
+    function(error, user){
+        if(error){
             res.json({ success: false, msg: 'El usuario no se ha podido modificar. ' +
-            handleError(err) });
+            handleError(error) });
         }else{
             res.json({success: true, msg: 'Se ha actualizado correctamente. ' + res});
         }
