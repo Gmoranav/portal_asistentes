@@ -75,7 +75,7 @@ function imprimirListaGrupos(){
 
 
         cConfiguracion.appendChild(botonModificar);
-        cConfiguracion.appendChild(botonEliminar);
+        cConfiguracion.appendChild(botonDesactivar);
         
         
     }
