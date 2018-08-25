@@ -44,7 +44,7 @@ function registrarLaboratorio(psNombreLaboratorio, psCantidadEspacios, psSedeLab
     return respuesta;
 }
 
-function modificarLaboratorio(psNombreLaboratorio, psCantidadEspacios, psSedeLab){
+function modificarLaboratorio(psNombreLaboratorio, psCantidadEspacios, psSedeLab, p_id){
     let respuesta = '';
     let peticion = $.ajax({
 
@@ -55,6 +55,7 @@ function modificarLaboratorio(psNombreLaboratorio, psCantidadEspacios, psSedeLab
         dataType : 'json',
         async : false,
         data:{
+            _id : p_id,
             nombre_laboratorio : psNombreLaboratorio,
             cantidad_espacios : psCantidadEspacios,
             sede_laboratorio : psSedeLab

@@ -14,6 +14,7 @@ botonModificar.hidden = true;
 const inputSede = document.querySelector('#txtSedeGrupo');
 const inputNombreLaboratorio = document.querySelector('#txtNombreLaboratorio');
 const inputCantidadEspacios = document.querySelector('#numCantEspacios');
+let inputId = document.querySelector('#txtId')
 //const inputFiltro = document.querySelector('#txtFiltro'); esto lo vemos con el profe el miercoles
 
 
@@ -102,6 +103,7 @@ function modificarDatosLaboratorio(){
     let sNombreLaboratorio = inputNombreLaboratorio.value;
     let sCantidadEspacios = inputCantidadEspacios.value;
     let sSedeLab = inputSede.value;
+    let _id = inputId.value;
 
     
     
@@ -120,7 +122,7 @@ function modificarDatosLaboratorio(){
     }else{
 
         //cambiar Example y parámetros de la función por lo que se esté registrando, pornerlo en singular
-        respuesta = modificarLaboratorio(sNombreLaboratorio, sCantidadEspacios, sSedeLab);//esta funcion está en el servicio
+        respuesta = modificarLaboratorio(sNombreLaboratorio, sCantidadEspacios, sSedeLab, _id);//esta funcion está en el servicio
        
         if(respuesta.success == true){
 
