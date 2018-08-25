@@ -28,7 +28,6 @@ function registrarUsuarios(imagenUrl, sNombre, sSegundoNombre, sPrimerApellido, 
             provincia : sltProvincia,
             telefono : sTelefono,
             correo : sCorreo,
-            usuario : sCedula,
             contrasenna : pcontrasenna,
             estado : pestado,
             ingresos : pingresos

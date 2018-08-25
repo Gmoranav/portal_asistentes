@@ -52,6 +52,9 @@ function salir() {
 function redireccionListarAsistentes() {
     window.location = "solicitud-asistente_listar.html";
 }
+function redireccionBitacoraListar() {
+    window.location = "bitacora_listar.html";
+}
 function redireccionSedes() {
     window.location = "sede_listar.html";
 }
@@ -110,22 +113,6 @@ function redireccionUsuarioRegistrar() {
     window.location = "usuario_registrar.html";
 }
 
-
-
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
-            $('#imagePreview').hide();
-            $('#imagePreview').fadeIn(650);
-        }
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-$("#imageUpload").change(function () {
-    readURL(this);
-});
 
 function validacion_rol_dashboard() {
     let tipoAcceso = JSON.parse(localStorage.getItem('tipoDeRol'));
@@ -256,4 +243,10 @@ function validacion_rol_nav() {
         menu_option_solicitud.className = "hidden"
         menu_option_info_academica.className = "hidden";
     }
+};
+
+
+
+function getNombreUsuario() {
+    return JSON.parse(localStorage.getItem("nombreUsuario"));
 };

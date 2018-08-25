@@ -1,8 +1,8 @@
 'use strict';
 const usuarioModel = require('./usuarios.model');
-/*const nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer');
 
-const transporter = nodemailer.createTransport({
+/*const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'grupovirtual.proyecto1@gmail.com',
@@ -35,7 +35,6 @@ module.exports.registrar_usuario = function(req, res){
         provincia : req.body.provincia,
         telefono : req.body.telefono,
         correo : req.body.correo,
-        usuario : req.body.cedula,
         contrasenna : req.body.contrasenna,
         estado : req.body.estado,
         ingresos : req.body.ingresos
@@ -47,8 +46,8 @@ module.exports.registrar_usuario = function(req, res){
         if(error){
             res.json({ success: false, msj: ' El usuario no pudo ser registrado : ' + error});
         }else{
-         /*   mailOptions.to = nuevoUsuario.correo;
-            mailOptions.html = 
+            /*mailOptions.to = nuevoUsuario.correo;
+            mailOptions.html = '
             <html>
                 <head>
                     <style>
@@ -60,7 +59,7 @@ module.exports.registrar_usuario = function(req, res){
                     </style>
                 </head>
                 <body>
-                    <h1>Bienvenido ${nuevoUsuario.nombre + nuevoUsuario.primer_apellido} </h1>
+                    <h1>Bienvenido ${nuevoUsuario.nombre} </h1>
                     <p>Sus datos de registro son </p>
                     <table>
                         <tr>
@@ -80,7 +79,7 @@ module.exports.registrar_usuario = function(req, res){
 
                 </body>
             </html>
-            ;
+            ';
             transporter.sendMail(mailOptions, function(error, info){
                 if(error){
                     console.log(error);
@@ -89,7 +88,7 @@ module.exports.registrar_usuario = function(req, res){
                 }
             });*/
             res.json({ success: true, msj: ' El usuario ha sido registrado de forma exitosa'});
-        }
+        }/*
     });
 };
 

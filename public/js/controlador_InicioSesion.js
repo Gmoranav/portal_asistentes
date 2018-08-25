@@ -105,6 +105,13 @@ function cerrarSesión() {
 // aquí se colocan las rutas a donde quiera guiar cada tipo de usuario en cada case con windows.location = "rutaDeHtml"
 function redireccionarUsuario() {
     let usuarioAutenticado = getUsuarioAutenticado();
+    let nombreUsuario = [];
+
+    nombreUsuario [0] = usuarioAutenticado._id;
+    nombreUsuario [1] = usuarioAutenticado.nombre;
+    nombreUsuario [2] = usuarioAutenticado.primer_apellido;
+    nombreUsuario [3] = usuarioAutenticado.segundo_apellido;
+    localStorage.setItem('nombreUsuario', JSON.stringify(nombreUsuario));
 
     window.location = "dashboard.html";
 
