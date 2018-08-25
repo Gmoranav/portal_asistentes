@@ -95,7 +95,7 @@ function buscar_por_id () {
     let datosLaboratorio = [];
     let i = 0;
 
-    console.log(usuario);
+    console.log(laboratorio);
     //binding permite enlazar la función con el contexto que la llama
     //en este caso con el boton Modificar
 
