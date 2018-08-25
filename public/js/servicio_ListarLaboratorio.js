@@ -60,7 +60,7 @@ function obtener_laboratorio_por_id (p_id) {
 
 }
 
-function eliminar_laboratorio(p_id){
+function eliminar_laboratorio(p_id, pestado){
   let respuesta = '';
   let peticion = $.ajax({
       url : 'http://localhost:4000/api/eliminar_laboratorio',
@@ -69,7 +69,8 @@ function eliminar_laboratorio(p_id){
       dataType : 'json',
       async : false,
       data:{
-          _id: p_id
+          _id: p_id,
+          estado : pestado
       }
     });
   

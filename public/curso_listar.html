@@ -16,52 +16,52 @@
 
     <!--Acá empieza la navegación que es parte de todas las paginas-->
     <aside id="panel-menu" class="panel-menu">
-            <nav>
+        <nav>
+            <ul>
+                <li>
+                    <a onclick="redireccionaDashboard()">
+                        <i class="fas fa-home fa-fw"></i>&nbsp;Inicio</a>
+                </li>
+                <li>
+                    <a href="#">Perfil</a>
+                </li>
+                <li id="hide-usuario">
+                    <a onclick="redireccionUsuarioListar()" class="">Usuarios</a>
+                </li>
+                <li>
+                    <a>Asistentes</a>
                     <ul>
                         <li>
-                            <a onclick="redireccionaDashboard()">
-                                <i class="fas fa-home fa-fw"></i>&nbsp;Inicio</a>
+                            <a onclick="redireccionSolicitudAsistenteListar()" id="hide-solicitud">Solicitudes</a>
                         </li>
                         <li>
-                            <a href="#">Perfil</a>
-                        </li>
-                        <li  id="hide-usuario">
-                            <a onclick="redireccionUsuarioListar()" class="">Usuarios</a>
+                            <a href="#" id="hide-info-academica">Información Académica </a>
                         </li>
                         <li>
-                            <a>Asistentes</a>
-                            <ul>
-                                <li>
-                                    <a onclick="redireccionSolicitudAsistenteListar()" id="hide-solicitud">Solicitudes</a>
-                                </li>
-                                <li>
-                                    <a href="#" id="hide-info-academica">Información Académica </a>
-                                </li>
-                                <li>
-                                    <a href="#">Bitácoras</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a onclick="redireccionSedeListar()" id="hide-sede">Sedes</a>
-                        </li>
-                        <li>
-                            <a onclick="redireccionCarreraListar()" id="hide-carrera">Carreras</a>
-                        </li>
-                        <li>
-                            <a onclick="redireccionCursoListar()" id="hide-curso">Cursos</a>
-                        </li>
-                        <li>
-                            <a onclick="redireccionPeriodoListar()" id="hide-periodo">Periodos</a>
-                        </li>
-                        <li>
-                            <a onclick="redireccionGrupoListar()" id="hide-grupo">Grupos</a>
-                        </li>
-                        <li>
-                            <a onclick="redireccionLaboratorioListar()" id="hide-laboratorio">Laboratorios</a>
+                            <a href="#">Bitácoras</a>
                         </li>
                     </ul>
-                </nav>
+                </li>
+                <li>
+                    <a onclick="redireccionSedeListar()" id="hide-sede">Sedes</a>
+                </li>
+                <li>
+                    <a onclick="redireccionCarreraListar()" id="hide-carrera">Carreras</a>
+                </li>
+                <li>
+                    <a onclick="redireccionCursoListar()" id="hide-curso">Cursos</a>
+                </li>
+                <li>
+                    <a onclick="redireccionPeriodoListar()" id="hide-periodo">Periodos</a>
+                </li>
+                <li>
+                    <a onclick="redireccionGrupoListar()" id="hide-grupo">Grupos</a>
+                </li>
+                <li>
+                    <a onclick="redireccionLaboratorioListar()" id="hide-laboratorio">Laboratorios</a>
+                </li>
+            </ul>
+        </nav>
     </aside>
 
     <div class="container">
@@ -76,10 +76,14 @@
 
             <nav>
                 <a href="#">
-                    <i class="fas fa-lg fa-search tooltip"><span class="tooltiptext">Buscar</span></i>
+                    <i class="fas fa-lg fa-search tooltip">
+                        <span class="tooltiptext">Buscar</span>
+                    </i>
                 </a>
                 <a onclick="redireccionaDashboard()">
-                    <i class="fas fa-lg fa-home tooltip"><span class="tooltiptext">Inicio</span></i>
+                    <i class="fas fa-lg fa-home tooltip">
+                        <span class="tooltiptext">Inicio</span>
+                    </i>
                 </a>
 
                 <div "dropdown-profile">
@@ -123,19 +127,13 @@
                     <tr>
                         <th>Curso</th>
                         <th>Código</th>
-                        <th>Sede</th>
                         <th>Cantidad de Créditos</th>
+                        <th></th>
                         <th class="table-actions"></th>
                     </tr>
                     <tr>
                         <th>
-                            <input type="text" id="txtNombreCurso">
-                        </th>
-                        <th>
                             <input type="text" id="txtCodigoCurso">
-                        </th>
-                        <th>
-                            <input type="text" id="sltSede">
                         </th>
                         <th>
                             <input type="number" id="numCantidadCreditos">
@@ -145,14 +143,14 @@
                 </thead>
                 <tbody id="tbodyListar">
                     <tr>
-                       
+
                         <th class="table-actions">
                             <a>
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
                         </th>
                     </tr>
-                   
+
                 </tbody>
             </table>
         </main>
@@ -162,9 +160,10 @@
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/controlador_InicioSesion.js"></script>
     <script src="js/components.js"></script>
-    <script src="js/servicio_cursoListar.js"></script>
-    <script src="js/controlador_cursoListar.js"></script>
-    
+    <script src="js/servicio_ListarCurso.js"></script>
+    <script src="js/controlador_registrarCurso.js"></script>
+    <script src="js/controlador_ListarCurso.js"></script>
+
 
 </body>
 

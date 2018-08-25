@@ -54,3 +54,28 @@ function obtener_usuario_por_id(p_id){
     return usuario;
 }
 
+function desactivar_usuario(p_id, pestado){
+  let respuesta = '';
+  let peticion = $.ajax({
+      url : 'http://localhost:4000/api/desactivar_usuario',
+      type : 'post',
+      contentType : 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType : 'json',
+      async : false,
+      data:{
+          _id: p_id,
+          estado : pestado
+      }
+    });
+  
+    peticion.done(function(response){
+     respuesta = response;
+    });
+  
+    peticion.fail(function(response){
+      respuesta = response;
+     
+    });
+
+    return respuesta;
+};

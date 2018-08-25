@@ -22,7 +22,8 @@ let usuarioSchema = new mongoose.Schema({
     correo : {type : String, required : true},
     usuario : {type : String, required : true},
     contrasenna : {type : String, required : true},
-    estado : {type : Number, required : true}
+    estado : {type : Number, required : true},
+    ingresos : {type : Number, required : true}
 }); 
 
 module.exports = mongoose.model('Usuario', usuarioSchema);

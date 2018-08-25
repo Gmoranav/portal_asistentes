@@ -1660,10 +1660,13 @@ function obtenerDatosFormulario(){
         let sltProvincia = inputProvincia.value;
         let sTelefono = inputTelefono.value;
         let sCorreo = inputCorreo.value;
+        let scontrasenna = generateRandomPassword();
+        let estado = 1;
+        let ingresos = 0;
 
         
         respuesta = registrarUsuarios(inputimagenUrl.src, sNombre, sSegundoNombre, sPrimerApellido, sSegundoApellido, sCedula, dFechaIngreso, sltRol, 
-                          sDireccion, sDistrito, sCanton, sltProvincia, sTelefono, sCorreo);//esta funcion está en el servicio
+                          sDireccion, sDistrito, sCanton, sltProvincia, sTelefono, sCorreo, scontrasenna, estado, ingresos);//esta funcion está en el servicio
 
         if (respuesta.success = true){
             swal({
@@ -1696,6 +1699,11 @@ function obtenerDatosFormulario(){
     }
     
 };
+
+function generateRandomPassword() {
+    let pw = Math.random().toString(36).substring(2, 10);
+    return pw;
+}
 
 
 function obtenerDatosModificar(){

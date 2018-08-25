@@ -7,9 +7,6 @@ Responsabilidades del servicio
 
 'use strict';
 
-
-
-
 function obtenerListaCarreras(){
 
 
@@ -37,3 +34,33 @@ function obtenerListaCarreras(){
 
     return listaCarreras;
 }
+
+function obtener_carrera_por_id(p_id){
+
+  let listaCarreras = [];
+
+  let peticion = $.ajax({
+
+      url : 'http://localhost:4000/api/buscar_carrera_id',
+      type : 'post',
+      contentType : 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType : 'json',
+      async : false,
+      data:{
+
+          _id : p_id
+
+      }
+    });
+  
+    peticion.done(function(response){
+      listaCarreras = response;
+    });
+  
+    peticion.fail(function(response){
+      listaCarreras = response;
+    });
+
+  return listaCarreras;
+
+};
