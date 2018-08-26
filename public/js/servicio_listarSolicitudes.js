@@ -50,12 +50,11 @@ function obtenerSolicitudId(pid){
       async : false,
       data:{
           _id : pid
-      }
+}
     });
 
     peticion.done(function(response){
-     respuesta = response;
-     console.log('envio exitoso');
+     solicitud = response;
     });
 
     peticion.fail(function(response){
@@ -63,4 +62,28 @@ function obtenerSolicitudId(pid){
       console.log(response);
     });
     return solicitud;
+};
+
+
+function desactivar_solicitud(pid){
+  let respuesta = '';
+  let peticion = $.ajax({
+      url : 'http://localhost:4000/api/desactivar_solicitud',
+      type : 'post',
+      contentType : 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType : 'json',
+      async : false,
+      data:{
+          _id: pid
+      }
+    });
+
+    peticion.done(function(response){
+     respuesta = response;
+    });
+
+    peticion.fail(function(response){
+    });
+
+    return respuesta;
 };

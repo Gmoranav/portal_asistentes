@@ -23,4 +23,23 @@ router.route('/modificar_solicitud')
       solicitudesApi.modificar_solicitud(req, res);
     });
 
+  router.route('/eliminar_solicitud')
+  .post(function (req, res) {
+      solicitudesApi.eliminar_solicitud(req, res);
+  });
+
+/*
+router.route('/buscar_usuario_id')
+    .post(function(req, res){
+    usuariosApi.buscar_usuario_por_id(req, res);
+});
+
+router.route('/modificar_usuario')
+    .post(function(req, res){
+    usuariosApi.modificar_usuario(req, res);
+});
+
+*/
+
+
 module.exports = router;

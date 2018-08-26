@@ -51,7 +51,6 @@ function imprimirListaSolicitudes(/*pFiltro*/plistaSolicitudes){
             let sGrupo = fila.insertCell();
             let nCantidadAlumnos = fila.insertCell();
             let cConfiguracion = fila.insertCell();
-            let cConfiguracion2 = fila.insertCell();
             /*let shorario = fila.insertCell();*/
 
             snombreCompleto.innerHTML = sPrimerNombre.concat(espacio,
@@ -61,14 +60,48 @@ function imprimirListaSolicitudes(/*pFiltro*/plistaSolicitudes){
             sPeriodo.innerHTML = plistaSolicitudes[i]['periodo'];
             sGrupo.innerHTML = plistaSolicitudes[i]['grupo'];
             nCantidadAlumnos.innerHTML = plistaSolicitudes[i]['cantidad_alumnos'];
+
             /*shorario.innerHTML = plistaSolicitudes[i]['horario'];*/
+
+
+
+            let botonDetalleSolicitud = document.createElement('a');
+            botonDetalleSolicitud.classList.add('fas');
+            botonDetalleSolicitud.classList.add('fa-file-alt');
+                        botonDetalleSolicitud.classList.add('tooltip');
+
+
+                        var tooltipdetalle = document.createElement('span');
+                        tooltipdetalle.textContent = "Detalle de Solicitud";
+                        tooltipdetalle.setAttribute('class', 'tooltiptext');
+                        botonDetalleSolicitud.appendChild(tooltipdetalle);
+
+
+                        //document.getElementById('mydiv').innerHTML = '<span class="prego">Something</span>'
+
+
+            botonDetalleSolicitud.dataset.id = plistaSolicitudes[i]['_id'];
+
+            //botonDetalleSolicitud.addEventListener('click', mostrar_detalle_solicitud);
+
+            cConfiguracion.appendChild(botonDetalleSolicitud);
+
+
+
 
             /*se crean los componentes para actualizar*/
             let botonModificar = document.createElement('a');
             botonModificar.classList.add('fas');
             botonModificar.classList.add('fa-pen');
+            botonModificar.classList.add('tooltip');
 
-            botonModificar.dataset._id = plistaSolicitudes[i]['_id'];
+
+            var tooltipModificar = document.createElement('span');
+            tooltipModificar.textContent = "Modificar";
+            tooltipModificar.setAttribute('class', 'tooltiptext');
+            botonModificar.appendChild(tooltipModificar);
+
+            botonModificar.dataset.id = plistaSolicitudes[i]['_id'];
 
             botonModificar.addEventListener('click', buscarId);
 
@@ -83,6 +116,31 @@ function imprimirListaSolicitudes(/*pFiltro*/plistaSolicitudes){
             botonDetalleSolicitud.addEventListener('click', buscar_por_id)
 
             cConfiguracion2.appendChild(botonDetalleSolicitud);*/
+
+
+
+            let botonDesactivar = document.createElement('a');
+            botonDesactivar.classList.add('fas');
+            botonDesactivar.classList.add('fa-ban');
+            botonDesactivar.classList.add('tooltip');
+
+
+            var tooltipDesactivar = document.createElement('span');
+            tooltipDesactivar.textContent = "Desactivar";
+            tooltipDesactivar.setAttribute('class', 'tooltiptext');
+            botonDesactivar.appendChild(tooltipDesactivar);
+
+
+            botonDesactivar.dataset.id = plistaSolicitudes[i]['_id'];
+
+            botonDesactivar.addEventListener('click', desactivar_solicitud);
+
+            cConfiguracion.appendChild(botonDesactivar);
+
+
+
+
+
         //}
 
     }
@@ -145,12 +203,42 @@ function validar(){
 
     return bError;
 };
-
+/*
 function buscarId(){
   let _id = this.dataset._id;
-  let solicitud = obtenerSolicitudId(_id);
   console.log(solicitud);
 };
+*/
+
+function buscarId(){
+        let _id = this.dataset._id;
+        let solicitud = obtenerSolicitudId(_id);
+        let datosSolicitud = [];
+        let i = 0;
+
+        console.log(solicitud);
+        //binding permite enlazar la función con el contexto que la llama
+        //en este caso con el boton Modificar
+
+        //inputimagenUrl.src = usuario['foto'];
+        datosSolicitud[0] = Solicitud['nombre'];
+        datosSolicitud[1] = Solicitud['segundo_nombre'];
+        datosSolicitud[2] = Solicitud['primer_apellido'];
+        datosSolicitud[3] = Solicitud['segundo_apellido'];
+        datosSolicitud[4] = Solicitud['curso'];
+        datosSolicitud[5] = Solicitud['grupo'];
+        datosSolicitud[5] = Solicitud['estado'];
+        datosSolicitud[13] = Solicitud['_id'];
+        setUsuarioParaModificar(datosUsuario);
+        cargar_pagina();
+
+};
+
+function setUsuarioParaModificar(infoUsuario) {
+        localStorage.setItem("usuarioParaModificar", JSON.stringify(infoUsuario));
+        console.log(JSON.parse(localStorage.getItem("usuarioParaModificar")));
+};
+
 
 //en esta función solo hay que cambiar los input por lo que se requiera, todo lo demas queda igual
 function limpiarFormulario(){
@@ -164,3 +252,40 @@ function limpiarFormulario(){
     inputCantidadAlumnos.value = 0;
     inputHorario.value = '';
 }
+
+
+function desactivar_solicitud(){
+  let _id = this.dataset._id; //SE SALVA EL ID DE LO QUE SE DESEA BORRAR
+  swal({
+      title: '¿Seguro que desea desactivar esta solicitud?',
+      text: "Esta acción no puede deshacerse.",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Desactivar'
+    }).then((result) => {
+      if (result.value) {
+          eliminar_solicitud(_id); //FUNCION EN EL SERVIDOR PARA BORRAR, PARAMETRO ES EL ID DE LO QUE SE QUIERE BORRAR
+          imprimirListaSolicitudes(); //CARGAR LA LISTA, YA AQUÍ LO DEMÁS SE HA EJECUTADO Y NO APARECE LO QUE SE BORRÓ
+        swal(
+          '¡Solicitud Desactivada!',
+          'El proceso ha sido concluido con éxito',
+          'success'
+        )
+      }
+    });
+}
+
+function mostrar_detalle_solicitud(){
+}
+
+
+/*
+
+
+
+
+
+*/

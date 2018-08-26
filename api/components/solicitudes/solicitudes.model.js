@@ -15,6 +15,9 @@ let solicitudSchema = new mongoose.Schema({
     grupo : {type : String},
     cantidad_alumnos : {type : Number, required : true},
     horario : {type : String, required : true}
+
+
+
     /*crear uno por input*/
     /*grupos : [grupo : {type : String},]*/
 
