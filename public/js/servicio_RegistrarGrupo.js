@@ -43,7 +43,7 @@ function registrarGrupo(psSede, psCarrera, psCurso, psPeriodo, psNombre, psLabor
 }
 
 function modificarGrupo(psSede, psCarrera, psCurso, psPeriodo, psNombre, psLaboratorio, 
-    psProfesor, psCantidadEstu, psHorario, _id){
+    psProfesor, psCantidadEstu, psHorario, p_id){
     let respuesta = '';
     let peticion = $.ajax({
 
