@@ -20,6 +20,7 @@ const inputProfesor = document.querySelector('#selectProfesores')
 const inputLaboratorio = document.querySelector('#txtLaboratorio');
 const inputCantidadEstu = document.querySelector('#txtCantEstudiantes');
 const inputHorario = document.querySelector('#txtHorario');
+let inputId = document.querySelector('#txtId')
 
 let arregloProfesores = [];
 //const inputFiltro = document.querySelector('#txtFiltro'); esto lo vemos con el profe el miercoles
@@ -132,6 +133,7 @@ function obtenerDatosModificarGrupo () {
     let sProfesor = arregloProfesores.join(', ');
     let sCantidadEstu = Number(inputCantidadEstu.value);
     let sHorario = inputHorario.value;
+    let _id = inputId.value;
 
     
     
@@ -150,7 +152,8 @@ function obtenerDatosModificarGrupo () {
        
     }else{
         //cambiar Example y parámetros de la función por lo que se esté registrando, pornerlo en singular
-        respuesta = modificarGrupo(sSede, sCarrera, sCurso, sPeriodo, sNombre, sLaboratorio, sProfesor, sCantidadEstu, sHorario);//esta funcion está en el servicio
+        respuesta = modificarGrupo(sSede, sCarrera, sCurso, sPeriodo, sNombre, sLaboratorio, 
+            sProfesor, sCantidadEstu, sHorario, _id);//esta funcion está en el servicio
         
         if (respuesta.success == true){
 
@@ -390,6 +393,7 @@ function limpiarFormulario(){
     inputProfesor.value = '';
     inputCantidadEstu.value = 0;
     inputHorario.value = '';
+    inputId.value = ''; 
 }
 
 function cargar_pagina_grupo(){
@@ -416,6 +420,7 @@ function cargar_datos_modificar_grupo(){
         inputLaboratorio.value = grupo[3]; 
         inputCantidadEstu.value = grupo[4];
         inputNombre.value = grupo[5];
+        inputId.value = grupo[6];
 
 
         grupo = [];
