@@ -421,7 +421,8 @@ function cargar_datos_modificar_grupo(){
         inputCantidadEstu.value = grupo[4];
         inputNombre.value = grupo[5];
         inputId.value = grupo[6];
-
+        inputPeriodo.value = grupo[7];
+        inputHorario.value = grupo[8];
 
         grupo = [];
         localStorage.setItem("grupoParaModificar", JSON.stringify(grupo));

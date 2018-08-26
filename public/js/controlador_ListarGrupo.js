@@ -277,7 +277,9 @@ function buscar_por_id () {
     datosGrupo[3] = grupo['laboratorio']; 
     datosGrupo[4] = grupo['cantidad_de_estudiantes']; 
     datosGrupo[5] = grupo['nombre'];
-    datosGrupo[6] = grupo['_id']; 
+    datosGrupo[6] = grupo['_id'];
+    datosGrupo[7] = grupo['periodoGrupo'];
+    datosGrupo[8] = grupo['horario']; 
 
     setGrupoParaModificar(datosGrupo);
     cargar_pagina_grupo();
