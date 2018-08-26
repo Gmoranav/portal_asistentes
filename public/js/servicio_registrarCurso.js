@@ -5,7 +5,7 @@
  */
 
 
-function registrar_curso(psNombreCurso , psCodigoCurso , nCantidadCreditos){
+function registrar_curso(psNombreCurso , psCodigoCurso , nCantidadCreditos, pEstado){
 
     let respuesta = '';
     let peticion = $.ajax({
@@ -20,8 +20,7 @@ function registrar_curso(psNombreCurso , psCodigoCurso , nCantidadCreditos){
             nombre_curso : psNombreCurso,
             codigo_curso : psCodigoCurso,
             cantidad_creditos : nCantidadCreditos,
-            
-
+            estado : pEstado
         }
     });
 
@@ -56,7 +55,7 @@ function modificar_curso(_id, psNombreCurso , psCodigoCurso , nCantidadCreditos)
             _id: _id,
             nombre_curso : psNombreCurso,
             codigo_curso : psCodigoCurso,
-            cantidad_creditos : nCantidadCreditos,
+            cantidad_creditos : nCantidadCreditos
             
 
         }
