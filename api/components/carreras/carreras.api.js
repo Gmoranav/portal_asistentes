@@ -2,31 +2,32 @@
 
 const carreraModel = require('./carreras.model');
 
-module.exports.registrar = function(req, res){
+module.exports.registrar = function (req, res) {
 
     let nuevaCarrera = new carreraModel({
 
-        codigo_carrera : req.body.codigo_carrera,
-        nombre_carrera : req.body.nombre_carrera,
-        creditos_totales : req.body.creditos_totales,
-        fecha_creacion : req.body.fecha_creacion,
-        slt_sede : req.body.slt_sede,
-        acreditacion : req.body.acreditacion
+        codigo_carrera: req.body.codigo_carrera,
+        nombre_carrera: req.body.nombre_carrera,
+        creditos_totales: req.body.creditos_totales,
+        fecha_creacion: req.body.fecha_creacion,
+        slt_sede: req.body.slt_sede,
+        acreditacion: req.body.acreditacion,
+        estado: req.body.estado,
 
     });
 
-    nuevaCarrera.save(function(error){
-        if(error){
+    nuevaCarrera.save(function (error) {
+        if (error) {
             res.json({
-                success : false,
-                msj : 'La carrera no pudo ser registrada :' + error
+                success: false,
+                msj: 'La carrera no pudo ser registrada :' + error
             });
 
-        }else{
+        } else {
 
             res.json({
-                success : true,
-                msj : 'La carrera se registró con éxito!'
+                success: true,
+                msj: 'La carrera se registró con éxito!'
             });
         }
 
@@ -34,33 +35,45 @@ module.exports.registrar = function(req, res){
 };
 
 
-module.exports.listar_carreras = function(req, res){
+module.exports.listar_carreras = function (req, res) {
     //carreraModel.find().sort({nombre_carrera : 'asc'}).then(
-    carreraModel.find().sort({$natural:-1}).then(
+    carreraModel.find().sort({ $natural: -1 }).then(
 
-        function(carreras){
+        function (carreras) {
             res.send(carreras);
         }
     );
 };
 
 
-module.exports.buscar_carrera_id = function(req, res){
-    carreraModel.findById({_id: req.body._id}).then(
-        function(carrera){
+module.exports.buscar_carrera_id = function (req, res) {
+    carreraModel.findById({ _id: req.body._id }).then(
+        function (carrera) {
             res.send(carrera);
         }
     );
 
 };
 
-module.exports.modificar_carrera = function(req,res){
-      carreraModel.findByIdAndUpdate(req.body._id, { $set: req.body},
-        function(error, carrera){
-          if (error) {
-            res.json({success: false, msg: 'No se ha actualizado la carrera.' + handleError(error)});
-          }else {
-            res.json({success: true, msg: 'Se ha actualizado correctamente.' + res});
-          }
+module.exports.modificar_carrera = function (req, res) {
+    carreraModel.findByIdAndUpdate(req.body._id, { $set: req.body },
+        function (error, carrera) {
+            if (error) {
+                res.json({ success: false, msg: 'No se ha actualizado la carrera.' + handleError(error) });
+            } else {
+                res.json({ success: true, msg: 'Se ha actualizado correctamente.' + res });
+            }
+        });
+};
+
+module.exports.desactivar_carrera = function (req, res) {
+    carreraModel.findByIdAndUpdate(req.body._id, { $set: req.body },
+        function (error, carrera) {
+            if (error) {
+                res.json({ success: false, msg: 'No se ha desactivado la carrera.' + handleError(error) });
+            } else {
+                res.json({ success: true, msg: 'Se ha desactivado correctamente' + res });
+            }
+
         });
 };

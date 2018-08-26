@@ -88,6 +88,75 @@ function llenarTabla(plistaCursos, pFiltro) {
 
 };
 
+function llenarTablaCodigo(plistaCursos, pFiltro) {
+
+    let tbody = document.querySelector('#tbodyListar');
+
+    //Filtros 
+    if (!pFiltro) {
+        pFiltro = '';
+    }
+
+    tbody.innerHTML = '';
+
+    for (let i = 0; i < listaCursos.length; i++) {
+
+        if (listaCursos[i]['estado'] == 1) {
+
+            if (plistaCursos[i]['codigo_curso'].toLowerCase().includes(pFiltro.toLowerCase())) {
+
+                let fila = tbody.insertRow();
+                let celdaNombreCurso = fila.insertCell();
+                let celdaCodigo = fila.insertCell();
+                let celdaCantidadCreditos = fila.insertCell();
+                let cConfiguracion = fila.insertCell();
+
+                celdaNombreCurso.innerHTML = plistaCursos[i]['nombre_curso'];
+                celdaCodigo.innerHTML = plistaCursos[i]['codigo_curso'];
+                celdaCantidadCreditos.innerHTML = plistaCursos[i]['cantidad_creditos'];
+
+               // let cDesactivacion = fila.insertCell();
+
+                //Se crean los componentes para actualizar/modificar 
+                let botonModificar = document.createElement('a');
+                botonModificar.classList.add('fas');
+                botonModificar.classList.add('fa-pencil-alt');
+                botonModificar.classList.add('tooltip');
+
+                let tooltipModificar = document.createElement('span');
+                tooltipModificar.textContent = "Editar";
+                tooltipModificar.setAttribute('class', 'tooltiptext');
+                botonModificar.appendChild(tooltipModificar);
+
+                botonModificar.dataset._id = plistaCursos[i]['_id'];
+                botonModificar.addEventListener('click', buscar_por_id);
+
+                cConfiguracion.appendChild(botonModificar);
+                botonModificar.appendChild(tooltipModificar);
+            
+
+                //Se crean los componentes para desactivar
+                let botonDesactivar = document.createElement('a');
+                botonDesactivar.classList.add('fas');
+                botonDesactivar.classList.add('fa-ban');
+                botonDesactivar.classList.add('tooltip');
+
+                let tooltipDesactivar = document.createElement('span');
+                tooltipDesactivar.textContent = "Desactivar";
+                tooltipDesactivar.setAttribute('class', 'tooltiptext');
+                botonDesactivar.appendChild(tooltipDesactivar);
+
+                botonDesactivar.dataset._id = listaCursos[i]['_id'];
+                botonDesactivar.addEventListener('click', remover_curso);
+
+                cConfiguracion.appendChild(botonDesactivar); 
+            }
+
+        }
+    }
+
+};
+
 function listarCurso() {
 
     listaCursos = obtenerCursos();

@@ -64,3 +64,30 @@ function obtener_carrera_por_id(p_id){
   return listaCarreras;
 
 };
+
+function desactivar_carrera(p_id, p_estado){
+
+  let respuesta = '';
+  let peticion = $.ajax({
+      url : 'http://localhost:4000/api/desactivar_carrera',
+      type : 'post',
+      contentType : 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType : 'json',
+      async : false,
+      data:{
+          _id: p_id,
+          estado : p_estado
+      }
+    });
+  
+    peticion.done(function(response){
+     respuesta = response;
+    });
+  
+    peticion.fail(function(response){
+      respuesta = response;
+    });
+
+    return respuesta;
+  
+}

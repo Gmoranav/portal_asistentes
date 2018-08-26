@@ -126,11 +126,44 @@ function obtenerDatosCursoModificar() {
             });
         }
 
-    limpiarFormulario();
-    botonModificar.hidden = true;
-    botonRegistrar.hidden = false;
-}
+        limpiarFormulario();
+        botonModificar.hidden = true;
+        botonRegistrar.hidden = false;
+    }
 };
+
+banderaModificar = JSON.parse(localStorage.getItem("estadoBanderaModificar"));
+
+if (banderaModificar == true) {
+    window.onload = function () {
+        cargar_datos_modificar();
+    };
+
+    function cargar_datos_modificar() {
+
+        let curso = [];
+
+        curso = getCursoParaModificar();
+
+        if (curso[0] != undefined) {
+
+            inputNombreCurso.value = curso[0];
+            inputCodigoCurso.value = curso[1];
+            inputCantidadCreditos.value = curso[2];
+            inputId.value = curso[3];
+
+            curso = [];
+            botonModificar.hidden = false;
+            botonRegistrar.hidden = true;
+        }
+    }
+};
+
+
+
+function getCursoParaModificar() {
+    return JSON.parse(localStorage.getItem("cursoParaModificar"));
+}
 
 /**Validación */
 function validar() {
@@ -173,38 +206,4 @@ function limpiarFormulario() {
     inputCodigoCurso.value = '';
     inputCantidadCreditos.value = '';
 
-}
-
-
-banderaModificar = JSON.parse(localStorage.getItem("estadoBanderaModificar"));
-
-if (banderaModificar == true) {
-    window.onload = function () {
-        cargar_datos_modificar();
-    };
-
-function cargar_datos_modificar() {
-
-    let curso = [];
-
-    curso = getCursoParaModificar();
-
-    if (curso[0] != undefined) {
-
-        inputNombreCurso.value = curso[0];
-        inputCodigoCurso.value = curso[1];
-        inputCantidadCreditos.value = curso[2];
-        inputId.value = curso[3];
-
-        curso = [];
-        botonModificar.hidden = false;
-        botonRegistrar.hidden = true;
-    }
-}
-};
-
-
-
-function getCursoParaModificar() {
-    return JSON.parse(localStorage.getItem("cursoParaModificar"));
 }

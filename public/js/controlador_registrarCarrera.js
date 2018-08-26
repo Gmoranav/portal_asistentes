@@ -1,31 +1,30 @@
 'use strict';
 
-let botonRegistrar = document.querySelector('#btnRegistrar');
-let botonModificar = document.querySelector('#btnModificar');
-let inputCodigoCarrera = document.querySelector('#txtCódigoCarrera');
-let inputNombreCarrera = document.querySelector('#txtNombreCarrera');
-let inputCreditosTotales = document.querySelector('#numCreditosTotales');
-let inputFechaCreacion = document.querySelector('#txtfechaCreacion');
-let selectSede = document.querySelector('#sltSede');
-let selectAcreditacion = document.querySelector('#sltAcredicatacion');
-let inputId = document.querySelector('#txtId')
+let banderaModificar = false;
 
-botonRegistrar.addEventListener('click' , obtenerDatosCarrera);
-botonModificar.addEventListener('click' , obtenerDatosCarreraModificar);
+const botonRegistrar = document.querySelector('#btnRegistrar');
+const botonModificar = document.querySelector('#btnModificar');
 
-function obtenerDatosCarrera(){
-    
-    let sCodigoCarrera = inputCodigoCarrera.value;
-    let sNombreCarrera = inputNombreCarrera.value;
-    let nCreditosTotales = inputCreditosTotales.value;
-    let sFechaCreacion = inputFechaCreacion.value;
-    let sltSede = selectSede.value;
-    let sAcreditacion = selectAcreditacion.value;
+//botonModificar.hidden = true;
 
-    let bError= validar();
+const inputCodigoCarrera = document.querySelector('#txtCódigoCarrera');
+const inputNombreCarrera = document.querySelector('#txtNombreCarrera');
+const inputCreditosTotales = document.querySelector('#numCreditosTotales');
+const inputFechaCreacion = document.querySelector('#txtfechaCreacion');
+const selectSede = document.querySelector('#sltSede');
+const selectAcreditacion = document.querySelector('#sltAcredicatacion');
+const inputId = document.querySelector('#txtId')
+
+botonRegistrar.addEventListener('click', obtenerDatosCarrera);
+botonModificar.addEventListener('click', obtenerDatosCarreraModificar);
+
+function obtenerDatosCarrera() {
+
+
+    let bError = validar();
     let respuesta;
 
-    if (bError == true){
+    if (bError == true) {
 
         swal({
             type: 'warning',
@@ -34,33 +33,42 @@ function obtenerDatosCarrera(){
             confirmButtonText: 'Aceptar'
         });
 
-    
-    }else{
 
-        respuesta = registrar_carrera(sCodigoCarrera, sNombreCarrera, nCreditosTotales, sFechaCreacion, sltSede, sAcreditacion);
-        
-        
-        if (respuesta.success == true) {    
-            
+    } else {
+
+
+        let sCodigoCarrera = inputCodigoCarrera.value;
+        let sNombreCarrera = inputNombreCarrera.value;
+        let nCreditosTotales = inputCreditosTotales.value;
+        let sFechaCreacion = inputFechaCreacion.value;
+        let sltSede = selectSede.value;
+        let sAcreditacion = selectAcreditacion.value;
+        let estado = 1;
+
+        respuesta = registrar_carrera(sCodigoCarrera, sNombreCarrera, nCreditosTotales, sFechaCreacion, sltSede, sAcreditacion, estado);
+
+
+        if (respuesta.success == true) {
+
             swal({
-            type: 'success',
-            title: 'Transacción Procesada',
-            text: "Se registró la carrera con éxito!",
-            showCancelButton: true,
-            reverseButtons: true,
-            confirmButtonText: 'Volver a la lista',
-            cancelButtonText: 'Continuar Aqui',
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#556566',
+                type: 'success',
+                title: 'Transacción Procesada',
+                text: "Se registró la carrera con éxito!",
+                showCancelButton: true,
+                reverseButtons: true,
+                confirmButtonText: 'Volver a la lista',
+                cancelButtonText: 'Continuar Aqui',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#556566',
             }).then((result) => {
-                if(result.value){
+                if (result.value) {
 
                     window.location.href = "carrera_listar.html";
                 }
 
             });
-            
-        }else{
+
+        } else {
 
             swal({
                 type: 'error',
@@ -71,11 +79,10 @@ function obtenerDatosCarrera(){
 
 
         }
-       
+
 
         limpiarFormulario();
-        botonModificar.hidden = true;
-        botonRegistrar.hidden = false;
+
 
     };
 
@@ -83,7 +90,7 @@ function obtenerDatosCarrera(){
 };
 
 
-function obtenerDatosCarreraModificar(){
+function obtenerDatosCarreraModificar() {
 
     let sCodigoCarrera = inputCodigoCarrera.value;
     let sNombreCarrera = inputNombreCarrera.value;
@@ -91,12 +98,12 @@ function obtenerDatosCarreraModificar(){
     let sFechaCreacion = inputFechaCreacion.value;
     let sltSede = selectSede.value;
     let sAcreditacion = selectAcreditacion.value;
-    let _id = inputId.value;
+    let _id = JSON.parse(localStorage.getItem("carreraParaModificar"))[6];
 
-    let bError= validar();
+    let bError = validar();
     let respuesta;
 
-    if (bError == true){
+    if (bError == true) {
 
         swal({
             type: 'warning',
@@ -105,33 +112,33 @@ function obtenerDatosCarreraModificar(){
             confirmButtonText: 'Aceptar'
         });
 
-    
-    }else{
+
+    } else {
 
         respuesta = modificar_carrera(_id, sCodigoCarrera, sNombreCarrera, nCreditosTotales, sFechaCreacion, sltSede, sAcreditacion);
-        
-        
-        if (respuesta.success == true) {    
-            
+
+
+        if (respuesta.success == true) {
+
             swal({
-            type: 'success',
-            title: 'Transacción Procesada',
-            text: "Se modificó la carrera con éxito!",
-            showCancelButton: true,
-            reverseButtons: true,
-            confirmButtonText: 'Volver a la lista',
-            cancelButtonText: 'Continuar Aqui',
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#556566',
+                type: 'success',
+                title: 'Transacción Procesada',
+                text: "Se modificó la carrera con éxito!",
+                showCancelButton: true,
+                reverseButtons: true,
+                confirmButtonText: 'Volver a la lista',
+                cancelButtonText: 'Continuar Aqui',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#556566',
             }).then((result) => {
-                if(result.value){
+                if (result.value) {
 
                     window.location.href = "carrera_listar.html";
                 }
 
             });
-            
-        }else{
+
+        } else {
 
             swal({
                 type: 'error',
@@ -142,7 +149,7 @@ function obtenerDatosCarreraModificar(){
 
 
         }
-       
+
 
         limpiarFormulario();
         botonModificar.hidden = true;
@@ -151,103 +158,103 @@ function obtenerDatosCarreraModificar(){
 
 };
 
-function cargar_pagina() {
-    window.location.replace('carrera_registrar.html');
+
+banderaModificar = JSON.parse(localStorage.getItem("estadoBanderaModificar"));
+
+if (banderaModificar == true) {
+    window.onload = function () {
+        cargar_datos_modificar();
+    };
+
+    function cargar_datos_modificar() {
+
+        let carrera = [];
+
+        carrera = getCarreraParaModificar();
+
+        if (carrera[0] != undefined) {
+
+            inputCodigoCarrera.value = carrera[0];
+            inputNombreCarrera.value = carrera[1];
+            inputCreditosTotales.value = carrera[2];
+            inputFechaCreacion.value = carrera[3];
+            selectSede.value = carrera[4];
+            sltAcredicatacion.value = carrera[5];
+            inputId.value = carrera[6];
+
+            carrera = [];
+            botonModificar.hidden = false;
+            botonRegistrar.hidden = true;
+
+        };
+
+    };
 };
 
-window.onload = function() {
-    cargar_datos_modificar();
+function getCarreraParaModificar() {
+    return JSON.parse(localStorage.getItem("carreraParaModificar"));
 };
 
-function cargar_datos_modificar(){
-
-    let carrera = [];
-
-    carrera = getCarreraParaModificar();
-
-    if (carrera[0] != undefined) {
-
-        inputCodigoCarrera.value = carrera[0];
-        inputNombreCarrera.value = carrera[1];    
-        inputCreditosTotales.value = carrera[2];
-        inputFechaCreacion.value = carrera[3];
-        selectSede.value = carrera[4];
-        sltAcredicatacion.value = carrera[5]; 
-        inputId.value = carrera[6]; 
-
-        carrera = [];
-        localStorage.setItem("CarreraParaModificar", JSON.stringify(carrera));
-        botonModificar.hidden = false;
-        botonRegistrar.hidden = true;
-        
-    }
-
-};
-
-function getCarreraParaModificar(){
-    return JSON.parse(localStorage.getItem("CarreraParaModificar"));
-};
-
-function validar(){
+function validar() {
     let bError = false;
     let regExpNumeros = /^[0-9]+$/;
 
-    if (inputCodigoCarrera.value == ''){
-        
-        bError= true;
+    if (inputCodigoCarrera.value == '') {
+
+        bError = true;
         inputCodigoCarrera.classList.add('input_error');
-    }else{
+    } else {
         inputCodigoCarrera.classList.remove('input_error');
-    }; 
+    };
 
-    if(inputNombreCarrera.value == ''){
+    if (inputNombreCarrera.value == '') {
 
-        bError= true;
+        bError = true;
         inputNombreCarrera.classList.add('input_error');
-    }else{
+    } else {
         inputNombreCarrera.classList.remove('input_error');
     };
 
-    if(inputCreditosTotales.value == '' || regExpNumeros.test(inputCreditosTotales.value) == false){
+    if (inputCreditosTotales.value == '' || regExpNumeros.test(inputCreditosTotales.value) == false) {
 
-        bError=true;
+        bError = true;
         inputCreditosTotales.classList.add('input_error');
-    }else{
+    } else {
         inputCreditosTotales.classList.remove('input_error');
     };
 
-    if(inputFechaCreacion.value == ''){
-        
-        bError=true;
+    if (inputFechaCreacion.value == '') {
+
+        bError = true;
         inputFechaCreacion.classList.add('input_error');
-    }else{
+    } else {
         inputFechaCreacion.classList.remove('input_error');
     };
 
-    if (selectSede.value == ''){
+    if (selectSede.value == '') {
 
-        bError= true;
+        bError = true;
         selectSede.classList.add('input_error');
-    }else{
+    } else {
         selectSede.classList.remove('input_error');
     };
 
     if (selectAcreditacion.value == '') {
-        
-        bError= true;
+
+        bError = true;
         selectAcreditacion.classList.add('input_error');
-    }else{
+    } else {
         selectAcreditacion.classList.remove('input_error');
     };
 
     return bError;
 };
 
-function limpiarFormulario(){
+function limpiarFormulario() {
     inputCodigoCarrera.value = '';
-    inputNombreCarrera.value = '';    
+    inputNombreCarrera.value = '';
     inputCreditosTotales.value = '';
     inputFechaCreacion.value = '';
     selectSede.value = '';
-    sltAcredicatacion.value = ''; 
+    sltAcredicatacion.value = '';
 };

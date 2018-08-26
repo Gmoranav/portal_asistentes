@@ -3,79 +3,79 @@
  * let lista_carrera =[];
  */
 
-function registrar_carrera(psCodigoCarrera, psNombreCarrera, pnCreditosTotales, psFechaCreacion, psltSede , psAcreditacion){
+function registrar_carrera(psCodigoCarrera, psNombreCarrera, pnCreditosTotales, psFechaCreacion, psltSede, psAcreditacion, pEstado) {
 
     let respuesta = '';
     let peticion = $.ajax({
 
-        url : 'http://localhost:4000/api/registrar_carrera',
-        type : 'post',
-        contentType : 'application/x-www-form-urlencoded; charset=utf-8',
-        dataType : 'json',
-        async : false,
-        data:{
+        url: 'http://localhost:4000/api/registrar_carrera',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
 
-            codigo_carrera : psCodigoCarrera,
-            nombre_carrera : psNombreCarrera,
-            creditos_totales : pnCreditosTotales,
-            fecha_creacion : psFechaCreacion,
-            slt_sede : psltSede,
-            acreditacion : psAcreditacion
-
+            codigo_carrera: psCodigoCarrera,
+            nombre_carrera: psNombreCarrera,
+            creditos_totales: pnCreditosTotales,
+            fecha_creacion: psFechaCreacion,
+            slt_sede: psltSede,
+            acreditacion: psAcreditacion,
+            estado: pEstado
         }
 
     });
 
-    peticion.done(function(response){
+    peticion.done(function (response) {
         respuesta = response;
         console.log('envio exitoso');
-       });
-     
-       peticion.fail(function(response){
-         respuesta = response;
-         console.log('envio no exitoso');
-       });
- 
-       return respuesta;
+    });
+
+    peticion.fail(function (response) {
+        respuesta = response;
+        console.log('envio no exitoso');
+    });
+
+    return respuesta;
 
 
 };
 
-function modificar_carrera(_id, psCodigoCarrera, psNombreCarrera, pnCreditosTotales, psFechaCreacion, psltSede , psAcreditacion){
+function modificar_carrera(_id, psCodigoCarrera, psNombreCarrera, pnCreditosTotales, psFechaCreacion, psltSede, psAcreditacion) {
 
     let respuesta = '';
     let peticion = $.ajax({
 
-        url : 'http://localhost:4000/api/modificar_carrera',
-        type : 'post',
-        contentType : 'application/x-www-form-urlencoded; charset=utf-8',
-        dataType : 'json',
-        async : false,
-        data:{
-            
+        url: 'http://localhost:4000/api/modificar_carrera',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+
             _id: _id,
-            codigo_carrera : psCodigoCarrera,
-            nombre_carrera : psNombreCarrera,
-            creditos_totales : pnCreditosTotales,
-            fecha_creacion : psFechaCreacion,
-            slt_sede : psltSede,
-            acreditacion : psAcreditacion
+            codigo_carrera: psCodigoCarrera,
+            nombre_carrera: psNombreCarrera,
+            creditos_totales: pnCreditosTotales,
+            fecha_creacion: psFechaCreacion,
+            slt_sede: psltSede,
+            acreditacion: psAcreditacion
 
         }
 
     });
 
-    peticion.done(function(response){
+    peticion.done(function (response) {
         respuesta = response;
         console.log('envio exitoso');
-       });
-     
-       peticion.fail(function(response){
-         respuesta = response;
-         console.log('envio no exitoso');
-       });
- 
-       return respuesta;
+    });
+
+    peticion.fail(function (response) {
+        respuesta = response;
+        console.log('envio no exitoso');
+    });
+
+    return respuesta;
 
 
 }

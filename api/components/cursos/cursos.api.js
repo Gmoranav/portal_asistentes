@@ -7,7 +7,7 @@ module.exports.registrar = function (req, res) {
         nombre_curso: req.body.nombre_curso,
         codigo_curso: req.body.codigo_curso,
         cantidad_creditos: req.body.cantidad_creditos,
-        estado : req.body.estado,
+        estado: req.body.estado,
 
 
     });
@@ -65,13 +65,13 @@ module.exports.modificar_curso = function (req, res) {
         });
 };
 
-module.exports.desactivar_curso = function (req, res){
-    cursoModel.findByIdAndUpdate(req.body._id, {$set: req.body},
-    function(error, curso){
-        if (error){
-            res.json({ success: false, mesg: 'No se ha desactivado el curso.' + handleError(error) });
-        }else{
-           res.json({ success: true, msg: 'Se ha desactivado el curso correctamente.' + res}); 
-        }
-    });
+module.exports.desactivar_curso = function (req, res) {
+    cursoModel.findByIdAndUpdate(req.body._id, { $set: req.body },
+        function (error, curso) {
+            if (error) {
+                res.json({ success: false, msg: 'No se ha desactivado el curso.' + handleError(error) });
+            } else {
+                res.json({ success: true, msg: 'Se ha desactivado el curso correctamente.' + res });
+            }
+        });
 };

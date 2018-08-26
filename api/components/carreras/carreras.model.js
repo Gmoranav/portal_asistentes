@@ -9,7 +9,8 @@ let carreraSchema = new mongoose.Schema({
     creditos_totales : {type: Number, required: true},
     fecha_creacion: {type: String, required: true},
     slt_sede: {type: String},
-    acreditacion: {type:String, required: true}
+    acreditacion: {type:String, required: true},
+    estado: {type: Number, required: true}
 
 });
 
