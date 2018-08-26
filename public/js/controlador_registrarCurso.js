@@ -87,7 +87,7 @@ function obtenerDatosCursoModificar(){
 
         swal({
             type: 'warning',
-            title: 'No se pudo registrar el curso',
+            title: 'No se pudo modificar el curso',
             text: 'Por favor revise los campos resaltados',
             confirmButtonText: 'Aceptar'
         });
@@ -104,7 +104,7 @@ function obtenerDatosCursoModificar(){
             swal({
                 type: 'success',
                 title: 'Transacción Procesada',
-                text: "Se registró el curso con éxito!",
+                text: "Se modificó el curso con éxito!",
                 showCancelButton: true,
                 reverseButtons: true,
                 confirmButtonText: 'Volver a la lista',
