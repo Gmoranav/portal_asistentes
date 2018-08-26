@@ -52,7 +52,7 @@ function obtener_usuario_por_id(p_id){
       });
 
     return usuario;
-}
+};
 
 function desactivar_usuario(p_id, pestado){
   let respuesta = '';

@@ -74,6 +74,8 @@ function obtenerDatosCarrera(){
        
 
         limpiarFormulario();
+        botonModificar.hidden = true;
+        botonRegistrar.hidden = false;
 
     };
 
@@ -98,7 +100,7 @@ function obtenerDatosCarreraModificar(){
 
         swal({
             type: 'warning',
-            title: 'No se pudo registrar la carrera',
+            title: 'No se pudo modificar la carrera',
             text: 'Por favor revise los campos resaltados',
             confirmButtonText: 'Aceptar'
         });
@@ -106,7 +108,7 @@ function obtenerDatosCarreraModificar(){
     
     }else{
 
-        respuesta = registrar_carrera(_id, sCodigoCarrera, sNombreCarrera, nCreditosTotales, sFechaCreacion, sltSede, sAcreditacion);
+        respuesta = modificar_carrera(_id, sCodigoCarrera, sNombreCarrera, nCreditosTotales, sFechaCreacion, sltSede, sAcreditacion);
         
         
         if (respuesta.success == true) {    
@@ -114,7 +116,7 @@ function obtenerDatosCarreraModificar(){
             swal({
             type: 'success',
             title: 'Transacción Procesada',
-            text: "Se registró la carrera con éxito!",
+            text: "Se modificó la carrera con éxito!",
             showCancelButton: true,
             reverseButtons: true,
             confirmButtonText: 'Volver a la lista',

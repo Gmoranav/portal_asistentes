@@ -20,7 +20,6 @@ let usuarioSchema = new mongoose.Schema({
     provincia : {type : String, required : true},
     telefono : {type : String, required : true},
     correo : {type : String, required : true},
-    usuario : {type : String, required : true},
     contrasenna : {type : String, required : true},
     estado : {type : Number, required : true},
     ingresos : {type : Number, required : true}

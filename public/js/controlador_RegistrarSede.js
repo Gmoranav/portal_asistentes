@@ -9,6 +9,7 @@ Responsabilidades del controlador
 
 'use strict';
 
+
 //=============================================================================
 let select_provincia = document.querySelector('#txtProvinciaSede');
 let select_canton = document.querySelector('#txtCantonSede');
@@ -1610,28 +1611,30 @@ function opt_canton_distrito() {
 };
 //============================== FIN DROPDOWNS ==================================
 
-const boton_registrar = document.querySelector('#btnRegistrar');
+let banderaModificar = false;
 
-boton_registrar.addEventListener('click', obtener_datos);
+const botonRegistrar = document.querySelector('#btnRegistrar');
+const botonModificar = document.querySelector('#btnModificar');
 
-const input_nombre_sede = document.querySelector('#txtNombreSede');
-const input_provincia_sede = document.querySelector('#txtProvinciaSede');
-const input_canton_sede = document.querySelector('#txtCantonSede');
-const input_distrito_sede = document.querySelector('#txtDistritoSede');
-const input_ubicacion_sede = document.querySelector('#txtUbicacionSede');
+botonModificar.hidden = true;
 
-function obtener_datos() {
+const inputNombreSede = document.querySelector('#txtNombreSede');
+const inputProvinciaSede = document.querySelector('#txtProvinciaSede');
+const inputCantonSede = document.querySelector('#txtCantonSede');
+const inputDistritoSede = document.querySelector('#txtDistritoSede');
+const inputUbicacionSede = document.querySelector('#txtUbicacionSede');
+const inputId = document.querySelector('#txtID');
+
+
+botonRegistrar.addEventListener('click', obtenerDatos);
+botonModificar.addEventListener('click', obtenerDatosModificar);
+
+function obtenerDatos() {
 
     let bError = false;
-
-    let sNombreSede = input_nombre_sede.value;
-    let sProvinciaSede = input_provincia_sede.value;
-    let sCantonSede = input_canton_sede.value;
-    let sDistritoSede = input_distrito_sede.value;
-    let sUbicacionSede = input_ubicacion_sede.value;
+    let respuesta;
 
     bError = validar();
-    let respuesta;
 
     if (bError == true) {
         swal({
@@ -1642,8 +1645,15 @@ function obtener_datos() {
         });
     } else {
 
-        //AQUI SUCEDE LA MAGIA = SERVICIO
-        respuesta = registrar_sede(sNombreSede, sProvinciaSede, sCantonSede, sDistritoSede, sUbicacionSede);
+    let sNombreSede = inputNombreSede.value;
+    let sProvinciaSede = inputProvinciaSede.value;
+    let sCantonSede = inputCantonSede.value;
+    let sDistritoSede = inputDistritoSede.value;
+    let sUbicacionSede = inputUbicacionSede.value;
+    let estado = 1;
+
+        //funcion que va al servicio_RegistrarSede.js
+        respuesta = registrarSede(sNombreSede, sProvinciaSede, sCantonSede, sDistritoSede, sUbicacionSede, estado);
 
         if(respuesta.success == true){
 
@@ -1679,6 +1689,66 @@ function obtener_datos() {
         limpiarFormulario();
     }
 };
+
+function obtenerDatosModificar() {
+
+    let bError = false;
+    let respuesta;
+
+    bError = validar();
+    if (bError == true) {
+        swal({
+            type: 'warning',
+            title: 'No se pudo registrar la sede',
+            text: 'Por favor revise los campos resaltados',
+            confirmButtonText: 'Aceptar'
+        });
+
+    } else {
+
+        let sNombreSede = inputNombreSede.value;
+        let sProvinciaSede = inputProvinciaSede.value;
+        let sCantonSede = inputCantonSede.value;
+        let sDistritoSede = inputDistritoSede.value;
+        let sUbicacionSede = inputUbicacionSede.value;
+        let _id = JSON.parse(localStorage.getItem("sedeParaModificar"))[2];  //aqui trae el _id
+
+        respuesta = modificarSede(_id, sNombreSede, sProvinciaSede, sCantonSede, sDistritoSede, sUbicacionSede);//esta funcion está en el servicio_RegistrarPeriodo.js
+
+        if (respuesta.success = true) {
+            swal({
+                type: 'success',
+                title: 'Transacción Procesada',
+                text: "La sede se modificó con éxito!",
+                showCancelButton: true,
+                reverseButtons: true,
+                confirmButtonText: 'Volver a la lista',
+                cancelButtonText: 'Continuar Aqui',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#556566',
+            }).then((result) => {
+                if (result.value) {
+
+                    window.location.href = "sede_listar.html";
+                }
+
+            });
+        } else {
+            swal({
+                type: 'error',
+                title: 'Problemas de conexión',
+                text: 'Por favor contactar al administrador',
+                confirmButtonText: 'Aceptar'
+            });
+        }
+
+         limpiarFormulario()         
+         botonModificar.hidden = true;
+         botonRegistrar.hidden = false;
+        }
+        
+    };
+
 function validar() {
     let bError = false;
 
@@ -1686,81 +1756,84 @@ function validar() {
     //let regexSoloNumeros = /^[0-9]{1,3}$/;
 
     //Validación del nombre Nombre
-    if (input_nombre_sede.value == '') {
+    if (inputNombreSede.value == '') {
 
-        input_nombre_sede.classList.add('input_error');
+        inputNombreSede.classList.add('input_error');
         bError = true;
     } else {
-        input_nombre_sede.classList.remove('input_error');
+        inputNombreSede.classList.remove('input_error');
     }
 
     //Validación de Provincia
-    if (input_provincia_sede.value == '') {
-        input_provincia_sede.classList.add('input_error');
+    if (inputProvinciaSede.value == '') {
+        inputProvinciaSede.classList.add('input_error');
         bError = true;
     } else {
-        input_provincia_sede.classList.remove('input_error');
+        inputProvinciaSede.classList.remove('input_error');
     }
 
     //Validación de Cantón
-    if (input_canton_sede.value == '') {
-        input_canton_sede.classList.add('input_error');
+    if (inputCantonSede.value == '') {
+        inputCantonSede.classList.add('input_error');
         bError = true;
     } else {
-        input_canton_sede.classList.remove('input_error');
+        inputCantonSede.classList.remove('input_error');
     }
 
     //Validación de Disrtito
-    if (input_distrito_sede.value == '') {
-        input_distrito_sede.classList.add('input_error');
+    if (inputDistritoSede.value == '') {
+        inputDistritoSede.classList.add('input_error');
         bError = true;
     } else {
-        input_distrito_sede.classList.remove('input_error');
+        inputDistritoSede.classList.remove('input_error');
     }
 
     //Validación de la Ubicación
-    if (input_ubicacion_sede.value == '') {
-        input_ubicacion_sede.classList.add('input_error');
+    if (inputUbicacionSede.value == '') {
+        inputUbicacionSede.classList.add('input_error');
         bError = true;
     } else {
-        input_ubicacion_sede.classList.remove('input_error');
+        inputUbicacionSede.classList.remove('input_error');
     }
 
     return bError;
 };
 
 function limpiarFormulario() {
-    input_nombre_sede.value = '';
-    input_provincia_sede.value = '';
-    input_ubicacion_sede.value = '';
-    input_distrito_sede.value = '';
-    input_canton_sede.value = '';
+    inputNombreSede.value = '';
+    inputProvinciaSede.value = '';
+    inputUbicacionSede.value = '';
+    inputDistritoSede.value = '';
+    inputCantonSede.value = '';
 }
 
 
 
 // ***  inicio: para enviar la informacion para modificar al formulario.  (del controlador_ListarPeriodo.js) *** 
-window.onload = function() {
-    cargar_datos_modificar();
-   };
+banderaModificar = JSON.parse(localStorage.getItem("estadoBanderaModificar"));
+
+if (banderaModificar == true) {
+    window.onload = function () {
+        cargar_datos_modificar();
+    };
 
    function cargar_datos_modificar(){
     
     let sede = [];
-    
     sede = getSedeParaModificar();
+
     if (sede[0]!= undefined){
 
-        input_nombre_sede.value = sede[0];
-        input_provincia_sede.value = sede[1];
-        input_canton_sede.value = sede[2];
-        input_distrito_sede.value = sede[3];
-        input_ubicacion_sede.value = sede[4];
+        inputNombreSede.value = sede[0];
+        inputProvinciaSede.value = sede[1];
+        inputCantonSede.value = sede[2];
+        inputDistritoSede.value = sede[3];
+        inputUbicacionSede.value = sede[4];
 
         sede = [];
-        localStorage.setItem("sedeParaModificar", JSON.stringify(sede));
         botonModificar.hidden = false;
         botonRegistrar.hidden = true;
+    }
     }
 };
 

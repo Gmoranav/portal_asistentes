@@ -41,7 +41,7 @@ function registrar_curso(psNombreCurso , psCodigoCurso , nCantidadCreditos){
 }
 
 
-function modificarCurso(_id, psNombreCurso , psCodigoCurso , nCantidadCreditos){
+function modificar_curso(_id, psNombreCurso , psCodigoCurso , nCantidadCreditos){
 
     let respuesta = '';
     let peticion = $.ajax({

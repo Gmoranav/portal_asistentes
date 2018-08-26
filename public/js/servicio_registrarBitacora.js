@@ -1,13 +1,12 @@
 'use strict';
 
-function registrarUsuarios(imagenUrl, sNombre, sSegundoNombre, sPrimerApellido, sSegundoApellido, sCedula, dFechaIngreso, sltRol, 
-    sDireccion, sDistrito, sCanton, sltProvincia, sTelefono, sCorreo, pcontrasenna, pestado, pingresos){
+function registrar_bitacora(sFecha, tmHoraInicio, tmHoraFin, sDescripcion, estado){
     let respuesta = '';
     let peticion = $.ajax({
 
 
         
-        url : 'http://localhost:4000/api/registrar_usuario',
+        url : 'http://localhost:4000/api/registrar_bitacora',
         type : 'post',
         contentType : 'application/x-www-form-urlencoded; charset=utf-8',
         dataType : 'json',
@@ -45,7 +44,7 @@ function registrarUsuarios(imagenUrl, sNombre, sSegundoNombre, sPrimerApellido, 
       return respuesta;
 }
 
-function modificarUsuarios(_id, imagenUrl, sNombre, sSegundoNombre, sPrimerApellido, sSegundoApellido, sCedula, dFechaIngreso, sltRol, 
+function modificar_bitacoras(_id, imagenUrl, sNombre, sSegundoNombre, sPrimerApellido, sSegundoApellido, sCedula, dFechaIngreso, sltRol, 
     sDireccion, sDistrito, sCanton, sltProvincia, sTelefono, sCorreo){
 
         let respuesta = '';

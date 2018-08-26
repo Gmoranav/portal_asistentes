@@ -61,14 +61,14 @@ module.exports.modificar_laboratorio = function (req, res) {
         });
 };
 
-module.exports.eliminar_laboratorio = function (req, res) {
+module.exports.desactivar_laboratorio = function (req, res) {
     laboratorioModel.findByIdAndUpdate(req.body._id, {$set: req.body},
         function (err, user) {
             if (err) {
-                res.json({ success: false, msg: 'El laboratorio no se ha podido eliminar. ' + handleError(err) });
+                res.json({ success: false, msg: 'El laboratorio no se ha podido desactivar. ' + handleError(err) });
 
             } else {
-                res.json({ success: true, msg: 'Se ha eliminado correctamente. ' + res });
+                res.json({ success: true, msg: 'Se ha desactivado correctamente. ' + res });
             }
         });
 };

@@ -6,8 +6,8 @@ Responsabilidades del servicio
 */
 'use strict';
 
-function obtener_sedes() {
-    let llenar_sedes = [];
+function obtenerListaSedes() {
+    let listaSedes = [];
     let peticion = $.ajax({
         url: 'http://localhost:4000/api/listar_sedes',
         type: 'get',
@@ -19,16 +19,14 @@ function obtener_sedes() {
     });
 
     peticion.done(function (response) {
-        llenar_sedes = response;
-        console.log("envio exitoso");
+        listaSedes = response;
     });
 
     peticion.fail(function (response) {
-        console.log("ERROR!!!! ENVIO FALLIDO!!!! ");
-        console.log(response);
+        listaSedes = response;
     });
 
-    return llenar_sedes;
+    return listaSedes;
 }
 
 function obtener_sede_por_id(p_id) { //funcion viene del controlador
@@ -55,4 +53,31 @@ function obtener_sede_por_id(p_id) { //funcion viene del controlador
   
     return sede;
   
+  };
+
+
+// funcion para desactivar una sede (va a sedes.api.js y a sedes.route.js)
+function desactivar_sede(p_id, p_estado){
+    let respuesta = '';
+    let peticion = $.ajax({
+        url : 'http://localhost:4000/api/desactivar_sede',
+        type : 'post',
+        contentType : 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType : 'json',
+        async : false,
+        data:{
+            _id: p_id,
+            estado : p_estado
+        }
+      });
+    
+      peticion.done(function(response){
+       respuesta = response;
+      });
+    
+      peticion.fail(function(response){
+        respuesta = response;
+      });
+  
+      return respuesta;
   };

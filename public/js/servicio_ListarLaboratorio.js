@@ -32,7 +32,7 @@ function obtenerListaLaboratorios(){
 function obtener_laboratorio_por_id (p_id) {
 
     //cambiar Examples por lo que se vaya a listar. Debe estar en plural
-    let listaLaboratorios = []; //THIS
+    let laboratorio_por_ID = []; //THIS
 
     
     let peticion = $.ajax({
@@ -43,19 +43,19 @@ function obtener_laboratorio_por_id (p_id) {
         dataType : 'json',
         async : false,
         data:{
-            
+          _id : p_id
         }
       });
     
       peticion.done(function(response){
-        listaLaboratorios = response;
+        laboratorio_por_ID = response;
       });
     
       peticion.fail(function(response){
-        //listaLaboratorios = console.log('Importación fallida');
+        //laboratorio_por_ID = console.log('Importación fallida');
       });
 
-      return listaLaboratorios;
+      return laboratorio_por_ID;
     //cambiar Examples por lo que se vaya a listar. Debe estar en plural
 
 }

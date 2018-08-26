@@ -1,10 +1,13 @@
 'use strict';
 
-window.addEventListener('load' , llenarSelectsRegistrarGrupo);
+//window.addEventListener('load' , llenarSelectsRegistrarGrupo);
 
 //dejar este nombre del botón igual a como está aquí y dejarlo igual en el HTML: btnRegistrar
 const botonRegistrar = document.querySelector('#btnRegistrar');
 const botonRegistrarProfesor = document.querySelector('#ProfeButton');
+const botonModificar = document.querySelector('#btnModificar');
+
+botonModificar.hidden = true;
 
 //estos nombres cambiarlos por lo que corresponda en el html
 //manejarlos en singular
@@ -17,6 +20,7 @@ const inputProfesor = document.querySelector('#selectProfesores')
 const inputLaboratorio = document.querySelector('#txtLaboratorio');
 const inputCantidadEstu = document.querySelector('#txtCantEstudiantes');
 const inputHorario = document.querySelector('#txtHorario');
+let inputId = document.querySelector('#txtId')
 
 let arregloProfesores = [];
 //const inputFiltro = document.querySelector('#txtFiltro'); esto lo vemos con el profe el miercoles
@@ -28,6 +32,7 @@ inputFiltro.addEventListener('keyup' , function(){
 });*/
 botonRegistrarProfesor.addEventListener('click', guardarProfesores)
 botonRegistrar.addEventListener('click' , obtenerDatosFormulario);
+botonModificar.addEventListener('click' , obtenerDatosModificarGrupo);
 
 
 function guardarProfesores() {
@@ -54,6 +59,7 @@ function obtenerDatosFormulario(){
     let sProfesor = arregloProfesores.join(', ');
     let sCantidadEstu = Number(inputCantidadEstu.value);
     let sHorario = inputHorario.value;
+    let estado = 1;
 
     
     
@@ -72,7 +78,7 @@ function obtenerDatosFormulario(){
        
     }else{
         //cambiar Example y parámetros de la función por lo que se esté registrando, pornerlo en singular
-        respuesta = registrarGrupo(sSede, sCarrera, sCurso, sPeriodo, sNombre, sLaboratorio, sProfesor, sCantidadEstu, sHorario);//esta funcion está en el servicio
+        respuesta = registrarGrupo(sSede, sCarrera, sCurso, sPeriodo, sNombre, sLaboratorio, sProfesor, sCantidadEstu, sHorario, estado);//esta funcion está en el servicio
         
         if (respuesta.success == true){
 
@@ -112,6 +118,82 @@ function obtenerDatosFormulario(){
     limpiarFormulario();
     
 };
+
+function obtenerDatosModificarGrupo () {
+
+    let bError = false;
+
+    //nombrar estas variables con el mismo nombre de las "const" de arriba
+    let sSede = inputSede.value;
+    let sCarrera = inputCarrera.value;
+    let sCurso = inputCurso.value;
+    let sPeriodo = inputPeriodo.value;
+    let sNombre = inputNombre.value;
+    let sLaboratorio = inputLaboratorio.value;
+    let sProfesor = arregloProfesores.join(', ');
+    let sCantidadEstu = Number(inputCantidadEstu.value);
+    let sHorario = inputHorario.value;
+    let _id = inputId.value;
+
+    
+    
+    bError = validar();
+
+    let respuesta;
+    
+
+    if(bError == true){
+        swal({
+            type : 'Warning',
+            title : 'No se pudo registrar el grupo', //cambiar example según lo que se esté registrando
+            text: 'Por favor revise los campos resaltados', //
+            confirmButtonText : 'Listo'
+        });
+       
+    }else{
+        //cambiar Example y parámetros de la función por lo que se esté registrando, pornerlo en singular
+        respuesta = modificarGrupo(sSede, sCarrera, sCurso, sPeriodo, sNombre, sLaboratorio, 
+            sProfesor, sCantidadEstu, sHorario, _id);//esta funcion está en el servicio
+        
+        if (respuesta.success == true){
+
+            swal({
+                type: 'success',
+                title: 'Transacción Procesada',
+                text: "El grupo se registró con éxito!",
+                showCancelButton: true,
+                reverseButtons: true,
+                confirmButtonText: 'Volver a la lista',
+                cancelButtonText: 'Continuar Aqui',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#556566',
+                }).then((result) => {
+                    if(result.value){
+    
+                        window.location.href = "grupo_listar.html";
+                    }
+    
+                });
+
+
+        }else{
+            
+            swal({
+                type: 'error',
+                title: 'Problemas de conexión',
+                text: 'Por favor contactar al administrador',
+                confirmButtonText: 'Aceptar'
+            });
+        }
+
+        //este nombre queda igual
+        
+    }
+
+    limpiarFormulario();
+    botonModificar.hidden = true;
+    botonRegistrar.hidden = false;
+}
 
 
 
@@ -191,7 +273,7 @@ function validar(){
     return bError;
 };
 
-function llenarSelectsRegistrarGrupo () {
+/*function llenarSelectsRegistrarGrupo () {
 
     llenarSelectCursos();
     llenarSelectCarreras();
@@ -296,7 +378,7 @@ function llenarSelectsRegistrarGrupo () {
         }  
     }
 
-}
+}*/
 
 
 
@@ -311,4 +393,43 @@ function limpiarFormulario(){
     inputProfesor.value = '';
     inputCantidadEstu.value = 0;
     inputHorario.value = '';
+    inputId.value = ''; 
+}
+
+function cargar_pagina_grupo(){
+    window.location.replace('grupo_registrar.html');
+};
+
+window.onload = function() {
+    cargar_datos_modificar_grupo();
+};
+
+function cargar_datos_modificar_grupo(){
+    
+    let grupo = [];
+
+    
+    grupo = getGrupoParaModificar();
+
+
+    if (grupo[0] != undefined){
+
+        inputSede.value = grupo[0]; 
+        inputCarrera.value = grupo[1];
+        inputCurso.value = grupo[2];
+        inputLaboratorio.value = grupo[3]; 
+        inputCantidadEstu.value = grupo[4];
+        inputNombre.value = grupo[5];
+        inputId.value = grupo[6];
+
+
+        grupo = [];
+        localStorage.setItem("grupoParaModificar", JSON.stringify(grupo));
+        botonModificar.hidden = false;
+        botonRegistrar.hidden = true;
+    }
+};
+
+function getGrupoParaModificar() {
+    return JSON.parse(localStorage.getItem("grupoParaModificar"));
 }

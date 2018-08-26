@@ -39,7 +39,7 @@
                                     <a href="#" id="hide-info-academica">Información Académica </a>
                                 </li>
                                 <li>
-                                    <a href="#">Bitácoras</a>
+                                    <a onclick="redireccionBitacoraListar()">Bitácoras</a>
                                 </li>
                             </ul>
                         </li>
@@ -109,80 +109,12 @@
         <main class="page">
             <form class="box-container">
                 <input type="text" id="txtId" hidden></input>
-                <!--fila nombre-->
-                <div class="form-row">
-                    <div class="form-group form-group-2">
-                        <label for="txtNombre">Nombre Profesor
-                            <span>*</span>
-                        </label>
-                        <input type="text" id="txtNombre" required>
-                    </div>
-                </div>
-                <!--fila nombre-->
-                <div class="form-row">
-                    <div class="form-group form-group-2">
-                        <label for="txtSegundoNombre">DATOS ASISTENTE</label>
-                        <label for="txtNombre">Primer Nombre
-                            <span>*</span>
-                        </label>
-                        <input type="text" id="txtNombre" required>
-                    </div>
-
-                    <div class="form-group form-group-2">                            
-                        <label for="txtSegundoNombre">Segundo Nombre</label>
-                        <input type="text" id="txtSegundoNombre">
-                    </div>
-                </div> 
-                <!--fila apellidos-->
-                <div class="form-row">
-                    <div class="form-group form-group-2">
-                        <label for="txtPrimerApellido">Primer Apellido
-                            <span>*</span>
-                        </label>
-                        <input type="text" id="txtPrimerApellido" required>
-                    </div>
-
-                    <div class="form-group form-group-2">
-                        <label for="txtSegundoApellido">Segundo Apellido
-                            <span>*</span>
-                        </label>
-                        <input type="text" id="txtSegundoApellido" required>
-                    </div>
-                </div> 
-
-                <!--fila curso-->
-                <div class="form-row ">
-                    <div class="form-group form-group-3">
-                        <label for="txtCurso">Curso
-                            <span>*</span>
-                        </label>
-                        <input type="text" id="txtCurso"  required>
-                    </div>
-                </div>
-                
-                <!--fila fecha de ingreso-->
-                <div class="form-row ">
-                    <div class="form-group form-group-3">
-                        <label for="txtGrupo">Grupo
-                            <span>*</span>
-                        </label>
-                        <input type="text" id="txtGrupo" required>
-                    </div>
-                </div>
-                <!--select cursos-->
-                <div class="form-group form-group-3">
-                    <label for="sltCursos">Curso
-                        <span>*</span>
-                    </label>
-                    <select id="sltCursos">
-                        <option value="">--Seleccione el curso--</option>
-                    </select>
-                </div>
+                                    
                 
                 <!--Registros-->
-                <!--fecha-->
+                <!--fila fecha-->
                 <div class="form-row">
-                    <div class="form-group">
+                    <div class="form-group form-group-3">
                         <label for="txtFecha">Fecha
                             <span>*</span>
                         </label>
@@ -193,19 +125,19 @@
                 <!--fila hora inicio-->
                 <div class="form-row">
                     <div class="form-group form-group-3">
-                        <label for="txtHoraInicio">Hora Inicio
+                        <label for="tmHoraInicio">Hora Inicio
                             <span>*</span>
                         </label>
-                        <input type="text" id="txtHoraInicio">
+                        <input type="time" id="tmHoraInicio">
                     </div>
                 </div>
                 <!--fila hora fin-->
                 <div class="form-row">
-                    <div class="form-group form-group-2">
-                        <label for="txtHoraFin">Hora Fin
+                    <div class="form-group form-group-3">
+                        <label for="tmHoraFin">Hora Fin
                             <span>*</span>
                         </label>
-                        <input type="text" id="txtHoraFin">
+                        <input type="time" id="tmHoraFin">
                     </div>
                 </div>
                 <!--descripcion-->
@@ -219,7 +151,7 @@
                 </div>
                 
                 <div class="form-row buttons">
-                    <a onclick="redireccionUsuarioListar()" class="button button--secundario" type="button" id="btnCancelar">Cancelar</a>
+                    <a onclick="redireccionBitacoraListar()" class="button button--secundario" type="button" id="btnCancelar">Cancelar</a>
                     <button class="button button--principal" type="button" id="btnAgregarRegistrosBitacora">Agregar Registro</button>
                     <button class="button button--principal" type="button" id="btnModificarRegistrosBitacora">Modificar</button>
                 </div>
@@ -233,9 +165,10 @@
     <script src="js/controlador_InicioSesion.js"></script>
     <script src="js/servicio_Imagen.js"></script>
     <script src="js/components.js"></script>
-    <script src="js/servicio_RegistrarUsuario.js"></script>
-    <script src="js/controlador_ListarUsuario.js"></script>
-    <script src="js/controlador_RegistrarUsuario.js"></script>
+    <script src="js/servicio_registrarBitacora.js"></script>
+    <script src="js/controlador_listarBitacora.js"></script>
+    <script src="js/controlador_registrarBitacora.js"></script>
+
 </body>
 
 </html>

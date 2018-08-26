@@ -1,12 +1,12 @@
 
 'use strict';
 
-window.addEventListener('load', listarUsuarios);
+window.addEventListener('load', listarBitacoras);
 
 //const inputFiltroNombre = document.querySelector('#txtNombre');
-const inputFiltroRol = document.querySelector('#txtRol');
-/*const inputFiltroIngreso = document.querySelector('#txtIngreso');
-const inputFiltroCorreo = document.querySelector('#txtCorreo');*/
+/*const inputFiltroRol = document.querySelector('#txtRol');
+const inputFiltroIngreso = document.querySelector('#txtIngreso');
+const inputFiltroCorreo = document.querySelector('#txtCorreo');
 
 inputFiltroRol.addEventListener('keyup', function(){
         imprimirListaUsuarios(listarUsuarios, inputFiltroRol.value)
@@ -25,20 +25,20 @@ inputFiltroCorreo.addEventListener('keyup', function(){
 });*/
 
 
-function imprimirListaUsuarios(plistaUsuarios, pFiltro){
+function imprimirListaBitacoras(plistaBitacoras /*pFiltro*/){
     
     
     let tbody = document.querySelector('#tblListarUsuarios');
 
-    if(!pFiltro){
+    /*if(!pFiltro){
         pFiltro ='';
-    }
+    }*/
 
     tbody.innerHTML = '';
 
-    for(let i = 0; i < plistaUsuarios.length; i++){
-        if(plistaUsuarios[i]['estado']==1){
-                if(plistaUsuarios[i]['rol'].toLowerCase().includes(pFiltro.toLowerCase())){
+    for(let i = 0; i < plistaBitacoras.length; i++){
+        if(plistaBitacoras[i]['estado']!=0){
+               // if(plistaBitacoras[i]['rol'].toLowerCase().includes(pFiltro.toLowerCase())){
                         let fila = tbody.insertRow();
                                     
                         let nombre = plistaUsuarios[i]['nombre'];
@@ -98,27 +98,27 @@ function imprimirListaUsuarios(plistaUsuarios, pFiltro){
             
                         //un eventListener queda enlazado a la función que llama
                         botonModificar.addEventListener('click', buscar_por_id);
-                        botonDesactivar.addEventListener('click', remover_usuario);
+                        botonDesactivar.addEventListener('click', desactivar_usuario);
             
                         cConfiguracion.appendChild(botonModificar);
                         cConfiguracion.appendChild(botonDesactivar);
             
-                }//fin if
+                //}//fin if
         }//fin if
         
     }//fin for
 };
 
 
-function listarUsuarios(){
+function listarBitacoras(){
 
-        let listaUsuarios = obtenerListaUsuarios();
-        imprimirListaUsuarios(listaUsuarios);
+        let listaBitacoras = obtenerListaBitacoras();
+        imprimirListaBitacoras(listaBitacoras);
 };
 
 function buscar_por_id(){
         let _id = this.dataset._id;
-        let usuario = obtener_usuario_por_id(_id);
+        let bitacora = obtener_usuario_por_id(_id);
         let datosUsuario = [];
         let i = 0;
 
@@ -168,7 +168,7 @@ function remover_usuario(){
             confirmButtonText: 'Eliminar'
           }).then((result) => {
             if (result.value) {
-                desactivar_usuario(_id, estado); 
+                eliminar_usuario(_id, estado); 
                 listarUsuarios();
                 swal(
                         '¡Eliminado!',
