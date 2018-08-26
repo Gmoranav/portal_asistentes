@@ -26,10 +26,10 @@ const inputFiltroSede = document.querySelector('#sltSede');
  */
 
 //EventListeners de los filtros
-inputFiltroNombre.addEventListener('keyup' , function(){
+inputFiltroNombre.addEventListener('keyup', function () {
     imprimirListaCarrera(listaCarreras, inputFiltroNombre.value)
 });
-inputFiltroSede.addEventListener('keyup', function(){
+inputFiltroSede.addEventListener('keyup', function () {
     imprimirListaCarreraSede(listaCarreras, inputFiltroSede.value)
 });
 /**
@@ -44,23 +44,23 @@ inputFiltroSede.addEventListener('keyup', function(){
  */
 
 
-function imprimirListaCarrera(plistaCarreras , pFiltro){
+function imprimirListaCarrera(plistaCarreras, pFiltro) {
     let tbody = document.querySelector('#tblListarCarreras');
-    
+
     //Filtros 
-    if(!pFiltro){
+    if (!pFiltro) {
         pFiltro = '';
     }
 
     tbody.innerHTML = '';
-    
-    for(let i = 0; i < plistaCarreras.length; i++){
 
-       
-        if(plistaCarreras[i]['nombre_carrera'].toLowerCase().includes(pFiltro.toLowerCase())){
+    for (let i = 0; i < plistaCarreras.length; i++) {
+
+
+        if (plistaCarreras[i]['nombre_carrera'].toLowerCase().includes(pFiltro.toLowerCase())) {
             let fila = tbody.insertRow();
-                        
-            
+
+
             let cnombre_carrera = fila.insertCell();
             let cSede = fila.insertCell();
             let cCreditos_totales = fila.insertCell();
@@ -68,7 +68,7 @@ function imprimirListaCarrera(plistaCarreras , pFiltro){
             let cConfiguracion = fila.insertCell();
 
 
-        
+
             cnombre_carrera.innerHTML = plistaCarreras[i]['nombre_carrera'];
             cSede.innerHTML = plistaCarreras[i]['slt_sede'];
             cCreditos_totales.innerHTML = plistaCarreras[i]['creditos_totales'];
@@ -78,40 +78,40 @@ function imprimirListaCarrera(plistaCarreras , pFiltro){
             //Se crean los componentes para actualizar 
             let botonModificar = document.createElement('a');
             botonModificar.classList.add('fas');
-            botonModificar.classList.add('fa-pencil-alt');  
+            botonModificar.classList.add('fa-pencil-alt');
             botonModificar.classList.add('tooltip');
 
             let tooltipModificar = document.createElement('span');
             tooltipModificar.textContent = "Editar";
             tooltipModificar.setAttribute('class', 'tooltiptext');
-            botonModificar.appendChild(tooltipModificar); 
+            botonModificar.appendChild(tooltipModificar);
 
             botonModificar.dataset._id = plistaCarreras[i]['_id'];
-            botonModificar.addEventListener('click' , buscar_por_id);
+            botonModificar.addEventListener('click', buscar_por_id);
 
-            cConfiguracion.appendChild(botonModificar); 
+            cConfiguracion.appendChild(botonModificar);
 
-        } 
+        }
     }
 };
 
-function imprimirListaCarreraSede(plistaCarreras , pFiltro){
+function imprimirListaCarreraSede(plistaCarreras, pFiltro) {
     let tbody = document.querySelector('#tblListarCarreras');
-    
+
     //Filtros 
-    if(!pFiltro){
+    if (!pFiltro) {
         pFiltro = '';
     }
 
     tbody.innerHTML = '';
-    
-    for(let i = 0; i < plistaCarreras.length; i++){
 
-       
-        if(plistaCarreras[i]['slt_sede'].toLowerCase().includes(pFiltro.toLowerCase())){
+    for (let i = 0; i < plistaCarreras.length; i++) {
+
+
+        if (plistaCarreras[i]['slt_sede'].toLowerCase().includes(pFiltro.toLowerCase())) {
             let fila = tbody.insertRow();
-                        
-            
+
+
             let cnombre_carrera = fila.insertCell();
             let cSede = fila.insertCell();
             let cCreditos_totales = fila.insertCell();
@@ -119,7 +119,7 @@ function imprimirListaCarreraSede(plistaCarreras , pFiltro){
             let cConfiguracion = fila.insertCell();
 
 
-        
+
             cnombre_carrera.innerHTML = plistaCarreras[i]['nombre_carrera'];
             cSede.innerHTML = plistaCarreras[i]['slt_sede'];
             cCreditos_totales.innerHTML = plistaCarreras[i]['creditos_totales'];
@@ -129,20 +129,20 @@ function imprimirListaCarreraSede(plistaCarreras , pFiltro){
             //Se crean los componentes para actualizar 
             let botonModificar = document.createElement('a');
             botonModificar.classList.add('fas');
-            botonModificar.classList.add('fa-pencil-alt');  
+            botonModificar.classList.add('fa-pencil-alt');
             botonModificar.classList.add('tooltip');
 
             let tooltipModificar = document.createElement('span');
             tooltipModificar.textContent = "Editar";
             tooltipModificar.setAttribute('class', 'tooltiptext');
-            botonModificar.appendChild(tooltipModificar); 
+            botonModificar.appendChild(tooltipModificar);
 
             botonModificar.dataset._id = plistaCarreras[i]['_id'];
-            botonModificar.addEventListener('click' , buscar_por_id);
+            botonModificar.addEventListener('click', buscar_por_id);
 
-            cConfiguracion.appendChild(botonModificar); 
+            cConfiguracion.appendChild(botonModificar);
 
-        } 
+        }
     }
 };
 
@@ -256,16 +256,16 @@ function imprimirListaCarreraSede(plistaCarreras , pFiltro){
  */
 
 
-function listarCarreras(){
+function listarCarreras() {
 
-        listaCarreras = obtenerListaCarreras();
-        imprimirListaCarrera(listaCarreras);
-        
+    listaCarreras = obtenerListaCarreras();
+    imprimirListaCarrera(listaCarreras);
+
 };
 
 
 
-function buscar_por_id(){
+function buscar_por_id() {
 
     let _id = this.dataset._id;
     let carreraPorId = obtener_carrera_por_id(_id);
