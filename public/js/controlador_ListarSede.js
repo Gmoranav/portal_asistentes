@@ -20,6 +20,7 @@ const inputFiltroUbicacion = document.querySelector('#txtUbicacionS');
 //estadoBandera es para cuando se envia al controlador_RegistrarPeriodo no active la funcion de modificar (si va en false)
 let estadoBandera = false;
 setBanderaModificar(estadoBandera);
+
 //(1)
 inputFiltroSede.addEventListener('keyup', function(){
     imprimirListaSede(listaSedes, inputFiltroSede.value)
@@ -118,7 +119,7 @@ function imprimirListaSede(plistaSedes, pFiltro) {
 //INICIO FILTRO POR NOMBRE PROVINCIA (2)
 function imprimirListaProvincia(plistaSedes, pFiltro) {
 
-    let tbody = document.querySelector('#tblListarPeriodos');
+    let tbody = document.querySelector('#tblListarSedes');
 
     if(!pFiltro){
         pFiltro ='';
@@ -192,7 +193,7 @@ function imprimirListaProvincia(plistaSedes, pFiltro) {
 //INICIO FILTRO POR NOMBRE CANTON (3)
 function imprimirListaCanton(plistaSedes, pFiltro) {
 
-    let tbody = document.querySelector('#tblListarPeriodos');
+    let tbody = document.querySelector('#tblListarSedes');
 
     if(!pFiltro){
         pFiltro ='';
@@ -266,7 +267,7 @@ function imprimirListaCanton(plistaSedes, pFiltro) {
 //INICIO FILTRO POR NOMBRE DISTRITO (4)
 function imprimirListaDistrito(plistaSedes, pFiltro) {
 
-    let tbody = document.querySelector('#tblListarPeriodos');
+    let tbody = document.querySelector('#tblListarSedes');
 
     if(!pFiltro){
         pFiltro ='';
@@ -340,7 +341,7 @@ function imprimirListaDistrito(plistaSedes, pFiltro) {
 //INICIO FILTRO POR NOMBRE UBICACION (5)
 function imprimirListaUbicacion(plistaSedes, pFiltro) {
 
-    let tbody = document.querySelector('#tblListarPeriodos');
+    let tbody = document.querySelector('#tblListarSedes');
 
     if(!pFiltro){
         pFiltro ='';

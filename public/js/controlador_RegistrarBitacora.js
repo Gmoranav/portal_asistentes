@@ -2,8 +2,8 @@
 'use strict';
 
 
-const botonRegistrar = document.querySelector('#btnRegistrar');
-const botonModificar = document.querySelector('#btnModificar');
+const botonRegistrar = document.querySelector('#btnAgregarRegistrosBitacora');
+const botonModificar = document.querySelector('#btnModificarRegistrosBitacora');
 
 botonModificar.hidden = true;
 
@@ -38,9 +38,10 @@ function obtenerDatosFormulario(){
         let tmHoraInicio = inputHoraInicio.value;
         let tmHoraFin = inputHoraFin.value;
         let sDescripcion = inputDescripcion.value;
+        let estado = 0;
        
         
-        respuesta = registrarBitacora(sFecha, tmHoraInicio, tmHoraFin, sDescripcion, estado);//esta funcion está en el servicio
+        respuesta = registrar_bitacora(sFecha, tmHoraInicio, tmHoraFin, sDescripcion, estado);//esta funcion está en el servicio
 
         if (respuesta.success = true){
             swal({
@@ -92,32 +93,21 @@ function obtenerDatosModificar(){
         });
         
     }else{
-   
-        
-        let sNombre = inputNombre.value; 
-        let sSegundoNombre = inputSegundoNombre.value;
-        let sPrimerApellido = inputPrimerApellido.value;
-        let sSegundoApellido = inputSegundoApellido.value;
-        let sCedula = inputCedula.value;
-        let dFechaIngreso = inputFechaIngreso.value;
-        let sltRol = inputRol.value;
-        let sDireccion = inputDireccion.value;
-        let sDistrito = inputDistrito.value;
-        let sCanton = inputCanton.value;
-        let sltProvincia = inputProvincia.value;
-        let sTelefono = inputTelefono.value;
-        let sCorreo = inputCorreo.value;
+
+        let sFecha = inputFecha.value; 
+        let tmHoraInicio = inputHoraInicio.value;
+        let tmHoraFin = inputHoraFin.value;
+        let sDescripcion = inputDescripcion.value;     
         let _id = inputId.value;
 
         
-        respuesta = modificarUsuarios(_id, inputimagenUrl.src, sNombre, sSegundoNombre, sPrimerApellido, sSegundoApellido, sCedula, dFechaIngreso, sltRol, 
-                          sDireccion, sDistrito, sCanton, sltProvincia, sTelefono, sCorreo);//esta funcion está en el servicio
+        respuesta = modificar_bitacoras(_id, sFecha, tmHoraInicio, tmHoraFin, sDescripcion);//esta funcion está en el servicio
 
         if (respuesta.success = true){
             swal({
                 type: 'success',
                 title: 'Transacción Procesada',
-                text: "El usuario se modificó con éxito!",
+                text: "La bitácora se modificó con éxito!",
                 showCancelButton: true,
                 reverseButtons: true,
                 confirmButtonText: 'Volver a la lista',
@@ -127,7 +117,7 @@ function obtenerDatosModificar(){
                 }).then((result) => {
                     if(result.value){
     
-                        window.location.href = "usuario_listar.html";
+                        window.location.href = "bitacora_listar.html";
                     }
     
                 });
@@ -191,40 +181,29 @@ window.onload = function() {
 
 function cargar_datos_modificar(){
     
-    let usuario = [];
+    let bitacora = [];
 
     
-    usuario = getUsuarioParaModificar();
+    bitacora = getBitacoraParaModificar();
 
 
-    if (usuario[0] != undefined){
-   
-        inputNombre.value = usuario[0]; 
-        inputSegundoNombre.value = usuario[1];
-        inputPrimerApellido.value = usuario[2];
-        inputSegundoApellido.value = usuario[3];
-        inputCedula.value = usuario[4];
-        inputFechaIngreso.value = usuario[5];
-        inputRol.value = usuario[6];
-        inputDireccion.value = usuario[7];
-        inputDistrito.value = usuario[8];
-        inputCanton.value = usuario[9];
-        inputProvincia.value = usuario[10];
-        inputTelefono.value = usuario[11];
-        inputCorreo.value = usuario[12];
-        inputId.value = usuario[13];
-        document.querySelector('#imageUpload').src = usuario[14];
+    if (bitacora[0] != undefined){
 
-
-        usuario = [];
-        localStorage.setItem("usuarioParaModificar", JSON.stringify(usuario));
+        inputFecha.value = bitacora[0]; 
+        inputHoraInicio.value = bitacora[1];
+        inputHoraFin.value = bitacora[2];
+        inputDescripcion.value = bitacora[3];
+        inputId.value = bitacora[4];
+        
+        bitacora = [];
+        localStorage.setItem("bitacoraParaModificar", JSON.stringify(bitacora));
         botonModificar.hidden = false;
         botonRegistrar.hidden = true;
     }
 };
 
-function getUsuarioParaModificar() {
-    return JSON.parse(localStorage.getItem("usuarioParaModificar"));
+function getBitacoraParaModificar() {
+    return JSON.parse(localStorage.getItem("bitacoraParaModificar"));
 }
 
 
