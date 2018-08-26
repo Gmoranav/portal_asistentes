@@ -5,14 +5,12 @@ const periodos = require('./periodos.api');
 
 //registrar
 router.route('/registrar_periodo')
-
     .post(function (req, res) {
-        periodos.registrar(req, res);
+        periodos.registrar_periodo(req, res);
     });
 
 //listar
 router.route('/listar_periodos')
-
     .get(function (req, res) {
         periodos.listar_periodos(req, res);
     });
@@ -29,10 +27,10 @@ router.route('/modificar_periodo')
         periodos.modificar_periodo(req, res);
     });
 
-//eliminar
-router.route('/eliminar_periodo')
+//desactivar
+router.route('/desactivar_periodo')
     .post(function (req, res) {
-        periodos.eliminar_periodo(req, res);
+        periodos.desactivar_periodo(req, res);
     });
 
 

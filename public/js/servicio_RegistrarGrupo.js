@@ -16,9 +16,6 @@ function registrarGrupo(psSede, psCarrera, psCurso, psPeriodo, psNombre, psLabor
         async : false,
         data:{
 
-            //cambiar los nombres por lo que se requiera
-            //las variables son las que hay que usan en el archivo controlador
-            //en la función imprimirListaExamples
             sedeGrupo : psSede,
             carreraGrupo : psCarrera,
             cursoGrupo : psCurso,
@@ -45,7 +42,8 @@ function registrarGrupo(psSede, psCarrera, psCurso, psPeriodo, psNombre, psLabor
     return respuesta;
 }
 
-function modificarGrupo(psSede, psCarrera, psCurso, psPeriodo, psNombre, psLaboratorio, psProfesor, psCantidadEstu, psHorario){
+function modificarGrupo(psSede, psCarrera, psCurso, psPeriodo, psNombre, psLaboratorio, 
+    psProfesor, psCantidadEstu, psHorario, _id){
     let respuesta = '';
     let peticion = $.ajax({
 
@@ -57,6 +55,7 @@ function modificarGrupo(psSede, psCarrera, psCurso, psPeriodo, psNombre, psLabor
         async : false,
         data:{
 
+            _id : p_id,
             sedeGrupo : psSede,
             carreraGrupo : psCarrera,
             cursoGrupo : psCurso,
