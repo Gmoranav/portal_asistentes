@@ -10,19 +10,19 @@ inputFlitroLaboratorio.addEventListener('keyup', function (){
     imprimirListaLaboratorios();
 });
 
+inputFlitroEspacios.addEventListener('keyup', function (){
+    imprimirListaLaboratoriosFiltroEspacios();
+});
+
 function imprimirListaLaboratorios() {
 
     let filtroLab = inputFlitroLaboratorio.value;
-    let filtroCant = inputFlitroEspacios.value;
 
     let listaLaboratorios = obtenerListaLaboratorios();
     let tbody = document.querySelector('#tblLaboratorio');
 
     if (!filtroLab) {
         filtroLab = '';
-    }
-    if (!filtroCant) {
-        filtroCant = '';
     }
     tbody.innerHTML = '';
 
@@ -86,6 +86,78 @@ function imprimirListaLaboratorios() {
 
 };
 
+function imprimirListaLaboratoriosFiltroEspacios() {
+
+    let filtroLab = inputFlitroEspacios.value;
+
+    let listaLaboratorios = obtenerListaLaboratorios();
+    let tbody = document.querySelector('#tblLaboratorio');
+
+    if (!filtroLab) {
+        filtroLab = '';
+    }
+
+    tbody.innerHTML = '';
+
+
+    //Cambiar Examples por lo que se vaya a listar, usar nombre en plural (ejemplo: cursos, sedes...)
+    for (let i = 0; i < listaLaboratorios.length; i++) {
+
+        if (listaLaboratorios[i]['cantidad_espacios'].toLowerCase().includes(filtroLab.toLowerCase()) ){
+
+            let fila = tbody.insertRow();
+
+            let cSede = fila.insertCell();
+            let cNombreLaboratorio = fila.insertCell();
+            let cCantEspacios = fila.insertCell();
+            let cConfiguracion = fila.insertCell();  // se crea esta variable para asignarle el boton
+
+
+            cSede.innerHTML = listaLaboratorios[i]['sede_laboratorio'];
+            cNombreLaboratorio.innerHTML = listaLaboratorios[i]['nombre_laboratorio'];
+            cCantEspacios.innerHTML = listaLaboratorios[i]['cantidad_espacios'];
+
+            //se crean los componentes para modificar
+            let botonModificar = document.createElement('a');
+            botonModificar.classList.add('fas');
+            botonModificar.classList.add('fa-pencil-alt');
+            botonModificar.classList.add('tooltip');
+
+            let tooltipModificar = document.createElement('span');
+            tooltipModificar.textContent = "Editar";
+            tooltipModificar.setAttribute('class', 'tooltiptext');
+            botonModificar.appendChild(tooltipModificar);
+
+            //se crean los componentes para desactivar
+            let botonDesactivar = document.createElement('a');
+            botonDesactivar.classList.add('fas');
+            botonDesactivar.classList.add('fa-ban');
+            botonDesactivar.classList.add('tooltip');
+
+            let tooltipDesactivar = document.createElement('span');
+            tooltipDesactivar.textContent = "Desactivar";
+            tooltipDesactivar.setAttribute('class', 'tooltiptext');
+            botonDesactivar.appendChild(tooltipDesactivar);
+
+            //dataset es una 
+            //propiedad que permite definir atributos personalizados
+            //para un elemento de html
+            botonModificar.dataset._id = listaLaboratorios[i]['_id'];
+            botonDesactivar.dataset._id = listaLaboratorios[i]['_id'];
+
+
+            //un eventListener queda enlazado a la función que llama
+            botonModificar.addEventListener('click', buscar_por_id);
+            botonDesactivar.addEventListener('click', desactivar_laboratorio);
+
+            cConfiguracion.appendChild(botonModificar);
+            cConfiguracion.appendChild(botonDesactivar);
+
+        }
+
+    }
+
+};
 
 function buscar_por_id () {
 
