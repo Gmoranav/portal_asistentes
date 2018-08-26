@@ -55,6 +55,9 @@ function redireccionListarAsistentes() {
 function redireccionBitacoraListar() {
     window.location = "bitacora_listar.html";
 }
+function redireccionBitacoraRegistrar() {
+    window.location = "bitacora_registrar.html";
+}
 function redireccionSedes() {
     window.location = "sede_listar.html";
 }
