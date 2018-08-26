@@ -203,6 +203,7 @@ function limpiarFormulario(){
     inputNombreLaboratorio.value = '';    
     inputCantidadEspacios.value = '';
     inputSede.value='';
+    inputId.value='';
 }
 
 

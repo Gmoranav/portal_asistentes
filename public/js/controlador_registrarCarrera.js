@@ -74,6 +74,8 @@ function obtenerDatosCarrera(){
        
 
         limpiarFormulario();
+        botonModificar.hidden = true;
+        botonRegistrar.hidden = false;
 
     };
 
