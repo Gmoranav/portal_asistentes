@@ -295,19 +295,19 @@ function desactivar_grupo(){
     let estado = 0;
     swal({
         title: '¿Está seguro?',
-        text: "El grupo se eliminará permanentemente",
+        text: "El grupo se desactivará",
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Eliminar'
+        confirmButtonText: 'Desactivar'
       }).then((result) => {
         if (result.value) {
             desactivar_grupo(_id, estado);
             imprimirListaGrupos();
           swal(
-            '¡Eliminado!',
-            'El grupo ha sido eliminado con éxito',
+            '¡Desactivado!',
+            'El grupo ha sido desactivado con éxito',
             'success'
           )
         }

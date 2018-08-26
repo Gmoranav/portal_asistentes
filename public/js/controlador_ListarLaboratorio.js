@@ -191,19 +191,19 @@ function desactivar_laboratorio(){
     let estado = 0;
     swal({
         title: '¿Está seguro?',
-        text: "El laboratorio se eliminará permanentemente",
+        text: "El laboratorio se desactivará",
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Eliminar'
+        confirmButtonText: 'Desactivar'
       }).then((result) => {
         if (result.value) {
             desactivar_laboratorio(_id, estado);
             imprimirListaLaboratorios();
           swal(
-            '¡Eliminado!',
-            'El laboratorio ha sido eliminado con éxito',
+            '¡Desactivado!',
+            'El laboratorio ha sido desactivado con éxito',
             'success'
           )
         }
