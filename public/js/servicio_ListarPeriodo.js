@@ -59,17 +59,18 @@ function obtener_periodo_por_id(p_id) { //funcion viene del controlador
 };
 
 
-// funcion para eliminar un periodo (va al periodos.api.js y a periodos.route.js)
-function eliminar_periodo(p_id){
+// funcion para desactivar un periodo (va al periodos.api.js y a periodos.route.js)
+function desactivar_periodo(p_id, p_estado){
   let respuesta = '';
   let peticion = $.ajax({
-      url : 'http://localhost:4000/api/eliminar_periodo',
+      url : 'http://localhost:4000/api/desactivar_periodo',
       type : 'post',
       contentType : 'application/x-www-form-urlencoded; charset=utf-8',
       dataType : 'json',
       async : false,
       data:{
-          _id: p_id
+          _id: p_id,
+          estado : p_estado
       }
     });
   
@@ -78,7 +79,7 @@ function eliminar_periodo(p_id){
     });
   
     peticion.fail(function(response){
-     
+      respuesta = response;
     });
 
     return respuesta;

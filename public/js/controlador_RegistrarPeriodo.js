@@ -8,23 +8,28 @@ Responsabilidades del controlador
 */
 
 'use strict';
-const boton_registrar = document.querySelector('#btnRegistrar');
 
-boton_registrar.addEventListener('click', obtener_datos);
+let banderaModificar=false;
 
-const input_nombre_cuatri = document.querySelector('#txtNombreCuatrimestre');
-const input_estado_cuatri = document.querySelector('#txtEstadoCuatrimestre');
-const input_id = document.querySelector('#txtID');
+const botonRegistrar = document.querySelector('#btnRegistrar');
+const botonModificar = document.querySelector('#btnModificar');
 
-function obtener_datos() {
+botonModificar.hidden = true;
+
+const inputNombreCuatri = document.querySelector('#txtNombreCuatrimestre');
+const inputEstadoCuatri = document.querySelector('#txtEstadoCuatrimestre');
+const inputId = document.querySelector('#txtID');
+
+botonRegistrar.addEventListener('click', obtenerDatos);
+botonModificar.addEventListener('click' , obtenerDatosModificar);
+
+function obtenerDatos() {
 
     let bError = false;
+    let respuesta;
 
-    let sNombreCuatri = input_nombre_cuatri.value;
-    let sEstadoCuatri = input_estado_cuatri.value;
 
     bError = validar();
-    let respuesta;
 
     if (bError == true) {
 
@@ -37,7 +42,12 @@ function obtener_datos() {
 
     } else {
 
-        respuesta = registrar_periodo(sNombreCuatri, sEstadoCuatri);
+        let sNombreCuatri = inputNombreCuatri.value;
+        let sEstadoCuatri = inputEstadoCuatri.value;
+        let estado = 1;
+
+        //funcion que va al servicio_RegistrarPeriodo.js
+        respuesta = registrarPeriodo(sNombreCuatri, sEstadoCuatri, estado);
 
        if(respuesta.success == true){
 
@@ -56,7 +66,6 @@ function obtener_datos() {
 
                     window.location.href = "periodo_listar.html";
                 }
-
             });
 
        }else{
@@ -74,34 +83,91 @@ function obtener_datos() {
     }
 };
 
+function obtenerDatosModificar(){
+    
+    let bError = false;
+    let respuesta;
+    
+    bError = validar();
+    if(bError == true){
+        swal({
+            type: 'warning',
+            title: 'No se pudo registrar el periodo',
+            text: 'Por favor revise los campos resaltados',
+            confirmButtonText: 'Aceptar'
+        });
+        
+    }else{
+        
+        let sNombreCuatri = inputNombreCuatri.value;
+        let sEstadoCuatri = inputEstadoCuatri.value;
+        let _id = JSON.parse(localStorage.getItem("periodoParaModificar"))[2];  //aqui trae el _id
+
+        respuesta = modificarPeriodo( _id , sNombreCuatri , sEstadoCuatri);//esta funcion está en el servicio_RegistrarPeriodo.js
+
+        if (respuesta.success = true){
+            swal({
+                type: 'success',
+                title: 'Transacción Procesada',
+                text: "El periodo se modificó con éxito!",
+                showCancelButton: true,
+                reverseButtons: true,
+                confirmButtonText: 'Volver a la lista',
+                cancelButtonText: 'Continuar Aqui',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#556566',
+                }).then((result) => {
+                    if(result.value){
+    
+                        window.location.href = "periodo_listar.html";
+                    }
+    
+                });
+        }else{
+            swal({
+                type : 'error',
+                title : 'Problemas de conexión', 
+                text: 'Por favor contactar al administrador', 
+                confirmButtonText : 'Aceptar'
+            });
+        }
+
+        limpiarFormulario();
+        botonModificar.hidden = true;
+        botonRegistrar.hidden = false;
+    }
+    
+};
+
+
+
+
 function validar() {
     let bError = false;
 
 
-    if (input_nombre_cuatri.value == '') {
+    if (inputNombreCuatri.value == '') {
 
-        input_nombre_cuatri.classList.add('input_error');
+        inputNombreCuatri.classList.add('input_error');
         bError = true;
     } else {
-        input_nombre_cuatri.classList.remove('input_error');
+        inputNombreCuatri.classList.remove('input_error');
     }
 
-    if (input_estado_cuatri.value == '') {
-        input_estado_cuatri.classList.add('input_error');
+    if (inputEstadoCuatri.value == '') {
+        inputEstadoCuatri.classList.add('input_error');
         bError = true;
     } else {
-        input_estado_cuatri.classList.remove('input_error');
+        inputEstadoCuatri.classList.remove('input_error');
     }
 
     return bError;
 };
 
 function limpiar_formulario() {
-    input_nombre_cuatri.value = '';
-    input_estado_cuatri.value = '';
+    inputNombreCuatri.value = '';
+    inputEstadoCuatri.value = '';
 }
-
-
 
 // ***  inicio: para enviar la informacion para modificar al formulario.  (del controlador_ListarPeriodo.js) *** 
 window.onload = function() {
@@ -115,12 +181,10 @@ window.onload = function() {
     periodo = getPeriodoParaModificar();
     if (periodo[0]!= undefined){
 
-        input_nombre_cuatri.value = periodo[0]; 
-        input_estado_cuatri.value = periodo[1];  
+        inputNombreCuatri.value = periodo[0]; 
+        inputEstadoCuatri.value = periodo[1];  
         
-
         periodo = [];
-        localStorage.setItem("periodoParaModificar", JSON.stringify(periodo));
         botonModificar.hidden = false;
         botonRegistrar.hidden = true;
     }

@@ -12,17 +12,16 @@ const transporter = nodeMailer.createTransport({
     } 
 });
 
-
 let mailOptions = {
     from: 'grupovirtual.proyecto1@gmail.com', //poner el mismo correo que en la linea 10 (correo del equipo)
     to: '',
-    subject: '',
+    subject: '', // 'Credenciales Portal Asistentes' 
     html: ''
 };
 
 module.exports.envio=function(datos) {
 
-    mailOptions.to = datos.to;
+    mailOptions.to = datos.to;  //aqui se le pasa el correo alq e
     mailOptions.subject = datos.subject; //subject del email
     mailOptions.html =
         `<html>  
@@ -32,7 +31,9 @@ module.exports.envio=function(datos) {
             <body>
                 ${datos.body} 
             </body>
-        </html>`;
+        </html>
+        `;
+
     transporter.sendMail(mailOptions, function (error, info) {  //transporter es la constante que se define al inicio 
         if (error) {
             console.log(error);

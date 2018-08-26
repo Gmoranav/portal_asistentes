@@ -1,61 +1,81 @@
-/*
-Responsabilidades del controlador
-    - Leer datos de la interfaz
-    - Imprimir datos dentro de la interfaz
-    - Validar datos (formularios)
-    - Responder a eventos (click, change, keyup...)
-    - Se comunica con el servicio, cuando se requiera algún procesamiento de datos
-*/
 
 'use strict';
-
+//quitar el load
 window.addEventListener('load', listarPeriodo);
 
-function imprimirListaPeriodo(plistaPeriodos) {
+const inputFiltroPeriodo = document.querySelector('#txtNombrePeriodo');
+
+inputFiltroPeriodo.addEventListener('keyup', function(){
+    imprimirListaPeriodo(listarPeriodo, inputFiltroPeriodo.value)
+});
+
+function imprimirListaPeriodo(listaPeriodos, pFiltro) {
 
     let tbody = document.querySelector('#tblListarPeriodos');
 
+    if(!pFiltro){
+        pFiltro ='';
+    }
+
     tbody.innerHTML = '';
 
-    for (let i = 0; i < plistaPeriodos.length; i++) {
-
+    for (let i = 0; i < listaPeriodos.length; i++) {
+        if(listaPeriodos[i]['estado']==1){
+            if(listaPeriodos[i]['nombre_periodo'].toLowerCase().includes(pFiltro.toLowerCase())){
+ 
         let fila = tbody.insertRow();
         let cnombre_periodo = fila.insertCell();
         let cestado_periodo = fila.insertCell();
-
         let cConfiguracion = fila.insertCell();  // se crea esta variable para asignarle el boton
 
-        cnombre_periodo.innerHTML = plistaPeriodos[i]['nombre_periodo'];
-        cestado_periodo.innerHTML = plistaPeriodos[i]['estado_periodo'];
+        cnombre_periodo.innerHTML = listaPeriodos[i]['nombre_periodo'];
+        cestado_periodo.innerHTML = listaPeriodos[i]['estado_periodo'];
 
-        //se crean los componentes para actualizar:
-
+        //a partir de aqui se crean los componentes para modificar:
         let botonModificar = document.createElement('a');  //agrega el link para modficar
         botonModificar.classList.add('fas');  // clase de fontawsome para agregar el lapiz
         botonModificar.classList.add('fa-pencil-alt'); // clase de fontawsome para agregar el lapiz
+        botonModificar.classList.add('tooltip');
 
-        botonModificar.dataset._id = plistaPeriodos[i]['_id'];  //para que el lapiz pueda obetner el id de la linea
+        let tooltipModificar = document.createElement('span');
+        tooltipModificar.textContent = "Editar";
+        tooltipModificar.setAttribute('class', 'tooltiptext');
+        botonModificar.appendChild(tooltipModificar);
+
+        botonModificar.dataset._id = listaPeriodos[i]['_id'];  //para que el lapiz pueda obetner el id de la linea
         botonModificar.addEventListener('click', buscar_por_id); //esta funcion se llama en el evento click del lapiz (se encuentra mas abajo en este controlador)
+      
         cConfiguracion.appendChild(botonModificar); // agrega el lapiz al html
-
-
-        let botonEliminar = document.createElement('a'); //agrega el link para eliminar
-        botonEliminar.classList.add('fas'); // clase de fontawsome para agregar el basurero
-        botonEliminar.classList.add('fa-trash-alt'); // clase de fontawsome para agregar el basurero
-
-        botonEliminar.dataset._id = plistaPeriodos[i]['_id']; //para que el basurero pueda obetner el id de la linea
-        botonEliminar.addEventListener('click', remover_periodo); //esta funcion se llama en el evento click del basurero (se encuentra mas abajo en este controlador)
+        botonModificar.appendChild(tooltipModificar);
 
         cConfiguracion.appendChild(botonModificar); // agregamos al html el lapiz
-        cConfiguracion.appendChild(botonEliminar);  // agregamos al html el basurero
-    }
-};
+
+
+        //a partir de aqui se crean los componentes para desactivar:
+        let botonDesactivar = document.createElement('a'); //agrega el link para eliminar
+        botonDesactivar.classList.add('fas');// clase de fontawsome para agregar el basurero
+        botonDesactivar.classList.add('fa-ban'); // clase de fontawsome para agregar el basurero
+        botonDesactivar.classList.add('tooltip');
+
+        let tooltipDesactivar = document.createElement('span');
+        tooltipDesactivar.textContent = "Desactivar";
+        tooltipDesactivar.setAttribute('class', 'tooltiptext');
+        botonDesactivar.appendChild(tooltipDesactivar);
+        
+        botonDesactivar.dataset._id = listaPeriodos[i]['_id']; //para que el basurero pueda obetner el id de la linea
+        botonDesactivar.addEventListener('click', remover_periodo); //esta funcion se llama en el evento click del basurero (se encuentra mas abajo en este controlador)
+
+        cConfiguracion.appendChild(botonDesactivar);  // agregamos al html el basurero
+       
+    }//fin if
+    }//fin if
+    }//fin ciclo for
+}; //fin funcion imprimirListaPeriodo
 
 //muestra la informacion como una lista en el html
 function listarPeriodo() {
 
     let listaPeriodos = obtenerListaPeriodos();
-    console.log('entra a listar periodos');
     imprimirListaPeriodo(listaPeriodos);
 };
 
@@ -65,13 +85,14 @@ function buscar_por_id() {  //funcion que se ejecuta en el servicio
     let _id = this.dataset._id;
     let periodo = obtener_periodo_por_id(_id);
     let datosPeriodo = [];
-    let i = 0;
 
-    datosPeriodo[0] = periodo['nombre_periodo'];
-    datosPeriodo[1] = periodo['estado_periodo'];
+    datosPeriodo[0] = periodo.nombre_periodo;
+    datosPeriodo[1] = periodo.estado_periodo;
+    datosPeriodo[2] = periodo._id;
 
-    console.log(periodo);
-
+    //console.log(periodo);
+    console.log(datosPeriodo);
+    
     setPeriodoParaModificar(datosPeriodo);
 
     cargar_pagina();
@@ -81,17 +102,19 @@ function buscar_por_id() {  //funcion que se ejecuta en el servicio
     }
 };
 
-function setPeriodoParaModificar(infoPeriodo) {
-    localStorage.setItem("periodoParaModificar", JSON.stringify(infoPeriodo));
+function setPeriodoParaModificar(p_datosPeriodo) {
+    localStorage.setItem("periodoParaModificar", JSON.stringify(p_datosPeriodo));
     console.log(JSON.parse(localStorage.getItem("periodoParaModificar")));
 };
 
 //funcion para eliminar de la base de datos  (Va al servicio_ListarPeriodo.js)
 function remover_periodo() {
     let _id = this.dataset._id;
+    let estado = 0;
+
     swal({
         title: '¿Está seguro?',
-        text: "El periodo se eliminará permanentemente",
+        text: "El periodo se desactivará",
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -99,8 +122,11 @@ function remover_periodo() {
         confirmButtonText: 'Eliminar'
     }).then((result) => {
         if (result.value) {
-            eliminar_periodo(_id);
+            desactivar_periodo(_id, estado);  //funcion en servicio_ListarPeriodo.js
             listarPeriodo();
+
+           // setPeriodoParaModificar(_id);
+
             swal(
                 '¡Eliminado!',
                 'El periodo ha sido eliminado con éxito',
