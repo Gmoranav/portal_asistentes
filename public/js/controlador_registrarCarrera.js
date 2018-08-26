@@ -100,7 +100,7 @@ function obtenerDatosCarreraModificar(){
 
         swal({
             type: 'warning',
-            title: 'No se pudo registrar la carrera',
+            title: 'No se pudo modificar la carrera',
             text: 'Por favor revise los campos resaltados',
             confirmButtonText: 'Aceptar'
         });
@@ -116,7 +116,7 @@ function obtenerDatosCarreraModificar(){
             swal({
             type: 'success',
             title: 'Transacción Procesada',
-            text: "Se registró la carrera con éxito!",
+            text: "Se modificó la carrera con éxito!",
             showCancelButton: true,
             reverseButtons: true,
             confirmButtonText: 'Volver a la lista',
