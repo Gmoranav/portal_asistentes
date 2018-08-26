@@ -4,7 +4,7 @@
 window.addEventListener('load', imprimirListaGrupos);
 
 const inputFlitroLaboratorio = document.querySelector('#txtNombreLaboratorio');
-const inputFlitroEstudiantes = document.querySelector('#txtCantidadEstudiantes');
+const inputFlitroEspacios = document.querySelector('#txtCantidadEstudiantes');
 const inputFlitroNombre = document.querySelector('#txtNombre');
 
 inputFlitroLaboratorio.addEventListener('keyup', function (){
