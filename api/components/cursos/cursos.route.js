@@ -24,4 +24,10 @@ router.route('/modificar_curso')
         cursos.modificar_curso(req,res);
     });
 
+router.route('/desactivar_curso')
+    .post(function(req,res){
+        cursos.desactivar_curso(req,res);
+    });
+
+
 module.exports = router;
