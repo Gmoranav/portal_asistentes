@@ -59,7 +59,7 @@ function obtener_grupo_por_id (p_id) {
 
 }
 
-function desactivar_grupo(p_id){
+function desactivar_grupo(p_id, pestado){
   let respuesta = '';
   let peticion = $.ajax({
       url : 'http://localhost:4000/api/desactivar_grupo',
@@ -68,7 +68,8 @@ function desactivar_grupo(p_id){
       dataType : 'json',
       async : false,
       data:{
-          _id: p_id
+          _id: p_id,
+          estado : pestado
       }
     });
   

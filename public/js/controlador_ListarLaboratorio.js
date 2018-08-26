@@ -199,7 +199,7 @@ function desactivar_laboratorio(){
         confirmButtonText: 'Eliminar'
       }).then((result) => {
         if (result.value) {
-            eliminar_laboratorio(_id, estado);
+            desactivar_laboratorio(_id, estado);
             imprimirListaLaboratorios();
           swal(
             '¡Eliminado!',

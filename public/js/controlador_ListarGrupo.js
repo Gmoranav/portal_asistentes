@@ -290,6 +290,7 @@ function setGrupoParaModificar(infoGrupo) {
 
 function desactivar_grupo(){
     let _id = this.dataset._id;
+    let estado = 0;
     swal({
         title: '¿Está seguro?',
         text: "El grupo se eliminará permanentemente",
@@ -300,7 +301,7 @@ function desactivar_grupo(){
         confirmButtonText: 'Eliminar'
       }).then((result) => {
         if (result.value) {
-            eliminar_grupo(_id);
+            desactivar_grupo(_id, estado);
             imprimirListaGrupos();
           swal(
             '¡Eliminado!',

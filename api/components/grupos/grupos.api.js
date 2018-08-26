@@ -19,7 +19,8 @@ module.exports.registrar_grupos = function(req, res){
         laboratorio : req.body.laboratorio,
         profesores : req.body.profesores,
         cantidad_de_estudiantes : req.body.cantidad_de_estudiantes,
-        horario : req.body.horario
+        horario : req.body.horario,
+        estado : req.body.estado
 
     });
 

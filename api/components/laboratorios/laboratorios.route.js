@@ -5,13 +5,13 @@ const laboratoriosApi = require('./laboratorios.api');
 
 router.route('/registrar_laboratorio')
     .post(function(req, res){
-        laboratoriosApi.registrar_laboratorios(req, res); /**el registrar viene del API en la linea 8 */
+        laboratoriosApi.registrar_laboratorio(req, res); /**el registrar viene del API en la linea 8 */
 });
 
     
 router.route('/listar_laboratorio')
     .get(function(req, res){
-        laboratoriosApi.listar_laboratorios(req, res); /**el listar_examples viene del API en la linea 36 */
+        laboratoriosApi.listar_laboratorio(req, res); /**el listar_examples viene del API en la linea 36 */
 });
 
 router.route('/buscar_laboratorio_por_id')
@@ -26,7 +26,7 @@ router.route('/modificar_laboratorio')
 
 router.route('/desactivar_laboratorio')
 .post(function (req, res) {
-    laboratoriosApi.eliminar_laboratorio(req, res);
+    laboratoriosApi.desactivar_laboratorio(req, res);
 });
 
 module.exports = router;

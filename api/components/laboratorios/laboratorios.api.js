@@ -5,7 +5,7 @@
  */
 const laboratorioModel = require('./laboratorios.model');
 
-module.exports.registrar_laboratorios = function(req, res){
+module.exports.registrar_laboratorio = function(req, res){
     
     /**Todo para registrar un usuario va aqui */
     let nuevoLaboratorio = new laboratorioModel({
@@ -13,7 +13,8 @@ module.exports.registrar_laboratorios = function(req, res){
         /**Este es el mismo input que el de model.js */
         nombre_laboratorio : req.body.nombre_laboratorio,
         cantidad_espacios : req.body.cantidad_espacios,
-        sede_laboratorio : req.body.sede_laboratorio
+        sede_laboratorio : req.body.sede_laboratorio,
+        estado : req.body.estado
     });
 
     nuevoLaboratorio.save(function(error){
@@ -33,7 +34,7 @@ module.exports.registrar_laboratorios = function(req, res){
     });
 };
 
-module.exports.listar_laboratorios = function(req, res){
+module.exports.listar_laboratorio = function(req, res){
     laboratorioModel.find().sort({$natural:-1}).then(
         function(laboratorios){
             res.send(laboratorios);
