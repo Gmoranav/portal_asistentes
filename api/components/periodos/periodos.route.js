@@ -5,14 +5,12 @@ const periodos = require('./periodos.api');
 
 //registrar
 router.route('/registrar_periodo')
-
     .post(function (req, res) {
         periodos.registrar_periodo(req, res);
     });
 
 //listar
 router.route('/listar_periodos')
-
     .get(function (req, res) {
         periodos.listar_periodos(req, res);
     });

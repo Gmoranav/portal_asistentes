@@ -26,11 +26,9 @@ module.exports.registrar_periodo = function (req, res){
     });
 };
 
-
+//listar
 module.exports.listar_periodos = function(req, res){
-    
     periodosModel.find().sort({$natural:-1}).then(
-          
           function(periodos){
              res.send(periodos);
           }

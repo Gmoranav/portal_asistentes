@@ -7,7 +7,7 @@ Responsabilidades del servicio
 
 'use strict';
 
-function registrar_sede(sNombreSede, sProvinciaSede, sCantonSede, sDistritoSede, sUbicacionSede) {
+function registrarSede(sNombreSede, sProvinciaSede, sCantonSede, sDistritoSede, sUbicacionSede, pEstado) {
     let respuesta = '';
     let peticion = $.ajax({
         url: 'http://localhost:4000/api/registrar_sede',
@@ -21,6 +21,7 @@ function registrar_sede(sNombreSede, sProvinciaSede, sCantonSede, sDistritoSede,
             canton_sede: sCantonSede,
             distrito_sede: sDistritoSede,
             ubicacion_sede: sUbicacionSede,
+            estado : pEstado
         }
     });
 
@@ -36,3 +37,36 @@ function registrar_sede(sNombreSede, sProvinciaSede, sCantonSede, sDistritoSede,
 
     return respuesta;
 }
+
+function modificarSede(_id, sNombreSede, sProvinciaSede, sCantonSede, sDistritoSede, sUbicacionSede) {
+
+    let respuesta = '';
+    let peticion = $.ajax({
+
+        url: 'http://localhost:4000/api/modificar_sede',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+
+            _id : _id,
+            nombre_sede : sNombreSede,
+            provincia_sede : sProvinciaSede,
+            canton_sede : sCantonSede,
+            distrito_sede  : sDistritoSede,
+            ubicacion_sede : sUbicacionSede
+        }
+    });
+
+    peticion.done(function (response) {
+        respuesta = response;
+    });
+
+    peticion.fail(function (response) {
+        respuesta = response;
+    });
+
+    return respuesta;
+}
+
