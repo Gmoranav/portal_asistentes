@@ -1,5 +1,8 @@
 'use strict';
 const solicitudModel = require('./solicitudes.model');
+const nodemailer = require('nodemailer');
+
+
 
 module.exports.registrar_solicitud = function(req, res){
     /**Todo para registrar un usuario va aqui */
@@ -9,7 +12,11 @@ module.exports.registrar_solicitud = function(req, res){
         segundo_nombre : req.body.segundo_nombre,
         primer_apellido : req.body.primer_apellido,
         segundo_apellido : req.body.segundo_apellido,
+        grupo : req.body.curso,
         grupo : req.body.grupo,
+        grupo : req.body.estadp,
+        grupo : req.body._id,
+
 
     });
 
@@ -60,15 +67,15 @@ module.exports.agregar_solicitud=function(req,res){
 */
 
 module.exports.buscar_solicitud_id = function(req,res){
-    solicitudModel.findById({_id: req.body.id}).then(
+    solicitudModel.findById({_id: req.body._id}).then(
       function(solicitud){
         res.send(solicitud);
       }
-    );
+    )
 };
 
 module.exports.modificar_solicitud = function(req, res){
-  solicitudModel.findByIdAndUpdate(req.body.id,{ $set: req.body },
+  solicitudModel.findByIdAndUpdate(req.body._id,{ $set: req.body },
     function(error){
         if(error){
             res.json({
@@ -83,3 +90,44 @@ module.exports.modificar_solicitud = function(req, res){
         }
     });
   };
+
+
+  module.exports.desactivar_solicitud = function (req, res) {
+      solicitudModel.findByIdAndDelete(req.body._id,
+          function (err, user) {
+              if (err) {
+                  res.json({ success: false, msg: 'La solicitud no se ha podido desactivar. ' + handleError(err) });
+
+              } else {
+                  res.json({ success: true, msg: 'Se ha desactivado correctamente. ' + res });
+              }
+          });
+  };
+
+
+
+  /*
+  module.exports.buscar_usuario_por_id = function(req, res){
+    usuarioModel.findById({_id: req.body._id}).then(
+        function(usuario){
+            res.send(usuario);
+        }
+    );
+};
+
+module.exports.modificar_usuario = function(req, res){
+
+    //se buscar el registro que tenga el _id y con set
+    //se modifica todo el cuerpo de la petición
+
+    usuarioModel.findByIdAndUpdate(req.body._id, {$set: req.body},
+    function(err, user){
+        if(err){
+            res.json({ success: false, msg: 'El usuario no se ha podido modificar. ' +
+            handleError(err) });
+        }else{
+            res.json({success: true, msg: 'Se ha actualizado correctamente. ' + res});
+        }
+    });
+};
+*/

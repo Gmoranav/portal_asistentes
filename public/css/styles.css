@@ -342,7 +342,9 @@ a{
 a:hover{
     color: white;
     text-decoration: none;
-
+    transform: scale(1.1,1.1);
+    transform-origin:bottom;
+     transition: transform .1s ease-out;
 }
 
 .panel-menu nav ul li{
@@ -441,8 +443,26 @@ tbody{
 }
 
 th, td{
-    padding: 15px 20px 10px 20px;
+    padding: 8px 10px;
     text-align: left;
+}
+
+td:last-child {
+    width: 70px;
+    text-align: right;
+}
+
+
+td:last-child>a {
+        padding: 4px;
+}
+td:last-child>a .tooltiptext{
+      bottom: 100%;
+}
+
+td:last-child>a:last-child:hover {
+    color: red;
+
 }
 
 th{
@@ -457,6 +477,9 @@ thead tr{
     color:#2E9DEB;
 }
 
+tr:hover{
+  background-color: #f9f9f9;
+}
 
 /*PROFILE IMAGE EDIT*/
 

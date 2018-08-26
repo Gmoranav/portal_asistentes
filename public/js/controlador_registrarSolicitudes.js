@@ -32,11 +32,7 @@ inputFiltro.addEventListener('keyup' , function(){
     imprimirListaPersonas(inputFiltro.value)
 });*/
 
-
-
-
 botonRegistrar.addEventListener('click' , obtenerDatosFormulario);
-
 
 //el nombre de esta función se mantiene
 function obtenerDatosFormulario(){
@@ -168,9 +164,55 @@ function limpiarFormulario(){
     inputSegundoNombre.value = '';
     inputPrimerApellido.value ='';
     inputSegundoApellido.value = '';
-    //inputCurso.value = '';
+    inputCurso.value = '';
     inputGrupo.value = '';
     //inputPeriodo.value = '';
     //inputCantidadAlumnos.value = 0;
     //inputHorario.value = '';
+}
+
+
+
+function cargar_pagina(){
+    window.location.replace('solicitud_registrar.html');
+};
+
+window.onload = function() {
+    cargarDatosRegistrar();
+   };
+
+function cargarDatosRegistrar(){
+
+    let usuario = [];
+
+
+    usuario = getSolicitudParaModificar();
+    if (solicitud[0]!='undefined'){
+
+
+        inputNombre.value = solicitud[0];
+        inputSegundoNombre.value = solicitud[1];
+        inputPrimerApellido.value = solicitud[2];
+        inputSegundoApellido.value = solicitud[3];
+        inputCedula.value = solicitud[4];
+        inputFechaIngreso.value = solicitud[5];
+        inputRol.value = solicitud[6];
+        inputDireccion.value = solicitud[7];
+        inputDistrito.value = solicitud[8];
+        inputCanton.value = solicitud[9];
+        inputProvincia.value = solicitud[10];
+        inputTelefono.value = solicitud[11];
+        inputCorreo.value = solicitud[12];
+        inputId.value = solicitud[13];
+
+
+        solicitud = [];
+        localStorage.setItem("solicitudParaModificar", JSON.stringify(solicitud));
+        botonModificar.hidden = false;
+        botonRegistrar.hidden = true;
+    }
+};
+
+function getSolicitudParaModificar() {
+    return JSON.parse(localStorage.getItem("solicitudParaModificar"));
 }
