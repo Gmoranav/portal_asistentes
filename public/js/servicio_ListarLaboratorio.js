@@ -60,7 +60,7 @@ function obtener_laboratorio_por_id (p_id) {
 
 }
 
-function desactivar_laboratorio(p_id, pestado){
+function desactivar_laboratorio_servicio(p_id, pestado){
   let respuesta = '';
   let peticion = $.ajax({
       url : 'http://localhost:4000/api/desactivar_laboratorio',

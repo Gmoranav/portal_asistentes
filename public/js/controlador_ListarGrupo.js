@@ -318,7 +318,7 @@ function desactivar_grupo(){
         confirmButtonText: 'Desactivar'
       }).then((result) => {
         if (result.value) {
-            desactivar_grupo(_id, estado);
+            desactivar_grupo_servicio(_id, estado);
             imprimirListaGrupos();
           swal(
             '¡Desactivado!',

@@ -206,7 +206,7 @@ function desactivar_laboratorio(){
         confirmButtonText: 'Desactivar'
       }).then((result) => {
         if (result.value) {
-            desactivar_laboratorio(_id, estado);
+            desactivar_laboratorio_servicio(_id, estado);
             imprimirListaLaboratorios();
           swal(
             '¡Desactivado!',

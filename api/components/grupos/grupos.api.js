@@ -74,7 +74,7 @@ module.exports.modificar_grupo = function (req, res) {
 
 
 module.exports.desactivar_grupo = function (req, res) {
-    grupoModel.findByIdAndDelete(req.body._id,
+    grupoModel.findByIdAndUpdate(req.body._id, {$set: req.body},
         function (err, user) {
             if (err) {
                 res.json({ success: false, msg: 'El grupo no se ha podido desactivar. ' + handleError(err) });

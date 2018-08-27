@@ -59,8 +59,8 @@ function obtener_grupo_por_id (p_id) {
 
 }
 
-function desactivar_grupo(p_id, pestado){
-  let respuesta = '';
+function desactivar_grupo_servicio(p_id, pestado){
+  let respuestaDesactivar = '';
   let peticion = $.ajax({
       url : 'http://localhost:4000/api/desactivar_grupo',
       type : 'post',
@@ -74,12 +74,12 @@ function desactivar_grupo(p_id, pestado){
     });
   
     peticion.done(function(response){
-     respuesta = response;
+      respuestaDesactivar = response;
     });
   
     peticion.fail(function(response){
-     
+      //respuestaDesactivar = response;
     });
 
-    return respuesta;
+    return respuestaDesactivar;
 };
