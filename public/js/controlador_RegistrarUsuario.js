@@ -1919,8 +1919,10 @@ function cargar_datos_modificar(){
 
     if (usuario[0] != undefined){
    
-        setProvinciaSeleccionada(usuario[10]);
+
+        setProvinciaSeleccionada(usuario[10], usuario[9], usuario[8]);
         optProvincia_Canton();
+
 
         inputNombre.value = usuario[0]; 
         inputSegundoNombre.value = usuario[1];
@@ -1938,6 +1940,9 @@ function cargar_datos_modificar(){
         inputId.value = usuario[13];
         document.querySelector('#imageUpload').src = usuario[14];
 
+        optCanton_Distrito();
+        inputDistrito.value = usuario[8];
+
 
         usuario = [];
         localStorage.setItem("usuarioParaModificar", JSON.stringify(usuario));
@@ -1950,29 +1955,43 @@ function getUsuarioParaModificar() {
     return JSON.parse(localStorage.getItem("usuarioParaModificar"));
 }
 
-function setProvinciaSeleccionada(provincia) {
+function setProvinciaSeleccionada(provincia, canton, distrito) {
     
     switch (provincia) {
         case "Alajuela":
             selectProvincia[1].selected = true;
+            selectCanton.value = canton;
+            selectDistrito.value = distrito;
             break;
         case "Cartago":
             selectProvincia[2].selected = true;
+            selectCanton.value = canton;
+            selectDistrito.value = distrito;
             break;
         case "Guanacaste":
             selectProvincia[3].selected = true;
+            selectCanton.value = canton;
+            selectDistrito.value = distrito;
             break;
         case "Heredia":
             selectProvincia[4].selected = true;
+            selectCanton.value = canton;
+            selectDistrito.value = distrito;
             break;
         case "Limón":
             selectProvincia[5].selected = true;
+            selectCanton.value = canton;
+            selectDistrito.value = distrito;
             break;
         case "Puntarenas":
             selectProvincia[6].selected = true;
+            selectCanton.value = canton;
+            selectDistrito.value = distrito;
             break;  
         case "San José":
             selectProvincia[7].selected = true;
+            selectCanton.value = canton;
+            selectDistrito.value = distrito;
             break;            
         default:
             break;
