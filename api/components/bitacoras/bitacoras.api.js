@@ -5,7 +5,8 @@ module.exports.registrar_bitacora = function(req, res){
     /**Todo para registrar un usuario va aqui */
     let nuevaBitacora = new bitacoraModel({
         
-        nombre_profesor : req.body.nombre_profesor,
+        cedula_profesor : req.body.cedula_profesor,
+        cedula_asistente : req.body.cedula_asistente,
         primer_nombre_asistente : req.body.primer_nombre_asistente,
         segundo_nombre_asistente : req.body.segundo_nombre_asistente,
         primer_apellido_asistente : req.body.primer_apellido_asistente,
@@ -26,7 +27,7 @@ module.exports.registrar_bitacora = function(req, res){
 };
 
 module.exports.listar_bitacoras = function(req, res){
-    nuevaBitacora.find().sort({$natural:-1}).then(
+    bitacoraModel.find().sort({$natural:-1}).then(
         function(bitacoras){
             res.send(bitacoras);
         }
@@ -34,7 +35,7 @@ module.exports.listar_bitacoras = function(req, res){
 };
 
 module.exports.buscar_bitacoras_por_id = function(req, res){
-    nuevaBitacora.findById({_id: req.body._id}).then(
+    bitacoraModel.findById({_id: req.body._id}).then(
         function(bitacora){
             res.send(bitacora);
         }
@@ -44,7 +45,7 @@ module.exports.buscar_bitacoras_por_id = function(req, res){
 module.exports.modificar_bitacora = function(req, res){
     /*se buscar el registro que tenga el _id y con set
     se modifica todo el cuerpo de la petición*/
-    nuevaBitacora.findByIdAndUpdate(req.body._id, {$set: req.body},
+    bitacoraModel.findByIdAndUpdate(req.body._id, {$set: req.body},
     function(err, user){
         if(err){
             res.json({ success: false, msg: 'La bitácora no se ha podido modificar. ' +
@@ -57,7 +58,7 @@ module.exports.modificar_bitacora = function(req, res){
 
 module.exports.agregar_registros = function (req, res){
 
-    nuevaBitacora.update(
+    bitacoraModel.update(
         { _id: req.body._id },
         {
             $push:
