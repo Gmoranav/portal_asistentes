@@ -799,6 +799,6 @@ body {
     height: 300px;
 }
 
-.modal-solicitud-none{
+.modal-hidden{
   display: none;
 }

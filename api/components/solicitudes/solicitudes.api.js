@@ -2,37 +2,81 @@
 const solicitudModel = require('./solicitudes.model');
 const nodemailer = require('nodemailer');
 
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'grupovirtual.proyecto1@gmail.com',
+        pass: 'uCenfoProyecto.1'
+    }
+});
 
+let mailOptions = {
+    from: 'grupovirtual.proyecto1@gmail.com',
+    to: '',
+    subject: 'Nueva solicitud de asistencia',
+    html: ''
+};
 
 module.exports.registrar_solicitud = function(req, res){
     /**Todo para registrar un usuario va aqui */
     let nuevaSolicitud = new solicitudModel({
 
-        primer_nombre : req.body.primer_nombre,
-        segundo_nombre : req.body.segundo_nombre,
-        primer_apellido : req.body.primer_apellido,
-        segundo_apellido : req.body.segundo_apellido,
-        grupo : req.body.curso,
-        grupo : req.body.grupo,
-        grupo : req.body.estadp,
-        grupo : req.body._id,
-
-
+      primer_nombre : req.body.primer_nombre,
+      segundo_nombre : req.body.segundo_nombre,
+      primer_apellido : req.body.primer_apellido,
+      segundo_apellido : req.body.segundo_apellido,
+      curso : req.body.curso,
+      grupo : req.body.grupo,
+      estado : req.body.estado
+      /*_id : req.body._id,*/
     });
 
     nuevaSolicitud.save(function(error){
         if(error){
-            res.json({
-                success : false,
-                msj : ' La solicitud no pudo ser registrado : ' + error
-            });
+            res.json({  success : false, msg : ' La solicitud no pudo ser registrado : ' + error});
         }else{
-            res.json({
-                success : true,
-                msj : ' La solicitud ha sido registrada de forma exitosa'
+                //success : true,
+                //msj : ' La solicitud ha sido registrada de forma exitosa',
+                mailOptions.to = 'grupovirtual.proyecto1@gmail.com';
+                mailOptions.html =`
+                <html>
+                <head>
+                  <style>
+                    h1{
+                      background: #000000;
+                      color: white;
+                      padding: 15px;
+                      text-align: center;
+                    }
+                  </style>
+                  </head>
+                  <body>
+                    <h1>Nueva solicitud</h1>
+                    <h2>Nueva solicitud pendiente de revisión </h2>
+                    <p>Por favor ingrese en su cuenta del portal de asistente para aprobar o rechazar lassolicitudes pendientes de revisión. </p>
+                    <table>
+                      <tr>
+                        <td>Grupo</td>
+                        <td>${nuevoUsuario.curso}</td>
+                      </tr>
+                      <tr>
+                        <td>Curso</td>
+                        <td>${nuevoUsuario.grupo}</td>
+                      </tr>
+                    </table>
+                  </body>
+                </html>
+                `;
+                transporter.sendMail(mailOptions, function (error, info) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log('Email sent: ' + info.response);
+                    }
+                });
+                res.json({ success: true, msg: 'El usuario se registró con éxito' });
+                }
             });
-        }
-    });
 };
 
 
@@ -91,7 +135,6 @@ module.exports.modificar_solicitud = function(req, res){
     });
   };
 
-
   module.exports.desactivar_solicitud = function (req, res) {
       solicitudModel.findByIdAndDelete(req.body._id,
           function (err, user) {
@@ -103,8 +146,6 @@ module.exports.modificar_solicitud = function(req, res){
               }
           });
   };
-
-
 
   /*
   module.exports.buscar_usuario_por_id = function(req, res){

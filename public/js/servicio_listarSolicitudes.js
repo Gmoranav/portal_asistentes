@@ -6,15 +6,12 @@ Responsabilidades del servicio
 */
 
 'use strict';
-
+/************************************************************************************/
 function obtenerListaSolicitudes(){
 
-    //cambiar Examples por lo que se vaya a listar. Debe estar en plural
     let listaSolicitudes = [];
 
-    //let respuesta = '';
     let peticion = $.ajax({
-        //*cambiar examples en el url por lo que se vaya a registrar, debe estar en plural
         url : 'http://localhost:4000/api/listar_solicitudes',
         type : 'get',
         contentType : 'application/x-www-form-urlencoded; charset=utf-8',
@@ -32,12 +29,9 @@ function obtenerListaSolicitudes(){
         listaSolicitudes = response;
       });
 
-
-    //cambiar Examples por lo que se vaya a listar. Debe estar en plural
     return listaSolicitudes;
 };
-
-
+/************************************************************************************/
 function obtenerSolicitudId(pid){
   let solicitud = '';
   let peticion = $.ajax({
@@ -50,11 +44,12 @@ function obtenerSolicitudId(pid){
       async : false,
       data:{
           _id : pid
-}
+        }
     });
 
     peticion.done(function(response){
      solicitud = response;
+     console.log('envio exitoso');
     });
 
     peticion.fail(function(response){
@@ -63,8 +58,7 @@ function obtenerSolicitudId(pid){
     });
     return solicitud;
 };
-
-
+/************************************************************************************/
 function desactivar_solicitud(pid){
   let respuesta = '';
   let peticion = $.ajax({
@@ -83,6 +77,7 @@ function desactivar_solicitud(pid){
     });
 
     peticion.fail(function(response){
+      respuesta = response;
     });
 
     return respuesta;

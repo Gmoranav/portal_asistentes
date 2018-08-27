@@ -11,6 +11,8 @@ Responsabilidades del controlador
 
 //dejar este nombre del botón igual a como está aquí y dejarlo igual en el HTML: btnRegistrar
 const botonRegistrar = document.querySelector('#btnRegistrar');
+const botonModificar = document.querySelector('#btnModificar');
+
 
 //estos nombres cambiarlos por lo que corresponda en el html
 //manejarlos en singular
@@ -33,6 +35,8 @@ inputFiltro.addEventListener('keyup' , function(){
 });*/
 
 botonRegistrar.addEventListener('click' , obtenerDatosFormulario);
+//botonModificar.addEventListener('click' , obtenerDatosFormularioModicar);
+
 
 //el nombre de esta función se mantiene
 function obtenerDatosFormulario(){
@@ -58,13 +62,10 @@ function obtenerDatosFormulario(){
         sGrupo = ' ';
     }
 
-
-
     let bError = false;
 
     bError = validar();
     let respuesta;
-
 
     if(bError == true){
 
@@ -78,8 +79,8 @@ function obtenerDatosFormulario(){
     }else{
 
         //cambiar Example y parámetros de la función por lo que se esté registrando, pornerlo en singular
-        respuesta = registrarSolicitudes(sPrimerNombre, sSegundoNombre, sPrimerApellido, sSegundoApellido, sCurso, sPeriodo, sGrupo,
-        nCantidadAlumnos, shorario);
+        respuesta = registrarSolicitudes(sPrimerNombre, sSegundoNombre, sPrimerApellido, sSegundoApellido/*, sCurso, sPeriodo, sGrupo,
+        nCantidadAlumnos, shorario*/);
 
         if (respuesta.success == true){
 
@@ -116,12 +117,129 @@ function obtenerDatosFormulario(){
 
         //este nombre queda igual
         limpiarFormulario();
+        botonModificar.hidden = false;
+        botonRegistrar.hidden = true;
+    }
+};
+
+function obtenerDatosFormularioModicar(){
+
+    //nombrar estas variables con el mismo nombre de las "const" de arriba
+    let sPrimerNombre = inputPrimerNombre.value;
+    let sSegundoNombre = inputSegundoNombre.value;
+    let sPrimerApellido = inputPrimerApellido.value;
+    let sSegundoApellido = inputSegundoApellido.value;
+    let sCurso  = inputCurso .value;
+    //let sPeriodo  = inputPeriodo .value;
+    let sGrupo  = inputGrupo .value;
+    //let nCantidadAlumnos = Number(inputCantidadAlumnos.value);
+    //let shorario = inputHorario.value;
+    let sCedula  = inputGrupo .value;
+
+
+    if(sSegundoNombre == ''){
+        sSegundoNombre = ' ';
     }
 
+    if(sGrupo == ''){
+        sGrupo = ' ';
+    }
+
+    let bError = false;
+
+    bError = validar();
+    let respuesta;
 
 
+    if(bError == true){
 
+        swal({
+            type : 'warning',
+            title : 'No se pudo registrar la solicitud', //cambiar example según lo que se esté registrando
+            text: 'Por favor revise los campos resaltados', //
+            confirmButtonText : 'Aceptar'
+        });
+
+    }else{
+
+        //cambiar Example y parámetros de la función por lo que se esté registrando, pornerlo en singular
+        respuesta = modificarSolicitudes(_id, sPrimerNombre, sSegundoNombre, sPrimerApellido, sSegundoApellido, sCurso,/* sPeriodo,*/ sGrupo,
+        /*nCantidadAlumnos, shorario*/);
+
+        if (respuesta.success == true){
+
+             //esta funcion está en el servicio
+            swal({
+                type: 'success',
+                title: 'Transacción Procesada',
+                text: "Se registró la solicitud con éxito!",
+                showCancelButton: true,
+                reverseButtons: true,
+                confirmButtonText: 'Volver a la lista',
+                cancelButtonText: 'Continuar Aqui',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#556566',
+                }).then((result) => {
+                    if(result.value){
+                        window.location.href = "solicitud-asistente_listar.html";
+                        }
+                    });
+        }else{
+
+            swal({
+                type: 'error',
+                title: 'Problemas de conexión',
+                text: 'Por favor contactar al administrador',
+                confirmButtonText: 'Aceptar'
+            });
+
+        }
+
+
+        //este nombre queda igual
+        limpiarFormulario();
+        botonModificar.hidden = false;
+        botonRegistrar.hidden = true;
+    }
 };
+
+
+
+function cargarPagina(){
+    window.location.replace('solicitud-asistente_registrar.html');
+};
+
+window.onload = function() {
+    cargarDatosModificar();
+};
+
+function cargarDatosModificar(){
+
+    let solicitud = [];
+
+    solicitud = getSolicitudParaModificar();
+    if (solicitud[0]!=undefined){
+
+        inputPrimerNombre.value = solicitud[0];
+        inputSegundoNombre.value = solicitud[1];
+        inputPrimerApellido.value = solicitud[2];
+        inputSegundoApellido.value = solicitud[3];
+        inputCurso.value = solicitud[4];
+        inputGrupo.value = solicitud[5];
+        inputCedulaProfesor.value = solicitud[6];
+
+
+        solicitud = [];
+        localStorage.setItem("solicitudParaModificar", JSON.stringify(solicitud));
+        botonModificar.hidden = false;
+        botonRegistrar.hidden = true;
+    }
+};
+
+function getSolicitudParaModificar() {
+    return JSON.parse(localStorage.getItem("solicitudParaModificar"));
+}
+
 
 //en esta función solo hay que cambiar los input por lo que se requiera, todo lo demas queda igual
 function validar(){
@@ -158,6 +276,7 @@ function validar(){
     return bError;
 };
 
+
 //en esta función solo hay que cambiar los input por lo que se requiera, todo lo demas queda igual
 function limpiarFormulario(){
     inputPrimerNombre.value = '';
@@ -166,53 +285,9 @@ function limpiarFormulario(){
     inputSegundoApellido.value = '';
     inputCurso.value = '';
     inputGrupo.value = '';
+    //    inputGrupo.value = '';
+
     //inputPeriodo.value = '';
     //inputCantidadAlumnos.value = 0;
     //inputHorario.value = '';
-}
-
-
-
-function cargar_pagina(){
-    window.location.replace('solicitud_registrar.html');
-};
-
-window.onload = function() {
-    cargarDatosRegistrar();
-   };
-
-function cargarDatosRegistrar(){
-
-    let usuario = [];
-
-
-    usuario = getSolicitudParaModificar();
-    if (solicitud[0]!='undefined'){
-
-
-        inputNombre.value = solicitud[0];
-        inputSegundoNombre.value = solicitud[1];
-        inputPrimerApellido.value = solicitud[2];
-        inputSegundoApellido.value = solicitud[3];
-        inputCedula.value = solicitud[4];
-        inputFechaIngreso.value = solicitud[5];
-        inputRol.value = solicitud[6];
-        inputDireccion.value = solicitud[7];
-        inputDistrito.value = solicitud[8];
-        inputCanton.value = solicitud[9];
-        inputProvincia.value = solicitud[10];
-        inputTelefono.value = solicitud[11];
-        inputCorreo.value = solicitud[12];
-        inputId.value = solicitud[13];
-
-
-        solicitud = [];
-        localStorage.setItem("solicitudParaModificar", JSON.stringify(solicitud));
-        botonModificar.hidden = false;
-        botonRegistrar.hidden = true;
-    }
-};
-
-function getSolicitudParaModificar() {
-    return JSON.parse(localStorage.getItem("solicitudParaModificar"));
 }
