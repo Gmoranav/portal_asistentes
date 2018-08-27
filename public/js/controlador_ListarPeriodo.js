@@ -208,7 +208,8 @@ function remover_periodo() {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Desactivar'
+        confirmButtonText: 'Desactivar',
+        cancelButtonText: 'Cancelar'
     }).then((result) => {
         if (result.value) {
             desactivar_periodo(_id, estado);  //funcion en servicio_ListarPeriodo.js
