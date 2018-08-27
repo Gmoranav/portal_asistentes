@@ -9,10 +9,11 @@ Responsabilidades del controlador
 
 'use strict';
 
+//let banderaModificar = false;
+
 //dejar este nombre del botón igual a como está aquí y dejarlo igual en el HTML: btnRegistrar
 const botonRegistrar = document.querySelector('#btnRegistrar');
 const botonModificar = document.querySelector('#btnModificar');
-
 
 //estos nombres cambiarlos por lo que corresponda en el html
 //manejarlos en singular
@@ -21,7 +22,7 @@ const inputPrimerNombre = document.querySelector('#txtPrimerNombre');
 const inputSegundoNombre = document.querySelector('#txtSegundoNombre');
 const inputPrimerApellido = document.querySelector('#txtPrimerApellido');
 const inputSegundoApellido = document.querySelector('#txtSegundoApellido');
-//const inputCurso = document.querySelector('#txtCurso');
+const inputCurso = document.querySelector('#txtCurso');
 //const inputPeriodo = document.querySelector('#txtPeriodo');
 const inputGrupo = document.querySelector('#txtGrupo');
 //const inputCantidadAlumnos = document.querySelector('#numCantidadAlumnos');
@@ -35,7 +36,9 @@ inputFiltro.addEventListener('keyup' , function(){
 });*/
 
 botonRegistrar.addEventListener('click' , obtenerDatosFormulario);
-//botonModificar.addEventListener('click' , obtenerDatosFormularioModicar);
+if (botonModificar){
+  botonModificar.addEventListener('click' , obtenerDatosFormularioModicar);
+}
 
 
 //el nombre de esta función se mantiene
@@ -79,7 +82,7 @@ function obtenerDatosFormulario(){
     }else{
 
         //cambiar Example y parámetros de la función por lo que se esté registrando, pornerlo en singular
-        respuesta = registrarSolicitudes(sPrimerNombre, sSegundoNombre, sPrimerApellido, sSegundoApellido/*, sCurso, sPeriodo, sGrupo,
+        respuesta = registrarSolicitudes(sPrimerNombre, sSegundoNombre, sPrimerApellido, sSegundoApellido, sCurso, /*sPeriodo,*/ sGrupo/*,
         nCantidadAlumnos, shorario*/);
 
         if (respuesta.success == true){
@@ -134,8 +137,12 @@ function obtenerDatosFormularioModicar(){
     let sGrupo  = inputGrupo .value;
     //let nCantidadAlumnos = Number(inputCantidadAlumnos.value);
     //let shorario = inputHorario.value;
-    let sCedula  = inputGrupo .value;
+    //let sCedula  = inputGrupo .value;
+    let _id = JSON.parse(localStorage.getItem("solicitudParaModificar"))[6];
 
+
+    bError = validar();
+    let respuesta;
 
     if(sSegundoNombre == ''){
         sSegundoNombre = ' ';
@@ -145,11 +152,7 @@ function obtenerDatosFormularioModicar(){
         sGrupo = ' ';
     }
 
-    let bError = false;
-
-    bError = validar();
-    let respuesta;
-
+    //let bError = false;
 
     if(bError == true){
 
@@ -160,10 +163,10 @@ function obtenerDatosFormularioModicar(){
             confirmButtonText : 'Aceptar'
         });
 
-    }else{
+    } else {
 
         //cambiar Example y parámetros de la función por lo que se esté registrando, pornerlo en singular
-        respuesta = modificarSolicitudes(_id, sPrimerNombre, sSegundoNombre, sPrimerApellido, sSegundoApellido, sCurso,/* sPeriodo,*/ sGrupo,
+        respuesta = modificarSolicitudes(_id, sPrimerNombre, sSegundoNombre, sPrimerApellido, sSegundoApellido, sCurso,/*sPeriodo,*/ sGrupo
         /*nCantidadAlumnos, shorario*/);
 
         if (respuesta.success == true){
@@ -195,12 +198,11 @@ function obtenerDatosFormularioModicar(){
 
         }
 
-
         //este nombre queda igual
         limpiarFormulario();
         botonModificar.hidden = false;
         botonRegistrar.hidden = true;
-    }
+    };
 };
 
 
@@ -218,7 +220,8 @@ function cargarDatosModificar(){
     let solicitud = [];
 
     solicitud = getSolicitudParaModificar();
-    if (solicitud[0]!=undefined){
+    if (solicitud[0]!='undefined'){
+        if (inputPrimerNombre){
 
         inputPrimerNombre.value = solicitud[0];
         inputSegundoNombre.value = solicitud[1];
@@ -226,13 +229,16 @@ function cargarDatosModificar(){
         inputSegundoApellido.value = solicitud[3];
         inputCurso.value = solicitud[4];
         inputGrupo.value = solicitud[5];
-        inputCedulaProfesor.value = solicitud[6];
+        inputId.value = solicitud[6];
+
+        //inputCedulaProfesor.value = solicitud[6];
 
 
         solicitud = [];
         localStorage.setItem("solicitudParaModificar", JSON.stringify(solicitud));
         botonModificar.hidden = false;
         botonRegistrar.hidden = true;
+      }
     }
 };
 

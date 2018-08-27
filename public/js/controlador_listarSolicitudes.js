@@ -58,7 +58,7 @@ function imprimirListaSolicitudes(plistaSolicitudes, pFiltro){
         Están en la sección data{}.  NO los que vienen por parámetro sino lo que se declaran en
         la función.  Se deben colocar en el mismo orden*/
 
-        if(!plistaSolicitudes[i]['estado']==0){
+      /*  if(!plistaSolicitudes[i]['estado']==0){*/
            if(plistaSolicitudes[i]['grupo'].toLowerCase().includes(pFiltro.toLowerCase())){
 
         //if(let i = 0; i < plistaSolicitudes.length; i++){
@@ -149,7 +149,7 @@ function imprimirListaSolicitudes(plistaSolicitudes, pFiltro){
             cConfiguracion.appendChild(botonDesactivar);
             cConfiguracion.appendChild(botonDetalleSolicitud);
         }
-    }}
+    }/*}*/
 };
 
 //en esta función solo hay que cambiar los input por lo que se requiera, todo lo demas queda igual
@@ -216,10 +216,10 @@ function buscarId(){
         datosSolicitud[5] = solicitud['grupos'];/*
         datosSolicitud[5] = Grupo['profesores'];
         datosSolicitud[5] = Grupo['cantidad_alumnos'];
-        datosSolicitud[5] = Grupo[''];9*/
+        datosSolicitud[5] = Grupo[''];*/
 
-        datosSolicitud[5] = solicitud['estado'];
-        datosSolicitud[13] = solicitud['_id'];
+        /*datosSolicitud[6] = solicitud['estado'];*/
+        datosSolicitud[6] = solicitud['_id'];
 
         setSolicitudParaModificar(datosSolicitud);
         cargarPagina();
@@ -263,6 +263,7 @@ function desactivarSolicitud(){
 };
 
 function mostrarDetalleSolicitud(){
+
       let _id = this.dataset._id;
       let solicitud = obtenerSolicitudId(_id);
       let mostrarDetalleSolicitud = [];
@@ -288,9 +289,10 @@ function mostrarDetalleSolicitud(){
       let nCedula = mostrarDetalleSolicitud[4] ;
 
       let tbody = document.querySelector('#tblDetalleSolicitud');
+      tbody.innerHTML = '';
 
       //let filaNombreProfesor = tbody.insertRow();
-      let filaNombreAlumno = tbody.insertRow();
+      let filaNombreEstudiante = tbody.insertRow();
       let filaCurso  = tbody.insertRow();
       let filaGrupo  = tbody.insertRow();
       let filaPeriodo  = tbody.insertRow();
@@ -315,9 +317,9 @@ function mostrarDetalleSolicitud(){
       let sNombreAlumno = filaNombreEstudiante.insertCell();
       //sNombre.innerHTML = mostrarDetalleSolicitud[0];
       if (sSegundoNombre != 'undefined'){
-          sNombreAlumno.innerHTML = nCedula.concat(' - ',sPrimerApellido,' ', sSegundoApellido, ', ', sPrimerNombre, ' ', sSegundoNombre);
+          sNombreAlumno.innerHTML = sPrimerApellido.concat(' ', sSegundoApellido, ', ', sPrimerNombre, ' ', sSegundoNombre);
       }else{
-          sNombreAlumno.innerHTML = nCedula.concat(' - ',sPrimerApellido,', ', sSegundoApellido, ' ', sPrimerNombre);
+          sNombreAlumno.innerHTML = sPrimerApellido.concat(' ', sSegundoApellido, ', ', sPrimerNombre);
       }
 /***************************/
       let sCurso = filaCurso.insertCell();
@@ -342,6 +344,7 @@ function mostrarDetalleSolicitud(){
 };
 
 function mostrarDetalleSolicitudRectoria(){
+
       let _id = this.dataset._id;
       let solicitud = obtenerSolicitudId(_id);
       let mostrarDetalleSolicitud = [];
@@ -369,7 +372,7 @@ function mostrarDetalleSolicitudRectoria(){
       let tbody = document.querySelector('#tblDetalleSolicitud');
 
       //let filaNombreProfesor = tbody.insertRow();
-      let filaNombreAlumno = tbody.insertRow();
+      let filaNombreEstudiante = tbody.insertRow();
       let filaCurso  = tbody.insertRow();
       let filaGrupo  = tbody.insertRow();
       let filaPeriodo  = tbody.insertRow();
