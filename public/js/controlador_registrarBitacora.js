@@ -1,6 +1,7 @@
 
 'use strict';
 
+llenar_select_cursos();
 
 const botonRegistrar = document.querySelector('#btnAgregarRegistrosBitacora');
 const botonModificar = document.querySelector('#btnModificarRegistrosBitacora');
@@ -8,13 +9,15 @@ const botonModificar = document.querySelector('#btnModificarRegistrosBitacora');
 botonModificar.hidden = true;
 
 const inputFecha = document.querySelector('#txtFecha');
-const inputHoraInicio = document.getElementById('#tmHoraInicio');
-const inputHoraFin= document.querySelector('#tmHoraFin');
+const inputHoraInicio = document.querySelector('#txtHoraInicio');
+const inputHoraFin = document.querySelector('#txtHoraFin');
+//const inputHoraInicio = document.getElementById('#tmHoraInicio');
+//const inputHoraFin= document.getElementById('#tmHoraFin');
 const inputDescripcion = document.querySelector('#txtDescripcion');
 const inputId = document.querySelector('#txtId');
 
 botonRegistrar.addEventListener('click' , obtenerDatosFormulario);
-botonModificar.addEventListener('click' , obtenerDatosModificar);
+//botonModificar.addEventListener('click' , obtenerDatosModificar);
 
 function obtenerDatosFormulario(){
     
@@ -35,13 +38,13 @@ function obtenerDatosFormulario(){
    
         
         let sFecha = inputFecha.value; 
-        let tmHoraInicio = inputHoraInicio.value;
-        let tmHoraFin = inputHoraFin.value;
+        let sHoraInicio = inputHoraInicio.value;
+        let sHoraFin = inputHoraFin.value;
         let sDescripcion = inputDescripcion.value;
-        let estado = 0;
+        let estado = 1;
        
         
-        respuesta = registrar_bitacora(sFecha, tmHoraInicio, tmHoraFin, sDescripcion, estado);//esta funcion está en el servicio
+        respuesta = registrar_bitacora(sFecha, sHoraInicio, sHoraFin, sDescripcion, estado);//esta funcion está en el servicio
 
         if (respuesta.success = true){
             swal({
@@ -77,7 +80,7 @@ function obtenerDatosFormulario(){
 
 
 
-function obtenerDatosModificar(){
+/*function obtenerDatosModificar(){
     
     let bError = false;
     let respuesta;
@@ -135,7 +138,7 @@ function obtenerDatosModificar(){
         botonRegistrar.hidden = false;
     }
     
-};
+};*/
 
 
 function validar(){
@@ -151,13 +154,26 @@ function validar(){
         inputFecha.classList.remove('input_error');
     }
     //Validación de la descripcion
-    if(sDescripcion.value == '' || (regexSoloLetras.test(sDescripcion.value)==false)){
-        sDescripcion.classList.add('input_error');
+    if(inputDescripcion.value == '' || (regexSoloLetras.test(inputDescripcion.value)==false)){
+        inputDescripcion.classList.add('input_error');
         bError = true;
     }else{
-        sDescripcion.classList.remove('input_error');
+        inputDescripcion.classList.remove('input_error');
     }
-
+    //Validación de la hora inicio
+    if(inputHoraInicio.value == '' ){
+        inputHoraInicio.classList.add('input_error');
+        bError = true;
+    }else{
+        inputHoraInicio.classList.remove('input_error');
+    }
+    //Validación de la hora fin
+    if(inputHoraFin.value == '' ){
+        inputHoraFin.classList.add('input_error');
+        bError = true;
+    }else{
+        inputHoraFin.classList.remove('input_error');
+    }
     return bError;
 };
 
@@ -171,7 +187,7 @@ function limpiarFormulario(){
 };
 
 
-function cargar_pagina(){
+/*function cargar_pagina(){
     window.location.replace('bitacora_registrar.html');
 };
 
@@ -200,11 +216,50 @@ function cargar_datos_modificar(){
         botonModificar.hidden = false;
         botonRegistrar.hidden = true;
     }
+};*/
+
+
+function llenar_select_cursos(){
+    let selectCursos = document.querySelector('#sltCurso');
+    let lista_Cursos = getListaCursos();
+    for(let i = 0; i < lista_Cursos.length; i++){
+        let nuevoCurso = new Option(lista_Cursos[i]);// texto a visualizar
+        nuevoCurso.value = lista_Cursos[i];
+
+        selectCursos.options.add(nuevoCurso);
+    }
 };
 
-function getBitacoraParaModificar() {
-    return JSON.parse(localStorage.getItem("bitacoraParaModificar"));
-}
 
+function getListaCursos(){
+    let info_usuario = getCedulaUsuario();
 
-    
+    let lista_bitacoras = obtenerListaBitacoras();
+    let cursos = [];
+
+    switch (info_usuario[1]) {
+        case 'AsistenteProfesor':
+            for (let i = 0; i < lista_bitacoras.length; i++) {
+                if (lista_bitacoras[i]["cedula_asistente"] == info_usuario[0]) {
+                    console.log(lista_bitacoras[i]["cedula_asistente"]);
+                    cursos [i]=lista_bitacoras[i]["curso"];
+                }//fin if
+            }//fin for
+            break;
+        case 'Profesor':
+            for (let i = 0; i < lista_bitacoras.length; i++) {
+                if (lista_bitacoras[i]["cedula_profesor"] == info_usuario[0]) {
+                    console.log(lista_bitacoras[i]["cedula_profesor"]);
+                    cursos [i]=lista_bitacoras[i]["curso"];
+                }//fin if
+            }//fin for
+            break;
+        //case 'AsistenteDecanatura' || 'AsistenteDecanatura' || 'Rectoría':
+        default:
+            for (let i = 0; i < lista_bitacoras.length; i++) {
+                cursos [i]=lista_bitacoras[i]["curso"];
+            }//fin for
+            break;
+    }
+    return cursos;
+};
