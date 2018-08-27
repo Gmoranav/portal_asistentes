@@ -38,63 +38,68 @@ function imprimirListaGrupos(){
     //Cambiar Examples por lo que se vaya a listar, usar nombre en plural (ejemplo: cursos, sedes...)
     for(let i = 0; i < listaGrupos.length; i++){
 
-        if (listaGrupos[i]['laboratorio'].toLowerCase().includes(filtroGrupo.toLowerCase()) ){
-            let fila = tbody.insertRow();
+
+        if (listaGrupos[i]['estado'] == 1) {
+
+            if (listaGrupos[i]['laboratorio'].toLowerCase().includes(filtroGrupo.toLowerCase()) ){
+                let fila = tbody.insertRow();
+                
+                let cSede = fila.insertCell();
+                let cCarrera = fila.insertCell();
+                let cCurso = fila.insertCell();
+                let cLaboratorio = fila.insertCell();
+                let cEstudiantes = fila.insertCell();
+                let cNombre = fila.insertCell();
+                let cConfiguracion = fila.insertCell();
+
+                
+                cSede.innerHTML = listaGrupos[i]['sedeGrupo'];
+                cCarrera.innerHTML = listaGrupos[i]['carreraGrupo'];
+                cCurso.innerHTML = listaGrupos[i]['cursoGrupo'];
+                cLaboratorio.innerHTML = listaGrupos[i]['laboratorio'];
+                cEstudiantes.innerHTML = listaGrupos[i]['cantidad_de_estudiantes'];
+                cNombre.innerHTML = listaGrupos[i]['nombre'];
+
+                //se crean los componentes para modificar
+                let botonModificar = document.createElement('a');
+                botonModificar.classList.add('fas');
+                botonModificar.classList.add('fa-pencil-alt');
+                botonModificar.classList.add('tooltip');
+
+                let tooltipModificar = document.createElement('span');
+                tooltipModificar.textContent = "Editar";
+                tooltipModificar.setAttribute('class', 'tooltiptext');
+                botonModificar.appendChild(tooltipModificar);
+
+                let botonDesactivar = document.createElement('a');
+                botonDesactivar.classList.add('fas');
+                botonDesactivar.classList.add('fa-ban');
+                botonDesactivar.classList.add('tooltip');
+
+                let tooltipDesactivar = document.createElement('span');
+                tooltipDesactivar.textContent = "Desactivar";
+                tooltipDesactivar.setAttribute('class', 'tooltiptext');
+                botonDesactivar.appendChild(tooltipDesactivar);
+
+                //dataset es una 
+                //propiedad que permite definir atributos personalizados
+                //para un elemento de html
+                botonModificar.dataset._id = listaGrupos[i]['_id'];
+                botonDesactivar.dataset._id = listaGrupos[i]['_id'];
+
+
+                //un eventListener queda enlazado a la función que llama
+                botonModificar.addEventListener('click', buscar_por_id);
+                botonDesactivar.addEventListener('click', desactivar_grupo);
+
+
+
+
+                cConfiguracion.appendChild(botonModificar);
+                cConfiguracion.appendChild(botonDesactivar);
             
-            let cSede = fila.insertCell();
-            let cCarrera = fila.insertCell();
-            let cCurso = fila.insertCell();
-            let cLaboratorio = fila.insertCell();
-            let cEstudiantes = fila.insertCell();
-            let cNombre = fila.insertCell();
-            let cConfiguracion = fila.insertCell();
+            }
 
-            
-            cSede.innerHTML = listaGrupos[i]['sedeGrupo'];
-            cCarrera.innerHTML = listaGrupos[i]['carreraGrupo'];
-            cCurso.innerHTML = listaGrupos[i]['cursoGrupo'];
-            cLaboratorio.innerHTML = listaGrupos[i]['laboratorio'];
-            cEstudiantes.innerHTML = listaGrupos[i]['cantidad_de_estudiantes'];
-            cNombre.innerHTML = listaGrupos[i]['nombre'];
-
-            //se crean los componentes para modificar
-            let botonModificar = document.createElement('a');
-            botonModificar.classList.add('fas');
-            botonModificar.classList.add('fa-pencil-alt');
-            botonModificar.classList.add('tooltip');
-
-            let tooltipModificar = document.createElement('span');
-            tooltipModificar.textContent = "Editar";
-            tooltipModificar.setAttribute('class', 'tooltiptext');
-            botonModificar.appendChild(tooltipModificar);
-
-            let botonDesactivar = document.createElement('a');
-            botonDesactivar.classList.add('fas');
-            botonDesactivar.classList.add('fa-ban');
-            botonDesactivar.classList.add('tooltip');
-
-            let tooltipDesactivar = document.createElement('span');
-            tooltipDesactivar.textContent = "Desactivar";
-            tooltipDesactivar.setAttribute('class', 'tooltiptext');
-            botonDesactivar.appendChild(tooltipDesactivar);
-
-            //dataset es una 
-            //propiedad que permite definir atributos personalizados
-            //para un elemento de html
-            botonModificar.dataset._id = listaGrupos[i]['_id'];
-            botonDesactivar.dataset._id = listaGrupos[i]['_id'];
-
-
-            //un eventListener queda enlazado a la función que llama
-            botonModificar.addEventListener('click', buscar_por_id);
-            botonDesactivar.addEventListener('click', desactivar_grupo);
-
-
-
-
-            cConfiguracion.appendChild(botonModificar);
-            cConfiguracion.appendChild(botonDesactivar);
-        
         }
     }
 
@@ -117,63 +122,67 @@ function imprimirListaGruposFiltroEstudiantes(){
     //Cambiar Examples por lo que se vaya a listar, usar nombre en plural (ejemplo: cursos, sedes...)
     for(let i = 0; i < listaGrupos.length; i++){
 
-        if (listaGrupos[i]['cantidad_de_estudiantes'].includes(filtroGrupo1) ){
-            let fila = tbody.insertRow();
+        if (listaGrupos[i]['estado'] == 1) {
+
+            if (listaGrupos[i]['cantidad_de_estudiantes'].includes(filtroGrupo1) ){
+                let fila = tbody.insertRow();
+                
+                let cSede = fila.insertCell();
+                let cCarrera = fila.insertCell();
+                let cCurso = fila.insertCell();
+                let cLaboratorio = fila.insertCell();
+                let cEstudiantes = fila.insertCell();
+                let cNombre = fila.insertCell();
+                let cConfiguracion = fila.insertCell();
+
+                
+                cSede.innerHTML = listaGrupos[i]['sedeGrupo'];
+                cCarrera.innerHTML = listaGrupos[i]['carreraGrupo'];
+                cCurso.innerHTML = listaGrupos[i]['cursoGrupo'];
+                cLaboratorio.innerHTML = listaGrupos[i]['laboratorio'];
+                cEstudiantes.innerHTML = listaGrupos[i]['cantidad_de_estudiantes'];
+                cNombre.innerHTML = listaGrupos[i]['nombre'];
+
+                //se crean los componentes para modificar
+                let botonModificar = document.createElement('a');
+                botonModificar.classList.add('fas');
+                botonModificar.classList.add('fa-pencil-alt');
+                botonModificar.classList.add('tooltip');
+
+                let tooltipModificar = document.createElement('span');
+                tooltipModificar.textContent = "Editar";
+                tooltipModificar.setAttribute('class', 'tooltiptext');
+                botonModificar.appendChild(tooltipModificar);
+
+                let botonDesactivar = document.createElement('a');
+                botonDesactivar.classList.add('fas');
+                botonDesactivar.classList.add('fa-ban');
+                botonDesactivar.classList.add('tooltip');
+
+                let tooltipDesactivar = document.createElement('span');
+                tooltipDesactivar.textContent = "Desactivar";
+                tooltipDesactivar.setAttribute('class', 'tooltiptext');
+                botonDesactivar.appendChild(tooltipDesactivar);
+
+                //dataset es una 
+                //propiedad que permite definir atributos personalizados
+                //para un elemento de html
+                botonModificar.dataset._id = listaGrupos[i]['_id'];
+                botonDesactivar.dataset._id = listaGrupos[i]['_id'];
+
+
+                //un eventListener queda enlazado a la función que llama
+                botonModificar.addEventListener('click', buscar_por_id);
+                botonDesactivar.addEventListener('click', desactivar_grupo);
+
+
+
+
+                cConfiguracion.appendChild(botonModificar);
+                cConfiguracion.appendChild(botonDesactivar);
             
-            let cSede = fila.insertCell();
-            let cCarrera = fila.insertCell();
-            let cCurso = fila.insertCell();
-            let cLaboratorio = fila.insertCell();
-            let cEstudiantes = fila.insertCell();
-            let cNombre = fila.insertCell();
-            let cConfiguracion = fila.insertCell();
+            }
 
-            
-            cSede.innerHTML = listaGrupos[i]['sedeGrupo'];
-            cCarrera.innerHTML = listaGrupos[i]['carreraGrupo'];
-            cCurso.innerHTML = listaGrupos[i]['cursoGrupo'];
-            cLaboratorio.innerHTML = listaGrupos[i]['laboratorio'];
-            cEstudiantes.innerHTML = listaGrupos[i]['cantidad_de_estudiantes'];
-            cNombre.innerHTML = listaGrupos[i]['nombre'];
-
-            //se crean los componentes para modificar
-            let botonModificar = document.createElement('a');
-            botonModificar.classList.add('fas');
-            botonModificar.classList.add('fa-pencil-alt');
-            botonModificar.classList.add('tooltip');
-
-            let tooltipModificar = document.createElement('span');
-            tooltipModificar.textContent = "Editar";
-            tooltipModificar.setAttribute('class', 'tooltiptext');
-            botonModificar.appendChild(tooltipModificar);
-
-            let botonDesactivar = document.createElement('a');
-            botonDesactivar.classList.add('fas');
-            botonDesactivar.classList.add('fa-ban');
-            botonDesactivar.classList.add('tooltip');
-
-            let tooltipDesactivar = document.createElement('span');
-            tooltipDesactivar.textContent = "Desactivar";
-            tooltipDesactivar.setAttribute('class', 'tooltiptext');
-            botonDesactivar.appendChild(tooltipDesactivar);
-
-            //dataset es una 
-            //propiedad que permite definir atributos personalizados
-            //para un elemento de html
-            botonModificar.dataset._id = listaGrupos[i]['_id'];
-            botonDesactivar.dataset._id = listaGrupos[i]['_id'];
-
-
-            //un eventListener queda enlazado a la función que llama
-            botonModificar.addEventListener('click', buscar_por_id);
-            botonDesactivar.addEventListener('click', desactivar_grupo);
-
-
-
-
-            cConfiguracion.appendChild(botonModificar);
-            cConfiguracion.appendChild(botonDesactivar);
-        
         }
     }
 
@@ -196,63 +205,69 @@ function imprimirListaGruposFiltroNombre(){
     //Cambiar Examples por lo que se vaya a listar, usar nombre en plural (ejemplo: cursos, sedes...)
     for(let i = 0; i < listaGrupos.length; i++){
 
-        if (listaGrupos[i]['nombre'].toLowerCase().includes(filtroGrupo2.toLowerCase()) ){
-            let fila = tbody.insertRow();
-            
-            let cSede = fila.insertCell();
-            let cCarrera = fila.insertCell();
-            let cCurso = fila.insertCell();
-            let cLaboratorio = fila.insertCell();
-            let cEstudiantes = fila.insertCell();
-            let cNombre = fila.insertCell();
-            let cConfiguracion = fila.insertCell();
-
-            
-            cSede.innerHTML = listaGrupos[i]['sedeGrupo'];
-            cCarrera.innerHTML = listaGrupos[i]['carreraGrupo'];
-            cCurso.innerHTML = listaGrupos[i]['cursoGrupo'];
-            cLaboratorio.innerHTML = listaGrupos[i]['laboratorio'];
-            cEstudiantes.innerHTML = listaGrupos[i]['cantidad_de_estudiantes'];
-            cNombre.innerHTML = listaGrupos[i]['nombre'];
-
-            //se crean los componentes para modificar
-            let botonModificar = document.createElement('a');
-            botonModificar.classList.add('fas');
-            botonModificar.classList.add('fa-pencil-alt');
-            botonModificar.classList.add('tooltip');
-
-            let tooltipModificar = document.createElement('span');
-            tooltipModificar.textContent = "Editar";
-            tooltipModificar.setAttribute('class', 'tooltiptext');
-            botonModificar.appendChild(tooltipModificar);
-
-            let botonDesactivar = document.createElement('a');
-            botonDesactivar.classList.add('fas');
-            botonDesactivar.classList.add('fa-ban');
-            botonDesactivar.classList.add('tooltip');
-
-            let tooltipDesactivar = document.createElement('span');
-            tooltipDesactivar.textContent = "Desactivar";
-            tooltipDesactivar.setAttribute('class', 'tooltiptext');
-            botonDesactivar.appendChild(tooltipDesactivar);
-
-            //dataset es una 
-            //propiedad que permite definir atributos personalizados
-            //para un elemento de html
-            botonModificar.dataset._id = listaGrupos[i]['_id'];
-            botonDesactivar.dataset._id = listaGrupos[i]['_id'];
-
-
-            //un eventListener queda enlazado a la función que llama
-            botonModificar.addEventListener('click', buscar_por_id);
-            botonDesactivar.addEventListener('click', desactivar_grupo);
-
-
-
-
-            cConfiguracion.appendChild(botonModificar);
-            cConfiguracion.appendChild(botonDesactivar);
         
+        if (listaGrupos[i]['estado'] == 1) {
+
+            
+            if (listaGrupos[i]['nombre'].toLowerCase().includes(filtroGrupo2.toLowerCase()) ){
+                let fila = tbody.insertRow();
+                
+                let cSede = fila.insertCell();
+                let cCarrera = fila.insertCell();
+                let cCurso = fila.insertCell();
+                let cLaboratorio = fila.insertCell();
+                let cEstudiantes = fila.insertCell();
+                let cNombre = fila.insertCell();
+                let cConfiguracion = fila.insertCell();
+
+                
+                cSede.innerHTML = listaGrupos[i]['sedeGrupo'];
+                cCarrera.innerHTML = listaGrupos[i]['carreraGrupo'];
+                cCurso.innerHTML = listaGrupos[i]['cursoGrupo'];
+                cLaboratorio.innerHTML = listaGrupos[i]['laboratorio'];
+                cEstudiantes.innerHTML = listaGrupos[i]['cantidad_de_estudiantes'];
+                cNombre.innerHTML = listaGrupos[i]['nombre'];
+
+                //se crean los componentes para modificar
+                let botonModificar = document.createElement('a');
+                botonModificar.classList.add('fas');
+                botonModificar.classList.add('fa-pencil-alt');
+                botonModificar.classList.add('tooltip');
+
+                let tooltipModificar = document.createElement('span');
+                tooltipModificar.textContent = "Editar";
+                tooltipModificar.setAttribute('class', 'tooltiptext');
+                botonModificar.appendChild(tooltipModificar);
+
+                let botonDesactivar = document.createElement('a');
+                botonDesactivar.classList.add('fas');
+                botonDesactivar.classList.add('fa-ban');
+                botonDesactivar.classList.add('tooltip');
+
+                let tooltipDesactivar = document.createElement('span');
+                tooltipDesactivar.textContent = "Desactivar";
+                tooltipDesactivar.setAttribute('class', 'tooltiptext');
+                botonDesactivar.appendChild(tooltipDesactivar);
+
+                //dataset es una 
+                //propiedad que permite definir atributos personalizados
+                //para un elemento de html
+                botonModificar.dataset._id = listaGrupos[i]['_id'];
+                botonDesactivar.dataset._id = listaGrupos[i]['_id'];
+
+
+                //un eventListener queda enlazado a la función que llama
+                botonModificar.addEventListener('click', buscar_por_id);
+                botonDesactivar.addEventListener('click', desactivar_grupo);
+
+
+
+
+                cConfiguracion.appendChild(botonModificar);
+                cConfiguracion.appendChild(botonDesactivar);
+            
+            }
+
         }
     }
 
