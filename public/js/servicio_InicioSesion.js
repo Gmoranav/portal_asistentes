@@ -17,6 +17,10 @@ function autenticar_credenciales(cedula, contrasenna) {
             console.log(lista_usuarios[i]["cedula"]);
             console.log(lista_usuarios[i]["contrasenna"]);
             setUsuarioSessionStorage(lista_usuarios[i]);
+
+            //este ID lo utilizo para modificar el password del usuario
+            localStorage.setItem('idUsuario', JSON.stringify(lista_usuarios[i]["_id"]));
+
             valido [0] = true;
             if (lista_usuarios[i]["ingresos"] == 0){
                 valido [1] = true;

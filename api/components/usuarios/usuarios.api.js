@@ -133,3 +133,122 @@ module.exports.desactivar_usuario = function (req, res) {
             }
         });
 };
+
+
+
+
+
+
+
+
+
+//CAMBIAR CONTRASENNA
+module.exports.cambiar_contrasenna = function(req, res){
+    usuarioModel.findByIdAndUpdate(req.body._id, {$set: req.body},
+    function(error, user){
+        if(error){
+            res.json({ success: false, msg: 'El usuario no se ha podido modificar. ' +
+            handleError(error) });
+        }else{
+            res.json({success: true, msg: 'Se ha actualizado correctamente. ' + res});
+        }
+    });
+};
+
+
+
+
+
+/*// PARA RECUPERAR CONTRASENNA
+module.exports.recuperar_contrasenna = function (req, res) {
+    usuarioModel.findOneAndUpdate({ cedula: req.body.cedula }, { contrasenna: req.body.contrasenna }
+
+    ).then(
+        function (err) {
+            if (err) {
+                res.json({ success: false, msg: 'No se ha actualizado.' });
+
+                console.log("usuarios.api - error" + err)
+
+            } else {
+                res.json({ success: true, msg: 'Se ha actualizado correctamente.' + res });
+
+                console.log("usuarios.api - proceso completo")
+
+                correos.envio(
+                    {
+                        head: `
+                    <style>
+                        h1{
+                            bacground:tomatoe;
+                        }
+                    </style>`,
+                        body: `
+                    <h1> Su contraseña nueva es: ${req.body.contrasenna} </h1>
+                    `,
+                        to: req.body.correo,
+                        subject: 'Credenciales'
+                    }
+                )
+            }
+        });
+};
+*/
+
+module.exports.recuperar_contrasenna = function (req, res) {
+    usuarioModel.findOneAndUpdate({ cedula: req.body.cedula }, { contrasenna: req.body.contrasenna },
+    function (err, user) {
+            if (err) {
+                res.json({ success: false, msg: 'El usuario no se ha podido modificar. ' + handleError(err) });
+
+            } else {
+                res.json({ success: true, msg: 'Se ha actualizado correctamente. ' + res });
+                mailOptions.to = req.body.correo;
+                mailOptions.html = `
+                <html>
+                    <head>
+                        <style>
+                            h1{
+                                background: #ff7675;
+                                padding: 15px 0 15px 0;
+                                text-align: center;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <h1>Bienvenido ${req.body.nombre} </h1>
+                        <p>Sus datos de registro son </p>
+                        <table>
+                            <tr>
+                                <td>Nombre</td>
+                                <td>${req.body.nombre + ' ' + req.body.primer_apellido}</td>
+                            </tr>
+                            <tr>
+                                <td>Rol</td>
+                                <td>${req.body.rol}</td>
+                            </tr>
+                        </table>
+                        <p>Su usuario es:</p>
+                        <p>${req.body.cedula}</p>
+    
+                        <p>Su clave temporal es:</p>
+                        <p>${req.body.contrasenna}</p>
+    
+                    </body>
+                </html>
+                `;
+                transporter.sendMail(mailOptions, function(error, info){
+                    if(error){
+                        console.log(error);
+                    }else{
+                        console.log('Email sent: ' + info.response);
+                    }
+                });
+                res.json({ success: true, msj: ' El usuario ha sido registrado de forma exitosa'})
+
+
+       }   });
+
+};
+
+

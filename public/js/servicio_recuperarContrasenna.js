@@ -1,3 +1,5 @@
+'use strict';
+
 
 // para generar password random. 
 function generateRandomPassword() {

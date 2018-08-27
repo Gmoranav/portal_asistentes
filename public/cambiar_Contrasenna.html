@@ -13,46 +13,59 @@
 </head>
 
 <body>
-  <div  class="body-login">
-    <div class="body-login__container">
+    <div class="body-login">
+        <div class="body-login__container">
 
-        <div class="container-login">
-            <div class="container-login__name">
-                <img src="img/portal-asistentes.png" class="img-cenfotec">
+            <div class="container-login">
+                <div class="container-login__name">
+                    <img src="img/portal-asistentes.png" class="img-cenfotec">
+                </div>
+
+                <form class="container-login__form">
+
+                    <!-- input para guardar el id de mongo -->
+                    <input type="text" id="txtID" hidden>
+
+                    <div>
+                        <label class="textType-loginForm1"> Digite una nueva contraseña para continuar </label>
+                    </div>
+                    <div>
+                        <label class="textType-loginForm"> La contraseña deberá contener entre 8 y 10 caractéres </label>
+                    </div>
+
+                    <div class="form-row">
+                        <input type="password" placeholder="Digite una nueva Contraseña " id="txtContraseña1">
+                    </div>
+                    <div class="form-row">
+                        <input type="password" placeholder="Confirme su nueva Contraseña" id="txtContraseña2">
+                    </div>
+                    <button class="button button--principal" id="cambiarContrasenna" type="button">Continuar</button>
+                    <button class="button button--secundario" type="button" onclick="redireccionInicioSesion()" id="cancelarEnvioC">Cancelar</button>
+
+                </form>
             </div>
 
-            <form class="container-login__form">
-                <div>
-                    <label class="textType-loginForm1"> Digite una nueva contraseña para continuar </label>
-                </div>
-                <div>
-                    <label class="textType-loginForm"> La contraseña deberá contener entre 8 y 10 caractéres </label>
-                </div>
-                <div class="form-row">
-                    <input type="text" placeholder="Contraseña" id="txtContraseña1">
-                </div>
-                <div class="form-row">
-                    <input type="text" placeholder="Contraseña" id="txtContraseña2">
-                </div>
-                    <button class="button button--principal" id="cambiarContrasenna" type="button">Continuar</button>
-                    <button class="button button--secundario" type="button" onclick="redireccionInicioSesion()" id="cancelarEnvioC" >Cancelar</button>
-
-            </form>
         </div>
-
+        <div class="credits-klokwerk">
+            <span class="credits-klokwerk__1">Created by</span>
+            <span class="credits-klokwerk__2">Klokwerk</span>
+        </div>
     </div>
-    <div class="credits-klokwerk">
-        <span class="credits-klokwerk__1">Created by</span>
-        <span class="credits-klokwerk__2">Klokwerk</span>
-    </div>
-  </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.25.0/dist/sweetalert2.all.min.js"></script>
     <script src="js/jquery-3.3.1.js"></script>
-   <!-- <script src="js/components.js"></script>  -->
-    <script src="js/servicio_ListarUsuario.js"></script>
+
+    <!-- <script src="js/components.js"></script> 
+      <script src="js/servicio_ListarUsuario.js"></script> 
+
     <script src="js/servicio_recuperarContrasenna.js"></script>
-    <script src="js/controlador_recuperarContrasenna.js"></script>
+    <script src="js/controlador_recuperarContrasenna.js"></script> -->
+
+    <script src="js/servicio_CambiarContrasenna.js"></script>
+    <script src="js/controlador_CambiarContrasenna.js"></script>
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2"></script>
 
 </body>

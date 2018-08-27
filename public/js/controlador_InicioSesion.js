@@ -8,8 +8,6 @@ function redireccionRecuperarContrasenna() {
     window.location = "recuperar_Contrasenna.html";
 }
 
-
-
 // función que toma los datos del formulario inicio sesión
 function obtener_credenciales_usuario() {
 
@@ -31,6 +29,10 @@ function obtener_credenciales_usuario() {
 
         valido = validar_credenciales(cedula, contrasenna);
         if(valido[1] == true){//está ingresando por primera vez
+            
+            //guardo en el local storage la cedula para utilizarla en el formulario de cambio de contrasenna
+            localStorage.setItem('usuario', JSON.stringify(cedula));
+
             window.location = "cambiar_Contrasenna.html";
             console.log(valido);
             //cambiar_contrasenna(cedula);
@@ -74,32 +76,12 @@ function obtener_credenciales_usuario() {
             input_contrasenna.classList.remove('input_error');
         }
         return bError;
-
     };
-
-    /*
-        let valido = validar_credenciales(cedula, contrasenna);
-    
-        if (valido) {
-            console.log("Acceso permitido");
-            redireccionarUsuario();
-        } else {
-            console.log("Acceso denegado");
-        } */
-
 
 // funcion encargada de enviar los datos al servicio de autenticación para ver si existen entre los usuarios registrados
 function validar_credenciales(cedula, contrasenna) {
     let valido = autenticar_credenciales(cedula, contrasenna);
     return valido;
-
-}
-
-
-// debe crear un botón y asociarle un llamado a esta función para cerrar sesión
-function cerrarSesión() {
-    removerCredenciales();
-    window.location = "";
 }
 
 // aquí se colocan las rutas a donde quiera guiar cada tipo de usuario en cada case con windows.location = "rutaDeHtml"
@@ -112,6 +94,7 @@ function redireccionarUsuario() {
     nombreUsuario [2] = usuarioAutenticado.primer_apellido;
     nombreUsuario [3] = usuarioAutenticado.segundo_apellido;
     localStorage.setItem('nombreUsuario', JSON.stringify(nombreUsuario));
+    localStorage.setItem('idUsuario', JSON.stringify(nombreUsuario [0]));
 
     window.location = "dashboard.html";
 

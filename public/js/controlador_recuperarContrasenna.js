@@ -1,7 +1,4 @@
-
-function redireccionInicioSesion() {
-    window.location = "inicioSesion.html";
-}
+'use strict';
 
 let boton_recuperarContrasenna = document.querySelector('#enviarCorreo');
 

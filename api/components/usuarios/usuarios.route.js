@@ -29,4 +29,26 @@ router.route('/desactivar_usuario')
 });
 
 
+
+
+
+
+
+//para cambiar contrasena 
+router.route('/cambiar_contrasenna')
+.post(function(req, res){  //metodo post
+    usuariosApi.cambiar_contrasenna(req, res);
+    console.log("usuarios.route:  completado")
+});
+
+//para recuperar contrasena 
+router.route('/recuperar_contrasenna')
+.post(function(req, res){  //metodo post
+    usuariosApi.recuperar_contrasenna(req, res);
+    console.log("usuarios.route:  completado")
+});
+
 module.exports = router;
+
+
+
