@@ -33,7 +33,7 @@ function cambioContrasenna() {
     } else {
 
         let nuevaContrasenna = inputNuevaContrasenna.value;
-        let ingresos = 2;
+        let ingresos = 1;
         let idUsuario; //cedula del usuario que va a cambiar la contrasena 
 
         //funcion que va al servicio_CambiarContrasenna.js
