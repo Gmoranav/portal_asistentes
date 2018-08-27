@@ -109,8 +109,20 @@
         <main class="page">
             <form class="box-container">
                 <input type="text" id="txtId" hidden></input>
-                                    
                 
+                <!--fila rol-->
+                <div class="form-row ">
+                    <div class="form-group form-group-2">
+                        <label for="sltCurso">Curso
+                            <span>*</span>
+                        </label>
+                        <select id="sltCurso" requiered>
+                            <option value="">--Seleccione un curso--</option>
+                            
+                        </select>
+                    </div>
+                </div>
+
                 <!--Registros-->
                 <!--fila fecha-->
                 <div class="form-row">
@@ -118,31 +130,31 @@
                         <label for="txtFecha">Fecha
                             <span>*</span>
                         </label>
-                        <input type="text" id="txtFecha">
+                        <input type="text" id="txtFecha" placeholder="dd/mm/aaaa">
                     </div>
                 </div>
                 
                 <!--fila hora inicio-->
                 <div class="form-row">
                     <div class="form-group form-group-3">
-                        <label for="tmHoraInicio">Hora Inicio
+                        <label for="txtHoraInicio">Hora Inicio
                             <span>*</span>
                         </label>
-                        <input type="time" id="tmHoraInicio">
+                        <input type="text" id="txtHoraInicio" placeholder="05:00 p.m.">
                     </div>
                 </div>
                 <!--fila hora fin-->
                 <div class="form-row">
                     <div class="form-group form-group-3">
-                        <label for="tmHoraFin">Hora Fin
+                        <label for="txtHoraFin">Hora Fin
                             <span>*</span>
                         </label>
-                        <input type="time" id="tmHoraFin">
+                        <input type="text" id="txtHoraFin" placeholder="05:30 p.m.">
                     </div>
                 </div>
                 <!--descripcion-->
                 <div class="form-row">
-                    <div class="form-group form-group-2">
+                    <div class="form-group">
                         <label for="txtDescripcion">Descripción
                             <span>*</span>
                         </label>
@@ -152,7 +164,7 @@
                 
                 <div class="form-row buttons">
                     <a onclick="redireccionBitacoraListar()" class="button button--secundario" type="button" id="btnCancelar">Cancelar</a>
-                    <button class="button button--principal" type="button" id="btnAgregarRegistrosBitacora">Agregar Registro</button>
+                    <button class="button button--principal" type="button" id="btnAgregarRegistrosBitacora">Registrar</button>
                     <button class="button button--principal" type="button" id="btnModificarRegistrosBitacora">Modificar</button>
                 </div>
             </form>
@@ -162,8 +174,6 @@
     </div>
     <script src="js/jquery-3.3.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.25.0/dist/sweetalert2.all.min.js"></script>
-    <script src="js/controlador_InicioSesion.js"></script>
-    <script src="js/servicio_Imagen.js"></script>
     <script src="js/components.js"></script>
     <script src="js/servicio_registrarBitacora.js"></script>
     <script src="js/controlador_listarBitacora.js"></script>
