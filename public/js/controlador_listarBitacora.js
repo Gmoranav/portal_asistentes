@@ -28,7 +28,7 @@ inputFiltroCorreo.addEventListener('keyup', function(){
 function imprimirListaBitacoras(plistaBitacoras /*pFiltro*/){
     
     
-    let tbody = document.querySelector('#tblListarUsuarios');
+    let tbody = document.querySelector('#tblListarBitacoras');
 
     /*if(!pFiltro){
         pFiltro ='';

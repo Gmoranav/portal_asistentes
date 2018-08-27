@@ -13,7 +13,6 @@ function registrarUsuarios(imagenUrl, sNombre, sSegundoNombre, sPrimerApellido, 
         dataType : 'json',
         async : false,
         data:{
-
             foto  : imagenUrl,
             nombre : sNombre,
             segundo_nombre : sSegundoNombre,

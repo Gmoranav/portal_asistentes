@@ -1,6 +1,6 @@
 'use strict';
 
-function registrar_bitacora(sFecha, tmHoraInicio, tmHoraFin, sDescripcion, estado){
+function agregar_registros(sFecha, sHoraInicio, sHoraFin, sDescripcion){
     let respuesta = '';
     let peticion = $.ajax({
 
@@ -13,23 +13,10 @@ function registrar_bitacora(sFecha, tmHoraInicio, tmHoraFin, sDescripcion, estad
         async : false,
         data:{
 
-            foto  : imagenUrl,
-            nombre : sNombre,
-            segundo_nombre : sSegundoNombre,
-            primer_apellido : sPrimerApellido,
-            segundo_apellido : sSegundoApellido,
-            cedula : sCedula,
-            fecha_ingreso : dFechaIngreso,
-            rol : sltRol,
-            direccion : sDireccion,
-            distrito : sDistrito,
-            canton : sCanton,
-            provincia : sltProvincia,
-            telefono : sTelefono,
-            correo : sCorreo,
-            contrasenna : pcontrasenna,
-            estado : pestado,
-            ingresos : pingresos
+            sFecha  : sFecha,
+            hora_inicio : sHoraInicio,
+            hora_fin : sHoraFin,
+            descripcion : sDescripcion,
         }
       });
     
@@ -44,36 +31,25 @@ function registrar_bitacora(sFecha, tmHoraInicio, tmHoraFin, sDescripcion, estad
       return respuesta;
 }
 
-function modificar_bitacoras(_id, imagenUrl, sNombre, sSegundoNombre, sPrimerApellido, sSegundoApellido, sCedula, dFechaIngreso, sltRol, 
-    sDireccion, sDistrito, sCanton, sltProvincia, sTelefono, sCorreo){
+function modificar_bitacoras(_id, sFecha, sHoraInicio, sHoraFin, sDescripcion, pestado){
 
         let respuesta = '';
         let peticion = $.ajax({
 
 
         
-        url : 'http://localhost:4000/api/modificar_usuario',
+        url : 'http://localhost:4000/api/modificar_bitacora',
         type : 'post',
         contentType : 'application/x-www-form-urlencoded; charset=utf-8',
         dataType : 'json',
         async : false,
         data:{
-
-            _id  : _id,
-            foto  : imagenUrl,
-            nombre : sNombre,
-            segundo_nombre : sSegundoNombre,
-            primer_apellido : sPrimerApellido,
-            segundo_apellido : sSegundoApellido,
-            cedula : sCedula,
-            fecha_ingreso : dFechaIngreso,
-            rol : sltRol,
-            direccion : sDireccion,
-            distrito : sDistrito,
-            canton : sCanton,
-            provincia : sltProvincia,
-            telefono : sTelefono,
-            correo : sCorreo,
+            _id : _id,
+            sFecha  : sFecha,
+            hora_inicio : sHoraInicio,
+            hora_fin : sHoraFin,
+            descripcion : sDescripcion,
+            estado : pestado,
         }
       });
     
@@ -86,4 +62,31 @@ function modificar_bitacoras(_id, imagenUrl, sNombre, sSegundoNombre, sPrimerApe
       });
 
       return respuesta;
+}
+
+
+function obtenerListaBitacoras(){
+
+    let listaBitacoras = [];
+
+    let peticion = $.ajax({
+ 
+        url : 'http://localhost:4000/api/listar_bitacoras',
+        type : 'get',
+        contentType : 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType : 'json',
+        async : false,
+        data:{ 
+        }
+      });
+    
+      peticion.done(function(response){
+        listaBitacoras = response;
+      });
+    
+      peticion.fail(function(response){
+        listaBitacoras = response;
+      });
+
+    return listaBitacoras;
 }
