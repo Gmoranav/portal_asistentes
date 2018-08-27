@@ -3,6 +3,7 @@
 
 llenar_select_cursos();
 
+const selectCursos = document.querySelector('#sltCurso');
 const botonRegistrar = document.querySelector('#btnAgregarRegistrosBitacora');
 const botonModificar = document.querySelector('#btnModificarRegistrosBitacora');
 
@@ -20,7 +21,7 @@ botonRegistrar.addEventListener('click' , obtenerDatosFormulario);
 //botonModificar.addEventListener('click' , obtenerDatosModificar);
 
 function obtenerDatosFormulario(){
-    
+    let cursoId = selectCursos.value;
     let bError = false;
     let respuesta;
 
@@ -41,10 +42,9 @@ function obtenerDatosFormulario(){
         let sHoraInicio = inputHoraInicio.value;
         let sHoraFin = inputHoraFin.value;
         let sDescripcion = inputDescripcion.value;
-        let estado = 1;
        
         
-        respuesta = registrar_bitacora(sFecha, sHoraInicio, sHoraFin, sDescripcion, estado);//esta funcion está en el servicio
+        respuesta = agregar_registros(cursoId, sFecha, sHoraInicio, sHoraFin, sDescripcion);//esta funcion está en el servicio
 
         if (respuesta.success = true){
             swal({
@@ -220,11 +220,10 @@ function cargar_datos_modificar(){
 
 
 function llenar_select_cursos(){
-    let selectCursos = document.querySelector('#sltCurso');
     let lista_Cursos = getListaCursos();
     for(let i = 0; i < lista_Cursos.length; i++){
-        let nuevoCurso = new Option(lista_Cursos[i]);// texto a visualizar
-        nuevoCurso.value = lista_Cursos[i];
+        let nuevoCurso = new Option(lista_Cursos[i]['curso']);// texto a visualizar
+        nuevoCurso.value = lista_Cursos[i]['_id'];
 
         selectCursos.options.add(nuevoCurso);
     }
@@ -242,7 +241,8 @@ function getListaCursos(){
             for (let i = 0; i < lista_bitacoras.length; i++) {
                 if (lista_bitacoras[i]["cedula_asistente"] == info_usuario[0]) {
                     console.log(lista_bitacoras[i]["cedula_asistente"]);
-                    cursos [i]=lista_bitacoras[i]["curso"];
+                    cursos [i][0]=lista_bitacoras[i]["curso"];
+                    cursos [i][1]=lista_bitacoras[i]["_id"];
                 }//fin if
             }//fin for
             break;
@@ -250,14 +250,16 @@ function getListaCursos(){
             for (let i = 0; i < lista_bitacoras.length; i++) {
                 if (lista_bitacoras[i]["cedula_profesor"] == info_usuario[0]) {
                     console.log(lista_bitacoras[i]["cedula_profesor"]);
-                    cursos [i]=lista_bitacoras[i]["curso"];
+                    cursos [i][0]=lista_bitacoras[i]["curso"];
+                    cursos [i][1]=lista_bitacoras[i]["_id"];
                 }//fin if
             }//fin for
             break;
         //case 'AsistenteDecanatura' || 'AsistenteDecanatura' || 'Rectoría':
         default:
             for (let i = 0; i < lista_bitacoras.length; i++) {
-                cursos [i]=lista_bitacoras[i]["curso"];
+                cursos [i][0]=lista_bitacoras[i]["curso"];
+                cursos [i][1]=lista_bitacoras[i]["_id"];
             }//fin for
             break;
     }
