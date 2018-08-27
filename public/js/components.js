@@ -250,6 +250,6 @@ function validacion_rol_nav() {
 
 
 
-function getNombreUsuario() {
-    return JSON.parse(localStorage.getItem("nombreUsuario"));
+function getCedulaUsuario() {
+    return JSON.parse(localStorage.getItem("cedulaUsuario"));
 };
