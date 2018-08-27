@@ -12,7 +12,7 @@ module.exports.registrar = function (req, res) {
         fecha_creacion: req.body.fecha_creacion,
         slt_sede: req.body.slt_sede,
         acreditacion: req.body.acreditacion,
-        estado: req.body.estado,
+        estado: req.body.estado
 
     });
 

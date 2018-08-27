@@ -7,7 +7,7 @@ module.exports.registrar = function (req, res) {
         nombre_curso: req.body.nombre_curso,
         codigo_curso: req.body.codigo_curso,
         cantidad_creditos: req.body.cantidad_creditos,
-        estado: req.body.estado,
+        estado: req.body.estado
 
 
     });
