@@ -3,27 +3,6 @@
 
 window.addEventListener('load', listarBitacoras);
 
-//const inputFiltroNombre = document.querySelector('#txtNombre');
-/*const inputFiltroRol = document.querySelector('#txtRol');
-const inputFiltroIngreso = document.querySelector('#txtIngreso');
-const inputFiltroCorreo = document.querySelector('#txtCorreo');
-
-inputFiltroRol.addEventListener('keyup', function(){
-        imprimirListaUsuarios(listarUsuarios, inputFiltroRol.value)
-});
-
-/*inputFiltroRol.addEventListener('keyup', function(){
-        imprimirListaUsuarios(listarUsuarios, inputFiltroRol.value)
-});
-
-inputFiltroIngreso.addEventListener('keyup', function(){
-        imprimirListaUsuarios(listarUsuarios, inputFiltroIngreso.value)
-});
-
-inputFiltroCorreo.addEventListener('keyup', function(){
-        imprimirListaUsuarios(listarUsuarios, inputFiltroCorreo.value)
-});*/
-
 
 function imprimirListaBitacoras(plistaBitacoras /*pFiltro*/){
     
@@ -40,33 +19,37 @@ function imprimirListaBitacoras(plistaBitacoras /*pFiltro*/){
         if(plistaBitacoras[i]['estado']!=0){
                // if(plistaBitacoras[i]['rol'].toLowerCase().includes(pFiltro.toLowerCase())){
                         let fila = tbody.insertRow();
-                                    
-                        let nombre = plistaUsuarios[i]['nombre'];
-                        let segundo_nombre = plistaUsuarios[i]['segundo_nombre'];
-                        let primer_apellido = plistaUsuarios[i]['primer_apellido'];
-                        let segundo_apellido = plistaUsuarios[i]['segundo_apellido'];
+                                   
+                        let primer_nombre_asistente = plistaBitacoras[i]['primer_nombre_asistente'];
+                        let segundo_nombre_asistente = plistaBitacoras[i]['segundo_nombre_asistente'];
+                        let primer_apellido_asistente = plistaBitacoras[i]['primer_apellido_asistente'];
+                        let segundo_apellido_asistente = plistaBitacoras[i]['segundo_apellido_asistente'];
                         let NombreCompleto;
+
                         let cNombre = fila.insertCell();
-                        let cRol = fila.insertCell();
-                        let cFechaIngreso = fila.insertCell();
-                        let cCorreo = fila.insertCell();
+                        let cCurso = fila.insertCell();
                         let cConfiguracion = fila.insertCell();
-            
-                        /*let imagen = document.createElement('img');
-                        imagen.src = plistaUsuarios[i]['foto'];
-                        imagen.classList.add('imageSettings');
-            
-                        cFoto.appendChild(imagen);*/
-                        if (segundo_nombre != 'undefined'){
-                            NombreCompleto = primer_apellido.concat(' ', segundo_apellido, ' ', nombre, ' ', segundo_nombre);
+   
+                        if (segundo_nombre_asistente != undefined){
+                            NombreCompleto = primer_apellido_asistente.concat(' ', segundo_apellido_asistente, ' ', primer_nombre_asistente, ' ', segundo_nombre_asistente);
                         }else{
-                            NombreCompleto = primer_apellido.concat(' ', segundo_apellido, ' ', nombre);
+                            NombreCompleto = primer_apellido_asistente.concat(' ', segundo_apellido_asistente, ' ', primer_nombre_asistente);
                         }
                         
                         cNombre.innerHTML = NombreCompleto;
-                        cRol.innerHTML = plistaUsuarios[i]['rol'];
-                        cFechaIngreso.innerHTML = plistaUsuarios[i]['fecha_ingreso'];
-                        cCorreo.innerHTML = plistaUsuarios[i]['correo'];
+                        cCurso.innerHTML = plistaBitacoras[i]['curso'];
+
+                        //se crean los componentes para mostrar detalle de bitacora
+                        let botonDetalleBitacora = document.createElement('a');
+                        botonDetalleBitacora.classList.add('fas');
+                        botonDetalleBitacora.classList.add('fa-file-alt');
+                        botonDetalleBitacora.classList.add('tooltip');
+
+                        var tooltipdetalle = document.createElement('span');
+                        tooltipdetalle.textContent = "Detalle Bitacora";
+                        tooltipdetalle.setAttribute('class', 'tooltiptext');
+                        botonDetalleBitacora.appendChild(tooltipdetalle);
+
             
                         //se crean los componentes para modificar
                         let botonModificar = document.createElement('a');
@@ -93,15 +76,18 @@ function imprimirListaBitacoras(plistaBitacoras /*pFiltro*/){
                         //dataset es una 
                         //propiedad que permite definir atributos personalizados
                         //para un elemento de html
-                        botonModificar.dataset._id = plistaUsuarios[i]['_id'];
-                        botonDesactivar.dataset._id = plistaUsuarios[i]['_id'];
+                        botonModificar.dataset._id = plistaBitacoras[i]['_id'];
+                        botonDesactivar.dataset._id = plistaBitacoras[i]['_id'];
+                        botonDetalleBitacora.dataset._id = plistaBitacoras[i]['_id'];
             
                         //un eventListener queda enlazado a la función que llama
                         botonModificar.addEventListener('click', buscar_por_id);
-                        botonDesactivar.addEventListener('click', desactivar_usuario);
+                        botonDesactivar.addEventListener('click', eliminar_bitacora);
+                        botonDetalleBitacora.addEventListener('click', mostrar_detalle_bitacora);
             
                         cConfiguracion.appendChild(botonModificar);
                         cConfiguracion.appendChild(botonDesactivar);
+                        cConfiguracion.appendChild(botonDetalleBitacora);
             
                 //}//fin if
         }//fin if
@@ -118,64 +104,143 @@ function listarBitacoras(){
 
 function buscar_por_id(){
         let _id = this.dataset._id;
-        let bitacora = obtener_usuario_por_id(_id);
-        let datosUsuario = [];
+        let bitacora = obtener_bitacora_por_id(_id);
+        let datosBitacora = [];
         let i = 0;
 
-        console.log(usuario);
+        console.log(bitacora);
         //binding permite enlazar la función con el contexto que la llama
         //en este caso con el boton Modificar
 
 
-        datosUsuario[0] = usuario['nombre']; 
-        datosUsuario[1] = usuario['segundo_nombre']; 
-        datosUsuario[2] = usuario['primer_apellido']; 
-        datosUsuario[3] = usuario['segundo_apellido']; 
-        datosUsuario[4] = usuario['cedula']; 
-        datosUsuario[5] = usuario['fecha_ingreso']; 
-        datosUsuario[6] = usuario['rol']; 
-        datosUsuario[7] = usuario['direccion']; 
-        datosUsuario[8] = usuario['distrito']; 
-        datosUsuario[9] = usuario['canton']; 
-        datosUsuario[10] = usuario['provincia']; 
-        datosUsuario[11] = usuario['telefono']; 
-        datosUsuario[12] = usuario['correo']; 
-        datosUsuario[13] = usuario['_id'];
-        datosUsuario[14]= usuario['foto'];
+        datosBitacora[0] = bitacora['curso']; 
+        datosBitacora[1] = bitacora['fecha']; 
+        datosBitacora[2] = bitacora['hora_inicio']; 
+        datosBitacora[3] = bitacora['hora_fin']; 
+        datosBitacora[4] = bitacora['descripcion']; 
+        datosBitacora[5] = bitacora['_id']; 
+        
 
-        setUsuarioParaModificar(datosUsuario);
+        setBitacoraParaModificar(datosBitacora);
         cargar_pagina();
 
 };
 
 
-function setUsuarioParaModificar(infoUsuario) {
-        localStorage.setItem("usuarioParaModificar", JSON.stringify(infoUsuario));
-        console.log(JSON.parse(localStorage.getItem("usuarioParaModificar")));
+function setBitacoraParaModificar(infoBitacora) {
+        localStorage.setItem("bitacoraParaModificar", JSON.stringify(infoBitacora));
+        console.log(JSON.parse(localStorage.getItem("bitacoraParaModificar")));
 };
 
 
-function remover_usuario(){
+function eliminar_bitacora(){
         let _id = this.dataset._id; //SE SALVA EL ID DE LO QUE SE DESEA BORRAR
         let estado = 0;
         swal({
             title: '¿Está seguro?',
-            text: "El usuario se eliminará permanentemente",
+            text: "La bitácora se desactivará permanentemente",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Eliminar'
+            confirmButtonText: 'Desactivar'
           }).then((result) => {
             if (result.value) {
-                eliminar_usuario(_id, estado); 
-                listarUsuarios();
+                desactivar_bitacora(_id, estado); 
+                listarBitacoras();
                 swal(
-                        '¡Eliminado!',
-                        'El usuario ha sido eliminado con éxito',
+                        '¡Desactivada!',
+                        'La bitácora ha sido desactivada con éxito',
                         'success'
                 )
               
             }
         });
 };
+
+function obtener_bitacora_id(){
+    let _id = this.dataset._id;
+    let bitacora = obtener_bitacora_por_id(_id);
+    return bitacora;
+};
+
+
+function mostrar_detalle_bitacora(){
+    let _id = this.dataset._id;
+    let bitacora = obtener_bitacora_id(_id);
+    let mostrarDetalleBitacora = [];
+
+    mostrarDetalleBitacora[0] = bitacora['cedula_profesor'];    
+    mostrarDetalleBitacora[1] = bitacora['primer_nombre_asistente'];
+    mostrarDetalleBitacora[2] = bitacora['segundo_nombre_asistente'];
+    mostrarDetalleBitacora[3] = bitacora['primer_apellido_asistente'];
+    mostrarDetalleBitacora[4] = bitacora['segundo_apellido_asistente'];
+    mostrarDetalleBitacora[5] = bitacora['curso'];
+    mostrarDetalleBitacora[6] = bitacora['grupo'];
+    mostrarDetalleBitacora[7] = bitacora['registros'];
+
+    let tbody = document.querySelector('#tblDetalleBitacora');
+    
+
+    let NombreCompleto;
+    if (segundo_nombre_asistente != undefined){
+        NombreCompleto = primer_apellido_asistente.concat(' ', segundo_apellido_asistente, ' ', primer_nombre_asistente, ' ', segundo_nombre_asistente);
+    }else{
+        NombreCompleto = primer_apellido_asistente.concat(' ', segundo_apellido_asistente, ' ', primer_nombre_asistente);
+    }
+
+    let filaProfesor = tbody.insertRow();
+    let filaAsistente  = tbody.insertRow();
+    let filaCurso  = tbody.insertRow();
+    let filaGrupo  = tbody.insertRow();
+
+
+    filaProfesor.insertCell().innerHTML = 'Profesor';
+    filaAsistente.insertCell().innerHTML = 'Asistente';
+    filaCurso.insertCell().innerHTML = 'Curso';
+    filaGrupo.insertCell().innerHTML = 'Grupo';
+
+
+    let sProfesor = filaProfesor.insertCell();
+    sProfesor.innerHTML = mostrarDetalleBitacora[0];
+
+    let sAsistente = filaAsistente.insertCell();
+    sAsistente.innerHTML = mostrarDetalleBitacora[0];
+
+    let sCurso = filaCurso.insertCell();
+    sCurso.innerHTML = mostrarDetalleBitacora[0];
+
+    let sGrupo = filaGrupo.insertCell();
+    sGrupo.innerHTML = mostrarDetalleBitacora[0];
+
+
+    for(let i = 0; i < mostrarDetalleBitacora[7].length; i++){
+        let filaFecha = tbody.insertRow();
+        let filaHoraInicio  = tbody.insertRow();
+        let filaHoraFin  = tbody.insertRow();
+        let filaDescripcion  = tbody.insertRow();
+
+
+        filaFecha.insertCell().innerHTML = 'Fecha';
+        filaHoraInicio.insertCell().innerHTML = 'Hora inicio';
+        filaHoraFin.insertCell().innerHTML = 'Hora fin';
+        filaDescripcion.insertCell().innerHTML = 'Descripción';
+
+
+        let sFecha = filaFecha.insertCell();
+        sFecha.innerHTML = mostrarDetalleBitacora[7][i];
+
+        let sHoraInicio = filaHoraInicio.insertCell();
+        sHoraInicio.innerHTML = mostrarDetalleBitacora[7][i];
+
+        let sHoraFin = filaHoraFin.insertCell();
+        sHoraFin .innerHTML = mostrarDetalleBitacora[7][i];
+
+        let sDescripcion = filaDescripcion.insertCell();
+        sDescripcion.innerHTML = mostrarDetalleBitacora[7][i];
+
+    }
+
+    levantarModal();
+};
+

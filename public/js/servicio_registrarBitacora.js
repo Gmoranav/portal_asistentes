@@ -1,19 +1,19 @@
 'use strict';
 
-function agregar_registros(sFecha, sHoraInicio, sHoraFin, sDescripcion){
+function agregar_registros(bitacoraId, sFecha, sHoraInicio, sHoraFin, sDescripcion){
     let respuesta = '';
     let peticion = $.ajax({
 
 
         
-        url : 'http://localhost:4000/api/registrar_bitacora',
+        url : 'http://localhost:4000/api/agregar_registros',
         type : 'post',
         contentType : 'application/x-www-form-urlencoded; charset=utf-8',
         dataType : 'json',
         async : false,
         data:{
-
-            sFecha  : sFecha,
+            _id : bitacoraId,
+            fecha  : sFecha,
             hora_inicio : sHoraInicio,
             hora_fin : sHoraFin,
             descripcion : sDescripcion,

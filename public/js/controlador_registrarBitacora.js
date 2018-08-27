@@ -1,7 +1,7 @@
 
 'use strict';
 
-llenar_select_cursos();
+
 
 const selectCursos = document.querySelector('#sltCurso');
 const botonRegistrar = document.querySelector('#btnAgregarRegistrosBitacora');
@@ -12,16 +12,16 @@ botonModificar.hidden = true;
 const inputFecha = document.querySelector('#txtFecha');
 const inputHoraInicio = document.querySelector('#txtHoraInicio');
 const inputHoraFin = document.querySelector('#txtHoraFin');
-//const inputHoraInicio = document.getElementById('#tmHoraInicio');
-//const inputHoraFin= document.getElementById('#tmHoraFin');
 const inputDescripcion = document.querySelector('#txtDescripcion');
 const inputId = document.querySelector('#txtId');
+
+llenar_select_cursos();
 
 botonRegistrar.addEventListener('click' , obtenerDatosFormulario);
 //botonModificar.addEventListener('click' , obtenerDatosModificar);
 
 function obtenerDatosFormulario(){
-    let cursoId = selectCursos.value;
+    let bitacoraId = selectCursos.value;
     let bError = false;
     let respuesta;
 
@@ -44,7 +44,7 @@ function obtenerDatosFormulario(){
         let sDescripcion = inputDescripcion.value;
        
         
-        respuesta = agregar_registros(cursoId, sFecha, sHoraInicio, sHoraFin, sDescripcion);//esta funcion está en el servicio
+        respuesta = agregar_registros(bitacoraId, sFecha, sHoraInicio, sHoraFin, sDescripcion);//esta funcion está en el servicio
 
         if (respuesta.success = true){
             swal({
@@ -80,7 +80,7 @@ function obtenerDatosFormulario(){
 
 
 
-/*function obtenerDatosModificar(){
+function obtenerDatosModificar(){
     
     let bError = false;
     let respuesta;
@@ -138,7 +138,7 @@ function obtenerDatosFormulario(){
         botonRegistrar.hidden = false;
     }
     
-};*/
+};
 
 
 function validar(){
@@ -187,7 +187,7 @@ function limpiarFormulario(){
 };
 
 
-/*function cargar_pagina(){
+function cargar_pagina(){
     window.location.replace('bitacora_registrar.html');
 };
 
@@ -216,14 +216,14 @@ function cargar_datos_modificar(){
         botonModificar.hidden = false;
         botonRegistrar.hidden = true;
     }
-};*/
+};
 
 
 function llenar_select_cursos(){
     let lista_Cursos = getListaCursos();
     for(let i = 0; i < lista_Cursos.length; i++){
-        let nuevoCurso = new Option(lista_Cursos[i]['curso']);// texto a visualizar
-        nuevoCurso.value = lista_Cursos[i]['_id'];
+        let nuevoCurso = new Option(lista_Cursos[i][0]);// texto a visualizar
+        nuevoCurso.value = lista_Cursos[i][1];
 
         selectCursos.options.add(nuevoCurso);
     }
@@ -235,6 +235,10 @@ function getListaCursos(){
 
     let lista_bitacoras = obtenerListaBitacoras();
     let cursos = [];
+
+    for(let i=0; i<2; i++) {
+        cursos[i] = new Array(50);
+    } 
 
     switch (info_usuario[1]) {
         case 'AsistenteProfesor':
