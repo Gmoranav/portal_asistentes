@@ -142,12 +142,12 @@
                         <label for="txtNombre2">Nombre
                             <span>*</span>
                         </label>
-                        <input type="text" id="txtNombre2" required>
+                        <input disabled type="text" id="txtNombre2" required>
                     </div>
 
                     <div class="form-group form-group-2">
                         <label for="txtSegundoNombre2">Segundo Nombre</label>
-                        <input type="text" id="txtSegundoNombre2">
+                        <input disabled type="text" id="txtSegundoNombre2">
                     </div>
                 </div> 
                 <!--fila apellidos-->
@@ -156,14 +156,14 @@
                         <label for="txtPrimerApellido2">Primer Apellido
                             <span>*</span>
                         </label>
-                        <input type="text" id="txtPrimerApellido2" required>
+                        <input disabled type="text" id="txtPrimerApellido2" required>
                     </div>
 
                     <div class="form-group form-group-2">
                         <label for="txtSegundoApellido2">Segundo Apellido
                             <span>*</span>
                         </label>
-                        <input type="text" id="txtSegundoApellido2" required>
+                        <input disabled type="text" id="txtSegundoApellido2" required>
                     </div>
                 </div> 
 
@@ -173,7 +173,7 @@
                         <label for="txtCedula2">Cédula
                             <span>*</span>
                         </label>
-                        <input type="text" id="txtCedula2" placeholder="402540847" required>
+                        <input disabled type="text" id="txtCedula2" placeholder="402540847" required>
                     </div>
                 </div>
                 
@@ -183,12 +183,12 @@
                         <label for="txtFechaIngreso2">Fecha de ingreso
                             <span>*</span>
                         </label>
-                        <input type="text" id="txtFechaIngreso2" placeholder="dd/mm/aaaa" required>
+                        <input disabled type="text" id="txtFechaIngreso2" placeholder="dd/mm/aaaa" required>
                     </div>
                 </div>
                 
                 <!--fila rol-->
-                <div class="form-row ">
+                <!-- <div class="form-row ">
                     <div class="form-group form-group-3">
                         <label for="txtRol2">Rol
                             <span>*</span>
@@ -203,7 +203,7 @@
                             <option value="AsistenteProfesor">Asistente de profesor</option>
                         </select>
                     </div>
-                </div>
+                </div>  -->
                 <!--fila dirección exacta-->
                 <div class="form-row">
                     <div class="form-group">
@@ -234,17 +234,14 @@
                         <label for="txtCanton2">Cantón
                             <span>*</span>
                         </label>
-                        <select id="txtCanton2">
-                            <option value="">--Seleccione el cantón--</option>
-                        </select>
+                        <input type="text" id="txtCanton2">
                     </div>
+
                     <div class="form-group form-group-3">
                         <label for="txtDistrito2">Distrito
                             <span>*</span>
                         </label>
-                        <select id="txtDistrito2">
-                            <option value="">--Seleccione el distrito--</option>
-                        </select>
+                       <input type="text" id="txtDistrito2">
                     </div>
                 </div>
 
@@ -258,17 +255,17 @@
                     </div>
                 </div>
                 <!--fila correo electronico-->
-                <div class="form-row">
+                <!-- <div class="form-row">
                     <div class="form-group form-group-2">
                         <label for="txtCorreo2">Correo
                             <span>*</span>
                         </label>
                         <input type="email" id="txtCorreo2" placeholder="ejemplo@ucenfotec.ac.cr" required>
                     </div>
-                </div>
+                </div>   -->
                 <div class="form-row buttons">
                     <a onclick="redireccionUsuarioListar()" class="button button--secundario" type="button" id="btnCancelar">Cancelar</a>
-                    <button class="button button--principal" type="button" id="btnRegistrar">Registrar</button>
+                    <!--button class="button button--principal" type="button" id="btnRegistrar">Registrar</button -->
                     <button class="button button--principal" type="button" id="btnModificar">Modificar</button>
                 </div>
             </form>
