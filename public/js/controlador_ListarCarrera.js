@@ -230,7 +230,8 @@ function remover_carrera() {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Desactivar'
+        confirmButtonText: 'Desactivar',
+        cancelButtonText: 'Cancelar'
     }).then((result) => {
         if (result.value) {
             desactivar_carrera(_id, estado);  //funcion en servicio_ListarPeriodo.js

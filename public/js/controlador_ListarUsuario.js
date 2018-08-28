@@ -165,7 +165,8 @@ function remover_usuario(){
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Eliminar'
+            confirmButtonText: 'Eliminar',
+            cancelButtonText: 'Cancelar'
           }).then((result) => {
             if (result.value) {
                 desactivar_usuario(_id, estado); 

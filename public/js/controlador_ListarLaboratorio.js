@@ -203,7 +203,8 @@ function desactivar_laboratorio(){
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Desactivar'
+        confirmButtonText: 'Desactivar',
+        cancelButtonText: 'Cancelar'
       }).then((result) => {
         if (result.value) {
             desactivar_laboratorio_servicio(_id, estado);

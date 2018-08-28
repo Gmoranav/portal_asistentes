@@ -106,8 +106,7 @@ function obtenerDatosCursoModificar() {
                 text: "Se modificó el curso con éxito!",
                 showCancelButton: true,
                 reverseButtons: true,
-                confirmButtonText: 'Volver a la lista',
-                cancelButtonText: 'Continuar Aqui',
+                confirmButtonText: 'Entendido',
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#556566',
             }).then((result) => {

@@ -1716,7 +1716,7 @@ function obtenerDatosModificar(){
     if(bError == true){
         swal({
             type: 'warning',
-            title: 'No se pudo registrar el usuario',
+            title: 'No se pudo modificar el usuario',
             text: 'Por favor revise los campos resaltados',
             confirmButtonText: 'Aceptar'
         });
@@ -1750,8 +1750,7 @@ function obtenerDatosModificar(){
                 text: "El usuario se modificó con éxito!",
                 showCancelButton: true,
                 reverseButtons: true,
-                confirmButtonText: 'Volver a la lista',
-                cancelButtonText: 'Continuar Aqui',
+                confirmButtonText: 'Entendido',
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#556566',
                 }).then((result) => {
