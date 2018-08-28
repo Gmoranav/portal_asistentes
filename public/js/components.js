@@ -116,10 +116,20 @@ function redireccionUsuarioRegistrar() {
     window.location = "usuario_registrar.html";
 }
 
+function validacion_rol_nav() {
 
-function validacion_rol_dashboard() {
-    let tipoAcceso = JSON.parse(localStorage.getItem('tipoDeRol'));
-    console.log(tipoAcceso);
+    let tipoDeAcceso = JSON.parse(localStorage.getItem('tipoDeRol'));
+    console.log(tipoDeAcceso);
+
+    let menu_option_usuario = document.getElementById('hide-usuario');
+    let menu_option_solicitud = document.getElementById('hide-solicitud');
+    let menu_option_sede = document.getElementById('hide-sede');
+    let menu_option_carrera = document.getElementById('hide-carrera');
+    let menu_option_curso = document.getElementById('hide-curso');
+    let menu_option_periodo = document.getElementById('hide-periodo');
+    let menu_option_grupo = document.getElementById('hide-grupo');
+    let menu_option_laboratorio = document.getElementById('hide-laboratorio');
+    let menu_option_info_academica = document.getElementById('hide-info-academica');
 
     let button_usuario = document.getElementById('button-usuario');
     let button_solicitud = document.getElementById('button-solicitud');
@@ -137,91 +147,20 @@ function validacion_rol_dashboard() {
     let link_curso = document.getElementById('link-curso');
     let link_periodo = document.getElementById('link-periodo');
     let link_grupo = document.getElementById('link-grupo');
-    let link_laboratorio = document.getElementById('link-laboratorio');
-
-    if (tipoAcceso === 'Rectoría' || tipoAcceso === 'Decanatura') {
-        button_usuario.className = "hidden";
-        link_usuario.className = "hidden";
-    }
-
-    if (tipoAcceso === 'AsistenteDecanatura') {
-        button_usuario.className = "hidden";
-        link_usuario.className = "hidden";
-    }
-
-    if (tipoAcceso === 'Profesor') {
-        button_usuario.className = "hidden";
-        link_usuario.className = "hidden";
-
-        button_sede.className = "hidden";
-        link_sede.className = "hidden";
-
-        button_carrera.className = "hidden";
-        link_carrera.className = "hidden";
-
-        button_curso.className = "hidden";
-        link_curso.className = "hidden";
-
-        button_periodo.className = "hidden";
-        link_periodo.className = "hidden";
-
-        button_grupo.className = "hidden";
-        link_grupo.className = "hidden";
-
-        button_laboratorio.className = "hidden";
-        link_laboratorio.className = "hidden";
-    }
-
-    if (tipoAcceso === 'AsistenteProfesor') {
-        button_usuario.className = "hidden";
-        link_usuario.className = "hidden";
-
-        button_solicitud.className = "hidden";
-        link_solicitud.className = "hidden";
-
-        button_sede.className = "hidden";
-        link_sede.className = "hidden";
-
-        button_carrera.className = "hidden";
-        link_carrera.className = "hidden";
-
-        button_curso.className = "hidden";
-        link_curso.className = "hidden";
-
-        button_periodo.className = "hidden";
-        link_periodo.className = "hidden";
-
-        button_grupo.className = "hidden";
-        link_grupo.className = "hidden";
-
-        button_laboratorio.className = "hidden";
-        link_laboratorio.className = "hidden";
-    }
-};
-
-
-function validacion_rol_nav() {
-
-    let tipoDeAcceso = JSON.parse(localStorage.getItem('tipoDeRol'));
-    console.log(tipoDeAcceso);
-
-    let menu_option_usuario = document.getElementById('hide-usuario');
-    let menu_option_solicitud = document.getElementById('hide-solicitud');
-    let menu_option_sede = document.getElementById('hide-sede');
-    let menu_option_carrera = document.getElementById('hide-carrera');
-    let menu_option_curso = document.getElementById('hide-curso');
-    let menu_option_periodo = document.getElementById('hide-periodo');
-    let menu_option_grupo = document.getElementById('hide-grupo');
-    let menu_option_laboratorio = document.getElementById('hide-laboratorio');
-    let menu_option_info_academica = document.getElementById('hide-info-academica');
-
+    let link_laboratorio = document.getElementById('link-laboratorio');   
 
     if (tipoDeAcceso === 'Rectoría' || tipoDeAcceso === 'Decanatura') {
         menu_option_usuario.className = "hidden";
+        
+        button_usuario.className = "hidden";
+        link_usuario.className = "hidden";
     }
 
     if (tipoDeAcceso === 'AsistenteDecanatura') {
         menu_option_usuario.className = "hidden";
+
+        button_usuario.className = "hidden";
+        link_usuario.className = "hidden";
     }
 
     if (tipoDeAcceso === 'Profesor') {
@@ -233,6 +172,21 @@ function validacion_rol_nav() {
         menu_option_grupo.className = "hidden";
         menu_option_laboratorio.className = "hidden";
         menu_option_info_academica.className = "hidden";
+
+        button_usuario.className = "hidden";
+        link_usuario.className = "hidden";
+        button_sede.className = "hidden";
+        link_sede.className = "hidden";
+        button_carrera.className = "hidden";
+        link_carrera.className = "hidden";
+        button_curso.className = "hidden";
+        link_curso.className = "hidden";
+        button_periodo.className = "hidden";
+        link_periodo.className = "hidden";
+        button_grupo.className = "hidden";
+        link_grupo.className = "hidden";
+        button_laboratorio.className = "hidden";
+        link_laboratorio.className = "hidden";
     }
 
     if (tipoDeAcceso === 'AsistenteProfesor') {
@@ -245,6 +199,23 @@ function validacion_rol_nav() {
         menu_option_laboratorio.className = "hidden";
         menu_option_solicitud.className = "hidden"
         menu_option_info_academica.className = "hidden";
+
+        button_usuario.className = "hidden";
+        link_usuario.className = "hidden";
+        button_solicitud.className = "hidden";
+        link_solicitud.className = "hidden";
+        button_sede.className = "hidden";
+        link_sede.className = "hidden";
+        button_carrera.className = "hidden";
+        link_carrera.className = "hidden";
+        button_curso.className = "hidden";
+        link_curso.className = "hidden";
+        button_periodo.className = "hidden";
+        link_periodo.className = "hidden";
+        button_grupo.className = "hidden";
+        link_grupo.className = "hidden";
+        button_laboratorio.className = "hidden";
+        link_laboratorio.className = "hidden";
     }
 };
 
