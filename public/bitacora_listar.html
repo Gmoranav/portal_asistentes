@@ -116,6 +116,7 @@
                     <tr>
                         <th>Estudiante</th>
                         <th>Curso</th>
+                        <th>Estado</th>
                         <th class="table-actions"></th>
                     </tr>
                     <tr>
@@ -124,6 +125,9 @@
                         </th>
                         <th>
                             <input type="text" id="txtCurso">
+                        </th>
+                        <th>
+                            <input type="text" id="txtEstado">
                         </th>
                         
                         <th class="table-actions"></th>
@@ -137,6 +141,24 @@
 
         </main>
 
+    </div>
+
+
+    <div id="modal" class="modal modal-hidden">
+        <div class="modal-container">
+
+            <a onclick="cerrarModal()" class="fas fa-times" type="button" id="cerrarModal"></a>
+            <table class="tabla-detalle-solicitud">
+            <tbody id="tblDetalleBitacora">
+            </tbody>
+            </table>
+
+          <div class="form-row buttons">
+            <a onclick="cerrarModal()" class="button button--secundario" type="button" id="cerrarModal">Cancelar</a>
+            <button class="button button--principal" type="button" id="btnAprobarPorProfesor">Aprobar Bitácora</button>
+            <button class="button button--principal" type="button" id="btnRechazarPorProfesor">Rechazar Bitácora</button>
+          </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.25.0/dist/sweetalert2.all.min.js"></script>
