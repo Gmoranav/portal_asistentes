@@ -122,7 +122,7 @@
                         <th>Periodo</th>
                         <th>Grupo</th>
                         <th>Cant. Alumnos</th>
-                        <th></th>
+                        <th>Estado</th>
                         <th></th>
 
                     </tr>
@@ -131,36 +131,44 @@
                             <input type="text" id="txtNombre">
                         </th>
                         <th>
-                            <input type="text" id="txtNombre">
+                            <input type="text" id="txtCurso">
                         </th>
                         <th>
-                            <input type="text" id="txtNombre">
+                            <input type="text" id="txtPeriodo">
                         </th>
                         <th>
-                            <input type="text" id="txtNombre">
+                            <input type="text" id="txtGrupo">
                         </th>
                         <th>
-                            <input type="text" id="txtNombre">
+                            <input type="text" id="numCantidadAlumnosNombre">
                         </th>
-                        <th></th>
+                        <th>
+                            <input type="text" id="txtEstado">
+                        </th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody id="tblListarSolicitudes">
                     <tr>
                     </tr>
-                    </tr>
                 </tbody>
             </table>
         </main>
     </div>
 
-    <div class="modal modal-solicitud-none">
+    <div id="modal" class="modal modal-hidden"><!--modal-solicitud-none-->
         <div class="modal-container">
 
+          <a onclick="cerrarModal()" class="fas fa-times" type="button" id="cerrarModal"></a>
+          <table class="tabla-detalle-solicitud">
+            <tbody id="tblDetalleSolicitud">
+
+            </tbody>
+          </table>
+
           <div class="form-row buttons">
-            <a onclick="redireccionSolicitudAsistenteListar()" class="button button--secundario" type="button" id="btnCancelar">Cancelar</a>
-            <button class="button button--principal" type="button" id="btnRegistrar">Registrar</button>
+            <a onclick="cerrarModal()" class="button button--secundario" type="button" id="cerrarModal">Cancelar</a>
+            <button class="button button--principal" type="button" id="btnRegistrar">Aprobar Solicitud</button>
           </div>
 
         </div>
@@ -172,6 +180,7 @@
     <script src="js/components.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2"></script>
     <script src="js/servicio_listarSolicitudes.js"></script>
+    <script src="js/controlador_registrarSolicitudes.js"></script>
     <script src="js/controlador_listarSolicitudes.js"></script>
 
 </body>
