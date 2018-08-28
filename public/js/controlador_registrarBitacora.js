@@ -1,4 +1,3 @@
-
 'use strict';
 
 
@@ -205,11 +204,17 @@ function cargar_datos_modificar(){
 
     if (bitacora[0] != undefined){
 
-        inputFecha.value = bitacora[0]; 
-        inputHoraInicio.value = bitacora[1];
-        inputHoraFin.value = bitacora[2];
-        inputDescripcion.value = bitacora[3];
-        inputId.value = bitacora[4];
+
+        let nuevoCurso = new Option(bitacora[0]);// texto a visualizar
+        nuevoCurso.value = bitacora[0];
+
+        selectCursos.options.add(nuevoCurso);
+
+        inputFecha.value = bitacora[1]; 
+        inputHoraInicio.value = bitacora[2];
+        inputHoraFin.value = bitacora[3];
+        inputDescripcion.value = bitacora[4];
+        inputId.value = bitacora[5];
         
         bitacora = [];
         localStorage.setItem("bitacoraParaModificar", JSON.stringify(bitacora));
