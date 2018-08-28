@@ -3,7 +3,6 @@
 
 window.addEventListener('load', listarBitacoras);
 
-
 function imprimirListaBitacoras(plistaBitacoras /*pFiltro*/){
     
     
@@ -28,6 +27,7 @@ function imprimirListaBitacoras(plistaBitacoras /*pFiltro*/){
 
                         let cNombre = fila.insertCell();
                         let cCurso = fila.insertCell();
+                        let cEstado = fila.insertCell();
                         let cConfiguracion = fila.insertCell();
    
                         if (segundo_nombre_asistente != undefined){
@@ -38,6 +38,22 @@ function imprimirListaBitacoras(plistaBitacoras /*pFiltro*/){
                         
                         cNombre.innerHTML = NombreCompleto;
                         cCurso.innerHTML = plistaBitacoras[i]['curso'];
+                        let estado_bitacora;
+
+                        switch (plistaBitacoras[i]['estado']) {
+                            case 1:
+                                estado_bitacora = 'Activa'
+                                break;
+                            case 2:
+                                estado_bitacora = 'Aprobada'
+                                break;
+                            case 3:
+                                estado_bitacora = 'Rechazada'
+                                break;
+                            default:
+                                break;
+                        }
+                        cEstado.innerHTML = estado_bitacora;
 
                         //se crean los componentes para mostrar detalle de bitacora
                         let botonDetalleBitacora = document.createElement('a');
@@ -102,9 +118,15 @@ function listarBitacoras(){
         imprimirListaBitacoras(listaBitacoras);
 };
 
+function get_bitacora_id(p_id){
+    let _id = p_id;
+    let bitacora = obtener_bitacora_id(_id);
+    return bitacora;
+};
+
 function buscar_por_id(){
         let _id = this.dataset._id;
-        let bitacora = obtener_bitacora_por_id(_id);
+        let bitacora = get_bitacora_id(_id);
         let datosBitacora = [];
         let i = 0;
 
@@ -158,17 +180,73 @@ function eliminar_bitacora(){
         });
 };
 
-function obtener_bitacora_id(){
-    let _id = this.dataset._id;
-    let bitacora = obtener_bitacora_por_id(_id);
-    return bitacora;
+
+
+function aprobar_bitacora_profesor(){
+    let _id = getIdBitacora();
+    let estado = 2;
+    swal({
+        title: 'Aprobación de bitácora',
+        text: " ",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Aprobar'
+      }).then((result) => {
+        if (result.value) {
+            aprobar_bitacora(_id, estado); 
+            swal(
+                    '¡Aprobada!',
+                    'La bitácora ha sido aprobada con éxito',
+                    'success'
+            )
+          
+        }
+    });
+    cerrarModal();
+    _id_bitacora = '';
+    localStorage.setItem("IdBitacora", JSON.stringify(_id_bitacora));
+};
+
+function rechazar_bitacora_profesor(){
+    let _id = getIdBitacora();
+    let estado = 3;
+    swal({
+        title: 'Rechazar bitácora',
+        text: " ",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Rechazar'
+      }).then((result) => {
+        if (result.value) {
+            rechazar_bitacora(_id, estado); 
+            swal(
+                    '¡Rechazada!',
+                    'La bitácora ha sido rechazada con éxito',
+                    'success'
+            )
+          
+        }
+    });
+    cerrarModal();
+    _id_bitacora = '';
+    localStorage.setItem("IdBitacora", JSON.stringify(_id_bitacora));
 };
 
 
+
+
 function mostrar_detalle_bitacora(){
+
+    
     let _id = this.dataset._id;
     let bitacora = obtener_bitacora_id(_id);
     let mostrarDetalleBitacora = [];
+    let mostrarRegistrosBitacora = [];
+    let NombreCompleto;
 
     mostrarDetalleBitacora[0] = bitacora['cedula_profesor'];    
     mostrarDetalleBitacora[1] = bitacora['primer_nombre_asistente'];
@@ -177,16 +255,15 @@ function mostrar_detalle_bitacora(){
     mostrarDetalleBitacora[4] = bitacora['segundo_apellido_asistente'];
     mostrarDetalleBitacora[5] = bitacora['curso'];
     mostrarDetalleBitacora[6] = bitacora['grupo'];
-    mostrarDetalleBitacora[7] = bitacora['registros'];
+    mostrarRegistrosBitacora = bitacora['registros'];
 
-    let tbody = document.querySelector('#tblDetalleBitacora');
+    let tbody = document.querySelector('#tblDetalleBitacora'); 
+    tbody.innerHTML = '';
     
-
-    let NombreCompleto;
-    if (segundo_nombre_asistente != undefined){
-        NombreCompleto = primer_apellido_asistente.concat(' ', segundo_apellido_asistente, ' ', primer_nombre_asistente, ' ', segundo_nombre_asistente);
+    if ( mostrarDetalleBitacora[2] != undefined){
+        NombreCompleto = mostrarDetalleBitacora[3].concat(' ', mostrarDetalleBitacora[4], ' ', mostrarDetalleBitacora[1], ' ', mostrarDetalleBitacora[2]);
     }else{
-        NombreCompleto = primer_apellido_asistente.concat(' ', segundo_apellido_asistente, ' ', primer_nombre_asistente);
+        NombreCompleto = mostrarDetalleBitacora[3].concat(' ', mostrarDetalleBitacora[4], ' ', mostrarDetalleBitacora[1]);
     }
 
     let filaProfesor = tbody.insertRow();
@@ -195,7 +272,7 @@ function mostrar_detalle_bitacora(){
     let filaGrupo  = tbody.insertRow();
 
 
-    filaProfesor.insertCell().innerHTML = 'Profesor';
+    filaProfesor.insertCell().innerHTML = 'Cédula Profesor';
     filaAsistente.insertCell().innerHTML = 'Asistente';
     filaCurso.insertCell().innerHTML = 'Curso';
     filaGrupo.insertCell().innerHTML = 'Grupo';
@@ -205,22 +282,23 @@ function mostrar_detalle_bitacora(){
     sProfesor.innerHTML = mostrarDetalleBitacora[0];
 
     let sAsistente = filaAsistente.insertCell();
-    sAsistente.innerHTML = mostrarDetalleBitacora[0];
+    sAsistente.innerHTML = NombreCompleto;
 
     let sCurso = filaCurso.insertCell();
-    sCurso.innerHTML = mostrarDetalleBitacora[0];
+    sCurso.innerHTML = mostrarDetalleBitacora[5];
 
     let sGrupo = filaGrupo.insertCell();
-    sGrupo.innerHTML = mostrarDetalleBitacora[0];
+    sGrupo.innerHTML = mostrarDetalleBitacora[6];
 
 
-    for(let i = 0; i < mostrarDetalleBitacora[7].length; i++){
+    for(let i = 0; i < mostrarRegistrosBitacora.length; i++){
+        let filaRegistro = tbody.insertRow();
         let filaFecha = tbody.insertRow();
         let filaHoraInicio  = tbody.insertRow();
         let filaHoraFin  = tbody.insertRow();
         let filaDescripcion  = tbody.insertRow();
 
-
+        filaRegistro.insertCell().innerHTML = 'REGISTRO';
         filaFecha.insertCell().innerHTML = 'Fecha';
         filaHoraInicio.insertCell().innerHTML = 'Hora inicio';
         filaHoraFin.insertCell().innerHTML = 'Hora fin';
@@ -228,19 +306,45 @@ function mostrar_detalle_bitacora(){
 
 
         let sFecha = filaFecha.insertCell();
-        sFecha.innerHTML = mostrarDetalleBitacora[7][i];
+        sFecha.innerHTML = mostrarRegistrosBitacora[i]['fecha'];
 
         let sHoraInicio = filaHoraInicio.insertCell();
-        sHoraInicio.innerHTML = mostrarDetalleBitacora[7][i];
+        sHoraInicio.innerHTML = mostrarRegistrosBitacora[i]['hora_inicio'];
 
         let sHoraFin = filaHoraFin.insertCell();
-        sHoraFin .innerHTML = mostrarDetalleBitacora[7][i];
+        sHoraFin .innerHTML = mostrarRegistrosBitacora[i]['hora_fin'];
 
         let sDescripcion = filaDescripcion.insertCell();
-        sDescripcion.innerHTML = mostrarDetalleBitacora[7][i];
+        sDescripcion.innerHTML = mostrarRegistrosBitacora[i]['descripcion'];
 
-    }
+    }//fin for
 
     levantarModal();
+    const botonAprobarBitacora = document.querySelector('#btnAprobarPorProfesor');
+    botonAprobarBitacora.addEventListener('click' , aprobar_bitacora_profesor);
+
+    const botonRechazarBitacora = document.querySelector('#btnRechazarPorProfesor');
+    botonRechazarBitacora.addEventListener('click' , rechazar_bitacora_profesor);
+ 
+    setIdBitacora(_id)
+};//mostrar_detalle_bitacora
+
+function levantarModal(){
+    let modal = document.getElementById('modal');
+    modal.className = "modal";
+  }
+  
+  function cerrarModal(){
+    let modal = document.getElementById('modal');
+    modal.className = "modal modal-hidden";
+  }
+
+  function setIdBitacora(_id_bitacora) {
+    localStorage.setItem("IdBitacora", JSON.stringify(_id_bitacora));
+    console.log(JSON.parse(localStorage.getItem("IdBitacora")));
 };
 
+
+function getIdBitacora() {
+    return JSON.parse(localStorage.getItem("IdBitacora"));
+}
