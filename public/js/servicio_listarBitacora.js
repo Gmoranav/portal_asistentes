@@ -28,12 +28,12 @@ function obtenerListaBitacoras(){
 }
 
 
-function obtener_bitacora_por_id(p_id){
+function obtener_bitacora_id(p_id){
     let bitacora = '';
 
     let peticion = $.ajax({
  
-        url : 'http://localhost:4000/api/buscar_bitacora_id',
+        url : 'http://localhost:4000/api/buscar_bitacora_por_id',
         type : 'post',
         contentType : 'application/x-www-form-urlencoded; charset=utf-8',
         dataType : 'json',
@@ -58,6 +58,59 @@ function desactivar_bitacora(p_id, pestado){
   let respuesta = '';
   let peticion = $.ajax({
       url : 'http://localhost:4000/api/desactivar_bitacora',
+      type : 'post',
+      contentType : 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType : 'json',
+      async : false,
+      data:{
+          _id: p_id,
+          estado : pestado
+      }
+    });
+  
+    peticion.done(function(response){
+     respuesta = response;
+    });
+  
+    peticion.fail(function(response){
+      respuesta = response;
+     
+    });
+
+    return respuesta;
+};
+
+function aprobar_bitacora(p_id, pestado){
+  let respuesta = '';
+  let peticion = $.ajax({
+      url : 'http://localhost:4000/api/aprobar_bitacora',
+      type : 'post',
+      contentType : 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType : 'json',
+      async : false,
+      data:{
+          _id: p_id,
+          estado : pestado
+      }
+    });
+  
+    peticion.done(function(response){
+     respuesta = response;
+    });
+  
+    peticion.fail(function(response){
+      respuesta = response;
+     
+    });
+
+    return respuesta;
+};
+
+
+function rechazar_bitacora(p_id, pestado){
+  let respuesta = '';
+  let peticion = $.ajax({
+      url : 'http://localhost:4000/api/rechazar_bitacora',
       type : 'post',
       contentType : 'application/x-www-form-urlencoded; charset=utf-8',
       dataType : 'json',

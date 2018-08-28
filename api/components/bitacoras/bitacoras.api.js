@@ -34,7 +34,7 @@ module.exports.listar_bitacoras = function(req, res){
     );
 };
 
-module.exports.buscar_bitacora_id = function(req, res){
+module.exports.buscar_bitacora_por_id = function(req, res){
     bitacoraModel.findById({_id: req.body._id}).then(
         function(bitacora){
             res.send(bitacora);
@@ -91,6 +91,31 @@ module.exports.desactivar_bitacora = function (req, res) {
 
             } else {
                 res.json({ success: true, msg: 'Se ha desactivado correctamente. ' + res });
+            }
+        });
+};
+
+module.exports.aprobar_bitacora = function (req, res) {
+    bitacoraModel.findByIdAndUpdate(req.body._id, {$set: req.body},
+        function (err, user) {
+            if (err) {
+                res.json({ success: false, msg: 'La bitacora no se ha podido aprobar. ' + handleError(err) });
+
+            } else {
+                res.json({ success: true, msg: 'Se ha aprobado correctamente. ' + res });
+            }
+        });
+};
+
+
+module.exports.rechazar_bitacora = function (req, res) {
+    bitacoraModel.findByIdAndUpdate(req.body._id, {$set: req.body},
+        function (err, user) {
+            if (err) {
+                res.json({ success: false, msg: 'La bitacora no se ha podido rechazar. ' + handleError(err) });
+
+            } else {
+                res.json({ success: true, msg: 'Se ha rechazado la bitácora. ' + res });
             }
         });
 };
