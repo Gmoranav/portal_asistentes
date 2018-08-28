@@ -26,7 +26,7 @@ function cambioContrasenna() {
         swal({
             type: 'warning',
             title: 'No se pudo cambiar la contraseña',
-            text: 'Verifique los campos Contraseña y Confirmar contraseña. (Recuerde que la contraseña deberá contener entre 8 y 10 caractéres)',
+            text: 'Verifique los campos Contraseña y Confirmar contraseña. (Recuerde que la contraseña deberá contener entre 8 y 12 caracteres)',
             confirmButtonText: 'Aceptar'
         });
 
@@ -84,7 +84,7 @@ function validar() {
         inputRepetirContrasenna.classList.remove('input_error');
       }
 
-      if(totalValores <8 || totalValores >10){
+      if(totalValores <8 || totalValores >12){
         /*
         swal({
             type: 'error',

@@ -93,8 +93,9 @@ function redireccionarUsuario() {
     nombreUsuario [1] = usuarioAutenticado.nombre;
     nombreUsuario [2] = usuarioAutenticado.primer_apellido;
     nombreUsuario [3] = usuarioAutenticado.segundo_apellido;
-    localStorage.setItem('nombreUsuario', JSON.stringify(nombreUsuario));
-    localStorage.setItem('idUsuario', JSON.stringify(nombreUsuario [0]));
+    nombreUsuario [4] = usuarioAutenticado.correo;
+
+    localStorage.setItem('nombreUsuario', JSON.stringify(nombreUsuario.nombre));
 
     window.location = "dashboard.html";
 

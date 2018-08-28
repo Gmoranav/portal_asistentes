@@ -119,6 +119,7 @@ function redireccionUsuarioRegistrar() {
 function validacion_rol_nav() {
 
     let tipoDeAcceso = JSON.parse(localStorage.getItem('tipoDeRol'));
+
     console.log(tipoDeAcceso);
 
     let menu_option_usuario = document.getElementById('hide-usuario');
@@ -147,13 +148,20 @@ function validacion_rol_nav() {
     let link_curso = document.getElementById('link-curso');
     let link_periodo = document.getElementById('link-periodo');
     let link_grupo = document.getElementById('link-grupo');
-    let link_laboratorio = document.getElementById('link-laboratorio');   
+    let link_laboratorio = document.getElementById('link-laboratorio');
+
+    if (tipoDeAcceso === 'Administrador') {
+
+        getDatosUsuario();
+    }
 
     if (tipoDeAcceso === 'Rectoría' || tipoDeAcceso === 'Decanatura') {
         menu_option_usuario.className = "hidden";
-        
+
         button_usuario.className = "hidden";
         link_usuario.className = "hidden";
+
+        getDatosUsuario();
     }
 
     if (tipoDeAcceso === 'AsistenteDecanatura') {
@@ -161,6 +169,8 @@ function validacion_rol_nav() {
 
         button_usuario.className = "hidden";
         link_usuario.className = "hidden";
+
+        getDatosUsuario();
     }
 
     if (tipoDeAcceso === 'Profesor') {
@@ -187,6 +197,8 @@ function validacion_rol_nav() {
         link_grupo.className = "hidden";
         button_laboratorio.className = "hidden";
         link_laboratorio.className = "hidden";
+
+        getDatosUsuario();
     }
 
     if (tipoDeAcceso === 'AsistenteProfesor') {
@@ -216,11 +228,28 @@ function validacion_rol_nav() {
         link_grupo.className = "hidden";
         button_laboratorio.className = "hidden";
         link_laboratorio.className = "hidden";
+
+        getDatosUsuario();
     }
 };
-
-
 
 function getCedulaUsuario() {
     return JSON.parse(localStorage.getItem("cedulaUsuario"));
 };
+
+function getDatosUsuario(){
+
+    let nUsuario = JSON.parse(localStorage.getItem('nombre'));
+    let cUsuario = JSON.parse(localStorage.getItem('correo'));
+    let rUsuario = JSON.parse(localStorage.getItem('tipoDeRol'));
+
+    document.getElementById('nombreUsuarioRegistrado').innerHTML = nUsuario;
+    document.getElementById('correoUsuarioRegistrado').innerHTML = cUsuario;
+    document.getElementById('rolUsuarioRegistrado').innerHTML = rUsuario;
+
+    document.getElementById('nombreUsuarioRegistrado2').innerHTML = nUsuario;
+    document.getElementById('correoUsuarioRegistrado2').innerHTML = cUsuario;
+    document.getElementById('rolUsuarioRegistrado2').innerHTML = rUsuario;
+}
+
+
