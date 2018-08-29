@@ -124,11 +124,8 @@ function obtenerDatosCarreraModificar() {
                 type: 'success',
                 title: 'Transacción Procesada',
                 text: "Se modificó la carrera con éxito!",
-                showCancelButton: true,
-                reverseButtons: true,
                 confirmButtonText: 'Entendido',
                 confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#556566',
             }).then((result) => {
                 if (result.value) {
 

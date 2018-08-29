@@ -130,8 +130,6 @@ function modificarDatosLaboratorio(){
                 type: 'success',
                 title: 'Transacción Procesada',
                 text: "Se modificó el laboratorio con éxito!",
-                showCancelButton: true,
-                reverseButtons: true,
                 confirmButtonText: 'Entendido',
                 confirmButtonColor: '#3085d6',
                 }).then((result) => {
