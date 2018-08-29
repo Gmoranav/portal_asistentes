@@ -31,15 +31,17 @@ botonAprobarDecanatura.addEventListener('click' , AprobarDecanatura);
 
 function AprobarDecanatura(){
      obtenerDatosExtraPostulante();
+
+     //if()
+
 }
 
 //el nombre de esta función se mantiene
 function obtenerDatosExtraPostulante(){
 
   //let _id = this.dataset._id;
-  let _id = inputId.value;
+  //let _id = inputId.value;
 
-  console.log('_id');
     //nombrar estas variables con el mismo nombre de las "const" de arriba
     let sInputCarrera = inputCarrera.value;
     let sInputFechaDeIngreso = inputFechaDeIngreso.value;
@@ -47,7 +49,8 @@ function obtenerDatosExtraPostulante(){
     let sInputCorreoElectronico = inputCorreoElectronico.value;
     let nEstado = '2';
 
-    //let _id = JSON.parse(localStorage.getItem("solicitudParaModificar"))[14];
+    let _id = getIdSolicitud();//JSON.parse(localStorage.getItem("IdParaAprobar"));
+    console.log(_id);
 
     //bError = validar();
     let respuesta;
@@ -101,46 +104,27 @@ function obtenerDatosExtraPostulante(){
         limpiarFormularioSolicitud();
     };
 };
-
 /*
-function cargarPagina(){
-    window.location.replace('solicitud-asistente_registrar.html');
-};
-*/
+function generar_bitacora(){
 
-/*
-window.onload = function() {
-    cargarDatosModificar();
-};
+    let bitacora = [];
 
+    bitacora = getinfoBitacoraGenerada();
 
-function cargarDatosModificar(){
+    let scedula_profesor : bitacora[0];
+    let scedula_asistente  : bitacora[1];
+    let sprimer_nombre : bitacora[2];
+    let ssegundo_nombre : bitacora[3];
+    let sprimer_apellido : bitacora[4];
+    let ssegundo_apellido : bitacora[5];
+    let scurso : bitacora[6];
+    let sgrupo : bitacora[7];
+    let sestado : bitacora[8];
 
-    let solicitud = [];
+    registrar_bitacora(scedula_profesor, scedula_asistente, sprimer_nombre,
+        ssegundo_nombre, sprimer_apellido, ssegundo_apellido, scurso, sgrupo, sestado)
+};*/
 
-    solicitud = getSolicitudParaModificar();
-    if (solicitud[0]!='undefined'){
-        if (inputPrimerNombre){
-
-        inputPrimerNombre.value = solicitud[0];
-        inputSegundoNombre.value = solicitud[1];
-        inputPrimerApellido.value = solicitud[2];
-        inputSegundoApellido.value = solicitud[3];
-        inputCurso.value = solicitud[4];
-        inputGrupo.value = solicitud[5];
-        inputId.value = solicitud[6];
-
-        //inputCedulaProfesor.value = solicitud[6];
-
-
-        solicitud = [];
-        localStorage.setItem("solicitudParaModificar", JSON.stringify(solicitud));
-        botonModificar.hidden = false;
-        botonRegistrar.hidden = true;
-      }
-    }
-};
-*/
 function getSolicitudParaModificar() {
     return JSON.parse(localStorage.getItem("solicitudParaModificar"));
 }

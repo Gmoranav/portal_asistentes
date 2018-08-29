@@ -86,13 +86,25 @@ function imprimirListaSolicitudes(plistaSolicitudes, pFiltro){
                 sNombreCompleto.innerHTML = sPrimerApellido.concat(', ', sSegundoApellido, ' ', sPrimerNombre);
             }
 
-            sCurso.innerHTML = plistaSolicitudes[i]['curso'];
+            sCurso.innerHTML = plistaSolicitudes[i]['nombre_curso'];
             sGrupo.innerHTML = plistaSolicitudes[i]['grupo'];
             sPeriodo.innerHTML = plistaSolicitudes[i]['periodo'];
             nCantidadAlumnos.innerHTML = plistaSolicitudes[i]['cantidad_alumnos'];
-            nCantidadAlumnos.innerHTML = plistaSolicitudes[i]['estatus'];
-
-            /*shorario.innerHTML = plistaSolicitudes[i]['horario'];*/
+             let pestado;
+              switch (plistaSolicitudes[i]['estado']) {
+                            case 1:
+                                pestado = 'Pendiente'
+                                break;
+                            case 2:
+                                pestado = 'Aprobada'
+                                break;
+                            case 3:
+                                pestado = 'Rechazada'
+                                break;
+                            default:
+                                break;
+                        };
+            sEstado.innerHTML = pestado;
 
             let botonDetalleSolicitud = document.createElement('a');
             botonDetalleSolicitud.classList.add('fas');
@@ -345,11 +357,22 @@ function mostrarDetalleSolicitud(){
       sEstado.innerHTML = mostrarDetalleSolicitud[9];
 
       levantarModal();
-};
+
+      setIdSolicitud(_id);
+}
 
 function mostrarDetalleSolicitudRectoria(){
 
       levantarModal();
+}
+
+function setIdSolicitud(_id_solicitud) {
+    localStorage.setItem("IdSolicitud", JSON.stringify(_id_solicitud));
+    console.log(JSON.parse(localStorage.getItem("IdSolicitud")));
+}
+
+function getIdSolicitud() {
+    return JSON.parse(localStorage.getItem("IdSolicitud"));
 }
 
 function setSolicitudParaModificar(infoSolicitud) {
