@@ -129,12 +129,11 @@ function modificarDatosLaboratorio(){
             swal({
                 type: 'success',
                 title: 'Transacción Procesada',
-                text: "Se registró la carrera con éxito!",
+                text: "Se modificó el laboratorio con éxito!",
                 showCancelButton: true,
                 reverseButtons: true,
                 confirmButtonText: 'Entendido',
                 confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#556566',
                 }).then((result) => {
                     if(result.value){
     

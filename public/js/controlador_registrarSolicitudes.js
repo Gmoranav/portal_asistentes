@@ -177,11 +177,10 @@ function obtenerDatosFormularioModicar(){
             swal({
                 type: 'success',
                 title: 'Transacción Procesada',
-                text: "Se registró la solicitud con éxito!",
+                text: "Se modificó la solicitud con éxito!",
                 showCancelButton: true,
                 reverseButtons: true,
-                confirmButtonText: 'Volver a la lista',
-                cancelButtonText: 'Continuar Aqui',
+                confirmButtonText: 'Entendido',
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#556566',
                 }).then((result) => {
