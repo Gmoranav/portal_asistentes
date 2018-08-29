@@ -12,8 +12,8 @@ Responsabilidades del servicio
 
 
 
-function registrarSolicitudes(sPrimerNombre, sSegundoNombre, sApellido, sSegundoApellido, sCurso,
-/*sPeriodo,*/ sGrupo,/*nCantidadAlumnos, sHorario*/){
+function registrarSolicitudes(sPrimerNombre, sSegundoNombre, sPrimerApellido, sSegundoApellido, sCurso, sGrupo, sPeriodo,
+nCantidadAlumnos, sHorario, nCedulaPostulante, nCedulaProfesor, nEstatus, sCarrera , sFechaDeIngreso, nTelefono,sCorreoElectronico){
     let respuesta = '';
     let peticion = $.ajax({
 
@@ -28,15 +28,22 @@ function registrarSolicitudes(sPrimerNombre, sSegundoNombre, sApellido, sSegundo
             //cambiar los nombres por lo que se requiera
             //las variables son las que hay que usan en el archivo controlador
             //en la función imprimirListaExamples
-            primer_nombre :sPrimerNombre,
+            primer_nombre : sPrimerNombre,
             segundo_nombre : sSegundoNombre,
-            primer_apellido : sApellido,
+            primer_apellido : sPrimerApellido,
             segundo_apellido : sSegundoApellido,
-            curso : sCurso,
-            //periodo : sPeriodo,
+            nombre_curso : sCurso,
             grupo : sGrupo,
-            //cantidad_alumnos : nCantidadAlumnos,
-            //horario : sHorario
+            periodo : sPeriodo,
+            cantidad_alumnos : nCantidadAlumnos,
+            horario : sHorario,
+            cedula_postulante : nCedulaPostulante,
+            cedula_profesor : nCedulaProfesor,
+            estado : nEstatus,
+            carrera : sCarrera,
+            fecha_de_ingreso : sFechaDeIngreso,
+            telefono : nTelefono,
+            correo_electronico : sCorreoElectronico
         }
       });
 
@@ -54,7 +61,7 @@ function registrarSolicitudes(sPrimerNombre, sSegundoNombre, sApellido, sSegundo
 }
 
 //(_id, sPrimerNombre, sSegundoNombre, sPrimerApellido, sSegundoApellido, sCurso,/*sPeriodo,*/ sGrupo
-/*nCantidadAlumnos, shorario*/);
+/*nCantidadAlumnos, shorario);*/
 
 function modificarSolicitudes(_id, sPrimerNombre, sSegundoNombre, sPrimerApellido, sSegundoApellido, sCurso,
 /*sPeriodo,*/ sGrupo/*, nCantidadAlumnos, sHorario*/){
@@ -77,9 +84,9 @@ function modificarSolicitudes(_id, sPrimerNombre, sSegundoNombre, sPrimerApellid
             segundo_nombre : sSegundoNombre,
             primer_apellido : sPrimerApellido,
             segundo_apellido : sSegundoApellido,
-            curso : sCurso,
+            /*curso : sCurso,*/
             //periodo : sPeriodo,
-            grupo : sGrupo
+            /*grupo : sGrupo*/
             //cantidad_alumnos : nCantidadAlumnos,
             //horario : sHorario
         }
@@ -94,6 +101,9 @@ function modificarSolicitudes(_id, sPrimerNombre, sSegundoNombre, sPrimerApellid
       });
       return respuesta;
 }
+
+
+
 
 
 //cambiar Examples por lo que se vaya a listar. Debe estar en plural

@@ -103,7 +103,7 @@
 
         <div class="header-page">
             <h1>Solicitudes de Asistencia
-                <a onclick="redireccionSolicitudAsistenteRegistrar()" class="button--add-item"><i class="fas fa-lg fa-plus-circle tooltip">
+                <a id="btnNuevoRegistro" onclick="redireccionSolicitudAsistenteRegistrar()" class="button--add-item"><i class="fas fa-lg fa-plus-circle tooltip">
                     <span class="tooltiptext">Agregar Registro</span>
                 </i></a>
             </h1>
@@ -162,13 +162,68 @@
           <a onclick="cerrarModal()" class="fas fa-times" type="button" id="cerrarModal"></a>
           <table class="tabla-detalle-solicitud">
             <tbody id="tblDetalleSolicitud">
-
             </tbody>
           </table>
+          <form class="">
+              <div class="form-row">
+                <div class="form-group form-group-2">
+                    <label for="txtCarrera">Carrera
+                    </label>
+                    <select id="txtCarrera">
+                        <option value="">--Seleccione Carrera--</option>
+                        <option value="Programación 1">Programación 1</option>
+                        <option value="Proyecto de Ingeniería de Software 1 ">Proyecto de Ingeniería de Software 1</option>
+                        <option value="Programación 2">Programación 2</option>
+                        <option value="Introducción a Bases de Datos">Introducción a Bases de Datos</option>
+                    </select>
+                </div>
+
+              </div>
+              <div class="form-row">
+                <div class="form-group form-group-2">
+                    <label for="txtFechaDeIngreso">Fecha de ingreso
+                    </label>
+                    <input type="text" id="txtFechaDeIngreso">
+                </div>
+              </div>
+
+              <div class="form-row">
+                  <div class="form-group form-group-2">
+                      <label for="txtTelefono">Telefono
+                      </label>
+                      <input type="text" id="txtTelefono">
+                  </div>
+              </div>
+
+              <div class="form-row">
+                  <div class="form-group form-group-2">
+                      <label for="txtCorreoElectronico">Correo Electronico
+                      </label>
+                      <input type="text" id="txtCorreoElectronico">
+                      <input type="number" id="inputId" style="display:none">
+                  </div>
+              </div>
+          </form>
 
           <div class="form-row buttons">
             <a onclick="cerrarModal()" class="button button--secundario" type="button" id="cerrarModal">Cancelar</a>
-            <button class="button button--principal" type="button" id="btnRegistrar">Aprobar Solicitud</button>
+            <button class="button button--principal" type="button" id="btnAprobarDecanatura">Aprobar Solicitud</button>
+          </div>
+
+        </div>
+    </div>
+
+    <div id="modalRectoria" class="modal modal-hidden"><!--modal-solicitud-none-->
+        <div class="modal-container">
+
+          <a onclick="cerrarModal()" class="fas fa-times" type="button" id="cerrarModal"></a>
+          <table class="tabla-detalle-solicitud">
+            <tbody id="tblDetalleSolicitud">
+            </tbody>
+          </table>
+          <div class="form-row buttons">
+            <a onclick="cerrarModal()" class="button button--secundario" type="button" id="cerrarModal">Cancelar</a>
+            <button class="button button--principal" type="button" id="btnAprobarDecanatura">Aprobar Solicitud</button>
           </div>
 
         </div>
@@ -176,12 +231,13 @@
 
 
     <script src="js/jquery-3.3.1.js"></script>
-    <script src="js/controlador_InicioSesion.js"></script>
+    <!--script src="js/controlador_InicioSesion.js"></script-->
     <script src="js/components.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2"></script>
     <script src="js/servicio_listarSolicitudes.js"></script>
-    <script src="js/controlador_registrarSolicitudes.js"></script>
     <script src="js/controlador_listarSolicitudes.js"></script>
+    <script src="js/controlador_registrarSolicitudes.js"></script>
+    <script src="js/controlador_aprobarSolicitud.js"></script>
 
 </body>
 

@@ -199,6 +199,7 @@ function buscar_id(){
 */
 function buscarId(){
         let _id = this.dataset._id;
+        console.log(_id);
         let solicitud = obtenerSolicitudId(_id);
         let datosSolicitud = [];
 
@@ -207,26 +208,29 @@ function buscarId(){
         //en este caso con el boton Modificar
 
         //inputimagenUrl.src = usuario['foto'];
-
         datosSolicitud[0] = solicitud['primer_nombre'];
         datosSolicitud[1] = solicitud['segundo_nombre'];
         datosSolicitud[2] = solicitud['primer_apellido'];
         datosSolicitud[3] = solicitud['segundo_apellido'];
-        datosSolicitud[4] = solicitud['curso'];
-        datosSolicitud[5] = solicitud['grupos'];/*
-        datosSolicitud[5] = Grupo['profesores'];
-        datosSolicitud[5] = Grupo['cantidad_alumnos'];
-        datosSolicitud[5] = Grupo[''];*/
-
-        /*datosSolicitud[6] = solicitud['estado'];*/
-        datosSolicitud[6] = solicitud['_id'];
+        datosSolicitud[4] = solicitud['cedula_asistente'];
+        datosSolicitud[5] = solicitud['nombre_curso'];
+        datosSolicitud[6] = solicitud['grupo'];
+        datosSolicitud[7] = solicitud['periodo'];
+        datosSolicitud[8] = solicitud['cedula_profesor'];
+        /*
+        datosSolicitud[] = solicitud['carrera'];
+        datosSolicitud[] = solicitud['fecha_de_ingreso'];
+        datosSolicitud[] = solicitud['telefono'];
+        datosSolicitud[] = solicitud['correo_electronico'];
+        */
+        datosSolicitud[14] = solicitud['_id'];
 
         setSolicitudParaModificar(datosSolicitud);
         cargarPagina();
 };
 
 //en esta función solo hay que cambiar los input por lo que se requiera, todo lo demas queda igual
-function limpiarFormulario(){
+/*function limpiarFormulario(){
     inputPrimerNombre.value = '';
     inputSegundoNombre.value = '';
     inputPrimerApellido.value ='';
@@ -236,7 +240,7 @@ function limpiarFormulario(){
     inputPeriodo.value = '';
     inputCantidadAlumnos.value = 0;
     inputHorario.value = '';
-};
+};*/
 
 function desactivarSolicitud(){
   let _id = this.dataset._id; //SE SALVA EL ID DE LO QUE SE DESEA BORRAR
@@ -278,7 +282,6 @@ function mostrarDetalleSolicitud(){
       mostrarDetalleSolicitud[7] = solicitud['periodo'];
       //mostrarDetalleSolicitud[0] = solicitud['cantidad_alumnos'];
       //mostrarDetalleSolicitud[0] = solicitud['horario'];
-
       mostrarDetalleSolicitud[8] = solicitud['cedula_profesor'];
       mostrarDetalleSolicitud[9] = solicitud['estado'];
 
@@ -291,23 +294,24 @@ function mostrarDetalleSolicitud(){
       let tbody = document.querySelector('#tblDetalleSolicitud');
       tbody.innerHTML = '';
 
-      //let filaNombreProfesor = tbody.insertRow();
       let filaNombreEstudiante = tbody.insertRow();
       let filaCurso  = tbody.insertRow();
       let filaGrupo  = tbody.insertRow();
       let filaPeriodo  = tbody.insertRow();
-      //let filaCantidadDeAlumnos  = tbody.insertRow();
-      //let filaHorario  = tbody.insertRow();
+      let filaCantidadDeAlumnos  = tbody.insertRow();
+      let filaHorario  = tbody.insertRow();
       let filaEstado  = tbody.insertRow();
+      let filaCedulaProfesor =  tbody.insertRow();
 
-      //filaNombreProfesor.insertCell().innerHTML = 'Postulante';
       filaNombreEstudiante.insertCell().innerHTML = 'Postulante';
       filaCurso.insertCell().innerHTML = 'Curso';
       filaGrupo.insertCell().innerHTML = 'Grupo';
       filaPeriodo.insertCell().innerHTML = 'Periodo';
-      //filaNombreEstudiante.insertCell().innerHTML = 'Postulante';
-      //filaNombreEstudiante.insertCell().innerHTML = 'Postulante';
+      filaCantidadDeAlumnos.insertCell().innerHTML = 'Cantidad de Alumnos';
+      filaHorario.insertCell().innerHTML = 'Horario';
       filaEstado.insertCell().innerHTML = 'Estado';
+      filaCedulaProfesor.insertCell().innerHTML = 'Cedula Profesor';
+      //filaCursosLlevados.insertCell().innerHTML = 'Cursos Llevados';
 
 /**************************************
       let sProfesor = filaEstado.insertCell();
@@ -333,10 +337,10 @@ function mostrarDetalleSolicitud(){
 /*
       let sCurso = filaCurso.insertCell();
       sCurso.innerHTML = mostrarDetalleSolicitud[4];
-*//*
-      let sCurso = filaCurso.insertCell();
-      sCurso.innerHTML = mostrarDetalleSolicitud[4];
 */
+      let sCedulaProfesor = filaCedulaProfesor.insertCell();
+      sCurso.innerHTML = mostrarDetalleSolicitud[8];
+
       let sEstado = filaEstado.insertCell();
       sEstado.innerHTML = mostrarDetalleSolicitud[9];
 
@@ -345,95 +349,24 @@ function mostrarDetalleSolicitud(){
 
 function mostrarDetalleSolicitudRectoria(){
 
-      let _id = this.dataset._id;
-      let solicitud = obtenerSolicitudId(_id);
-      let mostrarDetalleSolicitud = [];
-
-      mostrarDetalleSolicitud[0] = solicitud['primer_nombre'];
-      mostrarDetalleSolicitud[1] = solicitud['segundo_nombre'];
-      mostrarDetalleSolicitud[2] = solicitud['primer_apellido'];
-      mostrarDetalleSolicitud[3] = solicitud['segundo_apellido'];
-      mostrarDetalleSolicitud[4] = solicitud['cedula_asistente'];
-      mostrarDetalleSolicitud[5] = solicitud['nombre_curso'];
-      mostrarDetalleSolicitud[6] = solicitud['grupo'];
-      mostrarDetalleSolicitud[7] = solicitud['periodo'];
-      //mostrarDetalleSolicitud[0] = solicitud['cantidad_alumnos'];
-      //mostrarDetalleSolicitud[0] = solicitud['horario'];
-
-      mostrarDetalleSolicitud[8] = solicitud['cedula_profesor'];
-      mostrarDetalleSolicitud[9] = solicitud['estado'];
-
-      let sPrimerNombre = mostrarDetalleSolicitud[0] ;
-      let sSegundoNombre = mostrarDetalleSolicitud[1] ;
-      let sPrimerApellido = mostrarDetalleSolicitud[2] ;
-      let sSegundoApellido = mostrarDetalleSolicitud[3] ;
-      let nCedula = mostrarDetalleSolicitud[4] ;
-
-      let tbody = document.querySelector('#tblDetalleSolicitud');
-
-      //let filaNombreProfesor = tbody.insertRow();
-      let filaNombreEstudiante = tbody.insertRow();
-      let filaCurso  = tbody.insertRow();
-      let filaGrupo  = tbody.insertRow();
-      let filaPeriodo  = tbody.insertRow();
-      //let filaCantidadDeAlumnos  = tbody.insertRow();
-      //let filaHorario  = tbody.insertRow();
-      let filaEstado  = tbody.insertRow();
-
-      //filaNombreProfesor.insertCell().innerHTML = 'Postulante';
-      filaNombreEstudiante.insertCell().innerHTML = 'Postulante';
-      filaCurso.insertCell().innerHTML = 'Curso';
-      filaGrupo.insertCell().innerHTML = 'Grupo';
-      filaPeriodo.insertCell().innerHTML = 'Periodo';
-      //filaNombreEstudiante.insertCell().innerHTML = 'Postulante';
-      //filaNombreEstudiante.insertCell().innerHTML = 'Postulante';
-      filaEstado.insertCell().innerHTML = 'Estado';
-
-/**************************************
-      let sProfesor = filaEstado.insertCell();
-      sProfesor.innerHTML = mostrarDetalleSolicitud[8];
-************************/
-/*****************************/
-      let sNombreAlumno = filaNombreEstudiante.insertCell();
-      //sNombre.innerHTML = mostrarDetalleSolicitud[0];
-      if (sSegundoNombre != 'undefined'){
-          sNombreAlumno.innerHTML = nCedula.concat(' - ',sPrimerApellido,' ', sSegundoApellido, ', ', sPrimerNombre, ' ', sSegundoNombre);
-      }else{
-          sNombreAlumno.innerHTML = nCedula.concat(' - ',sPrimerApellido,', ', sSegundoApellido, ' ', sPrimerNombre);
-      }
-/*****************************/
-      let sCurso = filaCurso.insertCell();
-      sCurso.innerHTML = mostrarDetalleSolicitud[5];
-
-      let sGrupo = filaGrupo.insertCell();
-      sGrupo.innerHTML = mostrarDetalleSolicitud[6];
-
-      let sPeriodo = filaPeriodo.insertCell();
-      sPeriodo.innerHTML = mostrarDetalleSolicitud[7];
-/*
-      let sCurso = filaCurso.insertCell();
-      sCurso.innerHTML = mostrarDetalleSolicitud[4];
-*//*
-      let sCurso = filaCurso.insertCell();
-      sCurso.innerHTML = mostrarDetalleSolicitud[4];
-*/
-      let sEstado = filaEstado.insertCell();
-      sEstado.innerHTML = mostrarDetalleSolicitud[9];
-
       levantarModal();
-};
+}
 
 function setSolicitudParaModificar(infoSolicitud) {
         localStorage.setItem("solicitudParaModificar", JSON.stringify(infoSolicitud));
         console.log(JSON.parse(localStorage.getItem("solicitudParaModificar")));
-};
+}
 
 function levantarModal(){
   let modal = document.getElementById('modal');
   modal.className = "modal";
-};
-
+}
 function cerrarModal(){
   let modal = document.getElementById('modal');
   modal.className = "modal modal-hidden";
-};
+}
+
+function redireccionSolicitudAsistenteRegistrar() {
+  window.location = "solicitud-asistente_registrar.html";
+  limpiarFormulario();
+}

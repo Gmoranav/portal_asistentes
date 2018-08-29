@@ -22,10 +22,17 @@ router.route('/modificar_solicitud')
     .post(function (req, res){
       solicitudesApi.modificar_solicitud(req, res);
     });
-
 router.route('/desactivar_solicitud')
     .post(function (req, res) {
         solicitudesApi.desactivar_solicitud(req, res);
+    });
+router.route('/modificar_solicitud_por_decanatura')
+    .post(function (req, res) {
+        solicitudesApi.modificar_solicitud_por_decanatura(req, res);
+    });
+router.route('/aceptar_solicitud_por_rectoria')
+    .post(function (req, res) {
+        solicitudesApi.aceptar_solicitud_por_rectoria(req, res);
     });
 /*
 router.route('/buscar_usuario_id')

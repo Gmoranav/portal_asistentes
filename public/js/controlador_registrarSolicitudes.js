@@ -9,6 +9,8 @@ Responsabilidades del controlador
 
 'use strict';
 
+
+
 //let banderaModificar = false;
 
 //dejar este nombre del botón igual a como está aquí y dejarlo igual en el HTML: btnRegistrar
@@ -36,24 +38,30 @@ inputFiltro.addEventListener('keyup' , function(){
 });*/
 
 botonRegistrar.addEventListener('click' , obtenerDatosFormulario);
-if (botonModificar){
+//if (botonModificar){
   botonModificar.addEventListener('click' , obtenerDatosFormularioModicar);
-}
-
+//}
 
 //el nombre de esta función se mantiene
 function obtenerDatosFormulario(){
-
-
 
     //nombrar estas variables con el mismo nombre de las "const" de arriba
     let sPrimerNombre = inputPrimerNombre.value;
     let sSegundoNombre = inputSegundoNombre.value;
     let sPrimerApellido = inputPrimerApellido.value;
     let sSegundoApellido = inputSegundoApellido.value;
-    //let sCurso  = inputCurso .value;
-    //let sPeriodo  = inputPeriodo .value;
-    let sGrupo  = inputGrupo .value;
+    let sCurso  = inputCurso.value;
+    let sGrupo  = inputGrupo.value;
+    let sPeriodo  = 'Cuatrimestral 2 - 2018';
+    let nCantidadAlumnos  = 36;
+    let sHorario  = 'Test';
+    let nCedulaPostulante  = 456456;
+    let nCedulaProfesor  = 456456;
+    let nEstatus  = 1;
+    let sCarrera  = ' ';
+    let sFechaDeIngreso  = ' ';
+    let nTelefono  = ' ';
+    let sCorreoElectronico  =' ';
     //let nCantidadAlumnos = Number(inputCantidadAlumnos.value);
     //let shorario = inputHorario.value;
 
@@ -82,8 +90,8 @@ function obtenerDatosFormulario(){
     }else{
 
         //cambiar Example y parámetros de la función por lo que se esté registrando, pornerlo en singular
-        respuesta = registrarSolicitudes(sPrimerNombre, sSegundoNombre, sPrimerApellido, sSegundoApellido, sCurso, /*sPeriodo,*/ sGrupo/*,
-        nCantidadAlumnos, shorario*/);
+        respuesta = registrarSolicitudes(sPrimerNombre, sSegundoNombre, sPrimerApellido, sSegundoApellido, sCurso, sGrupo, sPeriodo,
+        nCantidadAlumnos, sHorario, nCedulaPostulante, nCedulaProfesor, nEstatus,sCarrera , sFechaDeIngreso, nTelefono, sCorreoElectronico);
 
         if (respuesta.success == true){
 
@@ -100,12 +108,9 @@ function obtenerDatosFormulario(){
                 cancelButtonColor: '#556566',
                 }).then((result) => {
                     if(result.value){
-
                         window.location.href = "solicitud-asistente_listar.html";
                         }
-
                     });
-
         }else{
 
             swal({
@@ -114,14 +119,12 @@ function obtenerDatosFormulario(){
                 text: 'Por favor contactar al administrador',
                 confirmButtonText: 'Aceptar'
             });
-
         }
-
 
         //este nombre queda igual
         limpiarFormulario();
-        botonModificar.hidden = false;
-        botonRegistrar.hidden = true;
+        //botonModificar.hidden = true;
+        //botonRegistrar.hidden = true;
     }
 };
 
@@ -132,16 +135,16 @@ function obtenerDatosFormularioModicar(){
     let sSegundoNombre = inputSegundoNombre.value;
     let sPrimerApellido = inputPrimerApellido.value;
     let sSegundoApellido = inputSegundoApellido.value;
-    let sCurso  = inputCurso .value;
-    //let sPeriodo  = inputPeriodo .value;
-    let sGrupo  = inputGrupo .value;
+    let sCurso  = inputCurso.value;
+    //let sPeriodo  = inputPeriodo.value;
+    let sGrupo  = inputGrupo.value;
     //let nCantidadAlumnos = Number(inputCantidadAlumnos.value);
     //let shorario = inputHorario.value;
     //let sCedula  = inputGrupo .value;
-    let _id = JSON.parse(localStorage.getItem("solicitudParaModificar"))[6];
+    let _id = JSON.parse(localStorage.getItem("solicitudParaModificar"))[14];
 
 
-    bError = validar();
+        let bError = validar();
     let respuesta;
 
     if(sSegundoNombre == ''){
@@ -151,7 +154,6 @@ function obtenerDatosFormularioModicar(){
     if(sGrupo == ''){
         sGrupo = ' ';
     }
-
     //let bError = false;
 
     if(bError == true){
@@ -166,7 +168,7 @@ function obtenerDatosFormularioModicar(){
     } else {
 
         //cambiar Example y parámetros de la función por lo que se esté registrando, pornerlo en singular
-        respuesta = modificarSolicitudes(_id, sPrimerNombre, sSegundoNombre, sPrimerApellido, sSegundoApellido, sCurso,/*sPeriodo,*/ sGrupo
+        respuesta = modificarSolicitudes(_id, sPrimerNombre, sSegundoNombre, sPrimerApellido, sSegundoApellido/*, sCurso,sPeriodo, sGrupo
         /*nCantidadAlumnos, shorario*/);
 
         if (respuesta.success == true){
@@ -200,20 +202,18 @@ function obtenerDatosFormularioModicar(){
 
         //este nombre queda igual
         limpiarFormulario();
-        botonModificar.hidden = false;
-        botonRegistrar.hidden = true;
+      //  botonModificar.hidden = false;
+      //  botonRegistrar.hidden = true;
     };
 };
-
-
 
 function cargarPagina(){
     window.location.replace('solicitud-asistente_registrar.html');
 };
+  window.onload = function() {
+      cargarDatosModificar();
+  };
 
-window.onload = function() {
-    cargarDatosModificar();
-};
 
 function cargarDatosModificar(){
 
@@ -229,15 +229,14 @@ function cargarDatosModificar(){
         inputSegundoApellido.value = solicitud[3];
         inputCurso.value = solicitud[4];
         inputGrupo.value = solicitud[5];
-        inputId.value = solicitud[6];
+        inputId.value = solicitud[14];
 
         //inputCedulaProfesor.value = solicitud[6];
 
-
         solicitud = [];
         localStorage.setItem("solicitudParaModificar", JSON.stringify(solicitud));
-        botonModificar.hidden = false;
-        botonRegistrar.hidden = true;
+      //  botonModificar.hidden = false;
+      //  botonRegistrar.hidden = true;
       }
     }
 };
@@ -256,14 +255,14 @@ function validar(){
 
 
     //Validación del nombre completo
-    if(inputPrimerNombre.value == '' /*|| (regexSoloLetras.test(inputPrimerNombre.value)==false)*/ ){
+    if(inputPrimerNombre.value == '' ){//|| (regexSoloLetras.test(inputPrimerNombre.value)==false) ){
         inputPrimerNombre.classList.add('input_error');
         bError = true;
     }else{
         inputPrimerNombre.classList.remove('input_error');
     }
 
-    //Validación primer apellido
+    //Validación primer
     if(inputPrimerApellido.value == ''){
         inputPrimerApellido.classList.add('input_error');
         bError = true;
@@ -271,7 +270,6 @@ function validar(){
         inputPrimerApellido.classList.remove('input_error');
     }
 
-    //Validación segundo apellido
     if(inputSegundoApellido.value == ''){
         inputSegundoApellido.classList.add('input_error');
         bError = true;

@@ -11,7 +11,7 @@ p:not(.section--quote){
 .main--cenfo-landing{
   height: 100vh;
   position: relative;
-  top: -74px;
+  top: -80px;
 }
 
 .panel-header--cenfo-landing{
@@ -37,9 +37,9 @@ z-index: 99;
 
 }
 .panel-header>nav>div{
-      padding: 27px;
-      background: #9A226C;
-      margin-right: -3px;
+  padding: 30px;
+  background: #9A226C;
+  margin-right: -4px;
 
 }
 
@@ -255,6 +255,6 @@ margin: 40px 0;
  }
 
  #linkU {
-    color: #000  
+    color: #000
 
  }
