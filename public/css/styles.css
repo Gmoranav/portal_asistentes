@@ -149,9 +149,9 @@ p {
     background-color: white;
 }
 
-.header{
+/*.header{
 
-}
+}*/
 
 .page{
     overflow-y: scroll;
@@ -651,11 +651,11 @@ body {
     border-radius: 3px;
 }
 
-.container-login__form{
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* align-self: auto; */
-}
+/*.container-login__form{
+  display: flex; 
+  flex-direction: column;
+   align-self: auto; 
+}*/
 
 .body-login__container{
   border-radius: 8px;
@@ -766,9 +766,9 @@ body {
 .dashboard-column h2{
      margin-bottom: 15px;
      }
-.card-perfil-dashboard{
+/*.card-perfil-dashboard{
 
-}
+}*/
 .dashboard-column>a{
   color: #8F2570;
   width: 47%;

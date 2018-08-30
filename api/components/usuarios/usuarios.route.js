@@ -29,11 +29,6 @@ router.route('/desactivar_usuario')
 });
 
 
-
-
-
-
-
 //para cambiar contrasena 
 router.route('/cambiar_contrasenna')
 .post(function(req, res){  //metodo post
