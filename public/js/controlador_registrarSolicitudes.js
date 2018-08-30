@@ -123,8 +123,8 @@ function obtenerDatosFormulario(){
 
         //este nombre queda igual
         limpiarFormulario();
-        //botonModificar.hidden = true;
-        //botonRegistrar.hidden = true;
+        botonModificar.hidden = true;
+        botonRegistrar.hidden = true;
     }
 };
 
@@ -198,8 +198,8 @@ function obtenerDatosFormularioModicar(){
 
         //este nombre queda igual
         limpiarFormulario();
-      //  botonModificar.hidden = false;
-      //  botonRegistrar.hidden = true;
+        botonModificar.hidden = false;
+        botonRegistrar.hidden = true;
     };
 };
 
