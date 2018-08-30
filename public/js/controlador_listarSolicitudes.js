@@ -20,9 +20,6 @@ function obtenerListaSolicitudes(){
     });
 }
 */
-/****************************************************************************/
-//dejar las palabras "lista" y "listar" y cambiar Examples por lo que se esté listando
-// por ejemplo: cursos, carreras, sedes.  Debe estar en plural
 
 function listarSolicitudes(){
         listaSolicitudes = obtenerListaSolicitudes();
@@ -30,9 +27,6 @@ function listarSolicitudes(){
 };
 
 const inputFiltroGrupo = document.querySelector('#txtGrupo');
-
-/*const inputFiltroIngreso = document.querySelector('#txtIngreso');
-const inputFiltroCorreo = document.querySelector('#txtCorreo');*/
 
 inputFiltroGrupo.addEventListener('keyup', function(){
         imprimirListaSolicitudes(listaSolicitudes, inputFiltroGrupo.value)
@@ -50,13 +44,7 @@ function imprimirListaSolicitudes(plistaSolicitudes, pFiltro){
 
     tbody.innerHTML = '';
 
-    //Cambiar Examples por lo que se vaya a listar, usar nombre en plural (ejemplo: cursos, sedes...)
     for(let i = 0; i < plistaSolicitudes.length; i++){
-
-        /*los nombres que están entre corchetes y comillas simples
-        deben ser los mismos que están en la función registrarExamples del archivo servicio.
-        Están en la sección data{}.  NO los que vienen por parámetro sino lo que se declaran en
-        la función.  Se deben colocar en el mismo orden*/
 
       /*  if(!plistaSolicitudes[i]['estado']==0){*/
            if(plistaSolicitudes[i]['grupo'].toLowerCase().includes(pFiltro.toLowerCase())){
@@ -164,42 +152,35 @@ function imprimirListaSolicitudes(plistaSolicitudes, pFiltro){
     }/*}*/
 };
 
-//en esta función solo hay que cambiar los input por lo que se requiera, todo lo demas queda igual
 function validar(){
     let bError = false;
 
     let regexSoloLetras = /^[a-z A-ZáéíóúÁÉÍÓÚñÑ]+$/;
     let regexSoloNumeros = /^[0-9]{1,3}$/;
-    //Validación del nombre completo
     if(inputPrimerNombre.value == '' || (regexSoloLetras.test(inputPrimerNombre.value)==false) ){
         inputPrimerNombre.classList.add('input_error');
         bError = true;
     }else{
         inputPrimerNombre.classList.remove('input_error');
     }
-    //Validación del correo
     if(inputPrimerApellido.value == ''){
         inputPrimerApellido.classList.add('input_error');
         bError = true;
     }else{
         inputPrimerApellido.classList.remove('input_error');
     }
-
     if(inputSegundoApellido.value == ''){
         inputSegundoApellido.classList.add('input_error');
         bError = true;
     }else{
         inputSegundoApellido.classList.remove('input_error');
     }
-
-    //Validación de la edad
     if(inputCantidadAlumnos.value == '' || (regexSoloNumeros.test(inputCantidadAlumnos.value) == false) || Number(inputCantidadAlumnos.value) < Number(inputCantidadAlumnos.min)  || Number(inputCantidadAlumnos.value) > Number(inputCantidadAlumnos.max)){
         inputCantidadAlumnos.classList.add('input_error');
         bError = true;
     }else{
         inputCantidadAlumnos.classList.remove('input_error');
     }
-
     return bError;
 };
 /*
@@ -216,8 +197,6 @@ function buscarId(){
         let datosSolicitud = [];
 
         console.log(solicitud);
-        //binding permite enlazar la función con el contexto que la llama
-        //en este caso con el boton Modificar
 
         //inputimagenUrl.src = usuario['foto'];
         datosSolicitud[0] = solicitud['primer_nombre'];
@@ -240,8 +219,6 @@ function buscarId(){
         setSolicitudParaModificar(datosSolicitud);
         cargarPagina();
 };
-
-//en esta función solo hay que cambiar los input por lo que se requiera, todo lo demas queda igual
 /*function limpiarFormulario(){
     inputPrimerNombre.value = '';
     inputSegundoNombre.value = '';
@@ -255,7 +232,7 @@ function buscarId(){
 };*/
 
 function desactivarSolicitud(){
-  let _id = this.dataset._id; //SE SALVA EL ID DE LO QUE SE DESEA BORRAR
+  let _id = this.dataset._id;
   swal({
       title: '¿Seguro que desea desactivar esta solicitud?',
       text: "Esta acción no puede deshacerse.",
@@ -267,8 +244,8 @@ function desactivarSolicitud(){
       confirmButtonText: 'Desactivar'
     }).then((result) => {
       if (result.value) {
-          desactivar_solicitud(_id); //FUNCION EN EL SERVIDOR PARA BORRAR, PARAMETRO ES EL ID DE LO QUE SE QUIERE BORRAR
-          imprimirListaSolicitudes(); //CARGAR LA LISTA, YA AQUÍ LO DEMÁS SE HA EJECUTADO Y NO APARECE LO QUE SE BORRÓ
+          desactivar_solicitud(_id);
+          imprimirListaSolicitudes(); 
         swal(
           '¡Solicitud Desactivada!',
           'El proceso ha sido concluido con éxito',

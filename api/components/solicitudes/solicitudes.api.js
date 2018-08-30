@@ -91,10 +91,6 @@ module.exports.registrar_solicitud = function(req, res){
             });
 };
 
-
-/*Funcion para Listar*/
-
-
 module.exports.listar_solicitudes = function(req, res){
     solicitudModel.find().sort({$natural:-1}).then(
         function(solicitudes){

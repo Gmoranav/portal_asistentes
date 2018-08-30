@@ -4,7 +4,6 @@ Responsabilidades del servicio
     - Almacenamiento temporal de los datos
     - Comunicar el public (front-end) con el api (back-end)
 */
-
 'use strict';
 /************************************************************************************/
 function obtenerListaSolicitudes(){
@@ -36,7 +35,6 @@ function obtenerSolicitudId(pid){
   let solicitud = '';
   let peticion = $.ajax({
 
-      //*cambiar example en el url por lo que se vaya a registrar, debe estar en singular
       url : 'http://localhost:4000/api/buscar_solicitud_id',
       type : 'post',
       contentType : 'application/x-www-form-urlencoded; charset=utf-8',
@@ -71,7 +69,6 @@ function desactivar_solicitud(pid){
           _id: pid
       }
     });
-
     peticion.done(function(response){
      respuesta = response;
     });
@@ -79,27 +76,18 @@ function desactivar_solicitud(pid){
     peticion.fail(function(response){
       respuesta = response;
     });
-
     return respuesta;
 };
-
-
 
 function modificar_solicitud_por_decanatura(_id, nEstado, sCarrera, sFechaDeIngreso, nTelefono, sCorreoElectronico){
     let respuesta = '';
     let peticion = $.ajax({
-
-        //*cambiar example en el url por lo que se vaya a registrar, debe estar en singular
         url : 'http://localhost:4000/api/modificar_solicitud_por_decanatura',
         type : 'post',
         contentType : 'application/x-www-form-urlencoded; charset=utf-8',
         dataType : 'json',
         async : false,
         data:{
-
-            //cambiar los nombres por lo que se requiera
-            //las variables son las que hay que usan en el archivo controlador
-            //en la función imprimirListaExamples
             _id : _id,
             estado : nEstado,
             carrera : sCarrera,
